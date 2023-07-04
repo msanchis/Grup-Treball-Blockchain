@@ -1,0 +1,2587 @@
+{
+  "contractName": "PoolAddress",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Provides functions for deriving a pool address from the factory, tokens, and the fee\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/libraries/PoolAddress.sol\":\"PoolAddress\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20},\"remappings\":[]},\"sources\":{\"project:/contracts/libraries/PoolAddress.sol\":{\"keccak256\":\"0x7d5410e34e3814cbb8bfc722dd0700a468c86e03444dcc774f222289987e9467\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://41009d4800804ac8093281fffb43fca635cc8a5953c09f3d108a618c9339144b\",\"dweb:/ipfs/QmNjuV7yRkHz9wpDvAkQZpmb5S3TSt7oiZw53JMLekBkJq\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122088f9d2112fb569cded76fb202027c985298cd19e9faa6a581ec0c2ad3a598e0364736f6c63430007060033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122088f9d2112fb569cded76fb202027c985298cd19e9faa6a581ec0c2ad3a598e0364736f6c63430007060033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "167:1652:109:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "167:1652:109:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Provides functions for deriving a pool address from the factory, tokens, and the fee\nlibrary PoolAddress {\n    bytes32 internal constant POOL_INIT_CODE_HASH = 0xf352c39f96c2019023ab98477c72c7ebc04a4fe1d43a2bc84e3eec188c24b571;\n\n    /// @notice The identifying key of the pool\n    struct PoolKey {\n        address token0;\n        address token1;\n        uint24 fee;\n    }\n\n    /// @notice Returns PoolKey: the ordered tokens with the matched fee levels\n    /// @param tokenA The first token of a pool, unsorted\n    /// @param tokenB The second token of a pool, unsorted\n    /// @param fee The fee level of the pool\n    /// @return Poolkey The pool details with ordered token0 and token1 assignments\n    function getPoolKey(\n        address tokenA,\n        address tokenB,\n        uint24 fee\n    ) internal pure returns (PoolKey memory) {\n        if (tokenA > tokenB) (tokenA, tokenB) = (tokenB, tokenA);\n        return PoolKey({token0: tokenA, token1: tokenB, fee: fee});\n    }\n\n    /// @notice Deterministically computes the pool address given the factory and PoolKey\n    /// @param factory The Uniswap V3 factory contract address\n    /// @param key The PoolKey\n    /// @return pool The contract address of the V3 pool\n    function computeAddress(address factory, PoolKey memory key) internal pure returns (address pool) {\n        require(key.token0 < key.token1);\n        pool = address(\n            uint256(\n                keccak256(\n                    abi.encodePacked(\n                        hex'ff',\n                        factory,\n                        keccak256(abi.encode(key.token0, key.token1, key.fee)),\n                        POOL_INIT_CODE_HASH\n                    )\n                )\n            )\n        );\n    }\n}\n",
+  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/libraries/PoolAddress.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/libraries/PoolAddress.sol",
+    "exportedSymbols": {
+      "PoolAddress": [
+        18730
+      ]
+    },
+    "id": 18731,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 18640,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:24:109"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 18641,
+          "nodeType": "StructuredDocumentation",
+          "src": "71:96:109",
+          "text": "@title Provides functions for deriving a pool address from the factory, tokens, and the fee"
+        },
+        "fullyImplemented": true,
+        "id": 18730,
+        "linearizedBaseContracts": [
+          18730
+        ],
+        "name": "PoolAddress",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 18644,
+            "mutability": "constant",
+            "name": "POOL_INIT_CODE_HASH",
+            "nodeType": "VariableDeclaration",
+            "scope": 18730,
+            "src": "193:114:109",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 18642,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "193:7:109",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "hexValue": "307866333532633339663936633230313930323361623938343737633732633765626330346134666531643433613262633834653365656331383863323462353731",
+              "id": 18643,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "241:66:109",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_110058253808091357359662862126536167473743325008746288932668234491934670108017_by_1",
+                "typeString": "int_const 1100...(70 digits omitted)...8017"
+              },
+              "value": "0xf352c39f96c2019023ab98477c72c7ebc04a4fe1d43a2bc84e3eec188c24b571"
+            },
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "PoolAddress.PoolKey",
+            "id": 18651,
+            "members": [
+              {
+                "constant": false,
+                "id": 18646,
+                "mutability": "mutable",
+                "name": "token0",
+                "nodeType": "VariableDeclaration",
+                "scope": 18651,
+                "src": "387:14:109",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18645,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "387:7:109",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18648,
+                "mutability": "mutable",
+                "name": "token1",
+                "nodeType": "VariableDeclaration",
+                "scope": 18651,
+                "src": "411:14:109",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18647,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "411:7:109",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18650,
+                "mutability": "mutable",
+                "name": "fee",
+                "nodeType": "VariableDeclaration",
+                "scope": 18651,
+                "src": "435:10:109",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint24",
+                  "typeString": "uint24"
+                },
+                "typeName": {
+                  "id": 18649,
+                  "name": "uint24",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "435:6:109",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "PoolKey",
+            "nodeType": "StructDefinition",
+            "scope": 18730,
+            "src": "362:90:109",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 18681,
+              "nodeType": "Block",
+              "src": "917:141:109",
+              "statements": [
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 18665,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 18663,
+                      "name": "tokenA",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18654,
+                      "src": "931:6:109",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "id": 18664,
+                      "name": "tokenB",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18656,
+                      "src": "940:6:109",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "931:15:109",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 18674,
+                  "nodeType": "IfStatement",
+                  "src": "927:56:109",
+                  "trueBody": {
+                    "expression": {
+                      "id": 18672,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftHandSide": {
+                        "components": [
+                          {
+                            "id": 18666,
+                            "name": "tokenA",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18654,
+                            "src": "949:6:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 18667,
+                            "name": "tokenB",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18656,
+                            "src": "957:6:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "id": 18668,
+                        "isConstant": false,
+                        "isInlineArray": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": true,
+                        "nodeType": "TupleExpression",
+                        "src": "948:16:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                          "typeString": "tuple(address,address)"
+                        }
+                      },
+                      "nodeType": "Assignment",
+                      "operator": "=",
+                      "rightHandSide": {
+                        "components": [
+                          {
+                            "id": 18669,
+                            "name": "tokenB",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18656,
+                            "src": "968:6:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 18670,
+                            "name": "tokenA",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18654,
+                            "src": "976:6:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "id": 18671,
+                        "isConstant": false,
+                        "isInlineArray": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "TupleExpression",
+                        "src": "967:16:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                          "typeString": "tuple(address,address)"
+                        }
+                      },
+                      "src": "948:35:109",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$__$",
+                        "typeString": "tuple()"
+                      }
+                    },
+                    "id": 18673,
+                    "nodeType": "ExpressionStatement",
+                    "src": "948:35:109"
+                  }
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 18676,
+                        "name": "tokenA",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18654,
+                        "src": "1017:6:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 18677,
+                        "name": "tokenB",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18656,
+                        "src": "1033:6:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 18678,
+                        "name": "fee",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18658,
+                        "src": "1046:3:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint24",
+                          "typeString": "uint24"
+                        }
+                      ],
+                      "id": 18675,
+                      "name": "PoolKey",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18651,
+                      "src": "1000:7:109",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_PoolKey_$18651_storage_ptr_$",
+                        "typeString": "type(struct PoolAddress.PoolKey storage pointer)"
+                      }
+                    },
+                    "id": 18679,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [
+                      "token0",
+                      "token1",
+                      "fee"
+                    ],
+                    "nodeType": "FunctionCall",
+                    "src": "1000:51:109",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                      "typeString": "struct PoolAddress.PoolKey memory"
+                    }
+                  },
+                  "functionReturnParameters": 18662,
+                  "id": 18680,
+                  "nodeType": "Return",
+                  "src": "993:58:109"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 18652,
+              "nodeType": "StructuredDocumentation",
+              "src": "458:321:109",
+              "text": "@notice Returns PoolKey: the ordered tokens with the matched fee levels\n @param tokenA The first token of a pool, unsorted\n @param tokenB The second token of a pool, unsorted\n @param fee The fee level of the pool\n @return Poolkey The pool details with ordered token0 and token1 assignments"
+            },
+            "id": 18682,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPoolKey",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 18659,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18654,
+                  "mutability": "mutable",
+                  "name": "tokenA",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18682,
+                  "src": "813:14:109",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 18653,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:7:109",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 18656,
+                  "mutability": "mutable",
+                  "name": "tokenB",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18682,
+                  "src": "837:14:109",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 18655,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "837:7:109",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 18658,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18682,
+                  "src": "861:10:109",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 18657,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "861:6:109",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "803:74:109"
+            },
+            "returnParameters": {
+              "id": 18662,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18661,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18682,
+                  "src": "901:14:109",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                    "typeString": "struct PoolAddress.PoolKey"
+                  },
+                  "typeName": {
+                    "id": 18660,
+                    "name": "PoolKey",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 18651,
+                    "src": "901:7:109",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$18651_storage_ptr",
+                      "typeString": "struct PoolAddress.PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "900:16:109"
+            },
+            "scope": 18730,
+            "src": "784:274:109",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 18728,
+              "nodeType": "Block",
+              "src": "1403:414:109",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 18697,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 18693,
+                            "name": "key",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18687,
+                            "src": "1421:3:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                              "typeString": "struct PoolAddress.PoolKey memory"
+                            }
+                          },
+                          "id": 18694,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "token0",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 18646,
+                          "src": "1421:10:109",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "<",
+                        "rightExpression": {
+                          "expression": {
+                            "id": 18695,
+                            "name": "key",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18687,
+                            "src": "1434:3:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                              "typeString": "struct PoolAddress.PoolKey memory"
+                            }
+                          },
+                          "id": 18696,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "token1",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 18648,
+                          "src": "1434:10:109",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1421:23:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 18692,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1413:7:109",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 18698,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1413:32:109",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 18699,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1413:32:109"
+                },
+                {
+                  "expression": {
+                    "id": 18726,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 18700,
+                      "name": "pool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18690,
+                      "src": "1455:4:109",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "arguments": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "hexValue": "ff",
+                                      "id": 18708,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "hexString",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "1581:7:109",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_stringliteral_8b1a944cf13a9a1c08facb2c9e98623ef3254d2ddb48113885c3e8e97fec8db9",
+                                        "typeString": "literal_string hex\"ff\""
+                                      }
+                                    },
+                                    {
+                                      "id": 18709,
+                                      "name": "factory",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 18685,
+                                      "src": "1614:7:109",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                      }
+                                    },
+                                    {
+                                      "arguments": [
+                                        {
+                                          "arguments": [
+                                            {
+                                              "expression": {
+                                                "id": 18713,
+                                                "name": "key",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 18687,
+                                                "src": "1668:3:109",
+                                                "typeDescriptions": {
+                                                  "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                                                  "typeString": "struct PoolAddress.PoolKey memory"
+                                                }
+                                              },
+                                              "id": 18714,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "memberName": "token0",
+                                              "nodeType": "MemberAccess",
+                                              "referencedDeclaration": 18646,
+                                              "src": "1668:10:109",
+                                              "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                              }
+                                            },
+                                            {
+                                              "expression": {
+                                                "id": 18715,
+                                                "name": "key",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 18687,
+                                                "src": "1680:3:109",
+                                                "typeDescriptions": {
+                                                  "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                                                  "typeString": "struct PoolAddress.PoolKey memory"
+                                                }
+                                              },
+                                              "id": 18716,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "memberName": "token1",
+                                              "nodeType": "MemberAccess",
+                                              "referencedDeclaration": 18648,
+                                              "src": "1680:10:109",
+                                              "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                              }
+                                            },
+                                            {
+                                              "expression": {
+                                                "id": 18717,
+                                                "name": "key",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 18687,
+                                                "src": "1692:3:109",
+                                                "typeDescriptions": {
+                                                  "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                                                  "typeString": "struct PoolAddress.PoolKey memory"
+                                                }
+                                              },
+                                              "id": 18718,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "memberName": "fee",
+                                              "nodeType": "MemberAccess",
+                                              "referencedDeclaration": 18650,
+                                              "src": "1692:7:109",
+                                              "typeDescriptions": {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                              }
+                                            }
+                                          ],
+                                          "expression": {
+                                            "argumentTypes": [
+                                              {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                              },
+                                              {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                              },
+                                              {
+                                                "typeIdentifier": "t_uint24",
+                                                "typeString": "uint24"
+                                              }
+                                            ],
+                                            "expression": {
+                                              "id": 18711,
+                                              "name": "abi",
+                                              "nodeType": "Identifier",
+                                              "overloadedDeclarations": [],
+                                              "referencedDeclaration": 4294967295,
+                                              "src": "1657:3:109",
+                                              "typeDescriptions": {
+                                                "typeIdentifier": "t_magic_abi",
+                                                "typeString": "abi"
+                                              }
+                                            },
+                                            "id": 18712,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "lValueRequested": false,
+                                            "memberName": "encode",
+                                            "nodeType": "MemberAccess",
+                                            "src": "1657:10:109",
+                                            "typeDescriptions": {
+                                              "typeIdentifier": "t_function_abiencode_pure$__$returns$_t_bytes_memory_ptr_$",
+                                              "typeString": "function () pure returns (bytes memory)"
+                                            }
+                                          },
+                                          "id": 18719,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "kind": "functionCall",
+                                          "lValueRequested": false,
+                                          "names": [],
+                                          "nodeType": "FunctionCall",
+                                          "src": "1657:43:109",
+                                          "tryCall": false,
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_bytes_memory_ptr",
+                                            "typeString": "bytes memory"
+                                          }
+                                        }
+                                      ],
+                                      "expression": {
+                                        "argumentTypes": [
+                                          {
+                                            "typeIdentifier": "t_bytes_memory_ptr",
+                                            "typeString": "bytes memory"
+                                          }
+                                        ],
+                                        "id": 18710,
+                                        "name": "keccak256",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 4294967288,
+                                        "src": "1647:9:109",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                                        }
+                                      },
+                                      "id": 18720,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "kind": "functionCall",
+                                      "lValueRequested": false,
+                                      "names": [],
+                                      "nodeType": "FunctionCall",
+                                      "src": "1647:54:109",
+                                      "tryCall": false,
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes32",
+                                        "typeString": "bytes32"
+                                      }
+                                    },
+                                    {
+                                      "id": 18721,
+                                      "name": "POOL_INIT_CODE_HASH",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 18644,
+                                      "src": "1727:19:109",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes32",
+                                        "typeString": "bytes32"
+                                      }
+                                    }
+                                  ],
+                                  "expression": {
+                                    "argumentTypes": [
+                                      {
+                                        "typeIdentifier": "t_stringliteral_8b1a944cf13a9a1c08facb2c9e98623ef3254d2ddb48113885c3e8e97fec8db9",
+                                        "typeString": "literal_string hex\"ff\""
+                                      },
+                                      {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                      },
+                                      {
+                                        "typeIdentifier": "t_bytes32",
+                                        "typeString": "bytes32"
+                                      },
+                                      {
+                                        "typeIdentifier": "t_bytes32",
+                                        "typeString": "bytes32"
+                                      }
+                                    ],
+                                    "expression": {
+                                      "id": 18706,
+                                      "name": "abi",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 4294967295,
+                                      "src": "1539:3:109",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_abi",
+                                        "typeString": "abi"
+                                      }
+                                    },
+                                    "id": 18707,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "lValueRequested": false,
+                                    "memberName": "encodePacked",
+                                    "nodeType": "MemberAccess",
+                                    "src": "1539:16:109",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                      "typeString": "function () pure returns (bytes memory)"
+                                    }
+                                  },
+                                  "id": 18722,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "kind": "functionCall",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "1539:229:109",
+                                  "tryCall": false,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bytes_memory_ptr",
+                                    "typeString": "bytes memory"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_bytes_memory_ptr",
+                                    "typeString": "bytes memory"
+                                  }
+                                ],
+                                "id": 18705,
+                                "name": "keccak256",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 4294967288,
+                                "src": "1508:9:109",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                                  "typeString": "function (bytes memory) pure returns (bytes32)"
+                                }
+                              },
+                              "id": 18723,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1508:278:109",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "id": 18704,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1483:7:109",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_uint256_$",
+                              "typeString": "type(uint256)"
+                            },
+                            "typeName": {
+                              "id": 18703,
+                              "name": "uint256",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1483:7:109",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 18724,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1483:317:109",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 18702,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1462:7:109",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 18701,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1462:7:109",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 18725,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1462:348:109",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "1455:355:109",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 18727,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1455:355:109"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 18683,
+              "nodeType": "StructuredDocumentation",
+              "src": "1064:236:109",
+              "text": "@notice Deterministically computes the pool address given the factory and PoolKey\n @param factory The Uniswap V3 factory contract address\n @param key The PoolKey\n @return pool The contract address of the V3 pool"
+            },
+            "id": 18729,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "computeAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 18688,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18685,
+                  "mutability": "mutable",
+                  "name": "factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18729,
+                  "src": "1329:15:109",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 18684,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1329:7:109",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 18687,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18729,
+                  "src": "1346:18:109",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PoolKey_$18651_memory_ptr",
+                    "typeString": "struct PoolAddress.PoolKey"
+                  },
+                  "typeName": {
+                    "id": 18686,
+                    "name": "PoolKey",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 18651,
+                    "src": "1346:7:109",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PoolKey_$18651_storage_ptr",
+                      "typeString": "struct PoolAddress.PoolKey"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1328:37:109"
+            },
+            "returnParameters": {
+              "id": 18691,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 18690,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18729,
+                  "src": "1389:12:109",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 18689,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1389:7:109",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1388:14:109"
+            },
+            "scope": 18730,
+            "src": "1305:512:109",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 18731,
+        "src": "167:1652:109"
+      }
+    ],
+    "src": "45:1775:109"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/libraries/PoolAddress.sol",
+      "exportedSymbols": {
+        "PoolAddress": [
+          18730
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 18640,
+        "name": "PragmaDirective",
+        "src": "45:24:109"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            18730
+          ],
+          "name": "PoolAddress",
+          "scope": 18731
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title Provides functions for deriving a pool address from the factory, tokens, and the fee"
+            },
+            "id": 18641,
+            "name": "StructuredDocumentation",
+            "src": "71:96:109"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "mutability": "constant",
+              "name": "POOL_INIT_CODE_HASH",
+              "scope": 18730,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 18642,
+                "name": "ElementaryTypeName",
+                "src": "193:7:109"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "307866333532633339663936633230313930323361623938343737633732633765626330346134666531643433613262633834653365656331383863323462353731",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "number",
+                  "type": "int_const 1100...(70 digits omitted)...8017",
+                  "value": "0xf352c39f96c2019023ab98477c72c7ebc04a4fe1d43a2bc84e3eec188c24b571"
+                },
+                "id": 18643,
+                "name": "Literal",
+                "src": "241:66:109"
+              }
+            ],
+            "id": 18644,
+            "name": "VariableDeclaration",
+            "src": "193:114:109"
+          },
+          {
+            "attributes": {
+              "canonicalName": "PoolAddress.PoolKey",
+              "name": "PoolKey",
+              "scope": 18730,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "token0",
+                  "scope": 18651,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 18645,
+                    "name": "ElementaryTypeName",
+                    "src": "387:7:109"
+                  }
+                ],
+                "id": 18646,
+                "name": "VariableDeclaration",
+                "src": "387:14:109"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "token1",
+                  "scope": 18651,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 18647,
+                    "name": "ElementaryTypeName",
+                    "src": "411:7:109"
+                  }
+                ],
+                "id": 18648,
+                "name": "VariableDeclaration",
+                "src": "411:14:109"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "mutability": "mutable",
+                  "name": "fee",
+                  "scope": 18651,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint24",
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint24",
+                      "type": "uint24"
+                    },
+                    "id": 18649,
+                    "name": "ElementaryTypeName",
+                    "src": "435:6:109"
+                  }
+                ],
+                "id": 18650,
+                "name": "VariableDeclaration",
+                "src": "435:10:109"
+              }
+            ],
+            "id": 18651,
+            "name": "StructDefinition",
+            "src": "362:90:109"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getPoolKey",
+              "scope": 18730,
+              "stateMutability": "pure",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Returns PoolKey: the ordered tokens with the matched fee levels\n @param tokenA The first token of a pool, unsorted\n @param tokenB The second token of a pool, unsorted\n @param fee The fee level of the pool\n @return Poolkey The pool details with ordered token0 and token1 assignments"
+                },
+                "id": 18652,
+                "name": "StructuredDocumentation",
+                "src": "458:321:109"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "tokenA",
+                      "scope": 18682,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 18653,
+                        "name": "ElementaryTypeName",
+                        "src": "813:7:109"
+                      }
+                    ],
+                    "id": 18654,
+                    "name": "VariableDeclaration",
+                    "src": "813:14:109"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "tokenB",
+                      "scope": 18682,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 18655,
+                        "name": "ElementaryTypeName",
+                        "src": "837:7:109"
+                      }
+                    ],
+                    "id": 18656,
+                    "name": "VariableDeclaration",
+                    "src": "837:14:109"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "fee",
+                      "scope": 18682,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 18657,
+                        "name": "ElementaryTypeName",
+                        "src": "861:6:109"
+                      }
+                    ],
+                    "id": 18658,
+                    "name": "VariableDeclaration",
+                    "src": "861:10:109"
+                  }
+                ],
+                "id": 18659,
+                "name": "ParameterList",
+                "src": "803:74:109"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 18682,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct PoolAddress.PoolKey",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "PoolKey",
+                          "referencedDeclaration": 18651,
+                          "type": "struct PoolAddress.PoolKey"
+                        },
+                        "id": 18660,
+                        "name": "UserDefinedTypeName",
+                        "src": "901:7:109"
+                      }
+                    ],
+                    "id": 18661,
+                    "name": "VariableDeclaration",
+                    "src": "901:14:109"
+                  }
+                ],
+                "id": 18662,
+                "name": "ParameterList",
+                "src": "900:16:109"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": ">",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18654,
+                              "type": "address",
+                              "value": "tokenA"
+                            },
+                            "id": 18663,
+                            "name": "Identifier",
+                            "src": "931:6:109"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18656,
+                              "type": "address",
+                              "value": "tokenB"
+                            },
+                            "id": 18664,
+                            "name": "Identifier",
+                            "src": "940:6:109"
+                          }
+                        ],
+                        "id": 18665,
+                        "name": "BinaryOperation",
+                        "src": "931:15:109"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "=",
+                              "type": "tuple()"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isInlineArray": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "type": "tuple(address,address)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18654,
+                                      "type": "address",
+                                      "value": "tokenA"
+                                    },
+                                    "id": 18666,
+                                    "name": "Identifier",
+                                    "src": "949:6:109"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18656,
+                                      "type": "address",
+                                      "value": "tokenB"
+                                    },
+                                    "id": 18667,
+                                    "name": "Identifier",
+                                    "src": "957:6:109"
+                                  }
+                                ],
+                                "id": 18668,
+                                "name": "TupleExpression",
+                                "src": "948:16:109"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isInlineArray": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "tuple(address,address)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18656,
+                                      "type": "address",
+                                      "value": "tokenB"
+                                    },
+                                    "id": 18669,
+                                    "name": "Identifier",
+                                    "src": "968:6:109"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18654,
+                                      "type": "address",
+                                      "value": "tokenA"
+                                    },
+                                    "id": 18670,
+                                    "name": "Identifier",
+                                    "src": "976:6:109"
+                                  }
+                                ],
+                                "id": 18671,
+                                "name": "TupleExpression",
+                                "src": "967:16:109"
+                              }
+                            ],
+                            "id": 18672,
+                            "name": "Assignment",
+                            "src": "948:35:109"
+                          }
+                        ],
+                        "id": 18673,
+                        "name": "ExpressionStatement",
+                        "src": "948:35:109"
+                      }
+                    ],
+                    "id": 18674,
+                    "name": "IfStatement",
+                    "src": "927:56:109"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 18662
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": true,
+                          "lValueRequested": false,
+                          "names": [
+                            "token0",
+                            "token1",
+                            "fee"
+                          ],
+                          "tryCall": false,
+                          "type": "struct PoolAddress.PoolKey memory",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint24",
+                                  "typeString": "uint24"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18651,
+                              "type": "type(struct PoolAddress.PoolKey storage pointer)",
+                              "value": "PoolKey"
+                            },
+                            "id": 18675,
+                            "name": "Identifier",
+                            "src": "1000:7:109"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18654,
+                              "type": "address",
+                              "value": "tokenA"
+                            },
+                            "id": 18676,
+                            "name": "Identifier",
+                            "src": "1017:6:109"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18656,
+                              "type": "address",
+                              "value": "tokenB"
+                            },
+                            "id": 18677,
+                            "name": "Identifier",
+                            "src": "1033:6:109"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18658,
+                              "type": "uint24",
+                              "value": "fee"
+                            },
+                            "id": 18678,
+                            "name": "Identifier",
+                            "src": "1046:3:109"
+                          }
+                        ],
+                        "id": 18679,
+                        "name": "FunctionCall",
+                        "src": "1000:51:109"
+                      }
+                    ],
+                    "id": 18680,
+                    "name": "Return",
+                    "src": "993:58:109"
+                  }
+                ],
+                "id": 18681,
+                "name": "Block",
+                "src": "917:141:109"
+              }
+            ],
+            "id": 18682,
+            "name": "FunctionDefinition",
+            "src": "784:274:109"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "computeAddress",
+              "scope": 18730,
+              "stateMutability": "pure",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Deterministically computes the pool address given the factory and PoolKey\n @param factory The Uniswap V3 factory contract address\n @param key The PoolKey\n @return pool The contract address of the V3 pool"
+                },
+                "id": 18683,
+                "name": "StructuredDocumentation",
+                "src": "1064:236:109"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "factory",
+                      "scope": 18729,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 18684,
+                        "name": "ElementaryTypeName",
+                        "src": "1329:7:109"
+                      }
+                    ],
+                    "id": 18685,
+                    "name": "VariableDeclaration",
+                    "src": "1329:15:109"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "key",
+                      "scope": 18729,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct PoolAddress.PoolKey",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "PoolKey",
+                          "referencedDeclaration": 18651,
+                          "type": "struct PoolAddress.PoolKey"
+                        },
+                        "id": 18686,
+                        "name": "UserDefinedTypeName",
+                        "src": "1346:7:109"
+                      }
+                    ],
+                    "id": 18687,
+                    "name": "VariableDeclaration",
+                    "src": "1346:18:109"
+                  }
+                ],
+                "id": 18688,
+                "name": "ParameterList",
+                "src": "1328:37:109"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "pool",
+                      "scope": 18729,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 18689,
+                        "name": "ElementaryTypeName",
+                        "src": "1389:7:109"
+                      }
+                    ],
+                    "id": 18690,
+                    "name": "VariableDeclaration",
+                    "src": "1389:12:109"
+                  }
+                ],
+                "id": 18691,
+                "name": "ParameterList",
+                "src": "1388:14:109"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                4294967278,
+                                4294967278
+                              ],
+                              "referencedDeclaration": 4294967278,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 18692,
+                            "name": "Identifier",
+                            "src": "1413:7:109"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "<",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "token0",
+                                  "referencedDeclaration": 18646,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18687,
+                                      "type": "struct PoolAddress.PoolKey memory",
+                                      "value": "key"
+                                    },
+                                    "id": 18693,
+                                    "name": "Identifier",
+                                    "src": "1421:3:109"
+                                  }
+                                ],
+                                "id": 18694,
+                                "name": "MemberAccess",
+                                "src": "1421:10:109"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "token1",
+                                  "referencedDeclaration": 18648,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18687,
+                                      "type": "struct PoolAddress.PoolKey memory",
+                                      "value": "key"
+                                    },
+                                    "id": 18695,
+                                    "name": "Identifier",
+                                    "src": "1434:3:109"
+                                  }
+                                ],
+                                "id": 18696,
+                                "name": "MemberAccess",
+                                "src": "1434:10:109"
+                              }
+                            ],
+                            "id": 18697,
+                            "name": "BinaryOperation",
+                            "src": "1421:23:109"
+                          }
+                        ],
+                        "id": 18698,
+                        "name": "FunctionCall",
+                        "src": "1413:32:109"
+                      }
+                    ],
+                    "id": 18699,
+                    "name": "ExpressionStatement",
+                    "src": "1413:32:109"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 18690,
+                              "type": "address",
+                              "value": "pool"
+                            },
+                            "id": 18700,
+                            "name": "Identifier",
+                            "src": "1455:4:109"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "address payable",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "type": "type(address)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "name": "address"
+                                    },
+                                    "id": 18701,
+                                    "name": "ElementaryTypeName",
+                                    "src": "1462:7:109"
+                                  }
+                                ],
+                                "id": 18702,
+                                "name": "ElementaryTypeNameExpression",
+                                "src": "1462:7:109"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "uint256",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes32",
+                                          "typeString": "bytes32"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(uint256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "name": "uint256"
+                                        },
+                                        "id": 18703,
+                                        "name": "ElementaryTypeName",
+                                        "src": "1483:7:109"
+                                      }
+                                    ],
+                                    "id": 18704,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "1483:7:109"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes32",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_bytes_memory_ptr",
+                                              "typeString": "bytes memory"
+                                            }
+                                          ],
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 4294967288,
+                                          "type": "function (bytes memory) pure returns (bytes32)",
+                                          "value": "keccak256"
+                                        },
+                                        "id": 18705,
+                                        "name": "Identifier",
+                                        "src": "1508:9:109"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "isStructConstructorCall": false,
+                                          "lValueRequested": false,
+                                          "names": [
+                                            null
+                                          ],
+                                          "tryCall": false,
+                                          "type": "bytes memory",
+                                          "type_conversion": false
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": [
+                                                {
+                                                  "typeIdentifier": "t_stringliteral_8b1a944cf13a9a1c08facb2c9e98623ef3254d2ddb48113885c3e8e97fec8db9",
+                                                  "typeString": "literal_string hex\"ff\""
+                                                },
+                                                {
+                                                  "typeIdentifier": "t_address",
+                                                  "typeString": "address"
+                                                },
+                                                {
+                                                  "typeIdentifier": "t_bytes32",
+                                                  "typeString": "bytes32"
+                                                },
+                                                {
+                                                  "typeIdentifier": "t_bytes32",
+                                                  "typeString": "bytes32"
+                                                }
+                                              ],
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "member_name": "encodePacked",
+                                              "type": "function () pure returns (bytes memory)"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 4294967295,
+                                                  "type": "abi",
+                                                  "value": "abi"
+                                                },
+                                                "id": 18706,
+                                                "name": "Identifier",
+                                                "src": "1539:3:109"
+                                              }
+                                            ],
+                                            "id": 18707,
+                                            "name": "MemberAccess",
+                                            "src": "1539:16:109"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "hexvalue": "ff",
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "token": "hexString",
+                                              "type": "literal_string hex\"ff\""
+                                            },
+                                            "id": 18708,
+                                            "name": "Literal",
+                                            "src": "1581:7:109"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 18685,
+                                              "type": "address",
+                                              "value": "factory"
+                                            },
+                                            "id": 18709,
+                                            "name": "Identifier",
+                                            "src": "1614:7:109"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "isStructConstructorCall": false,
+                                              "lValueRequested": false,
+                                              "names": [
+                                                null
+                                              ],
+                                              "tryCall": false,
+                                              "type": "bytes32",
+                                              "type_conversion": false
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": [
+                                                    {
+                                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                                      "typeString": "bytes memory"
+                                                    }
+                                                  ],
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 4294967288,
+                                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                                  "value": "keccak256"
+                                                },
+                                                "id": 18710,
+                                                "name": "Identifier",
+                                                "src": "1647:9:109"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "isStructConstructorCall": false,
+                                                  "lValueRequested": false,
+                                                  "names": [
+                                                    null
+                                                  ],
+                                                  "tryCall": false,
+                                                  "type": "bytes memory",
+                                                  "type_conversion": false
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": [
+                                                        {
+                                                          "typeIdentifier": "t_address",
+                                                          "typeString": "address"
+                                                        },
+                                                        {
+                                                          "typeIdentifier": "t_address",
+                                                          "typeString": "address"
+                                                        },
+                                                        {
+                                                          "typeIdentifier": "t_uint24",
+                                                          "typeString": "uint24"
+                                                        }
+                                                      ],
+                                                      "isConstant": false,
+                                                      "isLValue": false,
+                                                      "isPure": true,
+                                                      "lValueRequested": false,
+                                                      "member_name": "encode",
+                                                      "type": "function () pure returns (bytes memory)"
+                                                    },
+                                                    "children": [
+                                                      {
+                                                        "attributes": {
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 4294967295,
+                                                          "type": "abi",
+                                                          "value": "abi"
+                                                        },
+                                                        "id": 18711,
+                                                        "name": "Identifier",
+                                                        "src": "1657:3:109"
+                                                      }
+                                                    ],
+                                                    "id": 18712,
+                                                    "name": "MemberAccess",
+                                                    "src": "1657:10:109"
+                                                  },
+                                                  {
+                                                    "attributes": {
+                                                      "isConstant": false,
+                                                      "isLValue": true,
+                                                      "isPure": false,
+                                                      "lValueRequested": false,
+                                                      "member_name": "token0",
+                                                      "referencedDeclaration": 18646,
+                                                      "type": "address"
+                                                    },
+                                                    "children": [
+                                                      {
+                                                        "attributes": {
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 18687,
+                                                          "type": "struct PoolAddress.PoolKey memory",
+                                                          "value": "key"
+                                                        },
+                                                        "id": 18713,
+                                                        "name": "Identifier",
+                                                        "src": "1668:3:109"
+                                                      }
+                                                    ],
+                                                    "id": 18714,
+                                                    "name": "MemberAccess",
+                                                    "src": "1668:10:109"
+                                                  },
+                                                  {
+                                                    "attributes": {
+                                                      "isConstant": false,
+                                                      "isLValue": true,
+                                                      "isPure": false,
+                                                      "lValueRequested": false,
+                                                      "member_name": "token1",
+                                                      "referencedDeclaration": 18648,
+                                                      "type": "address"
+                                                    },
+                                                    "children": [
+                                                      {
+                                                        "attributes": {
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 18687,
+                                                          "type": "struct PoolAddress.PoolKey memory",
+                                                          "value": "key"
+                                                        },
+                                                        "id": 18715,
+                                                        "name": "Identifier",
+                                                        "src": "1680:3:109"
+                                                      }
+                                                    ],
+                                                    "id": 18716,
+                                                    "name": "MemberAccess",
+                                                    "src": "1680:10:109"
+                                                  },
+                                                  {
+                                                    "attributes": {
+                                                      "isConstant": false,
+                                                      "isLValue": true,
+                                                      "isPure": false,
+                                                      "lValueRequested": false,
+                                                      "member_name": "fee",
+                                                      "referencedDeclaration": 18650,
+                                                      "type": "uint24"
+                                                    },
+                                                    "children": [
+                                                      {
+                                                        "attributes": {
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 18687,
+                                                          "type": "struct PoolAddress.PoolKey memory",
+                                                          "value": "key"
+                                                        },
+                                                        "id": 18717,
+                                                        "name": "Identifier",
+                                                        "src": "1692:3:109"
+                                                      }
+                                                    ],
+                                                    "id": 18718,
+                                                    "name": "MemberAccess",
+                                                    "src": "1692:7:109"
+                                                  }
+                                                ],
+                                                "id": 18719,
+                                                "name": "FunctionCall",
+                                                "src": "1657:43:109"
+                                              }
+                                            ],
+                                            "id": 18720,
+                                            "name": "FunctionCall",
+                                            "src": "1647:54:109"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 18644,
+                                              "type": "bytes32",
+                                              "value": "POOL_INIT_CODE_HASH"
+                                            },
+                                            "id": 18721,
+                                            "name": "Identifier",
+                                            "src": "1727:19:109"
+                                          }
+                                        ],
+                                        "id": 18722,
+                                        "name": "FunctionCall",
+                                        "src": "1539:229:109"
+                                      }
+                                    ],
+                                    "id": 18723,
+                                    "name": "FunctionCall",
+                                    "src": "1508:278:109"
+                                  }
+                                ],
+                                "id": 18724,
+                                "name": "FunctionCall",
+                                "src": "1483:317:109"
+                              }
+                            ],
+                            "id": 18725,
+                            "name": "FunctionCall",
+                            "src": "1462:348:109"
+                          }
+                        ],
+                        "id": 18726,
+                        "name": "Assignment",
+                        "src": "1455:355:109"
+                      }
+                    ],
+                    "id": 18727,
+                    "name": "ExpressionStatement",
+                    "src": "1455:355:109"
+                  }
+                ],
+                "id": 18728,
+                "name": "Block",
+                "src": "1403:414:109"
+              }
+            ],
+            "id": 18729,
+            "name": "FunctionDefinition",
+            "src": "1305:512:109"
+          }
+        ],
+        "id": 18730,
+        "name": "ContractDefinition",
+        "src": "167:1652:109"
+      }
+    ],
+    "id": 18731,
+    "name": "SourceUnit",
+    "src": "45:1775:109"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-07T21:58:02.594Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "title": "Provides functions for deriving a pool address from the factory, tokens, and the fee",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

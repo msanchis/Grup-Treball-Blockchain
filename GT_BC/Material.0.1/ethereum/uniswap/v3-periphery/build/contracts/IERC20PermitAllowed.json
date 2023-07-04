@@ -1,0 +1,708 @@
+{
+  "contractName": "IERC20PermitAllowed",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "expiry",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "allowed",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint8",
+          "name": "v",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "r",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "s",
+          "type": "bytes32"
+        }
+      ],
+      "name": "permit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiry\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"allowed\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"permit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)\":{\"details\":\"This is the permit interface used by DAI and CHAI\",\"params\":{\"allowed\":\"Boolean that sets approval amount, true for type(uint256).max and false for 0\",\"expiry\":\"The timestamp at which the permit is no longer valid\",\"holder\":\"The address of the token holder, the token owner\",\"nonce\":\"The holder's nonce, increases at each call to permit\",\"r\":\"Must produce valid secp256k1 signature from the holder along with `v` and `s`\",\"s\":\"Must produce valid secp256k1 signature from the holder along with `r` and `v`\",\"spender\":\"The address of the token spender\",\"v\":\"Must produce valid secp256k1 signature from the holder along with `r` and `s`\"}}},\"title\":\"Interface for permit\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)\":{\"notice\":\"Approve the spender to spend some tokens via the holder signature\"}},\"notice\":\"Interface used by DAI/CHAI for permit\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/external/IERC20PermitAllowed.sol\":\"IERC20PermitAllowed\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/external/IERC20PermitAllowed.sol\":{\"keccak256\":\"0x8c4c1b8e724e0a78cb691d703dd37cd91b8bd6600537fb227807a194025a792d\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://783be851155842a02cdb0483c3a69ecc0e7ae8545f65cec1d4aeb355b2026a7d\",\"dweb:/ipfs/QmZNBQosTjpGNKB3Eo2K6Zzye7FYiLVoEki5iPB2Y69jz2\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Interface for permit\n/// @notice Interface used by DAI/CHAI for permit\ninterface IERC20PermitAllowed {\n    /// @notice Approve the spender to spend some tokens via the holder signature\n    /// @dev This is the permit interface used by DAI and CHAI\n    /// @param holder The address of the token holder, the token owner\n    /// @param spender The address of the token spender\n    /// @param nonce The holder's nonce, increases at each call to permit\n    /// @param expiry The timestamp at which the permit is no longer valid\n    /// @param allowed Boolean that sets approval amount, true for type(uint256).max and false for 0\n    /// @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`\n    /// @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`\n    /// @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`\n    function permit(\n        address holder,\n        address spender,\n        uint256 nonce,\n        uint256 expiry,\n        bool allowed,\n        uint8 v,\n        bytes32 r,\n        bytes32 s\n    ) external;\n}\n",
+  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/interfaces/external/IERC20PermitAllowed.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/external/IERC20PermitAllowed.sol",
+    "exportedSymbols": {
+      "IERC20PermitAllowed": [
+        7596
+      ]
+    },
+    "id": 7597,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7574,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:24:55"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 7575,
+          "nodeType": "StructuredDocumentation",
+          "src": "71:82:55",
+          "text": "@title Interface for permit\n @notice Interface used by DAI/CHAI for permit"
+        },
+        "fullyImplemented": false,
+        "id": 7596,
+        "linearizedBaseContracts": [
+          7596
+        ],
+        "name": "IERC20PermitAllowed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7576,
+              "nodeType": "StructuredDocumentation",
+              "src": "189:802:55",
+              "text": "@notice Approve the spender to spend some tokens via the holder signature\n @dev This is the permit interface used by DAI and CHAI\n @param holder The address of the token holder, the token owner\n @param spender The address of the token spender\n @param nonce The holder's nonce, increases at each call to permit\n @param expiry The timestamp at which the permit is no longer valid\n @param allowed Boolean that sets approval amount, true for type(uint256).max and false for 0\n @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`\n @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`\n @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`"
+            },
+            "functionSelector": "8fcbaf0c",
+            "id": 7595,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "permit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7593,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7578,
+                  "mutability": "mutable",
+                  "name": "holder",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1021:14:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7577,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1021:7:55",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7580,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1045:15:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7579,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1045:7:55",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7582,
+                  "mutability": "mutable",
+                  "name": "nonce",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1070:13:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7581,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1070:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7584,
+                  "mutability": "mutable",
+                  "name": "expiry",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1093:14:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7583,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1093:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7586,
+                  "mutability": "mutable",
+                  "name": "allowed",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1117:12:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7585,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1117:4:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7588,
+                  "mutability": "mutable",
+                  "name": "v",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1139:7:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7587,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1139:5:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7590,
+                  "mutability": "mutable",
+                  "name": "r",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1156:9:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7589,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1156:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7592,
+                  "mutability": "mutable",
+                  "name": "s",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "1175:9:55",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7591,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1175:7:55",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1011:179:55"
+            },
+            "returnParameters": {
+              "id": 7594,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1199:0:55"
+            },
+            "scope": 7596,
+            "src": "996:204:55",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7597,
+        "src": "153:1049:55"
+      }
+    ],
+    "src": "45:1158:55"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/external/IERC20PermitAllowed.sol",
+      "exportedSymbols": {
+        "IERC20PermitAllowed": [
+          7596
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 7574,
+        "name": "PragmaDirective",
+        "src": "45:24:55"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            7596
+          ],
+          "name": "IERC20PermitAllowed",
+          "scope": 7597
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title Interface for permit\n @notice Interface used by DAI/CHAI for permit"
+            },
+            "id": 7575,
+            "name": "StructuredDocumentation",
+            "src": "71:82:55"
+          },
+          {
+            "attributes": {
+              "functionSelector": "8fcbaf0c",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "permit",
+              "scope": 7596,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Approve the spender to spend some tokens via the holder signature\n @dev This is the permit interface used by DAI and CHAI\n @param holder The address of the token holder, the token owner\n @param spender The address of the token spender\n @param nonce The holder's nonce, increases at each call to permit\n @param expiry The timestamp at which the permit is no longer valid\n @param allowed Boolean that sets approval amount, true for type(uint256).max and false for 0\n @param v Must produce valid secp256k1 signature from the holder along with `r` and `s`\n @param r Must produce valid secp256k1 signature from the holder along with `v` and `s`\n @param s Must produce valid secp256k1 signature from the holder along with `r` and `v`"
+                },
+                "id": 7576,
+                "name": "StructuredDocumentation",
+                "src": "189:802:55"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "holder",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7577,
+                        "name": "ElementaryTypeName",
+                        "src": "1021:7:55"
+                      }
+                    ],
+                    "id": 7578,
+                    "name": "VariableDeclaration",
+                    "src": "1021:14:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "spender",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7579,
+                        "name": "ElementaryTypeName",
+                        "src": "1045:7:55"
+                      }
+                    ],
+                    "id": 7580,
+                    "name": "VariableDeclaration",
+                    "src": "1045:15:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "nonce",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7581,
+                        "name": "ElementaryTypeName",
+                        "src": "1070:7:55"
+                      }
+                    ],
+                    "id": 7582,
+                    "name": "VariableDeclaration",
+                    "src": "1070:13:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "expiry",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7583,
+                        "name": "ElementaryTypeName",
+                        "src": "1093:7:55"
+                      }
+                    ],
+                    "id": 7584,
+                    "name": "VariableDeclaration",
+                    "src": "1093:14:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "allowed",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 7585,
+                        "name": "ElementaryTypeName",
+                        "src": "1117:4:55"
+                      }
+                    ],
+                    "id": 7586,
+                    "name": "VariableDeclaration",
+                    "src": "1117:12:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "v",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 7587,
+                        "name": "ElementaryTypeName",
+                        "src": "1139:5:55"
+                      }
+                    ],
+                    "id": 7588,
+                    "name": "VariableDeclaration",
+                    "src": "1139:7:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "r",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 7589,
+                        "name": "ElementaryTypeName",
+                        "src": "1156:7:55"
+                      }
+                    ],
+                    "id": 7590,
+                    "name": "VariableDeclaration",
+                    "src": "1156:9:55"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "s",
+                      "scope": 7595,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 7591,
+                        "name": "ElementaryTypeName",
+                        "src": "1175:7:55"
+                      }
+                    ],
+                    "id": 7592,
+                    "name": "VariableDeclaration",
+                    "src": "1175:9:55"
+                  }
+                ],
+                "id": 7593,
+                "name": "ParameterList",
+                "src": "1011:179:55"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 7594,
+                "name": "ParameterList",
+                "src": "1199:0:55"
+              }
+            ],
+            "id": 7595,
+            "name": "FunctionDefinition",
+            "src": "996:204:55"
+          }
+        ],
+        "id": 7596,
+        "name": "ContractDefinition",
+        "src": "153:1049:55"
+      }
+    ],
+    "id": 7597,
+    "name": "SourceUnit",
+    "src": "45:1158:55"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-08T23:01:23.960Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)": {
+        "details": "This is the permit interface used by DAI and CHAI",
+        "params": {
+          "allowed": "Boolean that sets approval amount, true for type(uint256).max and false for 0",
+          "expiry": "The timestamp at which the permit is no longer valid",
+          "holder": "The address of the token holder, the token owner",
+          "nonce": "The holder's nonce, increases at each call to permit",
+          "r": "Must produce valid secp256k1 signature from the holder along with `v` and `s`",
+          "s": "Must produce valid secp256k1 signature from the holder along with `r` and `v`",
+          "spender": "The address of the token spender",
+          "v": "Must produce valid secp256k1 signature from the holder along with `r` and `s`"
+        }
+      }
+    },
+    "title": "Interface for permit",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "permit(address,address,uint256,uint256,bool,uint8,bytes32,bytes32)": {
+        "notice": "Approve the spender to spend some tokens via the holder signature"
+      }
+    },
+    "notice": "Interface used by DAI/CHAI for permit",
+    "version": 1
+  }
+}

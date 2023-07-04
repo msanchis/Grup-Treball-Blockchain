@@ -1,0 +1,702 @@
+{
+  "contractName": "PeripheryValidationExtended",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/base/PeripheryValidationExtended.sol\":\"PeripheryValidationExtended\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20},\"remappings\":[]},\"sources\":{\"project:/contracts/base/BlockTimestamp.sol\":{\"keccak256\":\"0x38e576ea8f0b62da15d817b9359a369c8267eb4e0419cd46b162a2340440d885\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://357922aaa8804737d348a31ac6b98870bae8fc9f9dea786e51fb32b427a7ce49\",\"dweb:/ipfs/QmY2ZRSAJ5nF492vNCxW9hrL38Z9zghKFoATE2KMK3ACAR\"]},\"project:/contracts/base/PeripheryValidation.sol\":{\"keccak256\":\"0xb1380e1c9ee2cb51bf6fdaf94326b833a7db722edfedae608844c0f987cdbd03\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://944d16576466cc7453aaf76138fd3aa1f754db32fe2f3c76e2dd3f3f60f5445e\",\"dweb:/ipfs/QmViiurL5TXTSXqWM67BPrae5Dn7JykkdBVziHvEye8FQ1\"]},\"project:/contracts/base/PeripheryValidationExtended.sol\":{\"keccak256\":\"0xd43752c5cbc5e4588d56cb942987d4641ec8e2fa88105ca3e4e7f209c22fd11f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://de791e9d04bcb7d50ceb18538b51fb3900fa1763ab7c231f49c77cf6131cfefb\",\"dweb:/ipfs/QmQfeyhaetqNuC4vJ5gdwCmSWkW2emYsuaVuW2cezwivA1\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity =0.7.6;\n\nimport './PeripheryValidation.sol';\n\nabstract contract PeripheryValidationExtended is PeripheryValidation {\n    modifier checkPreviousBlockhash(bytes32 previousBlockhash) {\n        require(blockhash(block.number - 1) == previousBlockhash, 'Blockhash');\n        _;\n    }\n}\n",
+  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/base/PeripheryValidationExtended.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/base/PeripheryValidationExtended.sol",
+    "exportedSymbols": {
+      "BlockTimestamp": [
+        6299
+      ],
+      "PeripheryValidation": [
+        8007
+      ],
+      "PeripheryValidationExtended": [
+        8031
+      ]
+    },
+    "id": 8032,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8009,
+        "literals": [
+          "solidity",
+          "=",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:32"
+      },
+      {
+        "absolutePath": "project:/contracts/base/PeripheryValidation.sol",
+        "file": "./PeripheryValidation.sol",
+        "id": 8010,
+        "nodeType": "ImportDirective",
+        "scope": 8032,
+        "sourceUnit": 8008,
+        "src": "70:35:32",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 8011,
+              "name": "PeripheryValidation",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8007,
+              "src": "156:19:32",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PeripheryValidation_$8007",
+                "typeString": "contract PeripheryValidation"
+              }
+            },
+            "id": 8012,
+            "nodeType": "InheritanceSpecifier",
+            "src": "156:19:32"
+          }
+        ],
+        "contractDependencies": [
+          6299,
+          8007
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 8031,
+        "linearizedBaseContracts": [
+          8031,
+          8007,
+          6299
+        ],
+        "name": "PeripheryValidationExtended",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 8029,
+              "nodeType": "Block",
+              "src": "241:98:32",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 8024,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [
+                            {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 8021,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "expression": {
+                                  "id": 8018,
+                                  "name": "block",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 4294967292,
+                                  "src": "269:5:32",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_block",
+                                    "typeString": "block"
+                                  }
+                                },
+                                "id": 8019,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "number",
+                                "nodeType": "MemberAccess",
+                                "src": "269:12:32",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "-",
+                              "rightExpression": {
+                                "hexValue": "31",
+                                "id": 8020,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "284:1:32",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_1_by_1",
+                                  "typeString": "int_const 1"
+                                },
+                                "value": "1"
+                              },
+                              "src": "269:16:32",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 8017,
+                            "name": "blockhash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967291,
+                            "src": "259:9:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_blockhash_view$_t_uint256_$returns$_t_bytes32_$",
+                              "typeString": "function (uint256) view returns (bytes32)"
+                            }
+                          },
+                          "id": 8022,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "259:27:32",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 8023,
+                          "name": "previousBlockhash",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 8014,
+                          "src": "290:17:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "259:48:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "426c6f636b68617368",
+                        "id": 8025,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "309:11:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_46d8abb9552766132026156d7c22c2b7c9e11624b63ac207deaf1a158b20a89f",
+                          "typeString": "literal_string \"Blockhash\""
+                        },
+                        "value": "Blockhash"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_46d8abb9552766132026156d7c22c2b7c9e11624b63ac207deaf1a158b20a89f",
+                          "typeString": "literal_string \"Blockhash\""
+                        }
+                      ],
+                      "id": 8016,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "251:7:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 8026,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "251:70:32",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 8027,
+                  "nodeType": "ExpressionStatement",
+                  "src": "251:70:32"
+                },
+                {
+                  "id": 8028,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "331:1:32"
+                }
+              ]
+            },
+            "id": 8030,
+            "name": "checkPreviousBlockhash",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 8015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8014,
+                  "mutability": "mutable",
+                  "name": "previousBlockhash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8030,
+                  "src": "214:25:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8013,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "214:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "213:27:32"
+            },
+            "src": "182:157:32",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 8032,
+        "src": "107:234:32"
+      }
+    ],
+    "src": "45:297:32"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/base/PeripheryValidationExtended.sol",
+      "exportedSymbols": {
+        "BlockTimestamp": [
+          6299
+        ],
+        "PeripheryValidation": [
+          8007
+        ],
+        "PeripheryValidationExtended": [
+          8031
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "=",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 8009,
+        "name": "PragmaDirective",
+        "src": "45:23:32"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 8008,
+          "absolutePath": "project:/contracts/base/PeripheryValidation.sol",
+          "file": "./PeripheryValidation.sol",
+          "scope": 8032,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 8010,
+        "name": "ImportDirective",
+        "src": "70:35:32"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            6299,
+            8007
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            8031,
+            8007,
+            6299
+          ],
+          "name": "PeripheryValidationExtended",
+          "scope": 8032
+        },
+        "children": [
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "PeripheryValidation",
+                  "referencedDeclaration": 8007,
+                  "type": "contract PeripheryValidation"
+                },
+                "id": 8011,
+                "name": "UserDefinedTypeName",
+                "src": "156:19:32"
+              }
+            ],
+            "id": 8012,
+            "name": "InheritanceSpecifier",
+            "src": "156:19:32"
+          },
+          {
+            "attributes": {
+              "name": "checkPreviousBlockhash",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "previousBlockhash",
+                      "scope": 8030,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8013,
+                        "name": "ElementaryTypeName",
+                        "src": "214:7:32"
+                      }
+                    ],
+                    "id": 8014,
+                    "name": "VariableDeclaration",
+                    "src": "214:25:32"
+                  }
+                ],
+                "id": 8015,
+                "name": "ParameterList",
+                "src": "213:27:32"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_46d8abb9552766132026156d7c22c2b7c9e11624b63ac207deaf1a158b20a89f",
+                                  "typeString": "literal_string \"Blockhash\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                4294967278,
+                                4294967278
+                              ],
+                              "referencedDeclaration": 4294967278,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 8016,
+                            "name": "Identifier",
+                            "src": "251:7:32"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4294967291,
+                                      "type": "function (uint256) view returns (bytes32)",
+                                      "value": "blockhash"
+                                    },
+                                    "id": 8017,
+                                    "name": "Identifier",
+                                    "src": "259:9:32"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "commonType": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      },
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "operator": "-",
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "number",
+                                          "type": "uint256"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 4294967292,
+                                              "type": "block",
+                                              "value": "block"
+                                            },
+                                            "id": 8018,
+                                            "name": "Identifier",
+                                            "src": "269:5:32"
+                                          }
+                                        ],
+                                        "id": 8019,
+                                        "name": "MemberAccess",
+                                        "src": "269:12:32"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "31",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "number",
+                                          "type": "int_const 1",
+                                          "value": "1"
+                                        },
+                                        "id": 8020,
+                                        "name": "Literal",
+                                        "src": "284:1:32"
+                                      }
+                                    ],
+                                    "id": 8021,
+                                    "name": "BinaryOperation",
+                                    "src": "269:16:32"
+                                  }
+                                ],
+                                "id": 8022,
+                                "name": "FunctionCall",
+                                "src": "259:27:32"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 8014,
+                                  "type": "bytes32",
+                                  "value": "previousBlockhash"
+                                },
+                                "id": 8023,
+                                "name": "Identifier",
+                                "src": "290:17:32"
+                              }
+                            ],
+                            "id": 8024,
+                            "name": "BinaryOperation",
+                            "src": "259:48:32"
+                          },
+                          {
+                            "attributes": {
+                              "hexvalue": "426c6f636b68617368",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "token": "string",
+                              "type": "literal_string \"Blockhash\"",
+                              "value": "Blockhash"
+                            },
+                            "id": 8025,
+                            "name": "Literal",
+                            "src": "309:11:32"
+                          }
+                        ],
+                        "id": 8026,
+                        "name": "FunctionCall",
+                        "src": "251:70:32"
+                      }
+                    ],
+                    "id": 8027,
+                    "name": "ExpressionStatement",
+                    "src": "251:70:32"
+                  },
+                  {
+                    "id": 8028,
+                    "name": "PlaceholderStatement",
+                    "src": "331:1:32"
+                  }
+                ],
+                "id": 8029,
+                "name": "Block",
+                "src": "241:98:32"
+              }
+            ],
+            "id": 8030,
+            "name": "ModifierDefinition",
+            "src": "182:157:32"
+          }
+        ],
+        "id": 8031,
+        "name": "ContractDefinition",
+        "src": "107:234:32"
+      }
+    ],
+    "id": 8032,
+    "name": "SourceUnit",
+    "src": "45:297:32"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-07T21:58:02.497Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

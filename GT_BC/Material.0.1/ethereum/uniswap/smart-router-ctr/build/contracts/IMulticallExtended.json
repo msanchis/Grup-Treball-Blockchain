@@ -1,0 +1,879 @@
+{
+  "contractName": "IMulticallExtended",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "previousBlockhash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes[]",
+          "name": "data",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "multicall",
+      "outputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "results",
+          "type": "bytes[]"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes[]",
+          "name": "data",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "multicall",
+      "outputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "results",
+          "type": "bytes[]"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "data",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "multicall",
+      "outputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "results",
+          "type": "bytes[]"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"previousBlockhash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multicall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multicall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multicall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"multicall(bytes32,bytes[])\":{\"details\":\"The `msg.value` should not be trusted for any method callable from multicall.\",\"params\":{\"data\":\"The encoded function data for each of the calls to make to this contract\",\"previousBlockhash\":\"The expected parent blockHash\"},\"returns\":{\"results\":\"The results from each of the calls passed in via data\"}},\"multicall(bytes[])\":{\"details\":\"The `msg.value` should not be trusted for any method callable from multicall.\",\"params\":{\"data\":\"The encoded function data for each of the calls to make to this contract\"},\"returns\":{\"results\":\"The results from each of the calls passed in via data\"}},\"multicall(uint256,bytes[])\":{\"details\":\"The `msg.value` should not be trusted for any method callable from multicall.\",\"params\":{\"data\":\"The encoded function data for each of the calls to make to this contract\",\"deadline\":\"The time by which this function must be called before failing\"},\"returns\":{\"results\":\"The results from each of the calls passed in via data\"}}},\"title\":\"MulticallExtended interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"multicall(bytes32,bytes[])\":{\"notice\":\"Call multiple functions in the current contract and return the data from all of them if they all succeed\"},\"multicall(bytes[])\":{\"notice\":\"Call multiple functions in the current contract and return the data from all of them if they all succeed\"},\"multicall(uint256,bytes[])\":{\"notice\":\"Call multiple functions in the current contract and return the data from all of them if they all succeed\"}},\"notice\":\"Enables calling multiple methods in a single call to the contract with optional validation\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IMulticallExtended.sol\":\"IMulticallExtended\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IMulticall.sol\":{\"keccak256\":\"0xa8f9d0061ee730a522dc4bae6bd5cabb3e997e2c5983da183e912bdca93dfa7b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://496b68d4f72d58cc83cf51bd9cc9c99aaa46dc3c3df7c951a9e50ba29ee33016\",\"dweb:/ipfs/Qmc3bkXwuRP8mDpcKgvLgbCKn8tD8PGCaBjnLHSPMJCRGD\"]},\"project:/contracts/interfaces/IMulticallExtended.sol\":{\"keccak256\":\"0x8e7b7aaddba56d9c5d66c2ca79cbc6971a7eaffb8d643b0587c5394d8978caaa\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://16ab39b30bd3576f3a4aec9834430ec372b5249763234f51e893140eba48cf06\",\"dweb:/ipfs/QmcieRkha23AUyz2N1Qb9M8mGzNWNiJ8WF8tC6HJUgf59w\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\npragma abicoder v2;\n\nimport './IMulticall.sol';\n\n/// @title MulticallExtended interface\n/// @notice Enables calling multiple methods in a single call to the contract with optional validation\ninterface IMulticallExtended is IMulticall {\n    /// @notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n    /// @dev The `msg.value` should not be trusted for any method callable from multicall.\n    /// @param deadline The time by which this function must be called before failing\n    /// @param data The encoded function data for each of the calls to make to this contract\n    /// @return results The results from each of the calls passed in via data\n    function multicall(uint256 deadline, bytes[] calldata data) external payable returns (bytes[] memory results);\n\n    /// @notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n    /// @dev The `msg.value` should not be trusted for any method callable from multicall.\n    /// @param previousBlockhash The expected parent blockHash\n    /// @param data The encoded function data for each of the calls to make to this contract\n    /// @return results The results from each of the calls passed in via data\n    function multicall(bytes32 previousBlockhash, bytes[] calldata data)\n        external\n        payable\n        returns (bytes[] memory results);\n}\n",
+  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IMulticallExtended.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IMulticallExtended.sol",
+    "exportedSymbols": {
+      "IMulticall": [
+        8862
+      ],
+      "IMulticallExtended": [
+        8894
+      ]
+    },
+    "id": 8895,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8864,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:24:48"
+      },
+      {
+        "id": 8865,
+        "literals": [
+          "abicoder",
+          "v2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "70:19:48"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IMulticall.sol",
+        "file": "./IMulticall.sol",
+        "id": 8866,
+        "nodeType": "ImportDirective",
+        "scope": 8895,
+        "sourceUnit": 8863,
+        "src": "91:26:48",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 8868,
+              "name": "IMulticall",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8862,
+              "src": "293:10:48",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IMulticall_$8862",
+                "typeString": "contract IMulticall"
+              }
+            },
+            "id": 8869,
+            "nodeType": "InheritanceSpecifier",
+            "src": "293:10:48"
+          }
+        ],
+        "contractDependencies": [
+          8862
+        ],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 8867,
+          "nodeType": "StructuredDocumentation",
+          "src": "119:142:48",
+          "text": "@title MulticallExtended interface\n @notice Enables calling multiple methods in a single call to the contract with optional validation"
+        },
+        "fullyImplemented": false,
+        "id": 8894,
+        "linearizedBaseContracts": [
+          8894,
+          8862
+        ],
+        "name": "IMulticallExtended",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 8870,
+              "nodeType": "StructuredDocumentation",
+              "src": "310:464:48",
+              "text": "@notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n @dev The `msg.value` should not be trusted for any method callable from multicall.\n @param deadline The time by which this function must be called before failing\n @param data The encoded function data for each of the calls to make to this contract\n @return results The results from each of the calls passed in via data"
+            },
+            "functionSelector": "5ae401dc",
+            "id": 8881,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "multicall",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8876,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8872,
+                  "mutability": "mutable",
+                  "name": "deadline",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8881,
+                  "src": "798:16:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8871,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "798:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8875,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8881,
+                  "src": "816:21:48",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8873,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "816:5:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 8874,
+                    "nodeType": "ArrayTypeName",
+                    "src": "816:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "797:41:48"
+            },
+            "returnParameters": {
+              "id": 8880,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8879,
+                  "mutability": "mutable",
+                  "name": "results",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8881,
+                  "src": "865:22:48",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8877,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "865:5:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 8878,
+                    "nodeType": "ArrayTypeName",
+                    "src": "865:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "864:24:48"
+            },
+            "scope": 8894,
+            "src": "779:110:48",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 8882,
+              "nodeType": "StructuredDocumentation",
+              "src": "895:441:48",
+              "text": "@notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n @dev The `msg.value` should not be trusted for any method callable from multicall.\n @param previousBlockhash The expected parent blockHash\n @param data The encoded function data for each of the calls to make to this contract\n @return results The results from each of the calls passed in via data"
+            },
+            "functionSelector": "1f0464d1",
+            "id": 8893,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "multicall",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8888,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8884,
+                  "mutability": "mutable",
+                  "name": "previousBlockhash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "1360:25:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8883,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1360:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8887,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "1387:21:48",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8885,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1387:5:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 8886,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1387:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1359:50:48"
+            },
+            "returnParameters": {
+              "id": 8892,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8891,
+                  "mutability": "mutable",
+                  "name": "results",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "1460:22:48",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8889,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1460:5:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 8890,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1460:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1459:24:48"
+            },
+            "scope": 8894,
+            "src": "1341:143:48",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8895,
+        "src": "261:1225:48"
+      }
+    ],
+    "src": "45:1442:48"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/IMulticallExtended.sol",
+      "exportedSymbols": {
+        "IMulticall": [
+          8862
+        ],
+        "IMulticallExtended": [
+          8894
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 8864,
+        "name": "PragmaDirective",
+        "src": "45:24:48"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "abicoder",
+            "v2"
+          ]
+        },
+        "id": 8865,
+        "name": "PragmaDirective",
+        "src": "70:19:48"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 8863,
+          "absolutePath": "project:/contracts/interfaces/IMulticall.sol",
+          "file": "./IMulticall.sol",
+          "scope": 8895,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 8866,
+        "name": "ImportDirective",
+        "src": "91:26:48"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            8862
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            8894,
+            8862
+          ],
+          "name": "IMulticallExtended",
+          "scope": 8895
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title MulticallExtended interface\n @notice Enables calling multiple methods in a single call to the contract with optional validation"
+            },
+            "id": 8867,
+            "name": "StructuredDocumentation",
+            "src": "119:142:48"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "IMulticall",
+                  "referencedDeclaration": 8862,
+                  "type": "contract IMulticall"
+                },
+                "id": 8868,
+                "name": "UserDefinedTypeName",
+                "src": "293:10:48"
+              }
+            ],
+            "id": 8869,
+            "name": "InheritanceSpecifier",
+            "src": "293:10:48"
+          },
+          {
+            "attributes": {
+              "functionSelector": "5ae401dc",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "multicall",
+              "scope": 8894,
+              "stateMutability": "payable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n @dev The `msg.value` should not be trusted for any method callable from multicall.\n @param deadline The time by which this function must be called before failing\n @param data The encoded function data for each of the calls to make to this contract\n @return results The results from each of the calls passed in via data"
+                },
+                "id": 8870,
+                "name": "StructuredDocumentation",
+                "src": "310:464:48"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "deadline",
+                      "scope": 8881,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 8871,
+                        "name": "ElementaryTypeName",
+                        "src": "798:7:48"
+                      }
+                    ],
+                    "id": 8872,
+                    "name": "VariableDeclaration",
+                    "src": "798:16:48"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "data",
+                      "scope": 8881,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "bytes[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes",
+                              "type": "bytes"
+                            },
+                            "id": 8873,
+                            "name": "ElementaryTypeName",
+                            "src": "816:5:48"
+                          }
+                        ],
+                        "id": 8874,
+                        "name": "ArrayTypeName",
+                        "src": "816:7:48"
+                      }
+                    ],
+                    "id": 8875,
+                    "name": "VariableDeclaration",
+                    "src": "816:21:48"
+                  }
+                ],
+                "id": 8876,
+                "name": "ParameterList",
+                "src": "797:41:48"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "results",
+                      "scope": 8881,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "bytes[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes",
+                              "type": "bytes"
+                            },
+                            "id": 8877,
+                            "name": "ElementaryTypeName",
+                            "src": "865:5:48"
+                          }
+                        ],
+                        "id": 8878,
+                        "name": "ArrayTypeName",
+                        "src": "865:7:48"
+                      }
+                    ],
+                    "id": 8879,
+                    "name": "VariableDeclaration",
+                    "src": "865:22:48"
+                  }
+                ],
+                "id": 8880,
+                "name": "ParameterList",
+                "src": "864:24:48"
+              }
+            ],
+            "id": 8881,
+            "name": "FunctionDefinition",
+            "src": "779:110:48"
+          },
+          {
+            "attributes": {
+              "functionSelector": "1f0464d1",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "multicall",
+              "scope": 8894,
+              "stateMutability": "payable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Call multiple functions in the current contract and return the data from all of them if they all succeed\n @dev The `msg.value` should not be trusted for any method callable from multicall.\n @param previousBlockhash The expected parent blockHash\n @param data The encoded function data for each of the calls to make to this contract\n @return results The results from each of the calls passed in via data"
+                },
+                "id": 8882,
+                "name": "StructuredDocumentation",
+                "src": "895:441:48"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "previousBlockhash",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8883,
+                        "name": "ElementaryTypeName",
+                        "src": "1360:7:48"
+                      }
+                    ],
+                    "id": 8884,
+                    "name": "VariableDeclaration",
+                    "src": "1360:25:48"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "data",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "bytes[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes",
+                              "type": "bytes"
+                            },
+                            "id": 8885,
+                            "name": "ElementaryTypeName",
+                            "src": "1387:5:48"
+                          }
+                        ],
+                        "id": 8886,
+                        "name": "ArrayTypeName",
+                        "src": "1387:7:48"
+                      }
+                    ],
+                    "id": 8887,
+                    "name": "VariableDeclaration",
+                    "src": "1387:21:48"
+                  }
+                ],
+                "id": 8888,
+                "name": "ParameterList",
+                "src": "1359:50:48"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "results",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "bytes[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes",
+                              "type": "bytes"
+                            },
+                            "id": 8889,
+                            "name": "ElementaryTypeName",
+                            "src": "1460:5:48"
+                          }
+                        ],
+                        "id": 8890,
+                        "name": "ArrayTypeName",
+                        "src": "1460:7:48"
+                      }
+                    ],
+                    "id": 8891,
+                    "name": "VariableDeclaration",
+                    "src": "1460:22:48"
+                  }
+                ],
+                "id": 8892,
+                "name": "ParameterList",
+                "src": "1459:24:48"
+              }
+            ],
+            "id": 8893,
+            "name": "FunctionDefinition",
+            "src": "1341:143:48"
+          }
+        ],
+        "id": 8894,
+        "name": "ContractDefinition",
+        "src": "261:1225:48"
+      }
+    ],
+    "id": 8895,
+    "name": "SourceUnit",
+    "src": "45:1442:48"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-07T21:58:02.505Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "multicall(bytes32,bytes[])": {
+        "details": "The `msg.value` should not be trusted for any method callable from multicall.",
+        "params": {
+          "data": "The encoded function data for each of the calls to make to this contract",
+          "previousBlockhash": "The expected parent blockHash"
+        },
+        "returns": {
+          "results": "The results from each of the calls passed in via data"
+        }
+      },
+      "multicall(bytes[])": {
+        "details": "The `msg.value` should not be trusted for any method callable from multicall.",
+        "params": {
+          "data": "The encoded function data for each of the calls to make to this contract"
+        },
+        "returns": {
+          "results": "The results from each of the calls passed in via data"
+        }
+      },
+      "multicall(uint256,bytes[])": {
+        "details": "The `msg.value` should not be trusted for any method callable from multicall.",
+        "params": {
+          "data": "The encoded function data for each of the calls to make to this contract",
+          "deadline": "The time by which this function must be called before failing"
+        },
+        "returns": {
+          "results": "The results from each of the calls passed in via data"
+        }
+      }
+    },
+    "title": "MulticallExtended interface",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "multicall(bytes32,bytes[])": {
+        "notice": "Call multiple functions in the current contract and return the data from all of them if they all succeed"
+      },
+      "multicall(bytes[])": {
+        "notice": "Call multiple functions in the current contract and return the data from all of them if they all succeed"
+      },
+      "multicall(uint256,bytes[])": {
+        "notice": "Call multiple functions in the current contract and return the data from all of them if they all succeed"
+      }
+    },
+    "notice": "Enables calling multiple methods in a single call to the contract with optional validation",
+    "version": 1
+  }
+}

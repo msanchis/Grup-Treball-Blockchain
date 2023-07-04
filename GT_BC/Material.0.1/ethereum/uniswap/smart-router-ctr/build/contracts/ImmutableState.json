@@ -1,0 +1,796 @@
+{
+  "contractName": "ImmutableState",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "factoryV2",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "positionManager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"factoryV2\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"positionManager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"stateVariables\":{\"factoryV2\":{\"return\":\"Returns the address of the Uniswap V2 factory\"},\"positionManager\":{\"return\":\"Returns the address of Uniswap V3 NFT position manager\"}},\"title\":\"Immutable state\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Immutable state used by the swap router\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/base/ImmutableState.sol\":\"ImmutableState\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20},\"remappings\":[]},\"sources\":{\"project:/contracts/base/ImmutableState.sol\":{\"keccak256\":\"0x99bd366f5ab50cf2f6d2242021b57bda76235d2d71d9a3bd6789be4b867f5b2a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f871d287bb528498b36a6a2fa27641841d2343b543b28efffaa1dff69eb3c7d4\",\"dweb:/ipfs/Qma3AVQqYF9DaMG4r7J1m6parBf8xjpuabBpBQKDsDwD6C\"]},\"project:/contracts/interfaces/IImmutableState.sol\":{\"keccak256\":\"0xe30562a3c59b7a755b558c688e9c87b7b8f919be54cf9f46507afe2537adc5db\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://5895db6514b4a5d9dde4fd5f324cf812e433aeef7d3118b1abb50a310bdd7025\",\"dweb:/ipfs/QmWpSNSRffRgsTn7MYLshzyXSvur4XHre4tpbHxLbsVvEB\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity =0.7.6;\n\nimport '../interfaces/IImmutableState.sol';\n\n/// @title Immutable state\n/// @notice Immutable state used by the swap router\nabstract contract ImmutableState is IImmutableState {\n    /// @inheritdoc IImmutableState\n    address public immutable override factoryV2;\n    /// @inheritdoc IImmutableState\n    address public immutable override positionManager;\n\n    constructor(address _factoryV2, address _positionManager) {\n        factoryV2 = _factoryV2;\n        positionManager = _positionManager;\n    }\n}\n",
+  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/base/ImmutableState.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/base/ImmutableState.sol",
+    "exportedSymbols": {
+      "IImmutableState": [
+        8784
+      ],
+      "ImmutableState": [
+        6540
+      ]
+    },
+    "id": 6541,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6511,
+        "literals": [
+          "solidity",
+          "=",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:23:21"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IImmutableState.sol",
+        "file": "../interfaces/IImmutableState.sol",
+        "id": 6512,
+        "nodeType": "ImportDirective",
+        "scope": 6541,
+        "sourceUnit": 8785,
+        "src": "70:43:21",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 6514,
+              "name": "IImmutableState",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8784,
+              "src": "230:15:21",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IImmutableState_$8784",
+                "typeString": "contract IImmutableState"
+              }
+            },
+            "id": 6515,
+            "nodeType": "InheritanceSpecifier",
+            "src": "230:15:21"
+          }
+        ],
+        "contractDependencies": [
+          8784
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 6513,
+          "nodeType": "StructuredDocumentation",
+          "src": "115:79:21",
+          "text": "@title Immutable state\n @notice Immutable state used by the swap router"
+        },
+        "fullyImplemented": true,
+        "id": 6540,
+        "linearizedBaseContracts": [
+          6540,
+          8784
+        ],
+        "name": "ImmutableState",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "baseFunctions": [
+              8777
+            ],
+            "constant": false,
+            "documentation": {
+              "id": 6516,
+              "nodeType": "StructuredDocumentation",
+              "src": "252:31:21",
+              "text": "@inheritdoc IImmutableState"
+            },
+            "functionSelector": "68e0d4e1",
+            "id": 6519,
+            "mutability": "immutable",
+            "name": "factoryV2",
+            "nodeType": "VariableDeclaration",
+            "overrides": {
+              "id": 6518,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "313:8:21"
+            },
+            "scope": 6540,
+            "src": "288:43:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6517,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "288:7:21",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              8783
+            ],
+            "constant": false,
+            "documentation": {
+              "id": 6520,
+              "nodeType": "StructuredDocumentation",
+              "src": "337:31:21",
+              "text": "@inheritdoc IImmutableState"
+            },
+            "functionSelector": "791b98bc",
+            "id": 6523,
+            "mutability": "immutable",
+            "name": "positionManager",
+            "nodeType": "VariableDeclaration",
+            "overrides": {
+              "id": 6522,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "398:8:21"
+            },
+            "scope": 6540,
+            "src": "373:49:21",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6521,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "373:7:21",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6538,
+              "nodeType": "Block",
+              "src": "487:83:21",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 6532,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 6530,
+                      "name": "factoryV2",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6519,
+                      "src": "497:9:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 6531,
+                      "name": "_factoryV2",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6525,
+                      "src": "509:10:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "497:22:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6533,
+                  "nodeType": "ExpressionStatement",
+                  "src": "497:22:21"
+                },
+                {
+                  "expression": {
+                    "id": 6536,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 6534,
+                      "name": "positionManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6523,
+                      "src": "529:15:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 6535,
+                      "name": "_positionManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6527,
+                      "src": "547:16:21",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "529:34:21",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6537,
+                  "nodeType": "ExpressionStatement",
+                  "src": "529:34:21"
+                }
+              ]
+            },
+            "id": 6539,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6528,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6525,
+                  "mutability": "mutable",
+                  "name": "_factoryV2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6539,
+                  "src": "441:18:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6524,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "441:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6527,
+                  "mutability": "mutable",
+                  "name": "_positionManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6539,
+                  "src": "461:24:21",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6526,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "461:7:21",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "440:46:21"
+            },
+            "returnParameters": {
+              "id": 6529,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "487:0:21"
+            },
+            "scope": 6540,
+            "src": "429:141:21",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 6541,
+        "src": "194:378:21"
+      }
+    ],
+    "src": "45:528:21"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/base/ImmutableState.sol",
+      "exportedSymbols": {
+        "IImmutableState": [
+          8784
+        ],
+        "ImmutableState": [
+          6540
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "=",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 6511,
+        "name": "PragmaDirective",
+        "src": "45:23:21"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 8785,
+          "absolutePath": "project:/contracts/interfaces/IImmutableState.sol",
+          "file": "../interfaces/IImmutableState.sol",
+          "scope": 6541,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 6512,
+        "name": "ImportDirective",
+        "src": "70:43:21"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            8784
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            6540,
+            8784
+          ],
+          "name": "ImmutableState",
+          "scope": 6541
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title Immutable state\n @notice Immutable state used by the swap router"
+            },
+            "id": 6513,
+            "name": "StructuredDocumentation",
+            "src": "115:79:21"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "IImmutableState",
+                  "referencedDeclaration": 8784,
+                  "type": "contract IImmutableState"
+                },
+                "id": 6514,
+                "name": "UserDefinedTypeName",
+                "src": "230:15:21"
+              }
+            ],
+            "id": 6515,
+            "name": "InheritanceSpecifier",
+            "src": "230:15:21"
+          },
+          {
+            "attributes": {
+              "baseFunctions": [
+                8777
+              ],
+              "constant": false,
+              "functionSelector": "68e0d4e1",
+              "mutability": "immutable",
+              "name": "factoryV2",
+              "scope": 6540,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "stateMutability": "nonpayable",
+                  "type": "address"
+                },
+                "id": 6517,
+                "name": "ElementaryTypeName",
+                "src": "288:7:21"
+              },
+              {
+                "attributes": {
+                  "overrides": [
+                    null
+                  ]
+                },
+                "id": 6518,
+                "name": "OverrideSpecifier",
+                "src": "313:8:21"
+              },
+              {
+                "attributes": {
+                  "text": "@inheritdoc IImmutableState"
+                },
+                "id": 6516,
+                "name": "StructuredDocumentation",
+                "src": "252:31:21"
+              }
+            ],
+            "id": 6519,
+            "name": "VariableDeclaration",
+            "src": "288:43:21"
+          },
+          {
+            "attributes": {
+              "baseFunctions": [
+                8783
+              ],
+              "constant": false,
+              "functionSelector": "791b98bc",
+              "mutability": "immutable",
+              "name": "positionManager",
+              "scope": 6540,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "stateMutability": "nonpayable",
+                  "type": "address"
+                },
+                "id": 6521,
+                "name": "ElementaryTypeName",
+                "src": "373:7:21"
+              },
+              {
+                "attributes": {
+                  "overrides": [
+                    null
+                  ]
+                },
+                "id": 6522,
+                "name": "OverrideSpecifier",
+                "src": "398:8:21"
+              },
+              {
+                "attributes": {
+                  "text": "@inheritdoc IImmutableState"
+                },
+                "id": 6520,
+                "name": "StructuredDocumentation",
+                "src": "337:31:21"
+              }
+            ],
+            "id": 6523,
+            "name": "VariableDeclaration",
+            "src": "373:49:21"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 6540,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_factoryV2",
+                      "scope": 6539,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6524,
+                        "name": "ElementaryTypeName",
+                        "src": "441:7:21"
+                      }
+                    ],
+                    "id": 6525,
+                    "name": "VariableDeclaration",
+                    "src": "441:18:21"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_positionManager",
+                      "scope": 6539,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6526,
+                        "name": "ElementaryTypeName",
+                        "src": "461:7:21"
+                      }
+                    ],
+                    "id": 6527,
+                    "name": "VariableDeclaration",
+                    "src": "461:24:21"
+                  }
+                ],
+                "id": 6528,
+                "name": "ParameterList",
+                "src": "440:46:21"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6529,
+                "name": "ParameterList",
+                "src": "487:0:21"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6519,
+                              "type": "address",
+                              "value": "factoryV2"
+                            },
+                            "id": 6530,
+                            "name": "Identifier",
+                            "src": "497:9:21"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6525,
+                              "type": "address",
+                              "value": "_factoryV2"
+                            },
+                            "id": 6531,
+                            "name": "Identifier",
+                            "src": "509:10:21"
+                          }
+                        ],
+                        "id": 6532,
+                        "name": "Assignment",
+                        "src": "497:22:21"
+                      }
+                    ],
+                    "id": 6533,
+                    "name": "ExpressionStatement",
+                    "src": "497:22:21"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6523,
+                              "type": "address",
+                              "value": "positionManager"
+                            },
+                            "id": 6534,
+                            "name": "Identifier",
+                            "src": "529:15:21"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6527,
+                              "type": "address",
+                              "value": "_positionManager"
+                            },
+                            "id": 6535,
+                            "name": "Identifier",
+                            "src": "547:16:21"
+                          }
+                        ],
+                        "id": 6536,
+                        "name": "Assignment",
+                        "src": "529:34:21"
+                      }
+                    ],
+                    "id": 6537,
+                    "name": "ExpressionStatement",
+                    "src": "529:34:21"
+                  }
+                ],
+                "id": 6538,
+                "name": "Block",
+                "src": "487:83:21"
+              }
+            ],
+            "id": 6539,
+            "name": "FunctionDefinition",
+            "src": "429:141:21"
+          }
+        ],
+        "id": 6540,
+        "name": "ContractDefinition",
+        "src": "194:378:21"
+      }
+    ],
+    "id": 6541,
+    "name": "SourceUnit",
+    "src": "45:528:21"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-07T21:58:02.486Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "stateVariables": {
+      "factoryV2": {
+        "return": "Returns the address of the Uniswap V2 factory"
+      },
+      "positionManager": {
+        "return": "Returns the address of Uniswap V3 NFT position manager"
+      }
+    },
+    "title": "Immutable state",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Immutable state used by the swap router",
+    "version": 1
+  }
+}

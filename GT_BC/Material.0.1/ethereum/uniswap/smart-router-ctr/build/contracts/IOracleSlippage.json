@@ -1,0 +1,798 @@
+{
+  "contractName": "IOracleSlippage",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "paths",
+          "type": "bytes[]"
+        },
+        {
+          "internalType": "uint128[]",
+          "name": "amounts",
+          "type": "uint128[]"
+        },
+        {
+          "internalType": "uint24",
+          "name": "maximumTickDivergence",
+          "type": "uint24"
+        },
+        {
+          "internalType": "uint32",
+          "name": "secondsAgo",
+          "type": "uint32"
+        }
+      ],
+      "name": "checkOracleSlippage",
+      "outputs": [],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "path",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint24",
+          "name": "maximumTickDivergence",
+          "type": "uint24"
+        },
+        {
+          "internalType": "uint32",
+          "name": "secondsAgo",
+          "type": "uint32"
+        }
+      ],
+      "name": "checkOracleSlippage",
+      "outputs": [],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"paths\",\"type\":\"bytes[]\"},{\"internalType\":\"uint128[]\",\"name\":\"amounts\",\"type\":\"uint128[]\"},{\"internalType\":\"uint24\",\"name\":\"maximumTickDivergence\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"secondsAgo\",\"type\":\"uint32\"}],\"name\":\"checkOracleSlippage\",\"outputs\":[],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"path\",\"type\":\"bytes\"},{\"internalType\":\"uint24\",\"name\":\"maximumTickDivergence\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"secondsAgo\",\"type\":\"uint32\"}],\"name\":\"checkOracleSlippage\",\"outputs\":[],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"checkOracleSlippage(bytes,uint24,uint32)\":{\"params\":{\"maximumTickDivergence\":\"The maximum number of ticks that the price can degrade by\",\"path\":\"The path to fetch prices over\",\"secondsAgo\":\"The number of seconds ago to compute oracle prices against\"}},\"checkOracleSlippage(bytes[],uint128[],uint24,uint32)\":{\"params\":{\"amounts\":\"The weights for each entry in `paths`\",\"maximumTickDivergence\":\"The maximum number of ticks that the price can degrade by\",\"paths\":\"The paths to fetch prices over\",\"secondsAgo\":\"The number of seconds ago to compute oracle prices against\"}}},\"title\":\"OracleSlippage interface\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"checkOracleSlippage(bytes,uint24,uint32)\":{\"notice\":\"Ensures that the current (synthetic) tick over the path is no worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`\"},\"checkOracleSlippage(bytes[],uint128[],uint24,uint32)\":{\"notice\":\"Ensures that the weighted average current (synthetic) tick over the path is no worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`\"}},\"notice\":\"Enables slippage checks against oracle prices\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IOracleSlippage.sol\":\"IOracleSlippage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IOracleSlippage.sol\":{\"keccak256\":\"0xa9d1e4336b20fa992ab6b742f2750b3fb660e0d667eac304c5bbd8a8ea96edfc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://afe7afc18f293b6bc189550f20c318ecccda37241409a031bc94cf7412420dbd\",\"dweb:/ipfs/QmVuiKox1K4Df5QS6RLHQDprYaDMXRRvHW3ym3NDdi3vrq\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\npragma abicoder v2;\n\n/// @title OracleSlippage interface\n/// @notice Enables slippage checks against oracle prices\ninterface IOracleSlippage {\n    /// @notice Ensures that the current (synthetic) tick over the path is no worse than\n    /// `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n    /// @param path The path to fetch prices over\n    /// @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n    /// @param secondsAgo The number of seconds ago to compute oracle prices against\n    function checkOracleSlippage(\n        bytes memory path,\n        uint24 maximumTickDivergence,\n        uint32 secondsAgo\n    ) external view;\n\n    /// @notice Ensures that the weighted average current (synthetic) tick over the path is no\n    /// worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n    /// @param paths The paths to fetch prices over\n    /// @param amounts The weights for each entry in `paths`\n    /// @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n    /// @param secondsAgo The number of seconds ago to compute oracle prices against\n    function checkOracleSlippage(\n        bytes[] memory paths,\n        uint128[] memory amounts,\n        uint24 maximumTickDivergence,\n        uint32 secondsAgo\n    ) external view;\n}\n",
+  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IOracleSlippage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IOracleSlippage.sol",
+    "exportedSymbols": {
+      "IOracleSlippage": [
+        9130
+      ]
+    },
+    "id": 9131,
+    "license": "GPL-2.0-or-later",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9103,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "45:24:51"
+      },
+      {
+        "id": 9104,
+        "literals": [
+          "abicoder",
+          "v2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "70:19:51"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 9105,
+          "nodeType": "StructuredDocumentation",
+          "src": "91:94:51",
+          "text": "@title OracleSlippage interface\n @notice Enables slippage checks against oracle prices"
+        },
+        "fullyImplemented": false,
+        "id": 9130,
+        "linearizedBaseContracts": [
+          9130
+        ],
+        "name": "IOracleSlippage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 9106,
+              "nodeType": "StructuredDocumentation",
+              "src": "217:393:51",
+              "text": "@notice Ensures that the current (synthetic) tick over the path is no worse than\n `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n @param path The path to fetch prices over\n @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n @param secondsAgo The number of seconds ago to compute oracle prices against"
+            },
+            "functionSelector": "f25801a7",
+            "id": 9115,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkOracleSlippage",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9113,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9108,
+                  "mutability": "mutable",
+                  "name": "path",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9115,
+                  "src": "653:17:51",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9107,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "653:5:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9110,
+                  "mutability": "mutable",
+                  "name": "maximumTickDivergence",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9115,
+                  "src": "680:28:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 9109,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:6:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9112,
+                  "mutability": "mutable",
+                  "name": "secondsAgo",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9115,
+                  "src": "718:17:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 9111,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "718:6:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "643:98:51"
+            },
+            "returnParameters": {
+              "id": 9114,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "755:0:51"
+            },
+            "scope": 9130,
+            "src": "615:141:51",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 9116,
+              "nodeType": "StructuredDocumentation",
+              "src": "762:473:51",
+              "text": "@notice Ensures that the weighted average current (synthetic) tick over the path is no\n worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n @param paths The paths to fetch prices over\n @param amounts The weights for each entry in `paths`\n @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n @param secondsAgo The number of seconds ago to compute oracle prices against"
+            },
+            "functionSelector": "efdeed8e",
+            "id": 9129,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkOracleSlippage",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9127,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9119,
+                  "mutability": "mutable",
+                  "name": "paths",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9129,
+                  "src": "1278:20:51",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "bytes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 9117,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1278:5:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "id": 9118,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1278:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
+                      "typeString": "bytes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9122,
+                  "mutability": "mutable",
+                  "name": "amounts",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9129,
+                  "src": "1308:24:51",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint128_$dyn_memory_ptr",
+                    "typeString": "uint128[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 9120,
+                      "name": "uint128",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1308:7:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    "id": 9121,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1308:9:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint128_$dyn_storage_ptr",
+                      "typeString": "uint128[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9124,
+                  "mutability": "mutable",
+                  "name": "maximumTickDivergence",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9129,
+                  "src": "1342:28:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 9123,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1342:6:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9126,
+                  "mutability": "mutable",
+                  "name": "secondsAgo",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9129,
+                  "src": "1380:17:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 9125,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1380:6:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1268:135:51"
+            },
+            "returnParameters": {
+              "id": 9128,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1417:0:51"
+            },
+            "scope": 9130,
+            "src": "1240:178:51",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9131,
+        "src": "185:1235:51"
+      }
+    ],
+    "src": "45:1376:51"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/IOracleSlippage.sol",
+      "exportedSymbols": {
+        "IOracleSlippage": [
+          9130
+        ]
+      },
+      "license": "GPL-2.0-or-later"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 9103,
+        "name": "PragmaDirective",
+        "src": "45:24:51"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "abicoder",
+            "v2"
+          ]
+        },
+        "id": 9104,
+        "name": "PragmaDirective",
+        "src": "70:19:51"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            9130
+          ],
+          "name": "IOracleSlippage",
+          "scope": 9131
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": "@title OracleSlippage interface\n @notice Enables slippage checks against oracle prices"
+            },
+            "id": 9105,
+            "name": "StructuredDocumentation",
+            "src": "91:94:51"
+          },
+          {
+            "attributes": {
+              "functionSelector": "f25801a7",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "checkOracleSlippage",
+              "scope": 9130,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Ensures that the current (synthetic) tick over the path is no worse than\n `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n @param path The path to fetch prices over\n @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n @param secondsAgo The number of seconds ago to compute oracle prices against"
+                },
+                "id": 9106,
+                "name": "StructuredDocumentation",
+                "src": "217:393:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "path",
+                      "scope": 9115,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9107,
+                        "name": "ElementaryTypeName",
+                        "src": "653:5:51"
+                      }
+                    ],
+                    "id": 9108,
+                    "name": "VariableDeclaration",
+                    "src": "653:17:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "maximumTickDivergence",
+                      "scope": 9115,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 9109,
+                        "name": "ElementaryTypeName",
+                        "src": "680:6:51"
+                      }
+                    ],
+                    "id": 9110,
+                    "name": "VariableDeclaration",
+                    "src": "680:28:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "secondsAgo",
+                      "scope": 9115,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 9111,
+                        "name": "ElementaryTypeName",
+                        "src": "718:6:51"
+                      }
+                    ],
+                    "id": 9112,
+                    "name": "VariableDeclaration",
+                    "src": "718:17:51"
+                  }
+                ],
+                "id": 9113,
+                "name": "ParameterList",
+                "src": "643:98:51"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9114,
+                "name": "ParameterList",
+                "src": "755:0:51"
+              }
+            ],
+            "id": 9115,
+            "name": "FunctionDefinition",
+            "src": "615:141:51"
+          },
+          {
+            "attributes": {
+              "functionSelector": "efdeed8e",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "checkOracleSlippage",
+              "scope": 9130,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": "@notice Ensures that the weighted average current (synthetic) tick over the path is no\n worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n @param paths The paths to fetch prices over\n @param amounts The weights for each entry in `paths`\n @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n @param secondsAgo The number of seconds ago to compute oracle prices against"
+                },
+                "id": 9116,
+                "name": "StructuredDocumentation",
+                "src": "762:473:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "paths",
+                      "scope": 9129,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "bytes[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes",
+                              "type": "bytes"
+                            },
+                            "id": 9117,
+                            "name": "ElementaryTypeName",
+                            "src": "1278:5:51"
+                          }
+                        ],
+                        "id": 9118,
+                        "name": "ArrayTypeName",
+                        "src": "1278:7:51"
+                      }
+                    ],
+                    "id": 9119,
+                    "name": "VariableDeclaration",
+                    "src": "1278:20:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "amounts",
+                      "scope": 9129,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "uint128[]",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "uint128[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint128",
+                              "type": "uint128"
+                            },
+                            "id": 9120,
+                            "name": "ElementaryTypeName",
+                            "src": "1308:7:51"
+                          }
+                        ],
+                        "id": 9121,
+                        "name": "ArrayTypeName",
+                        "src": "1308:9:51"
+                      }
+                    ],
+                    "id": 9122,
+                    "name": "VariableDeclaration",
+                    "src": "1308:24:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "maximumTickDivergence",
+                      "scope": 9129,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 9123,
+                        "name": "ElementaryTypeName",
+                        "src": "1342:6:51"
+                      }
+                    ],
+                    "id": 9124,
+                    "name": "VariableDeclaration",
+                    "src": "1342:28:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "secondsAgo",
+                      "scope": 9129,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 9125,
+                        "name": "ElementaryTypeName",
+                        "src": "1380:6:51"
+                      }
+                    ],
+                    "id": 9126,
+                    "name": "VariableDeclaration",
+                    "src": "1380:17:51"
+                  }
+                ],
+                "id": 9127,
+                "name": "ParameterList",
+                "src": "1268:135:51"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9128,
+                "name": "ParameterList",
+                "src": "1417:0:51"
+              }
+            ],
+            "id": 9129,
+            "name": "FunctionDefinition",
+            "src": "1240:178:51"
+          }
+        ],
+        "id": 9130,
+        "name": "ContractDefinition",
+        "src": "185:1235:51"
+      }
+    ],
+    "id": 9131,
+    "name": "SourceUnit",
+    "src": "45:1376:51"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-07T21:58:02.507Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "checkOracleSlippage(bytes,uint24,uint32)": {
+        "params": {
+          "maximumTickDivergence": "The maximum number of ticks that the price can degrade by",
+          "path": "The path to fetch prices over",
+          "secondsAgo": "The number of seconds ago to compute oracle prices against"
+        }
+      },
+      "checkOracleSlippage(bytes[],uint128[],uint24,uint32)": {
+        "params": {
+          "amounts": "The weights for each entry in `paths`",
+          "maximumTickDivergence": "The maximum number of ticks that the price can degrade by",
+          "paths": "The paths to fetch prices over",
+          "secondsAgo": "The number of seconds ago to compute oracle prices against"
+        }
+      }
+    },
+    "title": "OracleSlippage interface",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "checkOracleSlippage(bytes,uint24,uint32)": {
+        "notice": "Ensures that the current (synthetic) tick over the path is no worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`"
+      },
+      "checkOracleSlippage(bytes[],uint128[],uint24,uint32)": {
+        "notice": "Ensures that the weighted average current (synthetic) tick over the path is no worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`"
+      }
+    },
+    "notice": "Enables slippage checks against oracle prices",
+    "version": 1
+  }
+}
