@@ -2654,7 +2654,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -3046,7 +3046,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_decode_t_bool_fromMemory(offset) -> value\n    {\n        value := mload(offset)\n        if iszero(eq(value, iszero(iszero(value)))) { revert(0, 0) }\n    }\n    function abi_decode_t_uint160_fromMemory(offset) -> value\n    {\n        value := mload(offset)\n        validator_revert_t_address(value)\n    }\n    function abi_decode_t_uint32_fromMemory(offset) -> value\n    {\n        value := mload(offset)\n        if iszero(eq(value, and(value, 0xffffffff))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_int16(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(value0, value0) }\n        let value := calldataload(headStart)\n        validator_revert_t_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        if iszero(eq(value_1, signextend(1, value_1))) { revert(value1, value1) }\n        value1 := value_1\n    }\n    function abi_decode_tuple_t_int24_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(value0, value0) }\n        let value := mload(headStart)\n        if iszero(eq(value, signextend(2, value))) { revert(value0, value0) }\n        value0 := value\n    }\n    function abi_decode_tuple_t_uint128t_int128t_uint256t_uint256t_int56t_uint160t_uint32t_bool_fromMemory(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5, value6, value7\n    {\n        if slt(sub(dataEnd, headStart), 256) { revert(value4, value4) }\n        let value := mload(headStart)\n        if iszero(eq(value, and(value, sub(shl(128, 1), 1)))) { revert(value4, value4) }\n        value0 := value\n        let value_1 := mload(add(headStart, 32))\n        if iszero(eq(value_1, signextend(15, value_1))) { revert(value4, value4) }\n        value1 := value_1\n        value2 := mload(add(headStart, 64))\n        value3 := mload(add(headStart, 96))\n        let value_2 := mload(add(headStart, 128))\n        if iszero(eq(value_2, signextend(6, value_2))) { revert(value4, value4) }\n        value4 := value_2\n        value5 := abi_decode_t_uint160_fromMemory(add(headStart, 160))\n        value6 := abi_decode_t_uint32_fromMemory(add(headStart, 192))\n        value7 := abi_decode_t_bool_fromMemory(add(headStart, 224))\n    }\n    function abi_decode_tuple_t_uint256_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(value0, value0) }\n        value0 := mload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        let _2 := 64\n        pos := add(headStart, _2)\n        let srcPtr := add(value0, _1)\n        let i := tail\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            let _3 := mload(srcPtr)\n            mstore(pos, signextend(2, mload(_3)))\n            mstore(add(pos, _1), signextend(15, mload(add(_3, _1))))\n            mstore(add(pos, _2), and(mload(add(_3, _2)), sub(shl(128, 1), 1)))\n            pos := add(pos, 0x60)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_encode_tuple_t_int16__to_t_int16__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, signextend(1, value0))\n    }\n    function abi_encode_tuple_t_int24__to_t_int24__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, signextend(2, value0))\n    }\n    function validator_revert_t_address(value)\n    {\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n    }\n}",
+      "contents": "{\n    { }\n    function abi_decode_t_bool_fromMemory(offset) -> value\n    {\n        value := mload(offset)\n        if iszero(eq(value, iszero(iszero(value)))) { revert(0, 0) }\n    }\n    function abi_decode_t_uint160_fromMemory(offset) -> value\n    {\n        value := mload(offset)\n        validator_revert_t_address(value)\n    }\n    function abi_decode_t_uint32_fromMemory(offset) -> value\n    {\n        value := mload(offset)\n        if iszero(eq(value, and(value, 0xffffffff))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_int16(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(value0, value0) }\n        let value := calldataload(headStart)\n        validator_revert_t_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        if iszero(eq(value_1, signextend(1, value_1))) { revert(value1, value1) }\n        value1 := value_1\n    }\n    function abi_decode_tuple_t_int24_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(value0, value0) }\n        let value := mload(headStart)\n        if iszero(eq(value, signextend(2, value))) { revert(value0, value0) }\n        value0 := value\n    }\n    function abi_decode_tuple_t_uint128t_int128t_uint256t_uint256t_int56t_uint160t_uint32t_bool_fromMemory(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5, value6, value7\n    {\n        if slt(sub(dataEnd, headStart), 256) { revert(value4, value4) }\n        let value := mload(headStart)\n        if iszero(eq(value, and(value, sub(shl(128, 1), 1)))) { revert(value4, value4) }\n        value0 := value\n        let value_1 := mload(add(headStart, 32))\n        if iszero(eq(value_1, signextend(15, value_1))) { revert(value4, value4) }\n        value1 := value_1\n        value2 := mload(add(headStart, 64))\n        value3 := mload(add(headStart, 96))\n        let value_2 := mload(add(headStart, 128))\n        if iszero(eq(value_2, signextend(6, value_2))) { revert(value4, value4) }\n        value4 := value_2\n        value5 := abi_decode_t_uint160_fromMemory(add(headStart, 160))\n        value6 := abi_decode_t_uint32_fromMemory(add(headStart, 192))\n        value7 := abi_decode_t_bool_fromMemory(add(headStart, 224))\n    }\n    function abi_decode_tuple_t_uint256_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(value0, value0) }\n        value0 := mload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        let _2 := 64\n        pos := add(headStart, _2)\n        let srcPtr := add(value0, _1)\n        let i := tail\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            let _3 := mload(srcPtr)\n            mstore(pos, signextend(2, mload(_3)))\n            mstore(add(pos, _1), signextend(15, mload(add(_3, _1))))\n            mstore(add(pos, _2), and(mload(add(_3, _2)), sub(shl(128, 1), 1)))\n            pos := add(pos, 0x60)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_encode_tuple_t_int16__to_t_int16__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, signextend(1, value0))\n    }\n    function abi_encode_tuple_t_int24__to_t_int24__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, signextend(2, value0))\n    }\n    function validator_revert_t_address(value)\n    {\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n    }\n}",
       "id": 100,
       "language": "Yul",
       "name": "#utility.yul"
@@ -3055,44 +3055,44 @@
   "sourceMap": "204:1292:65:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "204:1292:65:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;271:1223;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;403:37;480:14;512:4;-1:-1:-1;;;;;497:31:65;;529:15;497:48;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;480:65;-1:-1:-1;607:30:65;;647:110;671:3;667:1;:7;647:110;;;709:1;:6;;699:17;;:21;695:51;;722:24;;;;;695:51;676:3;;647:110;;;;804:17;839:4;-1:-1:-1;;;;;824:32:65;;:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;804:54;;905:22;885:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;868:60;;943:9;938:550;962:3;958:1;:7;938:550;;;1000:1;:6;;990:17;;:21;986:492;;1187:41;;-1:-1:-1;;;1187:41:65;;1055:22;;;;:27;;1081:1;1055:27;1054:40;;1053:56;;;1031:19;;;;-1:-1:-1;;;;;1187:26:65;;;;;:41;;1053:56;;1187:41;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;1127:101;;;;;;;;;;1289:174;;;;;;;;1331:13;1289:174;;;;;;1380:12;1289:174;;;;;;1430:14;-1:-1:-1;;;;;1289:174:65;;;;1246:14;1261:24;;;;;;;1246:40;;;;;;;;;;;;;:217;;;;986:492;;;;967:3;;938:550;;;;271:1223;;;;;;;:::o;-1:-1:-1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;14:166:100:-;92:13;;141;;134:21;124:32;;114:2;;170:1;167;160:12;114:2;73:107;;;:::o;185:142::-;266:13;;288:33;266:13;288:33;:::i;332:169::-;412:13;;465:10;454:22;;444:33;;434:2;;491:1;488;481:12;506:438;;;633:2;621:9;612:7;608:23;604:32;601:2;;;654:6;646;639:22;601:2;698:9;685:23;717:33;744:5;717:33;:::i;:::-;769:5;-1:-1:-1;826:2:100;811:18;;798:32;872:1;861:22;;;849:35;;839:2;;903:6;895;888:22;839:2;931:7;921:17;;;591:353;;;;;:::o;949:297::-;;1070:2;1058:9;1049:7;1045:23;1041:32;1038:2;;;1091:6;1083;1076:22;1038:2;1128:9;1122:16;1181:5;1178:1;1167:20;1160:5;1157:31;1147:2;;1207:6;1199;1192:22;1147:2;1235:5;1028:218;-1:-1:-1;;;1028:218:100:o;1251:1036::-;;;;;;;;;1486:3;1474:9;1465:7;1461:23;1457:33;1454:2;;;1508:6;1500;1493:22;1454:2;1539:16;;-1:-1:-1;;;;;1584:31:100;;1574:42;;1564:2;;1635:6;1627;1620:22;1564:2;1663:5;1653:15;;;1713:2;1702:9;1698:18;1692:25;1763:7;1759:2;1748:23;1739:7;1736:36;1726:2;;1791:6;1783;1776:22;1726:2;1819:7;1809:17;;;1866:2;1855:9;1851:18;1845:25;1835:35;;1910:2;1899:9;1895:18;1889:25;1879:35;;1959:3;1948:9;1944:19;1938:26;2009:7;2006:1;1995:22;1986:7;1983:35;1973:2;;2037:6;2029;2022:22;1973:2;2065:7;-1:-1:-1;2091:52:100;2138:3;2123:19;;2091:52;:::i;:::-;2081:62;;2162:51;2208:3;2197:9;2193:19;2162:51;:::i;:::-;2152:61;;2232:49;2276:3;2265:9;2261:19;2232:49;:::i;:::-;2222:59;;1444:843;;;;;;;;;;;:::o;2292:194::-;;2415:2;2403:9;2394:7;2390:23;2386:32;2383:2;;;2436:6;2428;2421:22;2383:2;-1:-1:-1;2464:16:100;;2373:113;-1:-1:-1;2373:113:100:o;2491:915::-;2724:2;2776:21;;;2846:13;;2749:18;;;2868:22;;;2491:915;;2724:2;2909;;2927:18;;;;2968:15;;;2491:915;3014:366;3028:6;3025:1;3022:13;3014:366;;;3087:13;;3139:9;;3136:1;3125:24;3113:37;;3205:11;;;3199:18;3195:2;3184:34;3170:12;;;3163:56;3263:11;;3257:18;-1:-1:-1;;;;;3253:44:100;3239:12;;;3232:66;3327:4;3318:14;;;;3355:15;;;;3294:1;3043:9;3014:366;;;-1:-1:-1;3397:3:100;;2704:702;-1:-1:-1;;;;;;;2704:702:100:o;3411:188::-;3582:1;3571:21;;;;3553:40;;3541:2;3526:18;;3508:91::o;3604:188::-;3775:1;3764:21;;;;3746:40;;3734:2;3719:18;;3701:91::o;3797:133::-;-1:-1:-1;;;;;3874:31:100;;3864:42;;3854:2;;3920:1;3917;3910:12;3854:2;3844:86;:::o",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\npragma abicoder v2;\n\nimport '../interfaces/IUniswapV3Pool.sol';\n\nimport '../interfaces/ITickLens.sol';\n\n/// @title Tick Lens contract\ncontract TickLens is ITickLens {\n    /// @inheritdoc ITickLens\n    function getPopulatedTicksInWord(address pool, int16 tickBitmapIndex)\n        public\n        view\n        override\n        returns (PopulatedTick[] memory populatedTicks)\n    {\n        // fetch bitmap\n        uint256 bitmap = IUniswapV3Pool(pool).tickBitmap(tickBitmapIndex);\n\n        // calculate the number of populated ticks\n        uint256 numberOfPopulatedTicks;\n        for (uint256 i = 0; i < 256; i++) {\n            if (bitmap & (1 << i) > 0) numberOfPopulatedTicks++;\n        }\n\n        // fetch populated tick data\n        int24 tickSpacing = IUniswapV3Pool(pool).tickSpacing();\n        populatedTicks = new PopulatedTick[](numberOfPopulatedTicks);\n        for (uint256 i = 0; i < 256; i++) {\n            if (bitmap & (1 << i) > 0) {\n                int24 populatedTick = ((int24(tickBitmapIndex) << 8) + int24(i)) * tickSpacing;\n                (uint128 liquidityGross, int128 liquidityNet, , , , , , ) = IUniswapV3Pool(pool).ticks(populatedTick);\n                populatedTicks[--numberOfPopulatedTicks] = PopulatedTick({\n                    tick: populatedTick,\n                    liquidityNet: liquidityNet,\n                    liquidityGross: liquidityGross\n                });\n            }\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/lens/TickLens.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/lens/TickLens.sol",
   "ast": {
     "absolutePath": "project:/contracts/lens/TickLens.sol",
     "exportedSymbols": {
       "ITickLens": [
-        7104
+        7223
       ],
       "IUniswapV3Pool": [
-        7451
+        7570
       ],
       "IUniswapV3PoolActions": [
-        7709
+        7828
       ],
       "IUniswapV3PoolDerivedState": [
-        7740
-      ],
-      "IUniswapV3PoolEvents": [
         7859
       ],
+      "IUniswapV3PoolEvents": [
+        7978
+      ],
       "IUniswapV3PoolImmutables": [
-        7899
+        8018
       ],
       "IUniswapV3PoolOwnerActions": [
-        7925
+        8044
       ],
       "IUniswapV3PoolState": [
-        8033
+        8152
       ],
       "TickLens": [
-        9373
+        9492
       ]
     },
-    "id": 9374,
+    "id": 9493,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9239,
+        "id": 9358,
         "literals": [
           "solidity",
           ">=",
@@ -3103,7 +3103,7 @@
         "src": "45:24:65"
       },
       {
-        "id": 9240,
+        "id": 9359,
         "literals": [
           "abicoder",
           "v2"
@@ -3114,10 +3114,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IUniswapV3Pool.sol",
         "file": "../interfaces/IUniswapV3Pool.sol",
-        "id": 9241,
+        "id": 9360,
         "nodeType": "ImportDirective",
-        "scope": 9374,
-        "sourceUnit": 7452,
+        "scope": 9493,
+        "sourceUnit": 7571,
         "src": "91:42:65",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3125,10 +3125,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/ITickLens.sol",
         "file": "../interfaces/ITickLens.sol",
-        "id": 9242,
+        "id": 9361,
         "nodeType": "ImportDirective",
-        "scope": 9374,
-        "sourceUnit": 7105,
+        "scope": 9493,
+        "sourceUnit": 7224,
         "src": "135:37:65",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3138,61 +3138,61 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 9244,
+              "id": 9363,
               "name": "ITickLens",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 7104,
+              "referencedDeclaration": 7223,
               "src": "225:9:65",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITickLens_$7104",
+                "typeIdentifier": "t_contract$_ITickLens_$7223",
                 "typeString": "contract ITickLens"
               }
             },
-            "id": 9245,
+            "id": 9364,
             "nodeType": "InheritanceSpecifier",
             "src": "225:9:65"
           }
         ],
         "contractDependencies": [
-          7104
+          7223
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 9243,
+          "id": 9362,
           "nodeType": "StructuredDocumentation",
           "src": "174:30:65",
           "text": "@title Tick Lens contract"
         },
         "fullyImplemented": true,
-        "id": 9373,
+        "id": 9492,
         "linearizedBaseContracts": [
-          9373,
-          7104
+          9492,
+          7223
         ],
         "name": "TickLens",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              7103
+              7222
             ],
             "body": {
-              "id": 9371,
+              "id": 9490,
               "nodeType": "Block",
               "src": "446:1048:65",
               "statements": [
                 {
                   "assignments": [
-                    9258
+                    9377
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 9258,
+                      "id": 9377,
                       "mutability": "mutable",
                       "name": "bitmap",
                       "nodeType": "VariableDeclaration",
-                      "scope": 9371,
+                      "scope": 9490,
                       "src": "480:14:65",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -3201,7 +3201,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 9257,
+                        "id": 9376,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "480:7:65",
@@ -3213,15 +3213,15 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 9265,
+                  "id": 9384,
                   "initialValue": {
                     "arguments": [
                       {
-                        "id": 9263,
+                        "id": 9382,
                         "name": "tickBitmapIndex",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9250,
+                        "referencedDeclaration": 9369,
                         "src": "529:15:65",
                         "typeDescriptions": {
                           "typeIdentifier": "t_int16",
@@ -3239,11 +3239,11 @@
                       "expression": {
                         "arguments": [
                           {
-                            "id": 9260,
+                            "id": 9379,
                             "name": "pool",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 9248,
+                            "referencedDeclaration": 9367,
                             "src": "512:4:65",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -3258,18 +3258,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 9259,
+                          "id": 9378,
                           "name": "IUniswapV3Pool",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 7451,
+                          "referencedDeclaration": 7570,
                           "src": "497:14:65",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7451_$",
+                            "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7570_$",
                             "typeString": "type(contract IUniswapV3Pool)"
                           }
                         },
-                        "id": 9261,
+                        "id": 9380,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3280,25 +3280,25 @@
                         "src": "497:20:65",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IUniswapV3Pool_$7451",
+                          "typeIdentifier": "t_contract$_IUniswapV3Pool_$7570",
                           "typeString": "contract IUniswapV3Pool"
                         }
                       },
-                      "id": 9262,
+                      "id": 9381,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "tickBitmap",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 8002,
+                      "referencedDeclaration": 8121,
                       "src": "497:31:65",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_int16_$returns$_t_uint256_$",
                         "typeString": "function (int16) view external returns (uint256)"
                       }
                     },
-                    "id": 9264,
+                    "id": 9383,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3318,16 +3318,16 @@
                 },
                 {
                   "assignments": [
-                    9267
+                    9386
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 9267,
+                      "id": 9386,
                       "mutability": "mutable",
                       "name": "numberOfPopulatedTicks",
                       "nodeType": "VariableDeclaration",
-                      "scope": 9371,
+                      "scope": 9490,
                       "src": "607:30:65",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -3336,7 +3336,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 9266,
+                        "id": 9385,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "607:7:65",
@@ -3348,13 +3348,13 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 9268,
+                  "id": 9387,
                   "nodeType": "VariableDeclarationStatement",
                   "src": "607:30:65"
                 },
                 {
                   "body": {
-                    "id": 9291,
+                    "id": 9410,
                     "nodeType": "Block",
                     "src": "681:76:65",
                     "statements": [
@@ -3364,7 +3364,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 9286,
+                          "id": 9405,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3374,17 +3374,17 @@
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             },
-                            "id": 9284,
+                            "id": 9403,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
-                              "id": 9279,
+                              "id": 9398,
                               "name": "bitmap",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9258,
+                              "referencedDeclaration": 9377,
                               "src": "699:6:65",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -3400,14 +3400,14 @@
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
                                   },
-                                  "id": 9282,
+                                  "id": 9401,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "leftExpression": {
                                     "hexValue": "31",
-                                    "id": 9280,
+                                    "id": 9399,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": true,
@@ -3424,11 +3424,11 @@
                                   "nodeType": "BinaryOperation",
                                   "operator": "<<",
                                   "rightExpression": {
-                                    "id": 9281,
+                                    "id": 9400,
                                     "name": "i",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 9270,
+                                    "referencedDeclaration": 9389,
                                     "src": "714:1:65",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -3442,7 +3442,7 @@
                                   }
                                 }
                               ],
-                              "id": 9283,
+                              "id": 9402,
                               "isConstant": false,
                               "isInlineArray": false,
                               "isLValue": false,
@@ -3465,7 +3465,7 @@
                           "operator": ">",
                           "rightExpression": {
                             "hexValue": "30",
-                            "id": 9285,
+                            "id": 9404,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -3485,12 +3485,12 @@
                             "typeString": "bool"
                           }
                         },
-                        "id": 9290,
+                        "id": 9409,
                         "nodeType": "IfStatement",
                         "src": "695:51:65",
                         "trueBody": {
                           "expression": {
-                            "id": 9288,
+                            "id": 9407,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -3500,11 +3500,11 @@
                             "prefix": false,
                             "src": "722:24:65",
                             "subExpression": {
-                              "id": 9287,
+                              "id": 9406,
                               "name": "numberOfPopulatedTicks",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9267,
+                              "referencedDeclaration": 9386,
                               "src": "722:22:65",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -3516,7 +3516,7 @@
                               "typeString": "uint256"
                             }
                           },
-                          "id": 9289,
+                          "id": 9408,
                           "nodeType": "ExpressionStatement",
                           "src": "722:24:65"
                         }
@@ -3528,17 +3528,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 9275,
+                    "id": 9394,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 9273,
+                      "id": 9392,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9270,
+                      "referencedDeclaration": 9389,
                       "src": "667:1:65",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -3549,7 +3549,7 @@
                     "operator": "<",
                     "rightExpression": {
                       "hexValue": "323536",
-                      "id": 9274,
+                      "id": 9393,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3569,19 +3569,19 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 9292,
+                  "id": 9411,
                   "initializationExpression": {
                     "assignments": [
-                      9270
+                      9389
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 9270,
+                        "id": 9389,
                         "mutability": "mutable",
                         "name": "i",
                         "nodeType": "VariableDeclaration",
-                        "scope": 9292,
+                        "scope": 9411,
                         "src": "652:9:65",
                         "stateVariable": false,
                         "storageLocation": "default",
@@ -3590,7 +3590,7 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 9269,
+                          "id": 9388,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "652:7:65",
@@ -3602,10 +3602,10 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 9272,
+                    "id": 9391,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 9271,
+                      "id": 9390,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3624,7 +3624,7 @@
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 9277,
+                      "id": 9396,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3634,11 +3634,11 @@
                       "prefix": false,
                       "src": "676:3:65",
                       "subExpression": {
-                        "id": 9276,
+                        "id": 9395,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9270,
+                        "referencedDeclaration": 9389,
                         "src": "676:1:65",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -3650,7 +3650,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 9278,
+                    "id": 9397,
                     "nodeType": "ExpressionStatement",
                     "src": "676:3:65"
                   },
@@ -3659,16 +3659,16 @@
                 },
                 {
                   "assignments": [
-                    9294
+                    9413
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 9294,
+                      "id": 9413,
                       "mutability": "mutable",
                       "name": "tickSpacing",
                       "nodeType": "VariableDeclaration",
-                      "scope": 9371,
+                      "scope": 9490,
                       "src": "804:17:65",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -3677,7 +3677,7 @@
                         "typeString": "int24"
                       },
                       "typeName": {
-                        "id": 9293,
+                        "id": 9412,
                         "name": "int24",
                         "nodeType": "ElementaryTypeName",
                         "src": "804:5:65",
@@ -3689,7 +3689,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 9300,
+                  "id": 9419,
                   "initialValue": {
                     "arguments": [],
                     "expression": {
@@ -3697,11 +3697,11 @@
                       "expression": {
                         "arguments": [
                           {
-                            "id": 9296,
+                            "id": 9415,
                             "name": "pool",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 9248,
+                            "referencedDeclaration": 9367,
                             "src": "839:4:65",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -3716,18 +3716,18 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 9295,
+                          "id": 9414,
                           "name": "IUniswapV3Pool",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 7451,
+                          "referencedDeclaration": 7570,
                           "src": "824:14:65",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7451_$",
+                            "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7570_$",
                             "typeString": "type(contract IUniswapV3Pool)"
                           }
                         },
-                        "id": 9297,
+                        "id": 9416,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3738,25 +3738,25 @@
                         "src": "824:20:65",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IUniswapV3Pool_$7451",
+                          "typeIdentifier": "t_contract$_IUniswapV3Pool_$7570",
                           "typeString": "contract IUniswapV3Pool"
                         }
                       },
-                      "id": 9298,
+                      "id": 9417,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "tickSpacing",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7892,
+                      "referencedDeclaration": 8011,
                       "src": "824:32:65",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_int24_$",
                         "typeString": "function () view external returns (int24)"
                       }
                     },
-                    "id": 9299,
+                    "id": 9418,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3776,20 +3776,20 @@
                 },
                 {
                   "expression": {
-                    "id": 9307,
+                    "id": 9426,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 9301,
+                      "id": 9420,
                       "name": "populatedTicks",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9255,
+                      "referencedDeclaration": 9374,
                       "src": "868:14:65",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct ITickLens.PopulatedTick memory[] memory"
                       }
                     },
@@ -3798,11 +3798,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 9305,
+                          "id": 9424,
                           "name": "numberOfPopulatedTicks",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9267,
+                          "referencedDeclaration": 9386,
                           "src": "905:22:65",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -3817,7 +3817,7 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 9304,
+                        "id": 9423,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3825,31 +3825,31 @@
                         "nodeType": "NewExpression",
                         "src": "885:19:65",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr_$",
+                          "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr_$",
                           "typeString": "function (uint256) pure returns (struct ITickLens.PopulatedTick memory[] memory)"
                         },
                         "typeName": {
                           "baseType": {
-                            "id": 9302,
+                            "id": 9421,
                             "name": "PopulatedTick",
                             "nodeType": "UserDefinedTypeName",
-                            "referencedDeclaration": 7092,
+                            "referencedDeclaration": 7211,
                             "src": "889:13:65",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_PopulatedTick_$7092_storage_ptr",
+                              "typeIdentifier": "t_struct$_PopulatedTick_$7211_storage_ptr",
                               "typeString": "struct ITickLens.PopulatedTick"
                             }
                           },
-                          "id": 9303,
+                          "id": 9422,
                           "nodeType": "ArrayTypeName",
                           "src": "889:15:65",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_storage_$dyn_storage_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_storage_$dyn_storage_ptr",
                             "typeString": "struct ITickLens.PopulatedTick[]"
                           }
                         }
                       },
-                      "id": 9306,
+                      "id": 9425,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3860,23 +3860,23 @@
                       "src": "885:43:65",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct ITickLens.PopulatedTick memory[] memory"
                       }
                     },
                     "src": "868:60:65",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct ITickLens.PopulatedTick memory[] memory"
                     }
                   },
-                  "id": 9308,
+                  "id": 9427,
                   "nodeType": "ExpressionStatement",
                   "src": "868:60:65"
                 },
                 {
                   "body": {
-                    "id": 9369,
+                    "id": 9488,
                     "nodeType": "Block",
                     "src": "972:516:65",
                     "statements": [
@@ -3886,7 +3886,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 9326,
+                          "id": 9445,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3896,17 +3896,17 @@
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             },
-                            "id": 9324,
+                            "id": 9443,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
-                              "id": 9319,
+                              "id": 9438,
                               "name": "bitmap",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9258,
+                              "referencedDeclaration": 9377,
                               "src": "990:6:65",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -3922,14 +3922,14 @@
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
                                   },
-                                  "id": 9322,
+                                  "id": 9441,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "leftExpression": {
                                     "hexValue": "31",
-                                    "id": 9320,
+                                    "id": 9439,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": true,
@@ -3946,11 +3946,11 @@
                                   "nodeType": "BinaryOperation",
                                   "operator": "<<",
                                   "rightExpression": {
-                                    "id": 9321,
+                                    "id": 9440,
                                     "name": "i",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 9310,
+                                    "referencedDeclaration": 9429,
                                     "src": "1005:1:65",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -3964,7 +3964,7 @@
                                   }
                                 }
                               ],
-                              "id": 9323,
+                              "id": 9442,
                               "isConstant": false,
                               "isInlineArray": false,
                               "isLValue": false,
@@ -3987,7 +3987,7 @@
                           "operator": ">",
                           "rightExpression": {
                             "hexValue": "30",
-                            "id": 9325,
+                            "id": 9444,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -4007,26 +4007,26 @@
                             "typeString": "bool"
                           }
                         },
-                        "id": 9368,
+                        "id": 9487,
                         "nodeType": "IfStatement",
                         "src": "986:492:65",
                         "trueBody": {
-                          "id": 9367,
+                          "id": 9486,
                           "nodeType": "Block",
                           "src": "1013:465:65",
                           "statements": [
                             {
                               "assignments": [
-                                9328
+                                9447
                               ],
                               "declarations": [
                                 {
                                   "constant": false,
-                                  "id": 9328,
+                                  "id": 9447,
                                   "mutability": "mutable",
                                   "name": "populatedTick",
                                   "nodeType": "VariableDeclaration",
-                                  "scope": 9367,
+                                  "scope": 9486,
                                   "src": "1031:19:65",
                                   "stateVariable": false,
                                   "storageLocation": "default",
@@ -4035,7 +4035,7 @@
                                     "typeString": "int24"
                                   },
                                   "typeName": {
-                                    "id": 9327,
+                                    "id": 9446,
                                     "name": "int24",
                                     "nodeType": "ElementaryTypeName",
                                     "src": "1031:5:65",
@@ -4047,13 +4047,13 @@
                                   "visibility": "internal"
                                 }
                               ],
-                              "id": 9344,
+                              "id": 9463,
                               "initialValue": {
                                 "commonType": {
                                   "typeIdentifier": "t_int24",
                                   "typeString": "int24"
                                 },
-                                "id": 9343,
+                                "id": 9462,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4065,7 +4065,7 @@
                                         "typeIdentifier": "t_int24",
                                         "typeString": "int24"
                                       },
-                                      "id": 9340,
+                                      "id": 9459,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": false,
@@ -4077,7 +4077,7 @@
                                               "typeIdentifier": "t_int24",
                                               "typeString": "int24"
                                             },
-                                            "id": 9334,
+                                            "id": 9453,
                                             "isConstant": false,
                                             "isLValue": false,
                                             "isPure": false,
@@ -4085,11 +4085,11 @@
                                             "leftExpression": {
                                               "arguments": [
                                                 {
-                                                  "id": 9331,
+                                                  "id": 9450,
                                                   "name": "tickBitmapIndex",
                                                   "nodeType": "Identifier",
                                                   "overloadedDeclarations": [],
-                                                  "referencedDeclaration": 9250,
+                                                  "referencedDeclaration": 9369,
                                                   "src": "1061:15:65",
                                                   "typeDescriptions": {
                                                     "typeIdentifier": "t_int16",
@@ -4104,7 +4104,7 @@
                                                     "typeString": "int16"
                                                   }
                                                 ],
-                                                "id": 9330,
+                                                "id": 9449,
                                                 "isConstant": false,
                                                 "isLValue": false,
                                                 "isPure": true,
@@ -4116,14 +4116,14 @@
                                                   "typeString": "type(int24)"
                                                 },
                                                 "typeName": {
-                                                  "id": 9329,
+                                                  "id": 9448,
                                                   "name": "int24",
                                                   "nodeType": "ElementaryTypeName",
                                                   "src": "1055:5:65",
                                                   "typeDescriptions": {}
                                                 }
                                               },
-                                              "id": 9332,
+                                              "id": 9451,
                                               "isConstant": false,
                                               "isLValue": false,
                                               "isPure": false,
@@ -4142,7 +4142,7 @@
                                             "operator": "<<",
                                             "rightExpression": {
                                               "hexValue": "38",
-                                              "id": 9333,
+                                              "id": 9452,
                                               "isConstant": false,
                                               "isLValue": false,
                                               "isPure": true,
@@ -4163,7 +4163,7 @@
                                             }
                                           }
                                         ],
-                                        "id": 9335,
+                                        "id": 9454,
                                         "isConstant": false,
                                         "isInlineArray": false,
                                         "isLValue": false,
@@ -4181,11 +4181,11 @@
                                       "rightExpression": {
                                         "arguments": [
                                           {
-                                            "id": 9338,
+                                            "id": 9457,
                                             "name": "i",
                                             "nodeType": "Identifier",
                                             "overloadedDeclarations": [],
-                                            "referencedDeclaration": 9310,
+                                            "referencedDeclaration": 9429,
                                             "src": "1092:1:65",
                                             "typeDescriptions": {
                                               "typeIdentifier": "t_uint256",
@@ -4200,7 +4200,7 @@
                                               "typeString": "uint256"
                                             }
                                           ],
-                                          "id": 9337,
+                                          "id": 9456,
                                           "isConstant": false,
                                           "isLValue": false,
                                           "isPure": true,
@@ -4212,14 +4212,14 @@
                                             "typeString": "type(int24)"
                                           },
                                           "typeName": {
-                                            "id": 9336,
+                                            "id": 9455,
                                             "name": "int24",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "1086:5:65",
                                             "typeDescriptions": {}
                                           }
                                         },
-                                        "id": 9339,
+                                        "id": 9458,
                                         "isConstant": false,
                                         "isLValue": false,
                                         "isPure": false,
@@ -4241,7 +4241,7 @@
                                       }
                                     }
                                   ],
-                                  "id": 9341,
+                                  "id": 9460,
                                   "isConstant": false,
                                   "isInlineArray": false,
                                   "isLValue": false,
@@ -4257,11 +4257,11 @@
                                 "nodeType": "BinaryOperation",
                                 "operator": "*",
                                 "rightExpression": {
-                                  "id": 9342,
+                                  "id": 9461,
                                   "name": "tickSpacing",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 9294,
+                                  "referencedDeclaration": 9413,
                                   "src": "1098:11:65",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_int24",
@@ -4279,8 +4279,8 @@
                             },
                             {
                               "assignments": [
-                                9346,
-                                9348,
+                                9465,
+                                9467,
                                 null,
                                 null,
                                 null,
@@ -4291,11 +4291,11 @@
                               "declarations": [
                                 {
                                   "constant": false,
-                                  "id": 9346,
+                                  "id": 9465,
                                   "mutability": "mutable",
                                   "name": "liquidityGross",
                                   "nodeType": "VariableDeclaration",
-                                  "scope": 9367,
+                                  "scope": 9486,
                                   "src": "1128:22:65",
                                   "stateVariable": false,
                                   "storageLocation": "default",
@@ -4304,7 +4304,7 @@
                                     "typeString": "uint128"
                                   },
                                   "typeName": {
-                                    "id": 9345,
+                                    "id": 9464,
                                     "name": "uint128",
                                     "nodeType": "ElementaryTypeName",
                                     "src": "1128:7:65",
@@ -4317,11 +4317,11 @@
                                 },
                                 {
                                   "constant": false,
-                                  "id": 9348,
+                                  "id": 9467,
                                   "mutability": "mutable",
                                   "name": "liquidityNet",
                                   "nodeType": "VariableDeclaration",
-                                  "scope": 9367,
+                                  "scope": 9486,
                                   "src": "1152:19:65",
                                   "stateVariable": false,
                                   "storageLocation": "default",
@@ -4330,7 +4330,7 @@
                                     "typeString": "int128"
                                   },
                                   "typeName": {
-                                    "id": 9347,
+                                    "id": 9466,
                                     "name": "int128",
                                     "nodeType": "ElementaryTypeName",
                                     "src": "1152:6:65",
@@ -4348,15 +4348,15 @@
                                 null,
                                 null
                               ],
-                              "id": 9355,
+                              "id": 9474,
                               "initialValue": {
                                 "arguments": [
                                   {
-                                    "id": 9353,
+                                    "id": 9472,
                                     "name": "populatedTick",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 9328,
+                                    "referencedDeclaration": 9447,
                                     "src": "1214:13:65",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_int24",
@@ -4374,11 +4374,11 @@
                                   "expression": {
                                     "arguments": [
                                       {
-                                        "id": 9350,
+                                        "id": 9469,
                                         "name": "pool",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 9248,
+                                        "referencedDeclaration": 9367,
                                         "src": "1202:4:65",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_address",
@@ -4393,18 +4393,18 @@
                                           "typeString": "address"
                                         }
                                       ],
-                                      "id": 9349,
+                                      "id": 9468,
                                       "name": "IUniswapV3Pool",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 7451,
+                                      "referencedDeclaration": 7570,
                                       "src": "1187:14:65",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7451_$",
+                                        "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7570_$",
                                         "typeString": "type(contract IUniswapV3Pool)"
                                       }
                                     },
-                                    "id": 9351,
+                                    "id": 9470,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
@@ -4415,25 +4415,25 @@
                                     "src": "1187:20:65",
                                     "tryCall": false,
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$7451",
+                                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$7570",
                                       "typeString": "contract IUniswapV3Pool"
                                     }
                                   },
-                                  "id": 9352,
+                                  "id": 9471,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "memberName": "ticks",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 7994,
+                                  "referencedDeclaration": 8113,
                                   "src": "1187:26:65",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_int24_$returns$_t_uint128_$_t_int128_$_t_uint256_$_t_uint256_$_t_int56_$_t_uint160_$_t_uint32_$_t_bool_$",
                                     "typeString": "function (int24) view external returns (uint128,int128,uint256,uint256,int56,uint160,uint32,bool)"
                                   }
                                 },
-                                "id": 9354,
+                                "id": 9473,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4453,27 +4453,27 @@
                             },
                             {
                               "expression": {
-                                "id": 9365,
+                                "id": 9484,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "leftHandSide": {
                                   "baseExpression": {
-                                    "id": 9356,
+                                    "id": 9475,
                                     "name": "populatedTicks",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 9255,
+                                    "referencedDeclaration": 9374,
                                     "src": "1246:14:65",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr",
+                                      "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr",
                                       "typeString": "struct ITickLens.PopulatedTick memory[] memory"
                                     }
                                   },
-                                  "id": 9359,
+                                  "id": 9478,
                                   "indexExpression": {
-                                    "id": 9358,
+                                    "id": 9477,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
@@ -4483,11 +4483,11 @@
                                     "prefix": true,
                                     "src": "1261:24:65",
                                     "subExpression": {
-                                      "id": 9357,
+                                      "id": 9476,
                                       "name": "numberOfPopulatedTicks",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 9267,
+                                      "referencedDeclaration": 9386,
                                       "src": "1263:22:65",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4506,7 +4506,7 @@
                                   "nodeType": "IndexAccess",
                                   "src": "1246:40:65",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_PopulatedTick_$7092_memory_ptr",
+                                    "typeIdentifier": "t_struct$_PopulatedTick_$7211_memory_ptr",
                                     "typeString": "struct ITickLens.PopulatedTick memory"
                                   }
                                 },
@@ -4515,11 +4515,11 @@
                                 "rightHandSide": {
                                   "arguments": [
                                     {
-                                      "id": 9361,
+                                      "id": 9480,
                                       "name": "populatedTick",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 9328,
+                                      "referencedDeclaration": 9447,
                                       "src": "1331:13:65",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_int24",
@@ -4527,11 +4527,11 @@
                                       }
                                     },
                                     {
-                                      "id": 9362,
+                                      "id": 9481,
                                       "name": "liquidityNet",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 9348,
+                                      "referencedDeclaration": 9467,
                                       "src": "1380:12:65",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_int128",
@@ -4539,11 +4539,11 @@
                                       }
                                     },
                                     {
-                                      "id": 9363,
+                                      "id": 9482,
                                       "name": "liquidityGross",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 9346,
+                                      "referencedDeclaration": 9465,
                                       "src": "1430:14:65",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint128",
@@ -4566,18 +4566,18 @@
                                         "typeString": "uint128"
                                       }
                                     ],
-                                    "id": 9360,
+                                    "id": 9479,
                                     "name": "PopulatedTick",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 7092,
+                                    "referencedDeclaration": 7211,
                                     "src": "1289:13:65",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_type$_t_struct$_PopulatedTick_$7092_storage_ptr_$",
+                                      "typeIdentifier": "t_type$_t_struct$_PopulatedTick_$7211_storage_ptr_$",
                                       "typeString": "type(struct ITickLens.PopulatedTick storage pointer)"
                                     }
                                   },
-                                  "id": 9364,
+                                  "id": 9483,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
@@ -4592,17 +4592,17 @@
                                   "src": "1289:174:65",
                                   "tryCall": false,
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_PopulatedTick_$7092_memory_ptr",
+                                    "typeIdentifier": "t_struct$_PopulatedTick_$7211_memory_ptr",
                                     "typeString": "struct ITickLens.PopulatedTick memory"
                                   }
                                 },
                                 "src": "1246:217:65",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_PopulatedTick_$7092_memory_ptr",
+                                  "typeIdentifier": "t_struct$_PopulatedTick_$7211_memory_ptr",
                                   "typeString": "struct ITickLens.PopulatedTick memory"
                                 }
                               },
-                              "id": 9366,
+                              "id": 9485,
                               "nodeType": "ExpressionStatement",
                               "src": "1246:217:65"
                             }
@@ -4616,17 +4616,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 9315,
+                    "id": 9434,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 9313,
+                      "id": 9432,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9310,
+                      "referencedDeclaration": 9429,
                       "src": "958:1:65",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -4637,7 +4637,7 @@
                     "operator": "<",
                     "rightExpression": {
                       "hexValue": "323536",
-                      "id": 9314,
+                      "id": 9433,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -4657,19 +4657,19 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 9370,
+                  "id": 9489,
                   "initializationExpression": {
                     "assignments": [
-                      9310
+                      9429
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 9310,
+                        "id": 9429,
                         "mutability": "mutable",
                         "name": "i",
                         "nodeType": "VariableDeclaration",
-                        "scope": 9370,
+                        "scope": 9489,
                         "src": "943:9:65",
                         "stateVariable": false,
                         "storageLocation": "default",
@@ -4678,7 +4678,7 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 9309,
+                          "id": 9428,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "943:7:65",
@@ -4690,10 +4690,10 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 9312,
+                    "id": 9431,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 9311,
+                      "id": 9430,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -4712,7 +4712,7 @@
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 9317,
+                      "id": 9436,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -4722,11 +4722,11 @@
                       "prefix": false,
                       "src": "967:3:65",
                       "subExpression": {
-                        "id": 9316,
+                        "id": 9435,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9310,
+                        "referencedDeclaration": 9429,
                         "src": "967:1:65",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -4738,7 +4738,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 9318,
+                    "id": 9437,
                     "nodeType": "ExpressionStatement",
                     "src": "967:3:65"
                   },
@@ -4748,35 +4748,35 @@
               ]
             },
             "documentation": {
-              "id": 9246,
+              "id": 9365,
               "nodeType": "StructuredDocumentation",
               "src": "241:25:65",
               "text": "@inheritdoc ITickLens"
             },
             "functionSelector": "351fb478",
-            "id": 9372,
+            "id": 9491,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getPopulatedTicksInWord",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 9252,
+              "id": 9371,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "377:8:65"
             },
             "parameters": {
-              "id": 9251,
+              "id": 9370,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9248,
+                  "id": 9367,
                   "mutability": "mutable",
                   "name": "pool",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9372,
+                  "scope": 9491,
                   "src": "304:12:65",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4785,7 +4785,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9247,
+                    "id": 9366,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "304:7:65",
@@ -4799,11 +4799,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9250,
+                  "id": 9369,
                   "mutability": "mutable",
                   "name": "tickBitmapIndex",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9372,
+                  "scope": 9491,
                   "src": "318:21:65",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4812,7 +4812,7 @@
                     "typeString": "int16"
                   },
                   "typeName": {
-                    "id": 9249,
+                    "id": 9368,
                     "name": "int16",
                     "nodeType": "ElementaryTypeName",
                     "src": "318:5:65",
@@ -4827,40 +4827,40 @@
               "src": "303:37:65"
             },
             "returnParameters": {
-              "id": 9256,
+              "id": 9375,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9255,
+                  "id": 9374,
                   "mutability": "mutable",
                   "name": "populatedTicks",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9372,
+                  "scope": 9491,
                   "src": "403:37:65",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct ITickLens.PopulatedTick[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9253,
+                      "id": 9372,
                       "name": "PopulatedTick",
                       "nodeType": "UserDefinedTypeName",
-                      "referencedDeclaration": 7092,
+                      "referencedDeclaration": 7211,
                       "src": "403:13:65",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PopulatedTick_$7092_storage_ptr",
+                        "typeIdentifier": "t_struct$_PopulatedTick_$7211_storage_ptr",
                         "typeString": "struct ITickLens.PopulatedTick"
                       }
                     },
-                    "id": 9254,
+                    "id": 9373,
                     "nodeType": "ArrayTypeName",
                     "src": "403:15:65",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7092_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_PopulatedTick_$7211_storage_$dyn_storage_ptr",
                       "typeString": "struct ITickLens.PopulatedTick[]"
                     }
                   },
@@ -4869,14 +4869,14 @@
               ],
               "src": "402:39:65"
             },
-            "scope": 9373,
+            "scope": 9492,
             "src": "271:1223:65",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 9374,
+        "scope": 9493,
         "src": "204:1292:65"
       }
     ],
@@ -4887,31 +4887,31 @@
       "absolutePath": "project:/contracts/lens/TickLens.sol",
       "exportedSymbols": {
         "ITickLens": [
-          7104
+          7223
         ],
         "IUniswapV3Pool": [
-          7451
+          7570
         ],
         "IUniswapV3PoolActions": [
-          7709
+          7828
         ],
         "IUniswapV3PoolDerivedState": [
-          7740
-        ],
-        "IUniswapV3PoolEvents": [
           7859
         ],
+        "IUniswapV3PoolEvents": [
+          7978
+        ],
         "IUniswapV3PoolImmutables": [
-          7899
+          8018
         ],
         "IUniswapV3PoolOwnerActions": [
-          7925
+          8044
         ],
         "IUniswapV3PoolState": [
-          8033
+          8152
         ],
         "TickLens": [
-          9373
+          9492
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -4926,7 +4926,7 @@
             ".0"
           ]
         },
-        "id": 9239,
+        "id": 9358,
         "name": "PragmaDirective",
         "src": "45:24:65"
       },
@@ -4937,37 +4937,37 @@
             "v2"
           ]
         },
-        "id": 9240,
+        "id": 9359,
         "name": "PragmaDirective",
         "src": "70:19:65"
       },
       {
         "attributes": {
-          "SourceUnit": 7452,
+          "SourceUnit": 7571,
           "absolutePath": "project:/contracts/interfaces/IUniswapV3Pool.sol",
           "file": "../interfaces/IUniswapV3Pool.sol",
-          "scope": 9374,
+          "scope": 9493,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9241,
+        "id": 9360,
         "name": "ImportDirective",
         "src": "91:42:65"
       },
       {
         "attributes": {
-          "SourceUnit": 7105,
+          "SourceUnit": 7224,
           "absolutePath": "project:/contracts/interfaces/ITickLens.sol",
           "file": "../interfaces/ITickLens.sol",
-          "scope": 9374,
+          "scope": 9493,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9242,
+        "id": 9361,
         "name": "ImportDirective",
         "src": "135:37:65"
       },
@@ -4975,23 +4975,23 @@
         "attributes": {
           "abstract": false,
           "contractDependencies": [
-            7104
+            7223
           ],
           "contractKind": "contract",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            9373,
-            7104
+            9492,
+            7223
           ],
           "name": "TickLens",
-          "scope": 9374
+          "scope": 9493
         },
         "children": [
           {
             "attributes": {
               "text": "@title Tick Lens contract"
             },
-            "id": 9243,
+            "id": 9362,
             "name": "StructuredDocumentation",
             "src": "174:30:65"
           },
@@ -5001,22 +5001,22 @@
               {
                 "attributes": {
                   "name": "ITickLens",
-                  "referencedDeclaration": 7104,
+                  "referencedDeclaration": 7223,
                   "type": "contract ITickLens"
                 },
-                "id": 9244,
+                "id": 9363,
                 "name": "UserDefinedTypeName",
                 "src": "225:9:65"
               }
             ],
-            "id": 9245,
+            "id": 9364,
             "name": "InheritanceSpecifier",
             "src": "225:9:65"
           },
           {
             "attributes": {
               "baseFunctions": [
-                7103
+                7222
               ],
               "functionSelector": "351fb478",
               "implemented": true,
@@ -5026,7 +5026,7 @@
                 null
               ],
               "name": "getPopulatedTicksInWord",
-              "scope": 9373,
+              "scope": 9492,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "public"
@@ -5036,7 +5036,7 @@
                 "attributes": {
                   "text": "@inheritdoc ITickLens"
                 },
-                "id": 9246,
+                "id": 9365,
                 "name": "StructuredDocumentation",
                 "src": "241:25:65"
               },
@@ -5046,7 +5046,7 @@
                     null
                   ]
                 },
-                "id": 9252,
+                "id": 9371,
                 "name": "OverrideSpecifier",
                 "src": "377:8:65"
               },
@@ -5057,7 +5057,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "pool",
-                      "scope": 9372,
+                      "scope": 9491,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -5070,12 +5070,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 9247,
+                        "id": 9366,
                         "name": "ElementaryTypeName",
                         "src": "304:7:65"
                       }
                     ],
-                    "id": 9248,
+                    "id": 9367,
                     "name": "VariableDeclaration",
                     "src": "304:12:65"
                   },
@@ -5084,7 +5084,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "tickBitmapIndex",
-                      "scope": 9372,
+                      "scope": 9491,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "int16",
@@ -5096,17 +5096,17 @@
                           "name": "int16",
                           "type": "int16"
                         },
-                        "id": 9249,
+                        "id": 9368,
                         "name": "ElementaryTypeName",
                         "src": "318:5:65"
                       }
                     ],
-                    "id": 9250,
+                    "id": 9369,
                     "name": "VariableDeclaration",
                     "src": "318:21:65"
                   }
                 ],
-                "id": 9251,
+                "id": 9370,
                 "name": "ParameterList",
                 "src": "303:37:65"
               },
@@ -5117,7 +5117,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "populatedTicks",
-                      "scope": 9372,
+                      "scope": 9491,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "struct ITickLens.PopulatedTick[]",
@@ -5132,25 +5132,25 @@
                           {
                             "attributes": {
                               "name": "PopulatedTick",
-                              "referencedDeclaration": 7092,
+                              "referencedDeclaration": 7211,
                               "type": "struct ITickLens.PopulatedTick"
                             },
-                            "id": 9253,
+                            "id": 9372,
                             "name": "UserDefinedTypeName",
                             "src": "403:13:65"
                           }
                         ],
-                        "id": 9254,
+                        "id": 9373,
                         "name": "ArrayTypeName",
                         "src": "403:15:65"
                       }
                     ],
-                    "id": 9255,
+                    "id": 9374,
                     "name": "VariableDeclaration",
                     "src": "403:37:65"
                   }
                 ],
-                "id": 9256,
+                "id": 9375,
                 "name": "ParameterList",
                 "src": "402:39:65"
               },
@@ -5159,7 +5159,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        9258
+                        9377
                       ]
                     },
                     "children": [
@@ -5168,7 +5168,7 @@
                           "constant": false,
                           "mutability": "mutable",
                           "name": "bitmap",
-                          "scope": 9371,
+                          "scope": 9490,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -5180,12 +5180,12 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 9257,
+                            "id": 9376,
                             "name": "ElementaryTypeName",
                             "src": "480:7:65"
                           }
                         ],
-                        "id": 9258,
+                        "id": 9377,
                         "name": "VariableDeclaration",
                         "src": "480:14:65"
                       },
@@ -5217,7 +5217,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tickBitmap",
-                              "referencedDeclaration": 8002,
+                              "referencedDeclaration": 8121,
                               "type": "function (int16) view external returns (uint256)"
                             },
                             "children": [
@@ -5247,11 +5247,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 7451,
+                                      "referencedDeclaration": 7570,
                                       "type": "type(contract IUniswapV3Pool)",
                                       "value": "IUniswapV3Pool"
                                     },
-                                    "id": 9259,
+                                    "id": 9378,
                                     "name": "Identifier",
                                     "src": "497:14:65"
                                   },
@@ -5260,21 +5260,21 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9248,
+                                      "referencedDeclaration": 9367,
                                       "type": "address",
                                       "value": "pool"
                                     },
-                                    "id": 9260,
+                                    "id": 9379,
                                     "name": "Identifier",
                                     "src": "512:4:65"
                                   }
                                 ],
-                                "id": 9261,
+                                "id": 9380,
                                 "name": "FunctionCall",
                                 "src": "497:20:65"
                               }
                             ],
-                            "id": 9262,
+                            "id": 9381,
                             "name": "MemberAccess",
                             "src": "497:31:65"
                           },
@@ -5283,28 +5283,28 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9250,
+                              "referencedDeclaration": 9369,
                               "type": "int16",
                               "value": "tickBitmapIndex"
                             },
-                            "id": 9263,
+                            "id": 9382,
                             "name": "Identifier",
                             "src": "529:15:65"
                           }
                         ],
-                        "id": 9264,
+                        "id": 9383,
                         "name": "FunctionCall",
                         "src": "497:48:65"
                       }
                     ],
-                    "id": 9265,
+                    "id": 9384,
                     "name": "VariableDeclarationStatement",
                     "src": "480:65:65"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        9267
+                        9386
                       ]
                     },
                     "children": [
@@ -5313,7 +5313,7 @@
                           "constant": false,
                           "mutability": "mutable",
                           "name": "numberOfPopulatedTicks",
-                          "scope": 9371,
+                          "scope": 9490,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -5325,17 +5325,17 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 9266,
+                            "id": 9385,
                             "name": "ElementaryTypeName",
                             "src": "607:7:65"
                           }
                         ],
-                        "id": 9267,
+                        "id": 9386,
                         "name": "VariableDeclaration",
                         "src": "607:30:65"
                       }
                     ],
-                    "id": 9268,
+                    "id": 9387,
                     "name": "VariableDeclarationStatement",
                     "src": "607:30:65"
                   },
@@ -5344,7 +5344,7 @@
                       {
                         "attributes": {
                           "assignments": [
-                            9270
+                            9389
                           ]
                         },
                         "children": [
@@ -5353,7 +5353,7 @@
                               "constant": false,
                               "mutability": "mutable",
                               "name": "i",
-                              "scope": 9292,
+                              "scope": 9411,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -5365,12 +5365,12 @@
                                   "name": "uint256",
                                   "type": "uint256"
                                 },
-                                "id": 9269,
+                                "id": 9388,
                                 "name": "ElementaryTypeName",
                                 "src": "652:7:65"
                               }
                             ],
-                            "id": 9270,
+                            "id": 9389,
                             "name": "VariableDeclaration",
                             "src": "652:9:65"
                           },
@@ -5385,12 +5385,12 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 9271,
+                            "id": 9390,
                             "name": "Literal",
                             "src": "664:1:65"
                           }
                         ],
-                        "id": 9272,
+                        "id": 9391,
                         "name": "VariableDeclarationStatement",
                         "src": "652:13:65"
                       },
@@ -5413,11 +5413,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9270,
+                              "referencedDeclaration": 9389,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 9273,
+                            "id": 9392,
                             "name": "Identifier",
                             "src": "667:1:65"
                           },
@@ -5432,12 +5432,12 @@
                               "type": "int_const 256",
                               "value": "256"
                             },
-                            "id": 9274,
+                            "id": 9393,
                             "name": "Literal",
                             "src": "671:3:65"
                           }
                         ],
-                        "id": 9275,
+                        "id": 9394,
                         "name": "BinaryOperation",
                         "src": "667:7:65"
                       },
@@ -5459,21 +5459,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9270,
+                                  "referencedDeclaration": 9389,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 9276,
+                                "id": 9395,
                                 "name": "Identifier",
                                 "src": "676:1:65"
                               }
                             ],
-                            "id": 9277,
+                            "id": 9396,
                             "name": "UnaryOperation",
                             "src": "676:3:65"
                           }
                         ],
-                        "id": 9278,
+                        "id": 9397,
                         "name": "ExpressionStatement",
                         "src": "676:3:65"
                       },
@@ -5515,11 +5515,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9258,
+                                          "referencedDeclaration": 9377,
                                           "type": "uint256",
                                           "value": "bitmap"
                                         },
-                                        "id": 9279,
+                                        "id": 9398,
                                         "name": "Identifier",
                                         "src": "699:6:65"
                                       },
@@ -5558,7 +5558,7 @@
                                                   "type": "int_const 1",
                                                   "value": "1"
                                                 },
-                                                "id": 9280,
+                                                "id": 9399,
                                                 "name": "Literal",
                                                 "src": "709:1:65"
                                               },
@@ -5567,26 +5567,26 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 9270,
+                                                  "referencedDeclaration": 9389,
                                                   "type": "uint256",
                                                   "value": "i"
                                                 },
-                                                "id": 9281,
+                                                "id": 9400,
                                                 "name": "Identifier",
                                                 "src": "714:1:65"
                                               }
                                             ],
-                                            "id": 9282,
+                                            "id": 9401,
                                             "name": "BinaryOperation",
                                             "src": "709:6:65"
                                           }
                                         ],
-                                        "id": 9283,
+                                        "id": 9402,
                                         "name": "TupleExpression",
                                         "src": "708:8:65"
                                       }
                                     ],
-                                    "id": 9284,
+                                    "id": 9403,
                                     "name": "BinaryOperation",
                                     "src": "699:17:65"
                                   },
@@ -5601,12 +5601,12 @@
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9285,
+                                    "id": 9404,
                                     "name": "Literal",
                                     "src": "719:1:65"
                                   }
                                 ],
-                                "id": 9286,
+                                "id": 9405,
                                 "name": "BinaryOperation",
                                 "src": "699:21:65"
                               },
@@ -5628,43 +5628,43 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9267,
+                                          "referencedDeclaration": 9386,
                                           "type": "uint256",
                                           "value": "numberOfPopulatedTicks"
                                         },
-                                        "id": 9287,
+                                        "id": 9406,
                                         "name": "Identifier",
                                         "src": "722:22:65"
                                       }
                                     ],
-                                    "id": 9288,
+                                    "id": 9407,
                                     "name": "UnaryOperation",
                                     "src": "722:24:65"
                                   }
                                 ],
-                                "id": 9289,
+                                "id": 9408,
                                 "name": "ExpressionStatement",
                                 "src": "722:24:65"
                               }
                             ],
-                            "id": 9290,
+                            "id": 9409,
                             "name": "IfStatement",
                             "src": "695:51:65"
                           }
                         ],
-                        "id": 9291,
+                        "id": 9410,
                         "name": "Block",
                         "src": "681:76:65"
                       }
                     ],
-                    "id": 9292,
+                    "id": 9411,
                     "name": "ForStatement",
                     "src": "647:110:65"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        9294
+                        9413
                       ]
                     },
                     "children": [
@@ -5673,7 +5673,7 @@
                           "constant": false,
                           "mutability": "mutable",
                           "name": "tickSpacing",
-                          "scope": 9371,
+                          "scope": 9490,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "int24",
@@ -5685,12 +5685,12 @@
                               "name": "int24",
                               "type": "int24"
                             },
-                            "id": 9293,
+                            "id": 9412,
                             "name": "ElementaryTypeName",
                             "src": "804:5:65"
                           }
                         ],
-                        "id": 9294,
+                        "id": 9413,
                         "name": "VariableDeclaration",
                         "src": "804:17:65"
                       },
@@ -5722,7 +5722,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "tickSpacing",
-                              "referencedDeclaration": 7892,
+                              "referencedDeclaration": 8011,
                               "type": "function () view external returns (int24)"
                             },
                             "children": [
@@ -5752,11 +5752,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 7451,
+                                      "referencedDeclaration": 7570,
                                       "type": "type(contract IUniswapV3Pool)",
                                       "value": "IUniswapV3Pool"
                                     },
-                                    "id": 9295,
+                                    "id": 9414,
                                     "name": "Identifier",
                                     "src": "824:14:65"
                                   },
@@ -5765,31 +5765,31 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9248,
+                                      "referencedDeclaration": 9367,
                                       "type": "address",
                                       "value": "pool"
                                     },
-                                    "id": 9296,
+                                    "id": 9415,
                                     "name": "Identifier",
                                     "src": "839:4:65"
                                   }
                                 ],
-                                "id": 9297,
+                                "id": 9416,
                                 "name": "FunctionCall",
                                 "src": "824:20:65"
                               }
                             ],
-                            "id": 9298,
+                            "id": 9417,
                             "name": "MemberAccess",
                             "src": "824:32:65"
                           }
                         ],
-                        "id": 9299,
+                        "id": 9418,
                         "name": "FunctionCall",
                         "src": "824:34:65"
                       }
                     ],
-                    "id": 9300,
+                    "id": 9419,
                     "name": "VariableDeclarationStatement",
                     "src": "804:54:65"
                   },
@@ -5810,11 +5810,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9255,
+                              "referencedDeclaration": 9374,
                               "type": "struct ITickLens.PopulatedTick memory[] memory",
                               "value": "populatedTicks"
                             },
-                            "id": 9301,
+                            "id": 9420,
                             "name": "Identifier",
                             "src": "868:14:65"
                           },
@@ -5856,20 +5856,20 @@
                                       {
                                         "attributes": {
                                           "name": "PopulatedTick",
-                                          "referencedDeclaration": 7092,
+                                          "referencedDeclaration": 7211,
                                           "type": "struct ITickLens.PopulatedTick"
                                         },
-                                        "id": 9302,
+                                        "id": 9421,
                                         "name": "UserDefinedTypeName",
                                         "src": "889:13:65"
                                       }
                                     ],
-                                    "id": 9303,
+                                    "id": 9422,
                                     "name": "ArrayTypeName",
                                     "src": "889:15:65"
                                   }
                                 ],
-                                "id": 9304,
+                                "id": 9423,
                                 "name": "NewExpression",
                                 "src": "885:19:65"
                               },
@@ -5878,26 +5878,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9267,
+                                  "referencedDeclaration": 9386,
                                   "type": "uint256",
                                   "value": "numberOfPopulatedTicks"
                                 },
-                                "id": 9305,
+                                "id": 9424,
                                 "name": "Identifier",
                                 "src": "905:22:65"
                               }
                             ],
-                            "id": 9306,
+                            "id": 9425,
                             "name": "FunctionCall",
                             "src": "885:43:65"
                           }
                         ],
-                        "id": 9307,
+                        "id": 9426,
                         "name": "Assignment",
                         "src": "868:60:65"
                       }
                     ],
-                    "id": 9308,
+                    "id": 9427,
                     "name": "ExpressionStatement",
                     "src": "868:60:65"
                   },
@@ -5906,7 +5906,7 @@
                       {
                         "attributes": {
                           "assignments": [
-                            9310
+                            9429
                           ]
                         },
                         "children": [
@@ -5915,7 +5915,7 @@
                               "constant": false,
                               "mutability": "mutable",
                               "name": "i",
-                              "scope": 9370,
+                              "scope": 9489,
                               "stateVariable": false,
                               "storageLocation": "default",
                               "type": "uint256",
@@ -5927,12 +5927,12 @@
                                   "name": "uint256",
                                   "type": "uint256"
                                 },
-                                "id": 9309,
+                                "id": 9428,
                                 "name": "ElementaryTypeName",
                                 "src": "943:7:65"
                               }
                             ],
-                            "id": 9310,
+                            "id": 9429,
                             "name": "VariableDeclaration",
                             "src": "943:9:65"
                           },
@@ -5947,12 +5947,12 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 9311,
+                            "id": 9430,
                             "name": "Literal",
                             "src": "955:1:65"
                           }
                         ],
-                        "id": 9312,
+                        "id": 9431,
                         "name": "VariableDeclarationStatement",
                         "src": "943:13:65"
                       },
@@ -5975,11 +5975,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9310,
+                              "referencedDeclaration": 9429,
                               "type": "uint256",
                               "value": "i"
                             },
-                            "id": 9313,
+                            "id": 9432,
                             "name": "Identifier",
                             "src": "958:1:65"
                           },
@@ -5994,12 +5994,12 @@
                               "type": "int_const 256",
                               "value": "256"
                             },
-                            "id": 9314,
+                            "id": 9433,
                             "name": "Literal",
                             "src": "962:3:65"
                           }
                         ],
-                        "id": 9315,
+                        "id": 9434,
                         "name": "BinaryOperation",
                         "src": "958:7:65"
                       },
@@ -6021,21 +6021,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9310,
+                                  "referencedDeclaration": 9429,
                                   "type": "uint256",
                                   "value": "i"
                                 },
-                                "id": 9316,
+                                "id": 9435,
                                 "name": "Identifier",
                                 "src": "967:1:65"
                               }
                             ],
-                            "id": 9317,
+                            "id": 9436,
                             "name": "UnaryOperation",
                             "src": "967:3:65"
                           }
                         ],
-                        "id": 9318,
+                        "id": 9437,
                         "name": "ExpressionStatement",
                         "src": "967:3:65"
                       },
@@ -6077,11 +6077,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 9258,
+                                          "referencedDeclaration": 9377,
                                           "type": "uint256",
                                           "value": "bitmap"
                                         },
-                                        "id": 9319,
+                                        "id": 9438,
                                         "name": "Identifier",
                                         "src": "990:6:65"
                                       },
@@ -6120,7 +6120,7 @@
                                                   "type": "int_const 1",
                                                   "value": "1"
                                                 },
-                                                "id": 9320,
+                                                "id": 9439,
                                                 "name": "Literal",
                                                 "src": "1000:1:65"
                                               },
@@ -6129,26 +6129,26 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 9310,
+                                                  "referencedDeclaration": 9429,
                                                   "type": "uint256",
                                                   "value": "i"
                                                 },
-                                                "id": 9321,
+                                                "id": 9440,
                                                 "name": "Identifier",
                                                 "src": "1005:1:65"
                                               }
                                             ],
-                                            "id": 9322,
+                                            "id": 9441,
                                             "name": "BinaryOperation",
                                             "src": "1000:6:65"
                                           }
                                         ],
-                                        "id": 9323,
+                                        "id": 9442,
                                         "name": "TupleExpression",
                                         "src": "999:8:65"
                                       }
                                     ],
-                                    "id": 9324,
+                                    "id": 9443,
                                     "name": "BinaryOperation",
                                     "src": "990:17:65"
                                   },
@@ -6163,12 +6163,12 @@
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 9325,
+                                    "id": 9444,
                                     "name": "Literal",
                                     "src": "1010:1:65"
                                   }
                                 ],
-                                "id": 9326,
+                                "id": 9445,
                                 "name": "BinaryOperation",
                                 "src": "990:21:65"
                               },
@@ -6177,7 +6177,7 @@
                                   {
                                     "attributes": {
                                       "assignments": [
-                                        9328
+                                        9447
                                       ]
                                     },
                                     "children": [
@@ -6186,7 +6186,7 @@
                                           "constant": false,
                                           "mutability": "mutable",
                                           "name": "populatedTick",
-                                          "scope": 9367,
+                                          "scope": 9486,
                                           "stateVariable": false,
                                           "storageLocation": "default",
                                           "type": "int24",
@@ -6198,12 +6198,12 @@
                                               "name": "int24",
                                               "type": "int24"
                                             },
-                                            "id": 9327,
+                                            "id": 9446,
                                             "name": "ElementaryTypeName",
                                             "src": "1031:5:65"
                                           }
                                         ],
-                                        "id": 9328,
+                                        "id": 9447,
                                         "name": "VariableDeclaration",
                                         "src": "1031:19:65"
                                       },
@@ -6303,12 +6303,12 @@
                                                                     "attributes": {
                                                                       "name": "int24"
                                                                     },
-                                                                    "id": 9329,
+                                                                    "id": 9448,
                                                                     "name": "ElementaryTypeName",
                                                                     "src": "1055:5:65"
                                                                   }
                                                                 ],
-                                                                "id": 9330,
+                                                                "id": 9449,
                                                                 "name": "ElementaryTypeNameExpression",
                                                                 "src": "1055:5:65"
                                                               },
@@ -6317,16 +6317,16 @@
                                                                   "overloadedDeclarations": [
                                                                     null
                                                                   ],
-                                                                  "referencedDeclaration": 9250,
+                                                                  "referencedDeclaration": 9369,
                                                                   "type": "int16",
                                                                   "value": "tickBitmapIndex"
                                                                 },
-                                                                "id": 9331,
+                                                                "id": 9450,
                                                                 "name": "Identifier",
                                                                 "src": "1061:15:65"
                                                               }
                                                             ],
-                                                            "id": 9332,
+                                                            "id": 9451,
                                                             "name": "FunctionCall",
                                                             "src": "1055:22:65"
                                                           },
@@ -6341,17 +6341,17 @@
                                                               "type": "int_const 8",
                                                               "value": "8"
                                                             },
-                                                            "id": 9333,
+                                                            "id": 9452,
                                                             "name": "Literal",
                                                             "src": "1081:1:65"
                                                           }
                                                         ],
-                                                        "id": 9334,
+                                                        "id": 9453,
                                                         "name": "BinaryOperation",
                                                         "src": "1055:27:65"
                                                       }
                                                     ],
-                                                    "id": 9335,
+                                                    "id": 9454,
                                                     "name": "TupleExpression",
                                                     "src": "1054:29:65"
                                                   },
@@ -6389,12 +6389,12 @@
                                                             "attributes": {
                                                               "name": "int24"
                                                             },
-                                                            "id": 9336,
+                                                            "id": 9455,
                                                             "name": "ElementaryTypeName",
                                                             "src": "1086:5:65"
                                                           }
                                                         ],
-                                                        "id": 9337,
+                                                        "id": 9456,
                                                         "name": "ElementaryTypeNameExpression",
                                                         "src": "1086:5:65"
                                                       },
@@ -6403,26 +6403,26 @@
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 9310,
+                                                          "referencedDeclaration": 9429,
                                                           "type": "uint256",
                                                           "value": "i"
                                                         },
-                                                        "id": 9338,
+                                                        "id": 9457,
                                                         "name": "Identifier",
                                                         "src": "1092:1:65"
                                                       }
                                                     ],
-                                                    "id": 9339,
+                                                    "id": 9458,
                                                     "name": "FunctionCall",
                                                     "src": "1086:8:65"
                                                   }
                                                 ],
-                                                "id": 9340,
+                                                "id": 9459,
                                                 "name": "BinaryOperation",
                                                 "src": "1054:40:65"
                                               }
                                             ],
-                                            "id": 9341,
+                                            "id": 9460,
                                             "name": "TupleExpression",
                                             "src": "1053:42:65"
                                           },
@@ -6431,29 +6431,29 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 9294,
+                                              "referencedDeclaration": 9413,
                                               "type": "int24",
                                               "value": "tickSpacing"
                                             },
-                                            "id": 9342,
+                                            "id": 9461,
                                             "name": "Identifier",
                                             "src": "1098:11:65"
                                           }
                                         ],
-                                        "id": 9343,
+                                        "id": 9462,
                                         "name": "BinaryOperation",
                                         "src": "1053:56:65"
                                       }
                                     ],
-                                    "id": 9344,
+                                    "id": 9463,
                                     "name": "VariableDeclarationStatement",
                                     "src": "1031:78:65"
                                   },
                                   {
                                     "attributes": {
                                       "assignments": [
-                                        9346,
-                                        9348,
+                                        9465,
+                                        9467,
                                         null,
                                         null,
                                         null,
@@ -6468,7 +6468,7 @@
                                           "constant": false,
                                           "mutability": "mutable",
                                           "name": "liquidityGross",
-                                          "scope": 9367,
+                                          "scope": 9486,
                                           "stateVariable": false,
                                           "storageLocation": "default",
                                           "type": "uint128",
@@ -6480,12 +6480,12 @@
                                               "name": "uint128",
                                               "type": "uint128"
                                             },
-                                            "id": 9345,
+                                            "id": 9464,
                                             "name": "ElementaryTypeName",
                                             "src": "1128:7:65"
                                           }
                                         ],
-                                        "id": 9346,
+                                        "id": 9465,
                                         "name": "VariableDeclaration",
                                         "src": "1128:22:65"
                                       },
@@ -6494,7 +6494,7 @@
                                           "constant": false,
                                           "mutability": "mutable",
                                           "name": "liquidityNet",
-                                          "scope": 9367,
+                                          "scope": 9486,
                                           "stateVariable": false,
                                           "storageLocation": "default",
                                           "type": "int128",
@@ -6506,12 +6506,12 @@
                                               "name": "int128",
                                               "type": "int128"
                                             },
-                                            "id": 9347,
+                                            "id": 9466,
                                             "name": "ElementaryTypeName",
                                             "src": "1152:6:65"
                                           }
                                         ],
-                                        "id": 9348,
+                                        "id": 9467,
                                         "name": "VariableDeclaration",
                                         "src": "1152:19:65"
                                       },
@@ -6543,7 +6543,7 @@
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "ticks",
-                                              "referencedDeclaration": 7994,
+                                              "referencedDeclaration": 8113,
                                               "type": "function (int24) view external returns (uint128,int128,uint256,uint256,int56,uint160,uint32,bool)"
                                             },
                                             "children": [
@@ -6573,11 +6573,11 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 7451,
+                                                      "referencedDeclaration": 7570,
                                                       "type": "type(contract IUniswapV3Pool)",
                                                       "value": "IUniswapV3Pool"
                                                     },
-                                                    "id": 9349,
+                                                    "id": 9468,
                                                     "name": "Identifier",
                                                     "src": "1187:14:65"
                                                   },
@@ -6586,21 +6586,21 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 9248,
+                                                      "referencedDeclaration": 9367,
                                                       "type": "address",
                                                       "value": "pool"
                                                     },
-                                                    "id": 9350,
+                                                    "id": 9469,
                                                     "name": "Identifier",
                                                     "src": "1202:4:65"
                                                   }
                                                 ],
-                                                "id": 9351,
+                                                "id": 9470,
                                                 "name": "FunctionCall",
                                                 "src": "1187:20:65"
                                               }
                                             ],
-                                            "id": 9352,
+                                            "id": 9471,
                                             "name": "MemberAccess",
                                             "src": "1187:26:65"
                                           },
@@ -6609,21 +6609,21 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 9328,
+                                              "referencedDeclaration": 9447,
                                               "type": "int24",
                                               "value": "populatedTick"
                                             },
-                                            "id": 9353,
+                                            "id": 9472,
                                             "name": "Identifier",
                                             "src": "1214:13:65"
                                           }
                                         ],
-                                        "id": 9354,
+                                        "id": 9473,
                                         "name": "FunctionCall",
                                         "src": "1187:41:65"
                                       }
                                     ],
-                                    "id": 9355,
+                                    "id": 9474,
                                     "name": "VariableDeclarationStatement",
                                     "src": "1127:101:65"
                                   },
@@ -6653,11 +6653,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 9255,
+                                                  "referencedDeclaration": 9374,
                                                   "type": "struct ITickLens.PopulatedTick memory[] memory",
                                                   "value": "populatedTicks"
                                                 },
-                                                "id": 9356,
+                                                "id": 9475,
                                                 "name": "Identifier",
                                                 "src": "1246:14:65"
                                               },
@@ -6677,21 +6677,21 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 9267,
+                                                      "referencedDeclaration": 9386,
                                                       "type": "uint256",
                                                       "value": "numberOfPopulatedTicks"
                                                     },
-                                                    "id": 9357,
+                                                    "id": 9476,
                                                     "name": "Identifier",
                                                     "src": "1263:22:65"
                                                   }
                                                 ],
-                                                "id": 9358,
+                                                "id": 9477,
                                                 "name": "UnaryOperation",
                                                 "src": "1261:24:65"
                                               }
                                             ],
-                                            "id": 9359,
+                                            "id": 9478,
                                             "name": "IndexAccess",
                                             "src": "1246:40:65"
                                           },
@@ -6731,11 +6731,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 7092,
+                                                  "referencedDeclaration": 7211,
                                                   "type": "type(struct ITickLens.PopulatedTick storage pointer)",
                                                   "value": "PopulatedTick"
                                                 },
-                                                "id": 9360,
+                                                "id": 9479,
                                                 "name": "Identifier",
                                                 "src": "1289:13:65"
                                               },
@@ -6744,11 +6744,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 9328,
+                                                  "referencedDeclaration": 9447,
                                                   "type": "int24",
                                                   "value": "populatedTick"
                                                 },
-                                                "id": 9361,
+                                                "id": 9480,
                                                 "name": "Identifier",
                                                 "src": "1331:13:65"
                                               },
@@ -6757,11 +6757,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 9348,
+                                                  "referencedDeclaration": 9467,
                                                   "type": "int128",
                                                   "value": "liquidityNet"
                                                 },
-                                                "id": 9362,
+                                                "id": 9481,
                                                 "name": "Identifier",
                                                 "src": "1380:12:65"
                                               },
@@ -6770,66 +6770,66 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 9346,
+                                                  "referencedDeclaration": 9465,
                                                   "type": "uint128",
                                                   "value": "liquidityGross"
                                                 },
-                                                "id": 9363,
+                                                "id": 9482,
                                                 "name": "Identifier",
                                                 "src": "1430:14:65"
                                               }
                                             ],
-                                            "id": 9364,
+                                            "id": 9483,
                                             "name": "FunctionCall",
                                             "src": "1289:174:65"
                                           }
                                         ],
-                                        "id": 9365,
+                                        "id": 9484,
                                         "name": "Assignment",
                                         "src": "1246:217:65"
                                       }
                                     ],
-                                    "id": 9366,
+                                    "id": 9485,
                                     "name": "ExpressionStatement",
                                     "src": "1246:217:65"
                                   }
                                 ],
-                                "id": 9367,
+                                "id": 9486,
                                 "name": "Block",
                                 "src": "1013:465:65"
                               }
                             ],
-                            "id": 9368,
+                            "id": 9487,
                             "name": "IfStatement",
                             "src": "986:492:65"
                           }
                         ],
-                        "id": 9369,
+                        "id": 9488,
                         "name": "Block",
                         "src": "972:516:65"
                       }
                     ],
-                    "id": 9370,
+                    "id": 9489,
                     "name": "ForStatement",
                     "src": "938:550:65"
                   }
                 ],
-                "id": 9371,
+                "id": 9490,
                 "name": "Block",
                 "src": "446:1048:65"
               }
             ],
-            "id": 9372,
+            "id": 9491,
             "name": "FunctionDefinition",
             "src": "271:1223:65"
           }
         ],
-        "id": 9373,
+        "id": 9492,
         "name": "ContractDefinition",
         "src": "204:1292:65"
       }
     ],
-    "id": 9374,
+    "id": 9493,
     "name": "SourceUnit",
     "src": "45:1452:65"
   },
@@ -6852,7 +6852,7 @@
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2023-06-04T12:34:33.024Z",
+  "updatedAt": "2023-07-05T18:47:07.268Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

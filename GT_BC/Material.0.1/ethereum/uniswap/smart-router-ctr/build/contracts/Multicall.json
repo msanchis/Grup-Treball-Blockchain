@@ -30,7 +30,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.6;\npragma abicoder v2;\n\nimport '../interfaces/IMulticall.sol';\n\n/// @title Multicall\n/// @notice Enables calling multiple methods in a single call to the contract\nabstract contract Multicall is IMulticall {\n    /// @inheritdoc IMulticall\n    function multicall(bytes[] calldata data) public payable override returns (bytes[] memory results) {\n        results = new bytes[](data.length);\n        for (uint256 i = 0; i < data.length; i++) {\n            (bool success, bytes memory result) = address(this).delegatecall(data[i]);\n\n            if (!success) {\n                // Next 5 lines from https://ethereum.stackexchange.com/a/83577\n                if (result.length < 68) revert();\n                assembly {\n                    result := add(result, 0x04)\n                }\n                revert(abi.decode(result, (string)));\n            }\n\n            results[i] = result;\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/base/Multicall.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/base/Multicall.sol",
   "ast": {
     "absolutePath": "project:/contracts/base/Multicall.sol",
     "exportedSymbols": {
@@ -2274,7 +2274,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.487Z",
+  "updatedAt": "2023-07-05T17:57:59.752Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

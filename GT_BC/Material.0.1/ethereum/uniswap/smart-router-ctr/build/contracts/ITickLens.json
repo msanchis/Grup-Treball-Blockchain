@@ -52,7 +52,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\npragma abicoder v2;\n\n/// @title Tick Lens\n/// @notice Provides functions for fetching chunks of tick data for a pool\n/// @dev This avoids the waterfall of fetching the tick bitmap, parsing the bitmap to know which ticks to fetch, and\n/// then sending additional multicalls to fetch the tick data\ninterface ITickLens {\n    struct PopulatedTick {\n        int24 tick;\n        int128 liquidityNet;\n        uint128 liquidityGross;\n    }\n\n    /// @notice Get all the tick data for the populated ticks from a word of the tick bitmap of a pool\n    /// @param pool The address of the pool for which to fetch populated tick data\n    /// @param tickBitmapIndex The index of the word in the tick bitmap for which to parse the bitmap and\n    /// fetch all the populated ticks\n    /// @return populatedTicks An array of tick data for the given word in the tick bitmap\n    function getPopulatedTicksInWord(address pool, int16 tickBitmapIndex)\n        external\n        view\n        returns (PopulatedTick[] memory populatedTicks);\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/ITickLens.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/interfaces/ITickLens.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/ITickLens.sol",
     "exportedSymbols": {
@@ -623,7 +623,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.513Z",
+  "updatedAt": "2023-07-05T17:57:59.877Z",
   "devdoc": {
     "details": "This avoids the waterfall of fetching the tick bitmap, parsing the bitmap to know which ticks to fetch, and then sending additional multicalls to fetch the tick data",
     "kind": "dev",

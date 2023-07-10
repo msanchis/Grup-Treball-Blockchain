@@ -30,7 +30,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity >0.6.0;\n\nimport \"./interfaces/IERC165.sol\";\n\n/**\n * @dev Implementation of the {IERC165} interface.\n *\n * Contracts may inherit from this and call {_registerInterface} to declare\n * their support of an interface.\n */\nabstract contract ERC165 is IERC165 {\n    /*\n     * bytes4(keccak256('supportsInterface(bytes4)')) == 0x01ffc9a7\n     */\n    bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;\n\n    /**\n     * @dev Mapping of interface ids to whether or not it's supported.\n     */\n    mapping(bytes4 => bool) private _supportedInterfaces;\n\n    constructor () internal {\n        // Derived contracts need only register support for their own interfaces,\n        // we register support for ERC165 itself here\n        _registerInterface(_INTERFACE_ID_ERC165);\n    }\n\n    /**\n     * @dev See {IERC165-supportsInterface}.\n     *\n     * Time complexity O(1), guaranteed to always use less than 30 000 gas.\n     */\n    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {\n        return _supportedInterfaces[interfaceId];\n    }\n\n    /**\n     * @dev Registers the contract as an implementer of the interface defined by\n     * `interfaceId`. Support of the actual ERC165 interface is automatic and\n     * registering its interface id is not required.\n     *\n     * See {IERC165-supportsInterface}.\n     *\n     * Requirements:\n     *\n     * - `interfaceId` cannot be the ERC165 invalid interface (`0xffffffff`).\n     */\n    function _registerInterface(bytes4 interfaceId) internal virtual {\n        require(interfaceId != 0xffffffff, \"ERC165: invalid interface id\");\n        _supportedInterfaces[interfaceId] = true;\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/ERC165.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/ERC165.sol",
   "ast": {
     "absolutePath": "project:/contracts/ERC165.sol",
     "exportedSymbols": {
@@ -38,7 +38,7 @@
         653
       ],
       "IERC165": [
-        6084
+        6203
       ]
     },
     "id": 654,
@@ -61,7 +61,7 @@
         "id": 599,
         "nodeType": "ImportDirective",
         "scope": 654,
-        "sourceUnit": 6085,
+        "sourceUnit": 6204,
         "src": "25:34:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -74,10 +74,10 @@
               "id": 601,
               "name": "IERC165",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6084,
+              "referencedDeclaration": 6203,
               "src": "261:7:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC165_$6084",
+                "typeIdentifier": "t_contract$_IERC165_$6203",
                 "typeString": "contract IERC165"
               }
             },
@@ -87,7 +87,7 @@
           }
         ],
         "contractDependencies": [
-          6084
+          6203
         ],
         "contractKind": "contract",
         "documentation": {
@@ -100,7 +100,7 @@
         "id": 653,
         "linearizedBaseContracts": [
           653,
-          6084
+          6203
         ],
         "name": "ERC165",
         "nodeType": "ContractDefinition",
@@ -285,7 +285,7 @@
           },
           {
             "baseFunctions": [
-              6083
+              6202
             ],
             "body": {
               "id": 631,
@@ -690,7 +690,7 @@
           653
         ],
         "IERC165": [
-          6084
+          6203
         ]
       }
     },
@@ -710,7 +710,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 6085,
+          "SourceUnit": 6204,
           "absolutePath": "project:/contracts/interfaces/IERC165.sol",
           "file": "./interfaces/IERC165.sol",
           "scope": 654,
@@ -727,13 +727,13 @@
         "attributes": {
           "abstract": true,
           "contractDependencies": [
-            6084
+            6203
           ],
           "contractKind": "contract",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             653,
-            6084
+            6203
           ],
           "name": "ERC165",
           "scope": 654
@@ -753,7 +753,7 @@
               {
                 "attributes": {
                   "name": "IERC165",
-                  "referencedDeclaration": 6084,
+                  "referencedDeclaration": 6203,
                   "type": "contract IERC165"
                 },
                 "id": 601,
@@ -970,7 +970,7 @@
           {
             "attributes": {
               "baseFunctions": [
-                6083
+                6202
               ],
               "functionSelector": "01ffc9a7",
               "implemented": true,
@@ -1417,7 +1417,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:23.897Z",
+  "updatedAt": "2023-07-05T17:56:22.234Z",
   "devdoc": {
     "details": "Implementation of the {IERC165} interface. Contracts may inherit from this and call {_registerInterface} to declare their support of an interface.",
     "kind": "dev",

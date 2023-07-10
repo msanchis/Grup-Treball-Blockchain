@@ -10,7 +10,7 @@
   "sourceMap": "25:1767:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "25:1767:2:-:0;;;;;;;;",
   "source": "pragma solidity >0.7.0;\n\nlibrary Base64 {\n\n    bytes constant private base64stdchars = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n    bytes constant private base64urlchars = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_\";\n\n    function encode(string memory _str) internal pure returns (string memory) {\n\n        bytes memory _bs = bytes(_str);\n        uint256 rem = _bs.length % 3;\n\n        uint256 res_length = (_bs.length + 2) / 3 * 4 - ((3 - rem) % 3);\n        bytes memory res = new bytes(res_length);\n\n        uint256 i = 0;\n        uint256 j = 0;\n\n        for (; i + 3 <= _bs.length; i += 3) {\n            (res[j], res[j+1], res[j+2], res[j+3]) = encode3(\n                uint8(_bs[i]),\n                uint8(_bs[i+1]),\n                uint8(_bs[i+2])\n            );\n\n            j += 4;\n        }\n\n        if (rem != 0) {\n            uint8 la0 = uint8(_bs[_bs.length - rem]);\n            uint8 la1 = 0;\n\n            if (rem == 2) {\n                la1 = uint8(_bs[_bs.length - 1]);\n            }\n\n            (bytes1 b0, bytes1 b1, bytes1 b2, bytes1 b3) = encode3(la0, la1, 0);\n            res[j] = b0;\n            res[j+1] = b1;\n            if (rem == 2) {\n              res[j+2] = b2;\n            }\n        }\n\n        return string(res);\n    }\n\n    function encode3(uint256 a0, uint256 a1, uint256 a2)\n        private\n        pure\n        returns (bytes1 b0, bytes1 b1, bytes1 b2, bytes1 b3)\n    {\n\n        uint256 n = (a0 << 16) | (a1 << 8) | a2;\n\n        uint256 c0 = (n >> 18) & 63;\n        uint256 c1 = (n >> 12) & 63;\n        uint256 c2 = (n >>  6) & 63;\n        uint256 c3 = (n      ) & 63;\n\n        b0 = base64urlchars[c0];\n        b1 = base64urlchars[c1];\n        b2 = base64urlchars[c2];\n        b3 = base64urlchars[c3];\n    }\n\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/Base64.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/Base64.sol",
   "ast": {
     "absolutePath": "project:/contracts/Base64.sol",
     "exportedSymbols": {
@@ -8257,7 +8257,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:23.894Z",
+  "updatedAt": "2023-07-05T17:56:22.202Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

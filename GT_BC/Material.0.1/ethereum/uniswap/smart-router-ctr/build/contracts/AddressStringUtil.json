@@ -10,7 +10,7 @@
   "sourceMap": "72:1321:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "72:1321:1:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-3.0-or-later\n\npragma solidity >=0.5.0;\n\nlibrary AddressStringUtil {\n    // converts an address to the uppercase hex string, extracting only len bytes (up to 20, multiple of 2)\n    function toAsciiString(address addr, uint256 len) internal pure returns (string memory) {\n        require(len % 2 == 0 && len > 0 && len <= 40, 'AddressStringUtil: INVALID_LEN');\n\n        bytes memory s = new bytes(len);\n        uint256 addrNum = uint256(addr);\n        for (uint256 i = 0; i < len / 2; i++) {\n            // shift right and truncate all but the least significant byte to extract the byte at position 19-i\n            uint8 b = uint8(addrNum >> (8 * (19 - i)));\n            // first hex character is the most significant 4 bits\n            uint8 hi = b >> 4;\n            // second hex character is the least significant 4 bits\n            uint8 lo = b - (hi << 4);\n            s[2 * i] = char(hi);\n            s[2 * i + 1] = char(lo);\n        }\n        return string(s);\n    }\n\n    // hi and lo are only 4 bits and between 0 and 16\n    // this method converts those values to the unicode/ascii code point for the hex representation\n    // uses upper case for the characters\n    function char(uint8 b) private pure returns (bytes1 c) {\n        if (b < 10) {\n            return bytes1(b + 0x30);\n        } else {\n            return bytes1(b + 0x37);\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/AddressStringUtil.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/AddressStringUtil.sol",
   "ast": {
     "absolutePath": "project:/contracts/AddressStringUtil.sol",
     "exportedSymbols": {
@@ -4000,7 +4000,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.405Z",
+  "updatedAt": "2023-07-05T17:57:59.297Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

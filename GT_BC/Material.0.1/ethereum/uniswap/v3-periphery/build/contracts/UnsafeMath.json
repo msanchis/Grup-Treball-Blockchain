@@ -10,20 +10,20 @@
   "sourceMap": "244:415:99:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "244:415:99:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Math functions that do not check inputs or outputs\n/// @notice Contains methods that perform common math functions but do not do any overflow or underflow checks\nlibrary UnsafeMath {\n    /// @notice Returns ceil(x / y)\n    /// @dev division by 0 has unspecified behavior, and must be checked externally\n    /// @param x The dividend\n    /// @param y The divisor\n    /// @return z The quotient, ceil(x / y)\n    function divRoundingUp(uint256 x, uint256 y) internal pure returns (uint256 z) {\n        assembly {\n            z := add(div(x, y), gt(mod(x, y), 0))\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/libraries/UnsafeMath.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/libraries/UnsafeMath.sol",
   "ast": {
     "absolutePath": "project:/contracts/libraries/UnsafeMath.sol",
     "exportedSymbols": {
       "UnsafeMath": [
-        19953
+        20072
       ]
     },
-    "id": 19954,
+    "id": 20073,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 19939,
+        "id": 20058,
         "literals": [
           "solidity",
           ">=",
@@ -39,22 +39,22 @@
         "contractDependencies": [],
         "contractKind": "library",
         "documentation": {
-          "id": 19940,
+          "id": 20059,
           "nodeType": "StructuredDocumentation",
           "src": "71:173:99",
           "text": "@title Math functions that do not check inputs or outputs\n @notice Contains methods that perform common math functions but do not do any overflow or underflow checks"
         },
         "fullyImplemented": true,
-        "id": 19953,
+        "id": 20072,
         "linearizedBaseContracts": [
-          19953
+          20072
         ],
         "name": "UnsafeMath",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 19951,
+              "id": 20070,
               "nodeType": "Block",
               "src": "571:86:99",
               "statements": [
@@ -150,70 +150,70 @@
                   "evmVersion": "istanbul",
                   "externalReferences": [
                     {
-                      "declaration": 19943,
+                      "declaration": 20062,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "617:1:99",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 19943,
+                      "declaration": 20062,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "631:1:99",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 19945,
+                      "declaration": 20064,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "620:1:99",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 19945,
+                      "declaration": 20064,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "634:1:99",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 19948,
+                      "declaration": 20067,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "604:1:99",
                       "valueSize": 1
                     }
                   ],
-                  "id": 19950,
+                  "id": 20069,
                   "nodeType": "InlineAssembly",
                   "src": "581:70:99"
                 }
               ]
             },
             "documentation": {
-              "id": 19941,
+              "id": 20060,
               "nodeType": "StructuredDocumentation",
               "src": "269:218:99",
               "text": "@notice Returns ceil(x / y)\n @dev division by 0 has unspecified behavior, and must be checked externally\n @param x The dividend\n @param y The divisor\n @return z The quotient, ceil(x / y)"
             },
-            "id": 19952,
+            "id": 20071,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "divRoundingUp",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 19946,
+              "id": 20065,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 19943,
+                  "id": 20062,
                   "mutability": "mutable",
                   "name": "x",
                   "nodeType": "VariableDeclaration",
-                  "scope": 19952,
+                  "scope": 20071,
                   "src": "515:9:99",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -222,7 +222,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 19942,
+                    "id": 20061,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "515:7:99",
@@ -235,11 +235,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 19945,
+                  "id": 20064,
                   "mutability": "mutable",
                   "name": "y",
                   "nodeType": "VariableDeclaration",
-                  "scope": 19952,
+                  "scope": 20071,
                   "src": "526:9:99",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -248,7 +248,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 19944,
+                    "id": 20063,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "526:7:99",
@@ -263,16 +263,16 @@
               "src": "514:22:99"
             },
             "returnParameters": {
-              "id": 19949,
+              "id": 20068,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 19948,
+                  "id": 20067,
                   "mutability": "mutable",
                   "name": "z",
                   "nodeType": "VariableDeclaration",
-                  "scope": 19952,
+                  "scope": 20071,
                   "src": "560:9:99",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -281,7 +281,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 19947,
+                    "id": 20066,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "560:7:99",
@@ -295,14 +295,14 @@
               ],
               "src": "559:11:99"
             },
-            "scope": 19953,
+            "scope": 20072,
             "src": "492:165:99",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 19954,
+        "scope": 20073,
         "src": "244:415:99"
       }
     ],
@@ -313,7 +313,7 @@
       "absolutePath": "project:/contracts/libraries/UnsafeMath.sol",
       "exportedSymbols": {
         "UnsafeMath": [
-          19953
+          20072
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -328,7 +328,7 @@
             ".0"
           ]
         },
-        "id": 19939,
+        "id": 20058,
         "name": "PragmaDirective",
         "src": "45:24:99"
       },
@@ -344,17 +344,17 @@
           "contractKind": "library",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            19953
+            20072
           ],
           "name": "UnsafeMath",
-          "scope": 19954
+          "scope": 20073
         },
         "children": [
           {
             "attributes": {
               "text": "@title Math functions that do not check inputs or outputs\n @notice Contains methods that perform common math functions but do not do any overflow or underflow checks"
             },
-            "id": 19940,
+            "id": 20059,
             "name": "StructuredDocumentation",
             "src": "71:173:99"
           },
@@ -367,7 +367,7 @@
                 null
               ],
               "name": "divRoundingUp",
-              "scope": 19953,
+              "scope": 20072,
               "stateMutability": "pure",
               "virtual": false,
               "visibility": "internal"
@@ -377,7 +377,7 @@
                 "attributes": {
                   "text": "@notice Returns ceil(x / y)\n @dev division by 0 has unspecified behavior, and must be checked externally\n @param x The dividend\n @param y The divisor\n @return z The quotient, ceil(x / y)"
                 },
-                "id": 19941,
+                "id": 20060,
                 "name": "StructuredDocumentation",
                 "src": "269:218:99"
               },
@@ -388,7 +388,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "x",
-                      "scope": 19952,
+                      "scope": 20071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -400,12 +400,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 19942,
+                        "id": 20061,
                         "name": "ElementaryTypeName",
                         "src": "515:7:99"
                       }
                     ],
-                    "id": 19943,
+                    "id": 20062,
                     "name": "VariableDeclaration",
                     "src": "515:9:99"
                   },
@@ -414,7 +414,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "y",
-                      "scope": 19952,
+                      "scope": 20071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -426,17 +426,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 19944,
+                        "id": 20063,
                         "name": "ElementaryTypeName",
                         "src": "526:7:99"
                       }
                     ],
-                    "id": 19945,
+                    "id": 20064,
                     "name": "VariableDeclaration",
                     "src": "526:9:99"
                   }
                 ],
-                "id": 19946,
+                "id": 20065,
                 "name": "ParameterList",
                 "src": "514:22:99"
               },
@@ -447,7 +447,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "z",
-                      "scope": 19952,
+                      "scope": 20071,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -459,17 +459,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 19947,
+                        "id": 20066,
                         "name": "ElementaryTypeName",
                         "src": "560:7:99"
                       }
                     ],
-                    "id": 19948,
+                    "id": 20067,
                     "name": "VariableDeclaration",
                     "src": "560:9:99"
                   }
                 ],
-                "id": 19949,
+                "id": 20068,
                 "name": "ParameterList",
                 "src": "559:11:99"
               },
@@ -480,35 +480,35 @@
                       "evmVersion": "istanbul",
                       "externalReferences": [
                         {
-                          "declaration": 19943,
+                          "declaration": 20062,
                           "isOffset": false,
                           "isSlot": false,
                           "src": "617:1:99",
                           "valueSize": 1
                         },
                         {
-                          "declaration": 19943,
+                          "declaration": 20062,
                           "isOffset": false,
                           "isSlot": false,
                           "src": "631:1:99",
                           "valueSize": 1
                         },
                         {
-                          "declaration": 19945,
+                          "declaration": 20064,
                           "isOffset": false,
                           "isSlot": false,
                           "src": "620:1:99",
                           "valueSize": 1
                         },
                         {
-                          "declaration": 19945,
+                          "declaration": 20064,
                           "isOffset": false,
                           "isSlot": false,
                           "src": "634:1:99",
                           "valueSize": 1
                         },
                         {
-                          "declaration": 19948,
+                          "declaration": 20067,
                           "isOffset": false,
                           "isSlot": false,
                           "src": "604:1:99",
@@ -518,27 +518,27 @@
                       "operations": "{\n    z := add(div(x, y), gt(mod(x, y), 0))\n}"
                     },
                     "children": [],
-                    "id": 19950,
+                    "id": 20069,
                     "name": "InlineAssembly",
                     "src": "581:70:99"
                   }
                 ],
-                "id": 19951,
+                "id": 20070,
                 "name": "Block",
                 "src": "571:86:99"
               }
             ],
-            "id": 19952,
+            "id": 20071,
             "name": "FunctionDefinition",
             "src": "492:165:99"
           }
         ],
-        "id": 19953,
+        "id": 20072,
         "name": "ContractDefinition",
         "src": "244:415:99"
       }
     ],
-    "id": 19954,
+    "id": 20073,
     "name": "SourceUnit",
     "src": "45:615:99"
   },
@@ -548,7 +548,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:24.053Z",
+  "updatedAt": "2023-07-05T17:56:23.624Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

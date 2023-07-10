@@ -44,7 +44,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title An interface for a contract that is capable of deploying Uniswap V3 Pools\n/// @notice A contract that constructs a pool must implement this to pass arguments to the pool\n/// @dev This is used to avoid having constructor arguments in the pool contract, which results in the init code hash\n/// of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain\ninterface IUniswapV3PoolDeployer {\n    /// @notice Get the parameters to be used in constructing the pool, set transiently during pool creation.\n    /// @dev Called by the pool constructor to fetch the parameters of the pool\n    /// Returns factory The factory address\n    /// Returns token0 The first token of the pool by address sort order\n    /// Returns token1 The second token of the pool by address sort order\n    /// Returns fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n    /// Returns tickSpacing The minimum number of ticks between initialized ticks\n    function parameters()\n        external\n        view\n        returns (\n            address factory,\n            address token0,\n            address token1,\n            uint24 fee,\n            int24 tickSpacing\n        );\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IUniswapV3PoolDeployer.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IUniswapV3PoolDeployer.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IUniswapV3PoolDeployer.sol",
     "exportedSymbols": {
@@ -505,7 +505,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.516Z",
+  "updatedAt": "2023-07-05T17:57:59.893Z",
   "devdoc": {
     "details": "This is used to avoid having constructor arguments in the pool contract, which results in the init code hash of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain",
     "kind": "dev",

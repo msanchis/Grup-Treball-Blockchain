@@ -233,7 +233,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\n\nimport './IPeripheryPaymentsWithFee.sol';\n\nimport './IPeripheryPaymentsExtended.sol';\n\n/// @title Periphery Payments With Fee Extended\n/// @notice Functions to ease deposits and withdrawals of ETH\ninterface IPeripheryPaymentsWithFeeExtended is IPeripheryPaymentsExtended, IPeripheryPaymentsWithFee {\n    /// @notice Unwraps the contract's WETH9 balance and sends it to msg.sender as ETH, with a percentage between\n    /// 0 (exclusive), and 1 (inclusive) going to feeRecipient\n    /// @dev The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users.\n    function unwrapWETH9WithFee(\n        uint256 amountMinimum,\n        uint256 feeBips,\n        address feeRecipient\n    ) external payable;\n\n    /// @notice Transfers the full amount of a token held by this contract to msg.sender, with a percentage between\n    /// 0 (exclusive) and 1 (inclusive) going to feeRecipient\n    /// @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users\n    function sweepTokenWithFee(\n        address token,\n        uint256 amountMinimum,\n        uint256 feeBips,\n        address feeRecipient\n    ) external payable;\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol",
     "exportedSymbols": {
@@ -1026,7 +1026,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.509Z",
+  "updatedAt": "2023-07-05T17:57:59.863Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

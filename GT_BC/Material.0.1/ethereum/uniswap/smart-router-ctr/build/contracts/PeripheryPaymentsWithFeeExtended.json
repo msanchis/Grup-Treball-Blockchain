@@ -263,59 +263,59 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\n\nimport './PeripheryPaymentsWithFee.sol';\n\nimport '../interfaces/IPeripheryPaymentsWithFeeExtended.sol';\nimport './PeripheryPaymentsExtended.sol';\n\nabstract contract PeripheryPaymentsWithFeeExtended is\n    IPeripheryPaymentsWithFeeExtended,\n    PeripheryPaymentsExtended,\n    PeripheryPaymentsWithFee\n{\n    /// @inheritdoc IPeripheryPaymentsWithFeeExtended\n    function unwrapWETH9WithFee(\n        uint256 amountMinimum,\n        uint256 feeBips,\n        address feeRecipient\n    ) external payable override {\n        unwrapWETH9WithFee(amountMinimum, msg.sender, feeBips, feeRecipient);\n    }\n\n    /// @inheritdoc IPeripheryPaymentsWithFeeExtended\n    function sweepTokenWithFee(\n        address token,\n        uint256 amountMinimum,\n        uint256 feeBips,\n        address feeRecipient\n    ) external payable override {\n        sweepTokenWithFee(token, amountMinimum, msg.sender, feeBips, feeRecipient);\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/base/PeripheryPaymentsWithFeeExtended.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/base/PeripheryPaymentsWithFeeExtended.sol",
   "ast": {
     "absolutePath": "project:/contracts/base/PeripheryPaymentsWithFeeExtended.sol",
     "exportedSymbols": {
       "IERC20": [
-        7011
+        8482
       ],
       "IPeripheryImmutableState": [
-        7589
+        9146
       ],
       "IPeripheryPayments": [
-        7615
+        9172
       ],
       "IPeripheryPaymentsExtended": [
-        7650
+        9207
       ],
       "IPeripheryPaymentsWithFee": [
-        7683
+        9240
       ],
       "IPeripheryPaymentsWithFeeExtended": [
-        7715
+        9272
       ],
       "IWETH9": [
-        8518
+        10349
       ],
       "LowGasSafeMath": [
-        9813
+        14525
       ],
       "PeripheryImmutableState": [
-        5990
+        7461
       ],
       "PeripheryPayments": [
-        6200
+        7671
       ],
       "PeripheryPaymentsExtended": [
-        6280
+        7751
       ],
       "PeripheryPaymentsWithFee": [
-        6461
+        7932
       ],
       "PeripheryPaymentsWithFeeExtended": [
-        6516
+        7987
       ],
       "TransferHelper": [
-        12888
+        23710
       ]
     },
-    "id": 6517,
+    "id": 7988,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6463,
+        "id": 7934,
         "literals": [
           "solidity",
           ">=",
@@ -323,38 +323,38 @@
           ".5"
         ],
         "nodeType": "PragmaDirective",
-        "src": "45:24:23"
+        "src": "45:24:30"
       },
       {
         "absolutePath": "project:/contracts/base/PeripheryPaymentsWithFee.sol",
         "file": "./PeripheryPaymentsWithFee.sol",
-        "id": 6464,
+        "id": 7935,
         "nodeType": "ImportDirective",
-        "scope": 6517,
-        "sourceUnit": 6462,
-        "src": "71:40:23",
+        "scope": 7988,
+        "sourceUnit": 7933,
+        "src": "71:40:30",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "project:/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol",
         "file": "../interfaces/IPeripheryPaymentsWithFeeExtended.sol",
-        "id": 6465,
+        "id": 7936,
         "nodeType": "ImportDirective",
-        "scope": 6517,
-        "sourceUnit": 7716,
-        "src": "113:61:23",
+        "scope": 7988,
+        "sourceUnit": 9273,
+        "src": "113:61:30",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "project:/contracts/base/PeripheryPaymentsExtended.sol",
         "file": "./PeripheryPaymentsExtended.sol",
-        "id": 6466,
+        "id": 7937,
         "nodeType": "ImportDirective",
-        "scope": 6517,
-        "sourceUnit": 6281,
-        "src": "175:41:23",
+        "scope": 7988,
+        "sourceUnit": 7752,
+        "src": "175:41:30",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -363,101 +363,101 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 6467,
+              "id": 7938,
               "name": "IPeripheryPaymentsWithFeeExtended",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 7715,
-              "src": "276:33:23",
+              "referencedDeclaration": 9272,
+              "src": "276:33:30",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPeripheryPaymentsWithFeeExtended_$7715",
+                "typeIdentifier": "t_contract$_IPeripheryPaymentsWithFeeExtended_$9272",
                 "typeString": "contract IPeripheryPaymentsWithFeeExtended"
               }
             },
-            "id": 6468,
+            "id": 7939,
             "nodeType": "InheritanceSpecifier",
-            "src": "276:33:23"
+            "src": "276:33:30"
           },
           {
             "baseName": {
-              "id": 6469,
+              "id": 7940,
               "name": "PeripheryPaymentsExtended",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6280,
-              "src": "315:25:23",
+              "referencedDeclaration": 7751,
+              "src": "315:25:30",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PeripheryPaymentsExtended_$6280",
+                "typeIdentifier": "t_contract$_PeripheryPaymentsExtended_$7751",
                 "typeString": "contract PeripheryPaymentsExtended"
               }
             },
-            "id": 6470,
+            "id": 7941,
             "nodeType": "InheritanceSpecifier",
-            "src": "315:25:23"
+            "src": "315:25:30"
           },
           {
             "baseName": {
-              "id": 6471,
+              "id": 7942,
               "name": "PeripheryPaymentsWithFee",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6461,
-              "src": "346:24:23",
+              "referencedDeclaration": 7932,
+              "src": "346:24:30",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PeripheryPaymentsWithFee_$6461",
+                "typeIdentifier": "t_contract$_PeripheryPaymentsWithFee_$7932",
                 "typeString": "contract PeripheryPaymentsWithFee"
               }
             },
-            "id": 6472,
+            "id": 7943,
             "nodeType": "InheritanceSpecifier",
-            "src": "346:24:23"
+            "src": "346:24:30"
           }
         ],
         "contractDependencies": [
-          5990,
-          6200,
-          6280,
-          6461,
-          7589,
-          7615,
-          7650,
-          7683,
-          7715
+          7461,
+          7671,
+          7751,
+          7932,
+          9146,
+          9172,
+          9207,
+          9240,
+          9272
         ],
         "contractKind": "contract",
         "fullyImplemented": false,
-        "id": 6516,
+        "id": 7987,
         "linearizedBaseContracts": [
-          6516,
-          6461,
-          6280,
-          7715,
-          7683,
-          6200,
-          5990,
-          7589,
-          7650,
-          7615
+          7987,
+          7932,
+          7751,
+          9272,
+          9240,
+          7671,
+          7461,
+          9146,
+          9207,
+          9172
         ],
         "name": "PeripheryPaymentsWithFeeExtended",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              7702
+              9259
             ],
             "body": {
-              "id": 6491,
+              "id": 7962,
               "nodeType": "Block",
-              "src": "577:85:23",
+              "src": "577:85:30",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 6484,
+                        "id": 7955,
                         "name": "amountMinimum",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6475,
-                        "src": "606:13:23",
+                        "referencedDeclaration": 7946,
+                        "src": "606:13:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -465,49 +465,49 @@
                       },
                       {
                         "expression": {
-                          "id": 6485,
+                          "id": 7956,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967281,
-                          "src": "621:3:23",
+                          "src": "621:3:30",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 6486,
+                        "id": 7957,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
-                        "src": "621:10:23",
+                        "src": "621:10:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
                         }
                       },
                       {
-                        "id": 6487,
+                        "id": 7958,
                         "name": "feeBips",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6477,
-                        "src": "633:7:23",
+                        "referencedDeclaration": 7948,
+                        "src": "633:7:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       },
                       {
-                        "id": 6488,
+                        "id": 7959,
                         "name": "feeRecipient",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6479,
-                        "src": "642:12:23",
+                        "referencedDeclaration": 7950,
+                        "src": "642:12:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -533,18 +533,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 6483,
+                      "id": 7954,
                       "name": "unwrapWETH9WithFee",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6379,
-                      "src": "587:18:23",
+                      "referencedDeclaration": 7850,
+                      "src": "587:18:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_address_$_t_uint256_$_t_address_$returns$__$",
                         "typeString": "function (uint256,address,uint256,address)"
                       }
                     },
-                    "id": 6489,
+                    "id": 7960,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -552,50 +552,50 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "587:68:23",
+                    "src": "587:68:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 6490,
+                  "id": 7961,
                   "nodeType": "ExpressionStatement",
-                  "src": "587:68:23"
+                  "src": "587:68:30"
                 }
               ]
             },
             "documentation": {
-              "id": 6473,
+              "id": 7944,
               "nodeType": "StructuredDocumentation",
-              "src": "377:49:23",
+              "src": "377:49:30",
               "text": "@inheritdoc IPeripheryPaymentsWithFeeExtended"
             },
             "functionSelector": "d4ef38de",
-            "id": 6492,
+            "id": 7963,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "unwrapWETH9WithFee",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 6481,
+              "id": 7952,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "568:8:23"
+              "src": "568:8:30"
             },
             "parameters": {
-              "id": 6480,
+              "id": 7951,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6475,
+                  "id": 7946,
                   "mutability": "mutable",
                   "name": "amountMinimum",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6492,
-                  "src": "468:21:23",
+                  "scope": 7963,
+                  "src": "468:21:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -603,10 +603,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6474,
+                    "id": 7945,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "468:7:23",
+                    "src": "468:7:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -616,12 +616,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6477,
+                  "id": 7948,
                   "mutability": "mutable",
                   "name": "feeBips",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6492,
-                  "src": "499:15:23",
+                  "scope": 7963,
+                  "src": "499:15:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -629,10 +629,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6476,
+                    "id": 7947,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "499:7:23",
+                    "src": "499:7:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -642,12 +642,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6479,
+                  "id": 7950,
                   "mutability": "mutable",
                   "name": "feeRecipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6492,
-                  "src": "524:20:23",
+                  "scope": 7963,
+                  "src": "524:20:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -655,10 +655,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6478,
+                    "id": 7949,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "524:7:23",
+                    "src": "524:7:30",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -668,51 +668,51 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "458:92:23"
+              "src": "458:92:30"
             },
             "returnParameters": {
-              "id": 6482,
+              "id": 7953,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "577:0:23"
+              "src": "577:0:30"
             },
-            "scope": 6516,
-            "src": "431:231:23",
+            "scope": 7987,
+            "src": "431:231:30",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "baseFunctions": [
-              7714
+              9271
             ],
             "body": {
-              "id": 6514,
+              "id": 7985,
               "nodeType": "Block",
-              "src": "890:91:23",
+              "src": "890:91:30",
               "statements": [
                 {
                   "expression": {
                     "arguments": [
                       {
-                        "id": 6506,
+                        "id": 7977,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6495,
-                        "src": "918:5:23",
+                        "referencedDeclaration": 7966,
+                        "src": "918:5:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         }
                       },
                       {
-                        "id": 6507,
+                        "id": 7978,
                         "name": "amountMinimum",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6497,
-                        "src": "925:13:23",
+                        "referencedDeclaration": 7968,
+                        "src": "925:13:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -720,49 +720,49 @@
                       },
                       {
                         "expression": {
-                          "id": 6508,
+                          "id": 7979,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4294967281,
-                          "src": "940:3:23",
+                          "src": "940:3:30",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 6509,
+                        "id": 7980,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
-                        "src": "940:10:23",
+                        "src": "940:10:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
                         }
                       },
                       {
-                        "id": 6510,
+                        "id": 7981,
                         "name": "feeBips",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6499,
-                        "src": "952:7:23",
+                        "referencedDeclaration": 7970,
+                        "src": "952:7:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       },
                       {
-                        "id": 6511,
+                        "id": 7982,
                         "name": "feeRecipient",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6501,
-                        "src": "961:12:23",
+                        "referencedDeclaration": 7972,
+                        "src": "961:12:30",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -792,18 +792,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 6505,
+                      "id": 7976,
                       "name": "sweepTokenWithFee",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6460,
-                      "src": "900:17:23",
+                      "referencedDeclaration": 7931,
+                      "src": "900:17:30",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$_t_address_$_t_uint256_$_t_address_$returns$__$",
                         "typeString": "function (address,uint256,address,uint256,address)"
                       }
                     },
-                    "id": 6512,
+                    "id": 7983,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -811,50 +811,50 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "900:74:23",
+                    "src": "900:74:30",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 6513,
+                  "id": 7984,
                   "nodeType": "ExpressionStatement",
-                  "src": "900:74:23"
+                  "src": "900:74:30"
                 }
               ]
             },
             "documentation": {
-              "id": 6493,
+              "id": 7964,
               "nodeType": "StructuredDocumentation",
-              "src": "668:49:23",
+              "src": "668:49:30",
               "text": "@inheritdoc IPeripheryPaymentsWithFeeExtended"
             },
             "functionSelector": "3068c554",
-            "id": 6515,
+            "id": 7986,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "sweepTokenWithFee",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 6503,
+              "id": 7974,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
-              "src": "881:8:23"
+              "src": "881:8:30"
             },
             "parameters": {
-              "id": 6502,
+              "id": 7973,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6495,
+                  "id": 7966,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6515,
-                  "src": "758:13:23",
+                  "scope": 7986,
+                  "src": "758:13:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -862,10 +862,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6494,
+                    "id": 7965,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "758:7:23",
+                    "src": "758:7:30",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -876,12 +876,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6497,
+                  "id": 7968,
                   "mutability": "mutable",
                   "name": "amountMinimum",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6515,
-                  "src": "781:21:23",
+                  "scope": 7986,
+                  "src": "781:21:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -889,10 +889,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6496,
+                    "id": 7967,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "781:7:23",
+                    "src": "781:7:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -902,12 +902,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6499,
+                  "id": 7970,
                   "mutability": "mutable",
                   "name": "feeBips",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6515,
-                  "src": "812:15:23",
+                  "scope": 7986,
+                  "src": "812:15:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -915,10 +915,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6498,
+                    "id": 7969,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "812:7:23",
+                    "src": "812:7:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -928,12 +928,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6501,
+                  "id": 7972,
                   "mutability": "mutable",
                   "name": "feeRecipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6515,
-                  "src": "837:20:23",
+                  "scope": 7986,
+                  "src": "837:20:30",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -941,10 +941,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6500,
+                    "id": 7971,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "837:7:23",
+                    "src": "837:7:30",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -954,72 +954,72 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "748:115:23"
+              "src": "748:115:30"
             },
             "returnParameters": {
-              "id": 6504,
+              "id": 7975,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "890:0:23"
+              "src": "890:0:30"
             },
-            "scope": 6516,
-            "src": "722:259:23",
+            "scope": 7987,
+            "src": "722:259:30",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6517,
-        "src": "218:765:23"
+        "scope": 7988,
+        "src": "218:765:30"
       }
     ],
-    "src": "45:939:23"
+    "src": "45:939:30"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/base/PeripheryPaymentsWithFeeExtended.sol",
       "exportedSymbols": {
         "IERC20": [
-          7011
+          8482
         ],
         "IPeripheryImmutableState": [
-          7589
+          9146
         ],
         "IPeripheryPayments": [
-          7615
+          9172
         ],
         "IPeripheryPaymentsExtended": [
-          7650
+          9207
         ],
         "IPeripheryPaymentsWithFee": [
-          7683
+          9240
         ],
         "IPeripheryPaymentsWithFeeExtended": [
-          7715
+          9272
         ],
         "IWETH9": [
-          8518
+          10349
         ],
         "LowGasSafeMath": [
-          9813
+          14525
         ],
         "PeripheryImmutableState": [
-          5990
+          7461
         ],
         "PeripheryPayments": [
-          6200
+          7671
         ],
         "PeripheryPaymentsExtended": [
-          6280
+          7751
         ],
         "PeripheryPaymentsWithFee": [
-          6461
+          7932
         ],
         "PeripheryPaymentsWithFeeExtended": [
-          6516
+          7987
         ],
         "TransferHelper": [
-          12888
+          23710
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -1034,85 +1034,85 @@
             ".5"
           ]
         },
-        "id": 6463,
+        "id": 7934,
         "name": "PragmaDirective",
-        "src": "45:24:23"
+        "src": "45:24:30"
       },
       {
         "attributes": {
-          "SourceUnit": 6462,
+          "SourceUnit": 7933,
           "absolutePath": "project:/contracts/base/PeripheryPaymentsWithFee.sol",
           "file": "./PeripheryPaymentsWithFee.sol",
-          "scope": 6517,
+          "scope": 7988,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6464,
+        "id": 7935,
         "name": "ImportDirective",
-        "src": "71:40:23"
+        "src": "71:40:30"
       },
       {
         "attributes": {
-          "SourceUnit": 7716,
+          "SourceUnit": 9273,
           "absolutePath": "project:/contracts/interfaces/IPeripheryPaymentsWithFeeExtended.sol",
           "file": "../interfaces/IPeripheryPaymentsWithFeeExtended.sol",
-          "scope": 6517,
+          "scope": 7988,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6465,
+        "id": 7936,
         "name": "ImportDirective",
-        "src": "113:61:23"
+        "src": "113:61:30"
       },
       {
         "attributes": {
-          "SourceUnit": 6281,
+          "SourceUnit": 7752,
           "absolutePath": "project:/contracts/base/PeripheryPaymentsExtended.sol",
           "file": "./PeripheryPaymentsExtended.sol",
-          "scope": 6517,
+          "scope": 7988,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6466,
+        "id": 7937,
         "name": "ImportDirective",
-        "src": "175:41:23"
+        "src": "175:41:30"
       },
       {
         "attributes": {
           "abstract": true,
           "contractDependencies": [
-            5990,
-            6200,
-            6280,
-            6461,
-            7589,
-            7615,
-            7650,
-            7683,
-            7715
+            7461,
+            7671,
+            7751,
+            7932,
+            9146,
+            9172,
+            9207,
+            9240,
+            9272
           ],
           "contractKind": "contract",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            6516,
-            6461,
-            6280,
-            7715,
-            7683,
-            6200,
-            5990,
-            7589,
-            7650,
-            7615
+            7987,
+            7932,
+            7751,
+            9272,
+            9240,
+            7671,
+            7461,
+            9146,
+            9207,
+            9172
           ],
           "name": "PeripheryPaymentsWithFeeExtended",
-          "scope": 6517
+          "scope": 7988
         },
         "children": [
           {
@@ -1121,17 +1121,17 @@
               {
                 "attributes": {
                   "name": "IPeripheryPaymentsWithFeeExtended",
-                  "referencedDeclaration": 7715,
+                  "referencedDeclaration": 9272,
                   "type": "contract IPeripheryPaymentsWithFeeExtended"
                 },
-                "id": 6467,
+                "id": 7938,
                 "name": "UserDefinedTypeName",
-                "src": "276:33:23"
+                "src": "276:33:30"
               }
             ],
-            "id": 6468,
+            "id": 7939,
             "name": "InheritanceSpecifier",
-            "src": "276:33:23"
+            "src": "276:33:30"
           },
           {
             "attributes": {},
@@ -1139,17 +1139,17 @@
               {
                 "attributes": {
                   "name": "PeripheryPaymentsExtended",
-                  "referencedDeclaration": 6280,
+                  "referencedDeclaration": 7751,
                   "type": "contract PeripheryPaymentsExtended"
                 },
-                "id": 6469,
+                "id": 7940,
                 "name": "UserDefinedTypeName",
-                "src": "315:25:23"
+                "src": "315:25:30"
               }
             ],
-            "id": 6470,
+            "id": 7941,
             "name": "InheritanceSpecifier",
-            "src": "315:25:23"
+            "src": "315:25:30"
           },
           {
             "attributes": {},
@@ -1157,22 +1157,22 @@
               {
                 "attributes": {
                   "name": "PeripheryPaymentsWithFee",
-                  "referencedDeclaration": 6461,
+                  "referencedDeclaration": 7932,
                   "type": "contract PeripheryPaymentsWithFee"
                 },
-                "id": 6471,
+                "id": 7942,
                 "name": "UserDefinedTypeName",
-                "src": "346:24:23"
+                "src": "346:24:30"
               }
             ],
-            "id": 6472,
+            "id": 7943,
             "name": "InheritanceSpecifier",
-            "src": "346:24:23"
+            "src": "346:24:30"
           },
           {
             "attributes": {
               "baseFunctions": [
-                7702
+                9259
               ],
               "functionSelector": "d4ef38de",
               "implemented": true,
@@ -1182,7 +1182,7 @@
                 null
               ],
               "name": "unwrapWETH9WithFee",
-              "scope": 6516,
+              "scope": 7987,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -1192,9 +1192,9 @@
                 "attributes": {
                   "text": "@inheritdoc IPeripheryPaymentsWithFeeExtended"
                 },
-                "id": 6473,
+                "id": 7944,
                 "name": "StructuredDocumentation",
-                "src": "377:49:23"
+                "src": "377:49:30"
               },
               {
                 "attributes": {
@@ -1202,9 +1202,9 @@
                     null
                   ]
                 },
-                "id": 6481,
+                "id": 7952,
                 "name": "OverrideSpecifier",
-                "src": "568:8:23"
+                "src": "568:8:30"
               },
               {
                 "children": [
@@ -1213,7 +1213,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "amountMinimum",
-                      "scope": 6492,
+                      "scope": 7963,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1225,21 +1225,21 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6474,
+                        "id": 7945,
                         "name": "ElementaryTypeName",
-                        "src": "468:7:23"
+                        "src": "468:7:30"
                       }
                     ],
-                    "id": 6475,
+                    "id": 7946,
                     "name": "VariableDeclaration",
-                    "src": "468:21:23"
+                    "src": "468:21:30"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeBips",
-                      "scope": 6492,
+                      "scope": 7963,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1251,21 +1251,21 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6476,
+                        "id": 7947,
                         "name": "ElementaryTypeName",
-                        "src": "499:7:23"
+                        "src": "499:7:30"
                       }
                     ],
-                    "id": 6477,
+                    "id": 7948,
                     "name": "VariableDeclaration",
-                    "src": "499:15:23"
+                    "src": "499:15:30"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeRecipient",
-                      "scope": 6492,
+                      "scope": 7963,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1278,19 +1278,19 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6478,
+                        "id": 7949,
                         "name": "ElementaryTypeName",
-                        "src": "524:7:23"
+                        "src": "524:7:30"
                       }
                     ],
-                    "id": 6479,
+                    "id": 7950,
                     "name": "VariableDeclaration",
-                    "src": "524:20:23"
+                    "src": "524:20:30"
                   }
                 ],
-                "id": 6480,
+                "id": 7951,
                 "name": "ParameterList",
-                "src": "458:92:23"
+                "src": "458:92:30"
               },
               {
                 "attributes": {
@@ -1299,9 +1299,9 @@
                   ]
                 },
                 "children": [],
-                "id": 6482,
+                "id": 7953,
                 "name": "ParameterList",
-                "src": "577:0:23"
+                "src": "577:0:30"
               },
               {
                 "children": [
@@ -1345,26 +1345,26 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6379,
+                              "referencedDeclaration": 7850,
                               "type": "function (uint256,address,uint256,address)",
                               "value": "unwrapWETH9WithFee"
                             },
-                            "id": 6483,
+                            "id": 7954,
                             "name": "Identifier",
-                            "src": "587:18:23"
+                            "src": "587:18:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6475,
+                              "referencedDeclaration": 7946,
                               "type": "uint256",
                               "value": "amountMinimum"
                             },
-                            "id": 6484,
+                            "id": 7955,
                             "name": "Identifier",
-                            "src": "606:13:23"
+                            "src": "606:13:30"
                           },
                           {
                             "attributes": {
@@ -1385,65 +1385,65 @@
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 6485,
+                                "id": 7956,
                                 "name": "Identifier",
-                                "src": "621:3:23"
+                                "src": "621:3:30"
                               }
                             ],
-                            "id": 6486,
+                            "id": 7957,
                             "name": "MemberAccess",
-                            "src": "621:10:23"
+                            "src": "621:10:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6477,
+                              "referencedDeclaration": 7948,
                               "type": "uint256",
                               "value": "feeBips"
                             },
-                            "id": 6487,
+                            "id": 7958,
                             "name": "Identifier",
-                            "src": "633:7:23"
+                            "src": "633:7:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6479,
+                              "referencedDeclaration": 7950,
                               "type": "address",
                               "value": "feeRecipient"
                             },
-                            "id": 6488,
+                            "id": 7959,
                             "name": "Identifier",
-                            "src": "642:12:23"
+                            "src": "642:12:30"
                           }
                         ],
-                        "id": 6489,
+                        "id": 7960,
                         "name": "FunctionCall",
-                        "src": "587:68:23"
+                        "src": "587:68:30"
                       }
                     ],
-                    "id": 6490,
+                    "id": 7961,
                     "name": "ExpressionStatement",
-                    "src": "587:68:23"
+                    "src": "587:68:30"
                   }
                 ],
-                "id": 6491,
+                "id": 7962,
                 "name": "Block",
-                "src": "577:85:23"
+                "src": "577:85:30"
               }
             ],
-            "id": 6492,
+            "id": 7963,
             "name": "FunctionDefinition",
-            "src": "431:231:23"
+            "src": "431:231:30"
           },
           {
             "attributes": {
               "baseFunctions": [
-                7714
+                9271
               ],
               "functionSelector": "3068c554",
               "implemented": true,
@@ -1453,7 +1453,7 @@
                 null
               ],
               "name": "sweepTokenWithFee",
-              "scope": 6516,
+              "scope": 7987,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -1463,9 +1463,9 @@
                 "attributes": {
                   "text": "@inheritdoc IPeripheryPaymentsWithFeeExtended"
                 },
-                "id": 6493,
+                "id": 7964,
                 "name": "StructuredDocumentation",
-                "src": "668:49:23"
+                "src": "668:49:30"
               },
               {
                 "attributes": {
@@ -1473,9 +1473,9 @@
                     null
                   ]
                 },
-                "id": 6503,
+                "id": 7974,
                 "name": "OverrideSpecifier",
-                "src": "881:8:23"
+                "src": "881:8:30"
               },
               {
                 "children": [
@@ -1484,7 +1484,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token",
-                      "scope": 6515,
+                      "scope": 7986,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1497,21 +1497,21 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6494,
+                        "id": 7965,
                         "name": "ElementaryTypeName",
-                        "src": "758:7:23"
+                        "src": "758:7:30"
                       }
                     ],
-                    "id": 6495,
+                    "id": 7966,
                     "name": "VariableDeclaration",
-                    "src": "758:13:23"
+                    "src": "758:13:30"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "amountMinimum",
-                      "scope": 6515,
+                      "scope": 7986,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1523,21 +1523,21 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6496,
+                        "id": 7967,
                         "name": "ElementaryTypeName",
-                        "src": "781:7:23"
+                        "src": "781:7:30"
                       }
                     ],
-                    "id": 6497,
+                    "id": 7968,
                     "name": "VariableDeclaration",
-                    "src": "781:21:23"
+                    "src": "781:21:30"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeBips",
-                      "scope": 6515,
+                      "scope": 7986,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1549,21 +1549,21 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6498,
+                        "id": 7969,
                         "name": "ElementaryTypeName",
-                        "src": "812:7:23"
+                        "src": "812:7:30"
                       }
                     ],
-                    "id": 6499,
+                    "id": 7970,
                     "name": "VariableDeclaration",
-                    "src": "812:15:23"
+                    "src": "812:15:30"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeRecipient",
-                      "scope": 6515,
+                      "scope": 7986,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1576,19 +1576,19 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6500,
+                        "id": 7971,
                         "name": "ElementaryTypeName",
-                        "src": "837:7:23"
+                        "src": "837:7:30"
                       }
                     ],
-                    "id": 6501,
+                    "id": 7972,
                     "name": "VariableDeclaration",
-                    "src": "837:20:23"
+                    "src": "837:20:30"
                   }
                 ],
-                "id": 6502,
+                "id": 7973,
                 "name": "ParameterList",
-                "src": "748:115:23"
+                "src": "748:115:30"
               },
               {
                 "attributes": {
@@ -1597,9 +1597,9 @@
                   ]
                 },
                 "children": [],
-                "id": 6504,
+                "id": 7975,
                 "name": "ParameterList",
-                "src": "890:0:23"
+                "src": "890:0:30"
               },
               {
                 "children": [
@@ -1647,39 +1647,39 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6460,
+                              "referencedDeclaration": 7931,
                               "type": "function (address,uint256,address,uint256,address)",
                               "value": "sweepTokenWithFee"
                             },
-                            "id": 6505,
+                            "id": 7976,
                             "name": "Identifier",
-                            "src": "900:17:23"
+                            "src": "900:17:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6495,
+                              "referencedDeclaration": 7966,
                               "type": "address",
                               "value": "token"
                             },
-                            "id": 6506,
+                            "id": 7977,
                             "name": "Identifier",
-                            "src": "918:5:23"
+                            "src": "918:5:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6497,
+                              "referencedDeclaration": 7968,
                               "type": "uint256",
                               "value": "amountMinimum"
                             },
-                            "id": 6507,
+                            "id": 7978,
                             "name": "Identifier",
-                            "src": "925:13:23"
+                            "src": "925:13:30"
                           },
                           {
                             "attributes": {
@@ -1700,70 +1700,70 @@
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 6508,
+                                "id": 7979,
                                 "name": "Identifier",
-                                "src": "940:3:23"
+                                "src": "940:3:30"
                               }
                             ],
-                            "id": 6509,
+                            "id": 7980,
                             "name": "MemberAccess",
-                            "src": "940:10:23"
+                            "src": "940:10:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6499,
+                              "referencedDeclaration": 7970,
                               "type": "uint256",
                               "value": "feeBips"
                             },
-                            "id": 6510,
+                            "id": 7981,
                             "name": "Identifier",
-                            "src": "952:7:23"
+                            "src": "952:7:30"
                           },
                           {
                             "attributes": {
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 6501,
+                              "referencedDeclaration": 7972,
                               "type": "address",
                               "value": "feeRecipient"
                             },
-                            "id": 6511,
+                            "id": 7982,
                             "name": "Identifier",
-                            "src": "961:12:23"
+                            "src": "961:12:30"
                           }
                         ],
-                        "id": 6512,
+                        "id": 7983,
                         "name": "FunctionCall",
-                        "src": "900:74:23"
+                        "src": "900:74:30"
                       }
                     ],
-                    "id": 6513,
+                    "id": 7984,
                     "name": "ExpressionStatement",
-                    "src": "900:74:23"
+                    "src": "900:74:30"
                   }
                 ],
-                "id": 6514,
+                "id": 7985,
                 "name": "Block",
-                "src": "890:91:23"
+                "src": "890:91:30"
               }
             ],
-            "id": 6515,
+            "id": 7986,
             "name": "FunctionDefinition",
-            "src": "722:259:23"
+            "src": "722:259:30"
           }
         ],
-        "id": 6516,
+        "id": 7987,
         "name": "ContractDefinition",
-        "src": "218:765:23"
+        "src": "218:765:30"
       }
     ],
-    "id": 6517,
+    "id": 7988,
     "name": "SourceUnit",
-    "src": "45:939:23"
+    "src": "45:939:30"
   },
   "compiler": {
     "name": "solc",
@@ -1771,7 +1771,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2023-02-28T23:47:39.616Z",
+  "updatedAt": "2023-07-05T17:57:59.805Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

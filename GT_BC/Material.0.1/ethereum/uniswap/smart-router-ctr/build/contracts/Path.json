@@ -10,7 +10,7 @@
   "sourceMap": "164:2622:108:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "164:2622:108:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.6.0;\n\nimport './BytesLib.sol';\n\n/// @title Functions for manipulating path data for multihop swaps\nlibrary Path {\n    using BytesLib for bytes;\n\n    /// @dev The length of the bytes encoded address\n    uint256 private constant ADDR_SIZE = 20;\n    /// @dev The length of the bytes encoded fee\n    uint256 private constant FEE_SIZE = 3;\n\n    /// @dev The offset of a single token address and pool fee\n    uint256 private constant NEXT_OFFSET = ADDR_SIZE + FEE_SIZE;\n    /// @dev The offset of an encoded pool key\n    uint256 private constant POP_OFFSET = NEXT_OFFSET + ADDR_SIZE;\n    /// @dev The minimum length of an encoding that contains 2 or more pools\n    uint256 private constant MULTIPLE_POOLS_MIN_LENGTH = POP_OFFSET + NEXT_OFFSET;\n\n    /// @notice Returns true iff the path contains two or more pools\n    /// @param path The encoded swap path\n    /// @return True if path contains two or more pools, otherwise false\n    function hasMultiplePools(bytes memory path) internal pure returns (bool) {\n        return path.length >= MULTIPLE_POOLS_MIN_LENGTH;\n    }\n\n    /// @notice Returns the number of pools in the path\n    /// @param path The encoded swap path\n    /// @return The number of pools in the path\n    function numPools(bytes memory path) internal pure returns (uint256) {\n        // Ignore the first token address. From then on every fee and token offset indicates a pool.\n        return ((path.length - ADDR_SIZE) / NEXT_OFFSET);\n    }\n\n    /// @notice Decodes the first pool in path\n    /// @param path The bytes encoded swap path\n    /// @return tokenA The first token of the given pool\n    /// @return tokenB The second token of the given pool\n    /// @return fee The fee level of the pool\n    function decodeFirstPool(bytes memory path)\n        internal\n        pure\n        returns (\n            address tokenA,\n            address tokenB,\n            uint24 fee\n        )\n    {\n        tokenA = path.toAddress(0);\n        fee = path.toUint24(ADDR_SIZE);\n        tokenB = path.toAddress(NEXT_OFFSET);\n    }\n\n    /// @notice Gets the segment corresponding to the first pool in the path\n    /// @param path The bytes encoded swap path\n    /// @return The segment containing all data necessary to target the first pool in the path\n    function getFirstPool(bytes memory path) internal pure returns (bytes memory) {\n        return path.slice(0, POP_OFFSET);\n    }\n\n    /// @notice Skips a token + fee element from the buffer and returns the remainder\n    /// @param path The swap path\n    /// @return The remaining token + fee elements in the path\n    function skipToken(bytes memory path) internal pure returns (bytes memory) {\n        return path.slice(NEXT_OFFSET, path.length - NEXT_OFFSET);\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/libraries/Path.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/libraries/Path.sol",
   "ast": {
     "absolutePath": "project:/contracts/libraries/Path.sol",
     "exportedSymbols": {
@@ -3377,7 +3377,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.594Z",
+  "updatedAt": "2023-07-05T17:58:00.358Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

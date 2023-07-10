@@ -10,7 +10,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: BUSL-1.1\npragma solidity =0.7.6;\n\n/// @title Prevents delegatecall to a contract\n/// @notice Base contract that provides a modifier for preventing delegatecall to methods in a child contract\nabstract contract NoDelegateCall {\n    /// @dev The original address of this contract\n    address private immutable original;\n\n    constructor() {\n        // Immutables are computed in the init code of the contract, and then inlined into the deployed bytecode.\n        // In other words, this variable won't change when it's checked at runtime.\n        original = address(this);\n    }\n\n    /// @dev Private method is used instead of inlining into modifier because modifiers are copied into each method,\n    ///     and the use of immutable means the address bytes are copied in every place the modifier is used.\n    function checkNotDelegateCall() private view {\n        require(address(this) == original);\n    }\n\n    /// @notice Prevents delegatecall into the modified method\n    modifier noDelegateCall() {\n        checkNotDelegateCall();\n        _;\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-core/contracts/NoDelegateCall.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-core/contracts/NoDelegateCall.sol",
   "ast": {
     "absolutePath": "project:/contracts/NoDelegateCall.sol",
     "exportedSymbols": {
@@ -978,7 +978,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2023-06-04T12:33:08.057Z",
+  "updatedAt": "2023-07-05T18:45:41.652Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

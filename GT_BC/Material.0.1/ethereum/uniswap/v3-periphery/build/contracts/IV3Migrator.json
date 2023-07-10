@@ -296,29 +296,29 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\npragma abicoder v2;\n\nimport './IMulticall.sol';\nimport './ISelfPermit.sol';\nimport './IPoolInitializer.sol';\n\n/// @title V3 Migrator\n/// @notice Enables migration of liqudity from Uniswap v2-compatible pairs into Uniswap v3 pools\ninterface IV3Migrator is IMulticall, ISelfPermit, IPoolInitializer {\n    struct MigrateParams {\n        address pair; // the Uniswap v2-compatible pair\n        uint256 liquidityToMigrate; // expected to be balanceOf(msg.sender)\n        uint8 percentageToMigrate; // represented as a numerator over 100\n        address token0;\n        address token1;\n        uint24 fee;\n        int24 tickLower;\n        int24 tickUpper;\n        uint256 amount0Min; // must be discounted by percentageToMigrate\n        uint256 amount1Min; // must be discounted by percentageToMigrate\n        address recipient;\n        uint256 deadline;\n        bool refundAsETH;\n    }\n\n    /// @notice Migrates liquidity to v3 by burning v2 liquidity and minting a new position for v3\n    /// @dev Slippage protection is enforced via `amount{0,1}Min`, which should be a discount of the expected values of\n    /// the maximum amount of v3 liquidity that the v2 liquidity can get. For the special case of migrating to an\n    /// out-of-range position, `amount{0,1}Min` may be set to 0, enforcing that the position remains out of range\n    /// @param params The params necessary to migrate v2 liquidity, encoded as `MigrateParams` in calldata\n    function migrate(MigrateParams calldata params) external;\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/interfaces/IV3Migrator.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/interfaces/IV3Migrator.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IV3Migrator.sol",
     "exportedSymbols": {
       "IMulticall": [
-        6465
+        6584
       ],
       "IPoolInitializer": [
-        6769
+        6888
       ],
       "ISelfPermit": [
-        6985
+        7104
       ],
       "IV3Migrator": [
-        7516
+        7635
       ]
     },
-    "id": 7517,
+    "id": 7636,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7471,
+        "id": 7590,
         "literals": [
           "solidity",
           ">=",
@@ -329,7 +329,7 @@
         "src": "45:24:50"
       },
       {
-        "id": 7472,
+        "id": 7591,
         "literals": [
           "abicoder",
           "v2"
@@ -340,10 +340,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IMulticall.sol",
         "file": "./IMulticall.sol",
-        "id": 7473,
+        "id": 7592,
         "nodeType": "ImportDirective",
-        "scope": 7517,
-        "sourceUnit": 6466,
+        "scope": 7636,
+        "sourceUnit": 6585,
         "src": "91:26:50",
         "symbolAliases": [],
         "unitAlias": ""
@@ -351,10 +351,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/ISelfPermit.sol",
         "file": "./ISelfPermit.sol",
-        "id": 7474,
+        "id": 7593,
         "nodeType": "ImportDirective",
-        "scope": 7517,
-        "sourceUnit": 6986,
+        "scope": 7636,
+        "sourceUnit": 7105,
         "src": "118:27:50",
         "symbolAliases": [],
         "unitAlias": ""
@@ -362,10 +362,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IPoolInitializer.sol",
         "file": "./IPoolInitializer.sol",
-        "id": 7475,
+        "id": 7594,
         "nodeType": "ImportDirective",
-        "scope": 7517,
-        "sourceUnit": 6770,
+        "scope": 7636,
+        "sourceUnit": 6889,
         "src": "146:32:50",
         "symbolAliases": [],
         "unitAlias": ""
@@ -375,87 +375,87 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 7477,
+              "id": 7596,
               "name": "IMulticall",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6465,
+              "referencedDeclaration": 6584,
               "src": "325:10:50",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IMulticall_$6465",
+                "typeIdentifier": "t_contract$_IMulticall_$6584",
                 "typeString": "contract IMulticall"
               }
             },
-            "id": 7478,
+            "id": 7597,
             "nodeType": "InheritanceSpecifier",
             "src": "325:10:50"
           },
           {
             "baseName": {
-              "id": 7479,
+              "id": 7598,
               "name": "ISelfPermit",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6985,
+              "referencedDeclaration": 7104,
               "src": "337:11:50",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISelfPermit_$6985",
+                "typeIdentifier": "t_contract$_ISelfPermit_$7104",
                 "typeString": "contract ISelfPermit"
               }
             },
-            "id": 7480,
+            "id": 7599,
             "nodeType": "InheritanceSpecifier",
             "src": "337:11:50"
           },
           {
             "baseName": {
-              "id": 7481,
+              "id": 7600,
               "name": "IPoolInitializer",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6769,
+              "referencedDeclaration": 6888,
               "src": "350:16:50",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPoolInitializer_$6769",
+                "typeIdentifier": "t_contract$_IPoolInitializer_$6888",
                 "typeString": "contract IPoolInitializer"
               }
             },
-            "id": 7482,
+            "id": 7601,
             "nodeType": "InheritanceSpecifier",
             "src": "350:16:50"
           }
         ],
         "contractDependencies": [
-          6465,
-          6769,
-          6985
+          6584,
+          6888,
+          7104
         ],
         "contractKind": "interface",
         "documentation": {
-          "id": 7476,
+          "id": 7595,
           "nodeType": "StructuredDocumentation",
           "src": "180:120:50",
           "text": "@title V3 Migrator\n @notice Enables migration of liqudity from Uniswap v2-compatible pairs into Uniswap v3 pools"
         },
         "fullyImplemented": false,
-        "id": 7516,
+        "id": 7635,
         "linearizedBaseContracts": [
-          7516,
-          6769,
-          6985,
-          6465
+          7635,
+          6888,
+          7104,
+          6584
         ],
         "name": "IV3Migrator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "IV3Migrator.MigrateParams",
-            "id": 7509,
+            "id": 7628,
             "members": [
               {
                 "constant": false,
-                "id": 7484,
+                "id": 7603,
                 "mutability": "mutable",
                 "name": "pair",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "404:12:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -464,7 +464,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7483,
+                  "id": 7602,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "404:7:50",
@@ -478,11 +478,11 @@
               },
               {
                 "constant": false,
-                "id": 7486,
+                "id": 7605,
                 "mutability": "mutable",
                 "name": "liquidityToMigrate",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "460:26:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -491,7 +491,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7485,
+                  "id": 7604,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "460:7:50",
@@ -504,11 +504,11 @@
               },
               {
                 "constant": false,
-                "id": 7488,
+                "id": 7607,
                 "mutability": "mutable",
                 "name": "percentageToMigrate",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "536:25:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -517,7 +517,7 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 7487,
+                  "id": 7606,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
                   "src": "536:5:50",
@@ -530,11 +530,11 @@
               },
               {
                 "constant": false,
-                "id": 7490,
+                "id": 7609,
                 "mutability": "mutable",
                 "name": "token0",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "610:14:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -543,7 +543,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7489,
+                  "id": 7608,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "610:7:50",
@@ -557,11 +557,11 @@
               },
               {
                 "constant": false,
-                "id": 7492,
+                "id": 7611,
                 "mutability": "mutable",
                 "name": "token1",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "634:14:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -570,7 +570,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7491,
+                  "id": 7610,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "634:7:50",
@@ -584,11 +584,11 @@
               },
               {
                 "constant": false,
-                "id": 7494,
+                "id": 7613,
                 "mutability": "mutable",
                 "name": "fee",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "658:10:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -597,7 +597,7 @@
                   "typeString": "uint24"
                 },
                 "typeName": {
-                  "id": 7493,
+                  "id": 7612,
                   "name": "uint24",
                   "nodeType": "ElementaryTypeName",
                   "src": "658:6:50",
@@ -610,11 +610,11 @@
               },
               {
                 "constant": false,
-                "id": 7496,
+                "id": 7615,
                 "mutability": "mutable",
                 "name": "tickLower",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "678:15:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -623,7 +623,7 @@
                   "typeString": "int24"
                 },
                 "typeName": {
-                  "id": 7495,
+                  "id": 7614,
                   "name": "int24",
                   "nodeType": "ElementaryTypeName",
                   "src": "678:5:50",
@@ -636,11 +636,11 @@
               },
               {
                 "constant": false,
-                "id": 7498,
+                "id": 7617,
                 "mutability": "mutable",
                 "name": "tickUpper",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "703:15:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -649,7 +649,7 @@
                   "typeString": "int24"
                 },
                 "typeName": {
-                  "id": 7497,
+                  "id": 7616,
                   "name": "int24",
                   "nodeType": "ElementaryTypeName",
                   "src": "703:5:50",
@@ -662,11 +662,11 @@
               },
               {
                 "constant": false,
-                "id": 7500,
+                "id": 7619,
                 "mutability": "mutable",
                 "name": "amount0Min",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "728:18:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -675,7 +675,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7499,
+                  "id": 7618,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "728:7:50",
@@ -688,11 +688,11 @@
               },
               {
                 "constant": false,
-                "id": 7502,
+                "id": 7621,
                 "mutability": "mutable",
                 "name": "amount1Min",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "801:18:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -701,7 +701,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7501,
+                  "id": 7620,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "801:7:50",
@@ -714,11 +714,11 @@
               },
               {
                 "constant": false,
-                "id": 7504,
+                "id": 7623,
                 "mutability": "mutable",
                 "name": "recipient",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "874:17:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -727,7 +727,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7503,
+                  "id": 7622,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "874:7:50",
@@ -741,11 +741,11 @@
               },
               {
                 "constant": false,
-                "id": 7506,
+                "id": 7625,
                 "mutability": "mutable",
                 "name": "deadline",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "901:16:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -754,7 +754,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7505,
+                  "id": 7624,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "901:7:50",
@@ -767,11 +767,11 @@
               },
               {
                 "constant": false,
-                "id": 7508,
+                "id": 7627,
                 "mutability": "mutable",
                 "name": "refundAsETH",
                 "nodeType": "VariableDeclaration",
-                "scope": 7509,
+                "scope": 7628,
                 "src": "927:16:50",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -780,7 +780,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 7507,
+                  "id": 7626,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "927:4:50",
@@ -794,50 +794,50 @@
             ],
             "name": "MigrateParams",
             "nodeType": "StructDefinition",
-            "scope": 7516,
+            "scope": 7635,
             "src": "373:577:50",
             "visibility": "public"
           },
           {
             "documentation": {
-              "id": 7510,
+              "id": 7629,
               "nodeType": "StructuredDocumentation",
               "src": "956:549:50",
               "text": "@notice Migrates liquidity to v3 by burning v2 liquidity and minting a new position for v3\n @dev Slippage protection is enforced via `amount{0,1}Min`, which should be a discount of the expected values of\n the maximum amount of v3 liquidity that the v2 liquidity can get. For the special case of migrating to an\n out-of-range position, `amount{0,1}Min` may be set to 0, enforcing that the position remains out of range\n @param params The params necessary to migrate v2 liquidity, encoded as `MigrateParams` in calldata"
             },
             "functionSelector": "d44f2bf2",
-            "id": 7515,
+            "id": 7634,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "migrate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7513,
+              "id": 7632,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7512,
+                  "id": 7631,
                   "mutability": "mutable",
                   "name": "params",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7515,
+                  "scope": 7634,
                   "src": "1527:29:50",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_MigrateParams_$7509_calldata_ptr",
+                    "typeIdentifier": "t_struct$_MigrateParams_$7628_calldata_ptr",
                     "typeString": "struct IV3Migrator.MigrateParams"
                   },
                   "typeName": {
-                    "id": 7511,
+                    "id": 7630,
                     "name": "MigrateParams",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 7509,
+                    "referencedDeclaration": 7628,
                     "src": "1527:13:50",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_MigrateParams_$7509_storage_ptr",
+                      "typeIdentifier": "t_struct$_MigrateParams_$7628_storage_ptr",
                       "typeString": "struct IV3Migrator.MigrateParams"
                     }
                   },
@@ -847,19 +847,19 @@
               "src": "1526:31:50"
             },
             "returnParameters": {
-              "id": 7514,
+              "id": 7633,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1566:0:50"
             },
-            "scope": 7516,
+            "scope": 7635,
             "src": "1510:57:50",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 7517,
+        "scope": 7636,
         "src": "300:1269:50"
       }
     ],
@@ -870,16 +870,16 @@
       "absolutePath": "project:/contracts/interfaces/IV3Migrator.sol",
       "exportedSymbols": {
         "IMulticall": [
-          6465
+          6584
         ],
         "IPoolInitializer": [
-          6769
+          6888
         ],
         "ISelfPermit": [
-          6985
+          7104
         ],
         "IV3Migrator": [
-          7516
+          7635
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -894,7 +894,7 @@
             ".5"
           ]
         },
-        "id": 7471,
+        "id": 7590,
         "name": "PragmaDirective",
         "src": "45:24:50"
       },
@@ -905,52 +905,52 @@
             "v2"
           ]
         },
-        "id": 7472,
+        "id": 7591,
         "name": "PragmaDirective",
         "src": "70:19:50"
       },
       {
         "attributes": {
-          "SourceUnit": 6466,
+          "SourceUnit": 6585,
           "absolutePath": "project:/contracts/interfaces/IMulticall.sol",
           "file": "./IMulticall.sol",
-          "scope": 7517,
+          "scope": 7636,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 7473,
+        "id": 7592,
         "name": "ImportDirective",
         "src": "91:26:50"
       },
       {
         "attributes": {
-          "SourceUnit": 6986,
+          "SourceUnit": 7105,
           "absolutePath": "project:/contracts/interfaces/ISelfPermit.sol",
           "file": "./ISelfPermit.sol",
-          "scope": 7517,
+          "scope": 7636,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 7474,
+        "id": 7593,
         "name": "ImportDirective",
         "src": "118:27:50"
       },
       {
         "attributes": {
-          "SourceUnit": 6770,
+          "SourceUnit": 6889,
           "absolutePath": "project:/contracts/interfaces/IPoolInitializer.sol",
           "file": "./IPoolInitializer.sol",
-          "scope": 7517,
+          "scope": 7636,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 7475,
+        "id": 7594,
         "name": "ImportDirective",
         "src": "146:32:50"
       },
@@ -958,27 +958,27 @@
         "attributes": {
           "abstract": false,
           "contractDependencies": [
-            6465,
-            6769,
-            6985
+            6584,
+            6888,
+            7104
           ],
           "contractKind": "interface",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            7516,
-            6769,
-            6985,
-            6465
+            7635,
+            6888,
+            7104,
+            6584
           ],
           "name": "IV3Migrator",
-          "scope": 7517
+          "scope": 7636
         },
         "children": [
           {
             "attributes": {
               "text": "@title V3 Migrator\n @notice Enables migration of liqudity from Uniswap v2-compatible pairs into Uniswap v3 pools"
             },
-            "id": 7476,
+            "id": 7595,
             "name": "StructuredDocumentation",
             "src": "180:120:50"
           },
@@ -988,15 +988,15 @@
               {
                 "attributes": {
                   "name": "IMulticall",
-                  "referencedDeclaration": 6465,
+                  "referencedDeclaration": 6584,
                   "type": "contract IMulticall"
                 },
-                "id": 7477,
+                "id": 7596,
                 "name": "UserDefinedTypeName",
                 "src": "325:10:50"
               }
             ],
-            "id": 7478,
+            "id": 7597,
             "name": "InheritanceSpecifier",
             "src": "325:10:50"
           },
@@ -1006,15 +1006,15 @@
               {
                 "attributes": {
                   "name": "ISelfPermit",
-                  "referencedDeclaration": 6985,
+                  "referencedDeclaration": 7104,
                   "type": "contract ISelfPermit"
                 },
-                "id": 7479,
+                "id": 7598,
                 "name": "UserDefinedTypeName",
                 "src": "337:11:50"
               }
             ],
-            "id": 7480,
+            "id": 7599,
             "name": "InheritanceSpecifier",
             "src": "337:11:50"
           },
@@ -1024,15 +1024,15 @@
               {
                 "attributes": {
                   "name": "IPoolInitializer",
-                  "referencedDeclaration": 6769,
+                  "referencedDeclaration": 6888,
                   "type": "contract IPoolInitializer"
                 },
-                "id": 7481,
+                "id": 7600,
                 "name": "UserDefinedTypeName",
                 "src": "350:16:50"
               }
             ],
-            "id": 7482,
+            "id": 7601,
             "name": "InheritanceSpecifier",
             "src": "350:16:50"
           },
@@ -1040,7 +1040,7 @@
             "attributes": {
               "canonicalName": "IV3Migrator.MigrateParams",
               "name": "MigrateParams",
-              "scope": 7516,
+              "scope": 7635,
               "visibility": "public"
             },
             "children": [
@@ -1049,7 +1049,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "pair",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1062,12 +1062,12 @@
                       "stateMutability": "nonpayable",
                       "type": "address"
                     },
-                    "id": 7483,
+                    "id": 7602,
                     "name": "ElementaryTypeName",
                     "src": "404:7:50"
                   }
                 ],
-                "id": 7484,
+                "id": 7603,
                 "name": "VariableDeclaration",
                 "src": "404:12:50"
               },
@@ -1076,7 +1076,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "liquidityToMigrate",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1088,12 +1088,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 7485,
+                    "id": 7604,
                     "name": "ElementaryTypeName",
                     "src": "460:7:50"
                   }
                 ],
-                "id": 7486,
+                "id": 7605,
                 "name": "VariableDeclaration",
                 "src": "460:26:50"
               },
@@ -1102,7 +1102,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "percentageToMigrate",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint8",
@@ -1114,12 +1114,12 @@
                       "name": "uint8",
                       "type": "uint8"
                     },
-                    "id": 7487,
+                    "id": 7606,
                     "name": "ElementaryTypeName",
                     "src": "536:5:50"
                   }
                 ],
-                "id": 7488,
+                "id": 7607,
                 "name": "VariableDeclaration",
                 "src": "536:25:50"
               },
@@ -1128,7 +1128,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "token0",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1141,12 +1141,12 @@
                       "stateMutability": "nonpayable",
                       "type": "address"
                     },
-                    "id": 7489,
+                    "id": 7608,
                     "name": "ElementaryTypeName",
                     "src": "610:7:50"
                   }
                 ],
-                "id": 7490,
+                "id": 7609,
                 "name": "VariableDeclaration",
                 "src": "610:14:50"
               },
@@ -1155,7 +1155,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "token1",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1168,12 +1168,12 @@
                       "stateMutability": "nonpayable",
                       "type": "address"
                     },
-                    "id": 7491,
+                    "id": 7610,
                     "name": "ElementaryTypeName",
                     "src": "634:7:50"
                   }
                 ],
-                "id": 7492,
+                "id": 7611,
                 "name": "VariableDeclaration",
                 "src": "634:14:50"
               },
@@ -1182,7 +1182,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "fee",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint24",
@@ -1194,12 +1194,12 @@
                       "name": "uint24",
                       "type": "uint24"
                     },
-                    "id": 7493,
+                    "id": 7612,
                     "name": "ElementaryTypeName",
                     "src": "658:6:50"
                   }
                 ],
-                "id": 7494,
+                "id": 7613,
                 "name": "VariableDeclaration",
                 "src": "658:10:50"
               },
@@ -1208,7 +1208,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "tickLower",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "int24",
@@ -1220,12 +1220,12 @@
                       "name": "int24",
                       "type": "int24"
                     },
-                    "id": 7495,
+                    "id": 7614,
                     "name": "ElementaryTypeName",
                     "src": "678:5:50"
                   }
                 ],
-                "id": 7496,
+                "id": 7615,
                 "name": "VariableDeclaration",
                 "src": "678:15:50"
               },
@@ -1234,7 +1234,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "tickUpper",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "int24",
@@ -1246,12 +1246,12 @@
                       "name": "int24",
                       "type": "int24"
                     },
-                    "id": 7497,
+                    "id": 7616,
                     "name": "ElementaryTypeName",
                     "src": "703:5:50"
                   }
                 ],
-                "id": 7498,
+                "id": 7617,
                 "name": "VariableDeclaration",
                 "src": "703:15:50"
               },
@@ -1260,7 +1260,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "amount0Min",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1272,12 +1272,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 7499,
+                    "id": 7618,
                     "name": "ElementaryTypeName",
                     "src": "728:7:50"
                   }
                 ],
-                "id": 7500,
+                "id": 7619,
                 "name": "VariableDeclaration",
                 "src": "728:18:50"
               },
@@ -1286,7 +1286,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "amount1Min",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1298,12 +1298,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 7501,
+                    "id": 7620,
                     "name": "ElementaryTypeName",
                     "src": "801:7:50"
                   }
                 ],
-                "id": 7502,
+                "id": 7621,
                 "name": "VariableDeclaration",
                 "src": "801:18:50"
               },
@@ -1312,7 +1312,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "recipient",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "address",
@@ -1325,12 +1325,12 @@
                       "stateMutability": "nonpayable",
                       "type": "address"
                     },
-                    "id": 7503,
+                    "id": 7622,
                     "name": "ElementaryTypeName",
                     "src": "874:7:50"
                   }
                 ],
-                "id": 7504,
+                "id": 7623,
                 "name": "VariableDeclaration",
                 "src": "874:17:50"
               },
@@ -1339,7 +1339,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "deadline",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -1351,12 +1351,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 7505,
+                    "id": 7624,
                     "name": "ElementaryTypeName",
                     "src": "901:7:50"
                   }
                 ],
-                "id": 7506,
+                "id": 7625,
                 "name": "VariableDeclaration",
                 "src": "901:16:50"
               },
@@ -1365,7 +1365,7 @@
                   "constant": false,
                   "mutability": "mutable",
                   "name": "refundAsETH",
-                  "scope": 7509,
+                  "scope": 7628,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "bool",
@@ -1377,17 +1377,17 @@
                       "name": "bool",
                       "type": "bool"
                     },
-                    "id": 7507,
+                    "id": 7626,
                     "name": "ElementaryTypeName",
                     "src": "927:4:50"
                   }
                 ],
-                "id": 7508,
+                "id": 7627,
                 "name": "VariableDeclaration",
                 "src": "927:16:50"
               }
             ],
-            "id": 7509,
+            "id": 7628,
             "name": "StructDefinition",
             "src": "373:577:50"
           },
@@ -1401,7 +1401,7 @@
                 null
               ],
               "name": "migrate",
-              "scope": 7516,
+              "scope": 7635,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "external"
@@ -1411,7 +1411,7 @@
                 "attributes": {
                   "text": "@notice Migrates liquidity to v3 by burning v2 liquidity and minting a new position for v3\n @dev Slippage protection is enforced via `amount{0,1}Min`, which should be a discount of the expected values of\n the maximum amount of v3 liquidity that the v2 liquidity can get. For the special case of migrating to an\n out-of-range position, `amount{0,1}Min` may be set to 0, enforcing that the position remains out of range\n @param params The params necessary to migrate v2 liquidity, encoded as `MigrateParams` in calldata"
                 },
-                "id": 7510,
+                "id": 7629,
                 "name": "StructuredDocumentation",
                 "src": "956:549:50"
               },
@@ -1422,7 +1422,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "params",
-                      "scope": 7515,
+                      "scope": 7634,
                       "stateVariable": false,
                       "storageLocation": "calldata",
                       "type": "struct IV3Migrator.MigrateParams",
@@ -1432,20 +1432,20 @@
                       {
                         "attributes": {
                           "name": "MigrateParams",
-                          "referencedDeclaration": 7509,
+                          "referencedDeclaration": 7628,
                           "type": "struct IV3Migrator.MigrateParams"
                         },
-                        "id": 7511,
+                        "id": 7630,
                         "name": "UserDefinedTypeName",
                         "src": "1527:13:50"
                       }
                     ],
-                    "id": 7512,
+                    "id": 7631,
                     "name": "VariableDeclaration",
                     "src": "1527:29:50"
                   }
                 ],
-                "id": 7513,
+                "id": 7632,
                 "name": "ParameterList",
                 "src": "1526:31:50"
               },
@@ -1456,22 +1456,22 @@
                   ]
                 },
                 "children": [],
-                "id": 7514,
+                "id": 7633,
                 "name": "ParameterList",
                 "src": "1566:0:50"
               }
             ],
-            "id": 7515,
+            "id": 7634,
             "name": "FunctionDefinition",
             "src": "1510:57:50"
           }
         ],
-        "id": 7516,
+        "id": 7635,
         "name": "ContractDefinition",
         "src": "300:1269:50"
       }
     ],
-    "id": 7517,
+    "id": 7636,
     "name": "SourceUnit",
     "src": "45:1525:50"
   },
@@ -1481,7 +1481,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:23.958Z",
+  "updatedAt": "2023-07-05T17:56:22.749Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

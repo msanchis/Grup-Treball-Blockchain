@@ -213,7 +213,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity =0.7.6;\npragma abicoder v2;\n\ninterface IApproveAndCall {\n    enum ApprovalType {NOT_REQUIRED, MAX, MAX_MINUS_ONE, ZERO_THEN_MAX, ZERO_THEN_MAX_MINUS_ONE}\n\n    /// @dev Lens to be called off-chain to determine which (if any) of the relevant approval functions should be called\n    /// @param token The token to approve\n    /// @param amount The amount to approve\n    /// @return The required approval type\n    function getApprovalType(address token, uint256 amount) external returns (ApprovalType);\n\n    /// @notice Approves a token for the maximum possible amount\n    /// @param token The token to approve\n    function approveMax(address token) external payable;\n\n    /// @notice Approves a token for the maximum possible amount minus one\n    /// @param token The token to approve\n    function approveMaxMinusOne(address token) external payable;\n\n    /// @notice Approves a token for zero, then the maximum possible amount\n    /// @param token The token to approve\n    function approveZeroThenMax(address token) external payable;\n\n    /// @notice Approves a token for zero, then the maximum possible amount minus one\n    /// @param token The token to approve\n    function approveZeroThenMaxMinusOne(address token) external payable;\n\n    /// @notice Calls the position manager with arbitrary calldata\n    /// @param data Calldata to pass along to the position manager\n    /// @return result The result from the call\n    function callPositionManager(bytes memory data) external payable returns (bytes memory result);\n\n    struct MintParams {\n        address token0;\n        address token1;\n        uint24 fee;\n        int24 tickLower;\n        int24 tickUpper;\n        uint256 amount0Min;\n        uint256 amount1Min;\n        address recipient;\n    }\n\n    /// @notice Calls the position manager's mint function\n    /// @param params Calldata to pass along to the position manager\n    /// @return result The result from the call\n    function mint(MintParams calldata params) external payable returns (bytes memory result);\n\n    struct IncreaseLiquidityParams {\n        address token0;\n        address token1;\n        uint256 tokenId;\n        uint256 amount0Min;\n        uint256 amount1Min;\n    }\n\n    /// @notice Calls the position manager's increaseLiquidity function\n    /// @param params Calldata to pass along to the position manager\n    /// @return result The result from the call\n    function increaseLiquidity(IncreaseLiquidityParams calldata params) external payable returns (bytes memory result);\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IApproveAndCall.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IApproveAndCall.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IApproveAndCall.sol",
     "exportedSymbols": {
@@ -2478,7 +2478,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.499Z",
+  "updatedAt": "2023-07-05T17:57:59.823Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

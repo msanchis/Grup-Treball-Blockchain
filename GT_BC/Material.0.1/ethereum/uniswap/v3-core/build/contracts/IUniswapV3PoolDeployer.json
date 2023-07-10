@@ -44,20 +44,20 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title An interface for a contract that is capable of deploying Uniswap V3 Pools\n/// @notice A contract that constructs a pool must implement this to pass arguments to the pool\n/// @dev This is used to avoid having constructor arguments in the pool contract, which results in the init code hash\n/// of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain\ninterface IUniswapV3PoolDeployer {\n    /// @notice Get the parameters to be used in constructing the pool, set transiently during pool creation.\n    /// @dev Called by the pool constructor to fetch the parameters of the pool\n    /// Returns factory The factory address\n    /// Returns token0 The first token of the pool by address sort order\n    /// Returns token1 The second token of the pool by address sort order\n    /// Returns fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n    /// Returns tickSpacing The minimum number of ticks between initialized ticks\n    function parameters()\n        external\n        view\n        returns (\n            address factory,\n            address token0,\n            address token1,\n            uint24 fee,\n            int24 tickSpacing\n        );\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-core/contracts/interfaces/IUniswapV3PoolDeployer.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-core/contracts/interfaces/IUniswapV3PoolDeployer.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IUniswapV3PoolDeployer.sol",
     "exportedSymbols": {
       "IUniswapV3PoolDeployer": [
-        3111
+        3093
       ]
     },
-    "id": 3112,
+    "id": 3094,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3095,
+        "id": 3077,
         "literals": [
           "solidity",
           ">=",
@@ -65,7 +65,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "45:24:9"
+        "src": "45:24:8"
       },
       {
         "abstract": false,
@@ -73,51 +73,51 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 3096,
+          "id": 3078,
           "nodeType": "StructuredDocumentation",
-          "src": "71:403:9",
+          "src": "71:403:8",
           "text": "@title An interface for a contract that is capable of deploying Uniswap V3 Pools\n @notice A contract that constructs a pool must implement this to pass arguments to the pool\n @dev This is used to avoid having constructor arguments in the pool contract, which results in the init code hash\n of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain"
         },
         "fullyImplemented": false,
-        "id": 3111,
+        "id": 3093,
         "linearizedBaseContracts": [
-          3111
+          3093
         ],
         "name": "IUniswapV3PoolDeployer",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 3097,
+              "id": 3079,
               "nodeType": "StructuredDocumentation",
-              "src": "513:560:9",
+              "src": "513:560:8",
               "text": "@notice Get the parameters to be used in constructing the pool, set transiently during pool creation.\n @dev Called by the pool constructor to fetch the parameters of the pool\n Returns factory The factory address\n Returns token0 The first token of the pool by address sort order\n Returns token1 The second token of the pool by address sort order\n Returns fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n Returns tickSpacing The minimum number of ticks between initialized ticks"
             },
             "functionSelector": "89035730",
-            "id": 3110,
+            "id": 3092,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "parameters",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3098,
+              "id": 3080,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1097:2:9"
+              "src": "1097:2:8"
             },
             "returnParameters": {
-              "id": 3109,
+              "id": 3091,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3100,
+                  "id": 3082,
                   "mutability": "mutable",
                   "name": "factory",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3110,
-                  "src": "1160:15:9",
+                  "scope": 3092,
+                  "src": "1160:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -125,10 +125,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3099,
+                    "id": 3081,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1160:7:9",
+                    "src": "1160:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -139,12 +139,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3102,
+                  "id": 3084,
                   "mutability": "mutable",
                   "name": "token0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3110,
-                  "src": "1189:14:9",
+                  "scope": 3092,
+                  "src": "1189:14:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -152,10 +152,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3101,
+                    "id": 3083,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1189:7:9",
+                    "src": "1189:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -166,12 +166,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3104,
+                  "id": 3086,
                   "mutability": "mutable",
                   "name": "token1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3110,
-                  "src": "1217:14:9",
+                  "scope": 3092,
+                  "src": "1217:14:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -179,10 +179,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3103,
+                    "id": 3085,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1217:7:9",
+                    "src": "1217:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -193,12 +193,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3106,
+                  "id": 3088,
                   "mutability": "mutable",
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3110,
-                  "src": "1245:10:9",
+                  "scope": 3092,
+                  "src": "1245:10:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -206,10 +206,10 @@
                     "typeString": "uint24"
                   },
                   "typeName": {
-                    "id": 3105,
+                    "id": 3087,
                     "name": "uint24",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1245:6:9",
+                    "src": "1245:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint24",
                       "typeString": "uint24"
@@ -219,12 +219,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3108,
+                  "id": 3090,
                   "mutability": "mutable",
                   "name": "tickSpacing",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3110,
-                  "src": "1269:17:9",
+                  "scope": 3092,
+                  "src": "1269:17:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -232,10 +232,10 @@
                     "typeString": "int24"
                   },
                   "typeName": {
-                    "id": 3107,
+                    "id": 3089,
                     "name": "int24",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1269:5:9",
+                    "src": "1269:5:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int24",
                       "typeString": "int24"
@@ -244,27 +244,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1146:150:9"
+              "src": "1146:150:8"
             },
-            "scope": 3111,
-            "src": "1078:219:9",
+            "scope": 3093,
+            "src": "1078:219:8",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 3112,
-        "src": "474:825:9"
+        "scope": 3094,
+        "src": "474:825:8"
       }
     ],
-    "src": "45:1255:9"
+    "src": "45:1255:8"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/interfaces/IUniswapV3PoolDeployer.sol",
       "exportedSymbols": {
         "IUniswapV3PoolDeployer": [
-          3111
+          3093
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -279,9 +279,9 @@
             ".0"
           ]
         },
-        "id": 3095,
+        "id": 3077,
         "name": "PragmaDirective",
-        "src": "45:24:9"
+        "src": "45:24:8"
       },
       {
         "attributes": {
@@ -295,19 +295,19 @@
           "contractKind": "interface",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            3111
+            3093
           ],
           "name": "IUniswapV3PoolDeployer",
-          "scope": 3112
+          "scope": 3094
         },
         "children": [
           {
             "attributes": {
               "text": "@title An interface for a contract that is capable of deploying Uniswap V3 Pools\n @notice A contract that constructs a pool must implement this to pass arguments to the pool\n @dev This is used to avoid having constructor arguments in the pool contract, which results in the init code hash\n of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain"
             },
-            "id": 3096,
+            "id": 3078,
             "name": "StructuredDocumentation",
-            "src": "71:403:9"
+            "src": "71:403:8"
           },
           {
             "attributes": {
@@ -319,7 +319,7 @@
                 null
               ],
               "name": "parameters",
-              "scope": 3111,
+              "scope": 3093,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -329,9 +329,9 @@
                 "attributes": {
                   "text": "@notice Get the parameters to be used in constructing the pool, set transiently during pool creation.\n @dev Called by the pool constructor to fetch the parameters of the pool\n Returns factory The factory address\n Returns token0 The first token of the pool by address sort order\n Returns token1 The second token of the pool by address sort order\n Returns fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n Returns tickSpacing The minimum number of ticks between initialized ticks"
                 },
-                "id": 3097,
+                "id": 3079,
                 "name": "StructuredDocumentation",
-                "src": "513:560:9"
+                "src": "513:560:8"
               },
               {
                 "attributes": {
@@ -340,9 +340,9 @@
                   ]
                 },
                 "children": [],
-                "id": 3098,
+                "id": 3080,
                 "name": "ParameterList",
-                "src": "1097:2:9"
+                "src": "1097:2:8"
               },
               {
                 "children": [
@@ -351,7 +351,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "factory",
-                      "scope": 3110,
+                      "scope": 3092,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -364,21 +364,21 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3099,
+                        "id": 3081,
                         "name": "ElementaryTypeName",
-                        "src": "1160:7:9"
+                        "src": "1160:7:8"
                       }
                     ],
-                    "id": 3100,
+                    "id": 3082,
                     "name": "VariableDeclaration",
-                    "src": "1160:15:9"
+                    "src": "1160:15:8"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token0",
-                      "scope": 3110,
+                      "scope": 3092,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -391,21 +391,21 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3101,
+                        "id": 3083,
                         "name": "ElementaryTypeName",
-                        "src": "1189:7:9"
+                        "src": "1189:7:8"
                       }
                     ],
-                    "id": 3102,
+                    "id": 3084,
                     "name": "VariableDeclaration",
-                    "src": "1189:14:9"
+                    "src": "1189:14:8"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token1",
-                      "scope": 3110,
+                      "scope": 3092,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -418,21 +418,21 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 3103,
+                        "id": 3085,
                         "name": "ElementaryTypeName",
-                        "src": "1217:7:9"
+                        "src": "1217:7:8"
                       }
                     ],
-                    "id": 3104,
+                    "id": 3086,
                     "name": "VariableDeclaration",
-                    "src": "1217:14:9"
+                    "src": "1217:14:8"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "fee",
-                      "scope": 3110,
+                      "scope": 3092,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint24",
@@ -444,21 +444,21 @@
                           "name": "uint24",
                           "type": "uint24"
                         },
-                        "id": 3105,
+                        "id": 3087,
                         "name": "ElementaryTypeName",
-                        "src": "1245:6:9"
+                        "src": "1245:6:8"
                       }
                     ],
-                    "id": 3106,
+                    "id": 3088,
                     "name": "VariableDeclaration",
-                    "src": "1245:10:9"
+                    "src": "1245:10:8"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "mutability": "mutable",
                       "name": "tickSpacing",
-                      "scope": 3110,
+                      "scope": 3092,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "int24",
@@ -470,34 +470,34 @@
                           "name": "int24",
                           "type": "int24"
                         },
-                        "id": 3107,
+                        "id": 3089,
                         "name": "ElementaryTypeName",
-                        "src": "1269:5:9"
+                        "src": "1269:5:8"
                       }
                     ],
-                    "id": 3108,
+                    "id": 3090,
                     "name": "VariableDeclaration",
-                    "src": "1269:17:9"
+                    "src": "1269:17:8"
                   }
                 ],
-                "id": 3109,
+                "id": 3091,
                 "name": "ParameterList",
-                "src": "1146:150:9"
+                "src": "1146:150:8"
               }
             ],
-            "id": 3110,
+            "id": 3092,
             "name": "FunctionDefinition",
-            "src": "1078:219:9"
+            "src": "1078:219:8"
           }
         ],
-        "id": 3111,
+        "id": 3093,
         "name": "ContractDefinition",
-        "src": "474:825:9"
+        "src": "474:825:8"
       }
     ],
-    "id": 3112,
+    "id": 3094,
     "name": "SourceUnit",
-    "src": "45:1255:9"
+    "src": "45:1255:8"
   },
   "compiler": {
     "name": "solc",
@@ -505,7 +505,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-09-23T21:41:28.333Z",
+  "updatedAt": "2023-07-05T17:54:38.462Z",
   "devdoc": {
     "details": "This is used to avoid having constructor arguments in the pool contract, which results in the init code hash of the pool being constant allowing the CREATE2 address of the pool to be cheaply computed on-chain",
     "kind": "dev",

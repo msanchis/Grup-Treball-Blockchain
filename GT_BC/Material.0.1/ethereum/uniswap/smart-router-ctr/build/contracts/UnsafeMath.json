@@ -10,7 +10,7 @@
   "sourceMap": "244:415:126:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "244:415:126:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\n/// @title Math functions that do not check inputs or outputs\n/// @notice Contains methods that perform common math functions but do not do any overflow or underflow checks\nlibrary UnsafeMath {\n    /// @notice Returns ceil(x / y)\n    /// @dev division by 0 has unspecified behavior, and must be checked externally\n    /// @param x The dividend\n    /// @param y The divisor\n    /// @return z The quotient, ceil(x / y)\n    function divRoundingUp(uint256 x, uint256 y) internal pure returns (uint256 z) {\n        assembly {\n            z := add(div(x, y), gt(mod(x, y), 0))\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/libraries/UnsafeMath.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/libraries/UnsafeMath.sol",
   "ast": {
     "absolutePath": "project:/contracts/libraries/UnsafeMath.sol",
     "exportedSymbols": {
@@ -548,7 +548,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.633Z",
+  "updatedAt": "2023-07-05T17:58:00.568Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

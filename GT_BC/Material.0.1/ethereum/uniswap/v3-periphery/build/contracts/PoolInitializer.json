@@ -71,53 +71,53 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.6;\n\nimport '../interfaces/IUniswapV3Factory.sol';\nimport '../interfaces/IUniswapV3Pool.sol';\n\nimport './PeripheryImmutableState.sol';\nimport '../interfaces/IPoolInitializer.sol';\n\n/// @title Creates and initializes V3 Pools\nabstract contract PoolInitializer is IPoolInitializer, PeripheryImmutableState {\n    /// @inheritdoc IPoolInitializer\n    function createAndInitializePoolIfNecessary(\n        address token0,\n        address token1,\n        uint24 fee,\n        uint160 sqrtPriceX96\n    ) external payable override returns (address pool) {\n        require(token0 < token1);\n        pool = IUniswapV3Factory(factory).getPool(token0, token1, fee);\n\n        if (pool == address(0)) {\n            pool = IUniswapV3Factory(factory).createPool(token0, token1, fee);\n            IUniswapV3Pool(pool).initialize(sqrtPriceX96);\n        } else {\n            (uint160 sqrtPriceX96Existing, , , , , , ) = IUniswapV3Pool(pool).slot0();\n            if (sqrtPriceX96Existing == 0) {\n                IUniswapV3Pool(pool).initialize(sqrtPriceX96);\n            }\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/base/PoolInitializer.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/base/PoolInitializer.sol",
   "ast": {
     "absolutePath": "project:/contracts/base/PoolInitializer.sol",
     "exportedSymbols": {
       "IPeripheryImmutableState": [
-        6691
+        6810
       ],
       "IPoolInitializer": [
-        6769
+        6888
       ],
       "IUniswapV3Factory": [
-        7429
+        7548
       ],
       "IUniswapV3Pool": [
-        7451
+        7570
       ],
       "IUniswapV3PoolActions": [
-        7709
+        7828
       ],
       "IUniswapV3PoolDerivedState": [
-        7740
-      ],
-      "IUniswapV3PoolEvents": [
         7859
       ],
+      "IUniswapV3PoolEvents": [
+        7978
+      ],
       "IUniswapV3PoolImmutables": [
-        7899
+        8018
       ],
       "IUniswapV3PoolOwnerActions": [
-        7925
+        8044
       ],
       "IUniswapV3PoolState": [
-        8033
+        8152
       ],
       "PeripheryImmutableState": [
-        5402
+        5521
       ],
       "PoolInitializer": [
-        5905
+        6024
       ]
     },
-    "id": 5906,
+    "id": 6025,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5815,
+        "id": 5934,
         "literals": [
           "solidity",
           ">=",
@@ -130,10 +130,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IUniswapV3Factory.sol",
         "file": "../interfaces/IUniswapV3Factory.sol",
-        "id": 5816,
+        "id": 5935,
         "nodeType": "ImportDirective",
-        "scope": 5906,
-        "sourceUnit": 7430,
+        "scope": 6025,
+        "sourceUnit": 7549,
         "src": "71:45:23",
         "symbolAliases": [],
         "unitAlias": ""
@@ -141,10 +141,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IUniswapV3Pool.sol",
         "file": "../interfaces/IUniswapV3Pool.sol",
-        "id": 5817,
+        "id": 5936,
         "nodeType": "ImportDirective",
-        "scope": 5906,
-        "sourceUnit": 7452,
+        "scope": 6025,
+        "sourceUnit": 7571,
         "src": "117:42:23",
         "symbolAliases": [],
         "unitAlias": ""
@@ -152,10 +152,10 @@
       {
         "absolutePath": "project:/contracts/base/PeripheryImmutableState.sol",
         "file": "./PeripheryImmutableState.sol",
-        "id": 5818,
+        "id": 5937,
         "nodeType": "ImportDirective",
-        "scope": 5906,
-        "sourceUnit": 5403,
+        "scope": 6025,
+        "sourceUnit": 5522,
         "src": "161:39:23",
         "symbolAliases": [],
         "unitAlias": ""
@@ -163,10 +163,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IPoolInitializer.sol",
         "file": "../interfaces/IPoolInitializer.sol",
-        "id": 5819,
+        "id": 5938,
         "nodeType": "ImportDirective",
-        "scope": 5906,
-        "sourceUnit": 6770,
+        "scope": 6025,
+        "sourceUnit": 6889,
         "src": "201:44:23",
         "symbolAliases": [],
         "unitAlias": ""
@@ -176,66 +176,66 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5821,
+              "id": 5940,
               "name": "IPoolInitializer",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6769,
+              "referencedDeclaration": 6888,
               "src": "328:16:23",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPoolInitializer_$6769",
+                "typeIdentifier": "t_contract$_IPoolInitializer_$6888",
                 "typeString": "contract IPoolInitializer"
               }
             },
-            "id": 5822,
+            "id": 5941,
             "nodeType": "InheritanceSpecifier",
             "src": "328:16:23"
           },
           {
             "baseName": {
-              "id": 5823,
+              "id": 5942,
               "name": "PeripheryImmutableState",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 5402,
+              "referencedDeclaration": 5521,
               "src": "346:23:23",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_PeripheryImmutableState_$5402",
+                "typeIdentifier": "t_contract$_PeripheryImmutableState_$5521",
                 "typeString": "contract PeripheryImmutableState"
               }
             },
-            "id": 5824,
+            "id": 5943,
             "nodeType": "InheritanceSpecifier",
             "src": "346:23:23"
           }
         ],
         "contractDependencies": [
-          5402,
-          6691,
-          6769
+          5521,
+          6810,
+          6888
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 5820,
+          "id": 5939,
           "nodeType": "StructuredDocumentation",
           "src": "247:44:23",
           "text": "@title Creates and initializes V3 Pools"
         },
         "fullyImplemented": false,
-        "id": 5905,
+        "id": 6024,
         "linearizedBaseContracts": [
-          5905,
-          5402,
-          6691,
-          6769
+          6024,
+          5521,
+          6810,
+          6888
         ],
         "name": "PoolInitializer",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              6768
+              6887
             ],
             "body": {
-              "id": 5903,
+              "id": 6022,
               "nodeType": "Block",
               "src": "610:522:23",
               "statements": [
@@ -247,17 +247,17 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-                        "id": 5842,
+                        "id": 5961,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
-                          "id": 5840,
+                          "id": 5959,
                           "name": "token0",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 5827,
+                          "referencedDeclaration": 5946,
                           "src": "628:6:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -267,11 +267,11 @@
                         "nodeType": "BinaryOperation",
                         "operator": "<",
                         "rightExpression": {
-                          "id": 5841,
+                          "id": 5960,
                           "name": "token1",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 5829,
+                          "referencedDeclaration": 5948,
                           "src": "637:6:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -292,7 +292,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 5839,
+                      "id": 5958,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -306,7 +306,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 5843,
+                    "id": 5962,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -321,23 +321,23 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 5844,
+                  "id": 5963,
                   "nodeType": "ExpressionStatement",
                   "src": "620:24:23"
                 },
                 {
                   "expression": {
-                    "id": 5854,
+                    "id": 5973,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 5845,
+                      "id": 5964,
                       "name": "pool",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5837,
+                      "referencedDeclaration": 5956,
                       "src": "654:4:23",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -349,11 +349,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 5850,
+                          "id": 5969,
                           "name": "token0",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 5827,
+                          "referencedDeclaration": 5946,
                           "src": "696:6:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -361,11 +361,11 @@
                           }
                         },
                         {
-                          "id": 5851,
+                          "id": 5970,
                           "name": "token1",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 5829,
+                          "referencedDeclaration": 5948,
                           "src": "704:6:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -373,11 +373,11 @@
                           }
                         },
                         {
-                          "id": 5852,
+                          "id": 5971,
                           "name": "fee",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 5831,
+                          "referencedDeclaration": 5950,
                           "src": "712:3:23",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint24",
@@ -403,11 +403,11 @@
                         "expression": {
                           "arguments": [
                             {
-                              "id": 5847,
+                              "id": 5966,
                               "name": "factory",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 5381,
+                              "referencedDeclaration": 5500,
                               "src": "679:7:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -422,18 +422,18 @@
                                 "typeString": "address"
                               }
                             ],
-                            "id": 5846,
+                            "id": 5965,
                             "name": "IUniswapV3Factory",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 7429,
+                            "referencedDeclaration": 7548,
                             "src": "661:17:23",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_IUniswapV3Factory_$7429_$",
+                              "typeIdentifier": "t_type$_t_contract$_IUniswapV3Factory_$7548_$",
                               "typeString": "type(contract IUniswapV3Factory)"
                             }
                           },
-                          "id": 5848,
+                          "id": 5967,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -444,25 +444,25 @@
                           "src": "661:26:23",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IUniswapV3Factory_$7429",
+                            "typeIdentifier": "t_contract$_IUniswapV3Factory_$7548",
                             "typeString": "contract IUniswapV3Factory"
                           }
                         },
-                        "id": 5849,
+                        "id": 5968,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "getPool",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 7402,
+                        "referencedDeclaration": 7521,
                         "src": "661:34:23",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint24_$returns$_t_address_$",
                           "typeString": "function (address,address,uint24) view external returns (address)"
                         }
                       },
-                      "id": 5853,
+                      "id": 5972,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -483,7 +483,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 5855,
+                  "id": 5974,
                   "nodeType": "ExpressionStatement",
                   "src": "654:62:23"
                 },
@@ -493,17 +493,17 @@
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     },
-                    "id": 5861,
+                    "id": 5980,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 5856,
+                      "id": 5975,
                       "name": "pool",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5837,
+                      "referencedDeclaration": 5956,
                       "src": "731:4:23",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -516,7 +516,7 @@
                       "arguments": [
                         {
                           "hexValue": "30",
-                          "id": 5859,
+                          "id": 5978,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -538,7 +538,7 @@
                             "typeString": "int_const 0"
                           }
                         ],
-                        "id": 5858,
+                        "id": 5977,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -550,14 +550,14 @@
                           "typeString": "type(address)"
                         },
                         "typeName": {
-                          "id": 5857,
+                          "id": 5976,
                           "name": "address",
                           "nodeType": "ElementaryTypeName",
                           "src": "739:7:23",
                           "typeDescriptions": {}
                         }
                       },
-                      "id": 5860,
+                      "id": 5979,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -579,13 +579,13 @@
                     }
                   },
                   "falseBody": {
-                    "id": 5901,
+                    "id": 6020,
                     "nodeType": "Block",
                     "src": "906:220:23",
                     "statements": [
                       {
                         "assignments": [
-                          5882,
+                          6001,
                           null,
                           null,
                           null,
@@ -596,11 +596,11 @@
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 5882,
+                            "id": 6001,
                             "mutability": "mutable",
                             "name": "sqrtPriceX96Existing",
                             "nodeType": "VariableDeclaration",
-                            "scope": 5901,
+                            "scope": 6020,
                             "src": "921:28:23",
                             "stateVariable": false,
                             "storageLocation": "default",
@@ -609,7 +609,7 @@
                               "typeString": "uint160"
                             },
                             "typeName": {
-                              "id": 5881,
+                              "id": 6000,
                               "name": "uint160",
                               "nodeType": "ElementaryTypeName",
                               "src": "921:7:23",
@@ -627,7 +627,7 @@
                           null,
                           null
                         ],
-                        "id": 5888,
+                        "id": 6007,
                         "initialValue": {
                           "arguments": [],
                           "expression": {
@@ -635,11 +635,11 @@
                             "expression": {
                               "arguments": [
                                 {
-                                  "id": 5884,
+                                  "id": 6003,
                                   "name": "pool",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 5837,
+                                  "referencedDeclaration": 5956,
                                   "src": "980:4:23",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -654,18 +654,18 @@
                                     "typeString": "address"
                                   }
                                 ],
-                                "id": 5883,
+                                "id": 6002,
                                 "name": "IUniswapV3Pool",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 7451,
+                                "referencedDeclaration": 7570,
                                 "src": "965:14:23",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7451_$",
+                                  "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7570_$",
                                   "typeString": "type(contract IUniswapV3Pool)"
                                 }
                               },
-                              "id": 5885,
+                              "id": 6004,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -676,25 +676,25 @@
                               "src": "965:20:23",
                               "tryCall": false,
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IUniswapV3Pool_$7451",
+                                "typeIdentifier": "t_contract$_IUniswapV3Pool_$7570",
                                 "typeString": "contract IUniswapV3Pool"
                               }
                             },
-                            "id": 5886,
+                            "id": 6005,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "slot0",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7946,
+                            "referencedDeclaration": 8065,
                             "src": "965:26:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_uint160_$_t_int24_$_t_uint16_$_t_uint16_$_t_uint16_$_t_uint8_$_t_bool_$",
                               "typeString": "function () view external returns (uint160,int24,uint16,uint16,uint16,uint8,bool)"
                             }
                           },
-                          "id": 5887,
+                          "id": 6006,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -718,17 +718,17 @@
                             "typeIdentifier": "t_uint160",
                             "typeString": "uint160"
                           },
-                          "id": 5891,
+                          "id": 6010,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
-                            "id": 5889,
+                            "id": 6008,
                             "name": "sqrtPriceX96Existing",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 5882,
+                            "referencedDeclaration": 6001,
                             "src": "1011:20:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -739,7 +739,7 @@
                           "operator": "==",
                           "rightExpression": {
                             "hexValue": "30",
-                            "id": 5890,
+                            "id": 6009,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -759,11 +759,11 @@
                             "typeString": "bool"
                           }
                         },
-                        "id": 5900,
+                        "id": 6019,
                         "nodeType": "IfStatement",
                         "src": "1007:109:23",
                         "trueBody": {
-                          "id": 5899,
+                          "id": 6018,
                           "nodeType": "Block",
                           "src": "1038:78:23",
                           "statements": [
@@ -771,11 +771,11 @@
                               "expression": {
                                 "arguments": [
                                   {
-                                    "id": 5896,
+                                    "id": 6015,
                                     "name": "sqrtPriceX96",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 5833,
+                                    "referencedDeclaration": 5952,
                                     "src": "1088:12:23",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint160",
@@ -793,11 +793,11 @@
                                   "expression": {
                                     "arguments": [
                                       {
-                                        "id": 5893,
+                                        "id": 6012,
                                         "name": "pool",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 5837,
+                                        "referencedDeclaration": 5956,
                                         "src": "1071:4:23",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_address",
@@ -812,18 +812,18 @@
                                           "typeString": "address"
                                         }
                                       ],
-                                      "id": 5892,
+                                      "id": 6011,
                                       "name": "IUniswapV3Pool",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 7451,
+                                      "referencedDeclaration": 7570,
                                       "src": "1056:14:23",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7451_$",
+                                        "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7570_$",
                                         "typeString": "type(contract IUniswapV3Pool)"
                                       }
                                     },
-                                    "id": 5894,
+                                    "id": 6013,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
@@ -834,25 +834,25 @@
                                     "src": "1056:20:23",
                                     "tryCall": false,
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$7451",
+                                      "typeIdentifier": "t_contract$_IUniswapV3Pool_$7570",
                                       "typeString": "contract IUniswapV3Pool"
                                     }
                                   },
-                                  "id": 5895,
+                                  "id": 6014,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "memberName": "initialize",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 7622,
+                                  "referencedDeclaration": 7741,
                                   "src": "1056:31:23",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_nonpayable$_t_uint160_$returns$__$",
                                     "typeString": "function (uint160) external"
                                   }
                                 },
-                                "id": 5897,
+                                "id": 6016,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -867,7 +867,7 @@
                                   "typeString": "tuple()"
                                 }
                               },
-                              "id": 5898,
+                              "id": 6017,
                               "nodeType": "ExpressionStatement",
                               "src": "1056:45:23"
                             }
@@ -876,27 +876,27 @@
                       }
                     ]
                   },
-                  "id": 5902,
+                  "id": 6021,
                   "nodeType": "IfStatement",
                   "src": "727:399:23",
                   "trueBody": {
-                    "id": 5880,
+                    "id": 5999,
                     "nodeType": "Block",
                     "src": "751:149:23",
                     "statements": [
                       {
                         "expression": {
-                          "id": 5871,
+                          "id": 5990,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftHandSide": {
-                            "id": 5862,
+                            "id": 5981,
                             "name": "pool",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 5837,
+                            "referencedDeclaration": 5956,
                             "src": "765:4:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -908,11 +908,11 @@
                           "rightHandSide": {
                             "arguments": [
                               {
-                                "id": 5867,
+                                "id": 5986,
                                 "name": "token0",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 5827,
+                                "referencedDeclaration": 5946,
                                 "src": "810:6:23",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -920,11 +920,11 @@
                                 }
                               },
                               {
-                                "id": 5868,
+                                "id": 5987,
                                 "name": "token1",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 5829,
+                                "referencedDeclaration": 5948,
                                 "src": "818:6:23",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -932,11 +932,11 @@
                                 }
                               },
                               {
-                                "id": 5869,
+                                "id": 5988,
                                 "name": "fee",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 5831,
+                                "referencedDeclaration": 5950,
                                 "src": "826:3:23",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint24",
@@ -962,11 +962,11 @@
                               "expression": {
                                 "arguments": [
                                   {
-                                    "id": 5864,
+                                    "id": 5983,
                                     "name": "factory",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 5381,
+                                    "referencedDeclaration": 5500,
                                     "src": "790:7:23",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_address",
@@ -981,18 +981,18 @@
                                       "typeString": "address"
                                     }
                                   ],
-                                  "id": 5863,
+                                  "id": 5982,
                                   "name": "IUniswapV3Factory",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 7429,
+                                  "referencedDeclaration": 7548,
                                   "src": "772:17:23",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_type$_t_contract$_IUniswapV3Factory_$7429_$",
+                                    "typeIdentifier": "t_type$_t_contract$_IUniswapV3Factory_$7548_$",
                                     "typeString": "type(contract IUniswapV3Factory)"
                                   }
                                 },
-                                "id": 5865,
+                                "id": 5984,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -1003,25 +1003,25 @@
                                 "src": "772:26:23",
                                 "tryCall": false,
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_IUniswapV3Factory_$7429",
+                                  "typeIdentifier": "t_contract$_IUniswapV3Factory_$7548",
                                   "typeString": "contract IUniswapV3Factory"
                                 }
                               },
-                              "id": 5866,
+                              "id": 5985,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "createPool",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 7414,
+                              "referencedDeclaration": 7533,
                               "src": "772:37:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint24_$returns$_t_address_$",
                                 "typeString": "function (address,address,uint24) external returns (address)"
                               }
                             },
-                            "id": 5870,
+                            "id": 5989,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -1042,7 +1042,7 @@
                             "typeString": "address"
                           }
                         },
-                        "id": 5872,
+                        "id": 5991,
                         "nodeType": "ExpressionStatement",
                         "src": "765:65:23"
                       },
@@ -1050,11 +1050,11 @@
                         "expression": {
                           "arguments": [
                             {
-                              "id": 5877,
+                              "id": 5996,
                               "name": "sqrtPriceX96",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 5833,
+                              "referencedDeclaration": 5952,
                               "src": "876:12:23",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint160",
@@ -1072,11 +1072,11 @@
                             "expression": {
                               "arguments": [
                                 {
-                                  "id": 5874,
+                                  "id": 5993,
                                   "name": "pool",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 5837,
+                                  "referencedDeclaration": 5956,
                                   "src": "859:4:23",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -1091,18 +1091,18 @@
                                     "typeString": "address"
                                   }
                                 ],
-                                "id": 5873,
+                                "id": 5992,
                                 "name": "IUniswapV3Pool",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 7451,
+                                "referencedDeclaration": 7570,
                                 "src": "844:14:23",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7451_$",
+                                  "typeIdentifier": "t_type$_t_contract$_IUniswapV3Pool_$7570_$",
                                   "typeString": "type(contract IUniswapV3Pool)"
                                 }
                               },
-                              "id": 5875,
+                              "id": 5994,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -1113,25 +1113,25 @@
                               "src": "844:20:23",
                               "tryCall": false,
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IUniswapV3Pool_$7451",
+                                "typeIdentifier": "t_contract$_IUniswapV3Pool_$7570",
                                 "typeString": "contract IUniswapV3Pool"
                               }
                             },
-                            "id": 5876,
+                            "id": 5995,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "initialize",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7622,
+                            "referencedDeclaration": 7741,
                             "src": "844:31:23",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_uint160_$returns$__$",
                               "typeString": "function (uint160) external"
                             }
                           },
-                          "id": 5878,
+                          "id": 5997,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1146,7 +1146,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 5879,
+                        "id": 5998,
                         "nodeType": "ExpressionStatement",
                         "src": "844:45:23"
                       }
@@ -1156,35 +1156,35 @@
               ]
             },
             "documentation": {
-              "id": 5825,
+              "id": 5944,
               "nodeType": "StructuredDocumentation",
               "src": "376:32:23",
               "text": "@inheritdoc IPoolInitializer"
             },
             "functionSelector": "13ead562",
-            "id": 5904,
+            "id": 6023,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "createAndInitializePoolIfNecessary",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 5835,
+              "id": 5954,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "578:8:23"
             },
             "parameters": {
-              "id": 5834,
+              "id": 5953,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5827,
+                  "id": 5946,
                   "mutability": "mutable",
                   "name": "token0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5904,
+                  "scope": 6023,
                   "src": "466:14:23",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1193,7 +1193,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5826,
+                    "id": 5945,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "466:7:23",
@@ -1207,11 +1207,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 5829,
+                  "id": 5948,
                   "mutability": "mutable",
                   "name": "token1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5904,
+                  "scope": 6023,
                   "src": "490:14:23",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1220,7 +1220,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5828,
+                    "id": 5947,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "490:7:23",
@@ -1234,11 +1234,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 5831,
+                  "id": 5950,
                   "mutability": "mutable",
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5904,
+                  "scope": 6023,
                   "src": "514:10:23",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1247,7 +1247,7 @@
                     "typeString": "uint24"
                   },
                   "typeName": {
-                    "id": 5830,
+                    "id": 5949,
                     "name": "uint24",
                     "nodeType": "ElementaryTypeName",
                     "src": "514:6:23",
@@ -1260,11 +1260,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 5833,
+                  "id": 5952,
                   "mutability": "mutable",
                   "name": "sqrtPriceX96",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5904,
+                  "scope": 6023,
                   "src": "534:20:23",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1273,7 +1273,7 @@
                     "typeString": "uint160"
                   },
                   "typeName": {
-                    "id": 5832,
+                    "id": 5951,
                     "name": "uint160",
                     "nodeType": "ElementaryTypeName",
                     "src": "534:7:23",
@@ -1288,16 +1288,16 @@
               "src": "456:104:23"
             },
             "returnParameters": {
-              "id": 5838,
+              "id": 5957,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5837,
+                  "id": 5956,
                   "mutability": "mutable",
                   "name": "pool",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5904,
+                  "scope": 6023,
                   "src": "596:12:23",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1306,7 +1306,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5836,
+                    "id": 5955,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "596:7:23",
@@ -1321,14 +1321,14 @@
               ],
               "src": "595:14:23"
             },
-            "scope": 5905,
+            "scope": 6024,
             "src": "413:719:23",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 5906,
+        "scope": 6025,
         "src": "291:843:23"
       }
     ],
@@ -1339,40 +1339,40 @@
       "absolutePath": "project:/contracts/base/PoolInitializer.sol",
       "exportedSymbols": {
         "IPeripheryImmutableState": [
-          6691
+          6810
         ],
         "IPoolInitializer": [
-          6769
+          6888
         ],
         "IUniswapV3Factory": [
-          7429
+          7548
         ],
         "IUniswapV3Pool": [
-          7451
+          7570
         ],
         "IUniswapV3PoolActions": [
-          7709
+          7828
         ],
         "IUniswapV3PoolDerivedState": [
-          7740
-        ],
-        "IUniswapV3PoolEvents": [
           7859
         ],
+        "IUniswapV3PoolEvents": [
+          7978
+        ],
         "IUniswapV3PoolImmutables": [
-          7899
+          8018
         ],
         "IUniswapV3PoolOwnerActions": [
-          7925
+          8044
         ],
         "IUniswapV3PoolState": [
-          8033
+          8152
         ],
         "PeripheryImmutableState": [
-          5402
+          5521
         ],
         "PoolInitializer": [
-          5905
+          6024
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -1387,67 +1387,67 @@
             ".6"
           ]
         },
-        "id": 5815,
+        "id": 5934,
         "name": "PragmaDirective",
         "src": "45:24:23"
       },
       {
         "attributes": {
-          "SourceUnit": 7430,
+          "SourceUnit": 7549,
           "absolutePath": "project:/contracts/interfaces/IUniswapV3Factory.sol",
           "file": "../interfaces/IUniswapV3Factory.sol",
-          "scope": 5906,
+          "scope": 6025,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5816,
+        "id": 5935,
         "name": "ImportDirective",
         "src": "71:45:23"
       },
       {
         "attributes": {
-          "SourceUnit": 7452,
+          "SourceUnit": 7571,
           "absolutePath": "project:/contracts/interfaces/IUniswapV3Pool.sol",
           "file": "../interfaces/IUniswapV3Pool.sol",
-          "scope": 5906,
+          "scope": 6025,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5817,
+        "id": 5936,
         "name": "ImportDirective",
         "src": "117:42:23"
       },
       {
         "attributes": {
-          "SourceUnit": 5403,
+          "SourceUnit": 5522,
           "absolutePath": "project:/contracts/base/PeripheryImmutableState.sol",
           "file": "./PeripheryImmutableState.sol",
-          "scope": 5906,
+          "scope": 6025,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5818,
+        "id": 5937,
         "name": "ImportDirective",
         "src": "161:39:23"
       },
       {
         "attributes": {
-          "SourceUnit": 6770,
+          "SourceUnit": 6889,
           "absolutePath": "project:/contracts/interfaces/IPoolInitializer.sol",
           "file": "../interfaces/IPoolInitializer.sol",
-          "scope": 5906,
+          "scope": 6025,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 5819,
+        "id": 5938,
         "name": "ImportDirective",
         "src": "201:44:23"
       },
@@ -1455,27 +1455,27 @@
         "attributes": {
           "abstract": true,
           "contractDependencies": [
-            5402,
-            6691,
-            6769
+            5521,
+            6810,
+            6888
           ],
           "contractKind": "contract",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            5905,
-            5402,
-            6691,
-            6769
+            6024,
+            5521,
+            6810,
+            6888
           ],
           "name": "PoolInitializer",
-          "scope": 5906
+          "scope": 6025
         },
         "children": [
           {
             "attributes": {
               "text": "@title Creates and initializes V3 Pools"
             },
-            "id": 5820,
+            "id": 5939,
             "name": "StructuredDocumentation",
             "src": "247:44:23"
           },
@@ -1485,15 +1485,15 @@
               {
                 "attributes": {
                   "name": "IPoolInitializer",
-                  "referencedDeclaration": 6769,
+                  "referencedDeclaration": 6888,
                   "type": "contract IPoolInitializer"
                 },
-                "id": 5821,
+                "id": 5940,
                 "name": "UserDefinedTypeName",
                 "src": "328:16:23"
               }
             ],
-            "id": 5822,
+            "id": 5941,
             "name": "InheritanceSpecifier",
             "src": "328:16:23"
           },
@@ -1503,22 +1503,22 @@
               {
                 "attributes": {
                   "name": "PeripheryImmutableState",
-                  "referencedDeclaration": 5402,
+                  "referencedDeclaration": 5521,
                   "type": "contract PeripheryImmutableState"
                 },
-                "id": 5823,
+                "id": 5942,
                 "name": "UserDefinedTypeName",
                 "src": "346:23:23"
               }
             ],
-            "id": 5824,
+            "id": 5943,
             "name": "InheritanceSpecifier",
             "src": "346:23:23"
           },
           {
             "attributes": {
               "baseFunctions": [
-                6768
+                6887
               ],
               "functionSelector": "13ead562",
               "implemented": true,
@@ -1528,7 +1528,7 @@
                 null
               ],
               "name": "createAndInitializePoolIfNecessary",
-              "scope": 5905,
+              "scope": 6024,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -1538,7 +1538,7 @@
                 "attributes": {
                   "text": "@inheritdoc IPoolInitializer"
                 },
-                "id": 5825,
+                "id": 5944,
                 "name": "StructuredDocumentation",
                 "src": "376:32:23"
               },
@@ -1548,7 +1548,7 @@
                     null
                   ]
                 },
-                "id": 5835,
+                "id": 5954,
                 "name": "OverrideSpecifier",
                 "src": "578:8:23"
               },
@@ -1559,7 +1559,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token0",
-                      "scope": 5904,
+                      "scope": 6023,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1572,12 +1572,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 5826,
+                        "id": 5945,
                         "name": "ElementaryTypeName",
                         "src": "466:7:23"
                       }
                     ],
-                    "id": 5827,
+                    "id": 5946,
                     "name": "VariableDeclaration",
                     "src": "466:14:23"
                   },
@@ -1586,7 +1586,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token1",
-                      "scope": 5904,
+                      "scope": 6023,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1599,12 +1599,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 5828,
+                        "id": 5947,
                         "name": "ElementaryTypeName",
                         "src": "490:7:23"
                       }
                     ],
-                    "id": 5829,
+                    "id": 5948,
                     "name": "VariableDeclaration",
                     "src": "490:14:23"
                   },
@@ -1613,7 +1613,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "fee",
-                      "scope": 5904,
+                      "scope": 6023,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint24",
@@ -1625,12 +1625,12 @@
                           "name": "uint24",
                           "type": "uint24"
                         },
-                        "id": 5830,
+                        "id": 5949,
                         "name": "ElementaryTypeName",
                         "src": "514:6:23"
                       }
                     ],
-                    "id": 5831,
+                    "id": 5950,
                     "name": "VariableDeclaration",
                     "src": "514:10:23"
                   },
@@ -1639,7 +1639,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "sqrtPriceX96",
-                      "scope": 5904,
+                      "scope": 6023,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint160",
@@ -1651,17 +1651,17 @@
                           "name": "uint160",
                           "type": "uint160"
                         },
-                        "id": 5832,
+                        "id": 5951,
                         "name": "ElementaryTypeName",
                         "src": "534:7:23"
                       }
                     ],
-                    "id": 5833,
+                    "id": 5952,
                     "name": "VariableDeclaration",
                     "src": "534:20:23"
                   }
                 ],
-                "id": 5834,
+                "id": 5953,
                 "name": "ParameterList",
                 "src": "456:104:23"
               },
@@ -1672,7 +1672,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "pool",
-                      "scope": 5904,
+                      "scope": 6023,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1685,17 +1685,17 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 5836,
+                        "id": 5955,
                         "name": "ElementaryTypeName",
                         "src": "596:7:23"
                       }
                     ],
-                    "id": 5837,
+                    "id": 5956,
                     "name": "VariableDeclaration",
                     "src": "596:12:23"
                   }
                 ],
-                "id": 5838,
+                "id": 5957,
                 "name": "ParameterList",
                 "src": "595:14:23"
               },
@@ -1734,7 +1734,7 @@
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 5839,
+                            "id": 5958,
                             "name": "Identifier",
                             "src": "620:7:23"
                           },
@@ -1757,11 +1757,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5827,
+                                  "referencedDeclaration": 5946,
                                   "type": "address",
                                   "value": "token0"
                                 },
-                                "id": 5840,
+                                "id": 5959,
                                 "name": "Identifier",
                                 "src": "628:6:23"
                               },
@@ -1770,26 +1770,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5829,
+                                  "referencedDeclaration": 5948,
                                   "type": "address",
                                   "value": "token1"
                                 },
-                                "id": 5841,
+                                "id": 5960,
                                 "name": "Identifier",
                                 "src": "637:6:23"
                               }
                             ],
-                            "id": 5842,
+                            "id": 5961,
                             "name": "BinaryOperation",
                             "src": "628:15:23"
                           }
                         ],
-                        "id": 5843,
+                        "id": 5962,
                         "name": "FunctionCall",
                         "src": "620:24:23"
                       }
                     ],
-                    "id": 5844,
+                    "id": 5963,
                     "name": "ExpressionStatement",
                     "src": "620:24:23"
                   },
@@ -1810,11 +1810,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5837,
+                              "referencedDeclaration": 5956,
                               "type": "address",
                               "value": "pool"
                             },
-                            "id": 5845,
+                            "id": 5964,
                             "name": "Identifier",
                             "src": "654:4:23"
                           },
@@ -1854,7 +1854,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "getPool",
-                                  "referencedDeclaration": 7402,
+                                  "referencedDeclaration": 7521,
                                   "type": "function (address,address,uint24) view external returns (address)"
                                 },
                                 "children": [
@@ -1884,11 +1884,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 7429,
+                                          "referencedDeclaration": 7548,
                                           "type": "type(contract IUniswapV3Factory)",
                                           "value": "IUniswapV3Factory"
                                         },
-                                        "id": 5846,
+                                        "id": 5965,
                                         "name": "Identifier",
                                         "src": "661:17:23"
                                       },
@@ -1897,21 +1897,21 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5381,
+                                          "referencedDeclaration": 5500,
                                           "type": "address",
                                           "value": "factory"
                                         },
-                                        "id": 5847,
+                                        "id": 5966,
                                         "name": "Identifier",
                                         "src": "679:7:23"
                                       }
                                     ],
-                                    "id": 5848,
+                                    "id": 5967,
                                     "name": "FunctionCall",
                                     "src": "661:26:23"
                                   }
                                 ],
-                                "id": 5849,
+                                "id": 5968,
                                 "name": "MemberAccess",
                                 "src": "661:34:23"
                               },
@@ -1920,11 +1920,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5827,
+                                  "referencedDeclaration": 5946,
                                   "type": "address",
                                   "value": "token0"
                                 },
-                                "id": 5850,
+                                "id": 5969,
                                 "name": "Identifier",
                                 "src": "696:6:23"
                               },
@@ -1933,11 +1933,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5829,
+                                  "referencedDeclaration": 5948,
                                   "type": "address",
                                   "value": "token1"
                                 },
-                                "id": 5851,
+                                "id": 5970,
                                 "name": "Identifier",
                                 "src": "704:6:23"
                               },
@@ -1946,26 +1946,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 5831,
+                                  "referencedDeclaration": 5950,
                                   "type": "uint24",
                                   "value": "fee"
                                 },
-                                "id": 5852,
+                                "id": 5971,
                                 "name": "Identifier",
                                 "src": "712:3:23"
                               }
                             ],
-                            "id": 5853,
+                            "id": 5972,
                             "name": "FunctionCall",
                             "src": "661:55:23"
                           }
                         ],
-                        "id": 5854,
+                        "id": 5973,
                         "name": "Assignment",
                         "src": "654:62:23"
                       }
                     ],
-                    "id": 5855,
+                    "id": 5974,
                     "name": "ExpressionStatement",
                     "src": "654:62:23"
                   },
@@ -1990,11 +1990,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 5837,
+                              "referencedDeclaration": 5956,
                               "type": "address",
                               "value": "pool"
                             },
-                            "id": 5856,
+                            "id": 5975,
                             "name": "Identifier",
                             "src": "731:4:23"
                           },
@@ -2032,12 +2032,12 @@
                                     "attributes": {
                                       "name": "address"
                                     },
-                                    "id": 5857,
+                                    "id": 5976,
                                     "name": "ElementaryTypeName",
                                     "src": "739:7:23"
                                   }
                                 ],
-                                "id": 5858,
+                                "id": 5977,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "739:7:23"
                               },
@@ -2052,17 +2052,17 @@
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 5859,
+                                "id": 5978,
                                 "name": "Literal",
                                 "src": "747:1:23"
                               }
                             ],
-                            "id": 5860,
+                            "id": 5979,
                             "name": "FunctionCall",
                             "src": "739:10:23"
                           }
                         ],
-                        "id": 5861,
+                        "id": 5980,
                         "name": "BinaryOperation",
                         "src": "731:18:23"
                       },
@@ -2085,11 +2085,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5837,
+                                      "referencedDeclaration": 5956,
                                       "type": "address",
                                       "value": "pool"
                                     },
-                                    "id": 5862,
+                                    "id": 5981,
                                     "name": "Identifier",
                                     "src": "765:4:23"
                                   },
@@ -2129,7 +2129,7 @@
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "createPool",
-                                          "referencedDeclaration": 7414,
+                                          "referencedDeclaration": 7533,
                                           "type": "function (address,address,uint24) external returns (address)"
                                         },
                                         "children": [
@@ -2159,11 +2159,11 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 7429,
+                                                  "referencedDeclaration": 7548,
                                                   "type": "type(contract IUniswapV3Factory)",
                                                   "value": "IUniswapV3Factory"
                                                 },
-                                                "id": 5863,
+                                                "id": 5982,
                                                 "name": "Identifier",
                                                 "src": "772:17:23"
                                               },
@@ -2172,21 +2172,21 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 5381,
+                                                  "referencedDeclaration": 5500,
                                                   "type": "address",
                                                   "value": "factory"
                                                 },
-                                                "id": 5864,
+                                                "id": 5983,
                                                 "name": "Identifier",
                                                 "src": "790:7:23"
                                               }
                                             ],
-                                            "id": 5865,
+                                            "id": 5984,
                                             "name": "FunctionCall",
                                             "src": "772:26:23"
                                           }
                                         ],
-                                        "id": 5866,
+                                        "id": 5985,
                                         "name": "MemberAccess",
                                         "src": "772:37:23"
                                       },
@@ -2195,11 +2195,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5827,
+                                          "referencedDeclaration": 5946,
                                           "type": "address",
                                           "value": "token0"
                                         },
-                                        "id": 5867,
+                                        "id": 5986,
                                         "name": "Identifier",
                                         "src": "810:6:23"
                                       },
@@ -2208,11 +2208,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5829,
+                                          "referencedDeclaration": 5948,
                                           "type": "address",
                                           "value": "token1"
                                         },
-                                        "id": 5868,
+                                        "id": 5987,
                                         "name": "Identifier",
                                         "src": "818:6:23"
                                       },
@@ -2221,26 +2221,26 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 5831,
+                                          "referencedDeclaration": 5950,
                                           "type": "uint24",
                                           "value": "fee"
                                         },
-                                        "id": 5869,
+                                        "id": 5988,
                                         "name": "Identifier",
                                         "src": "826:3:23"
                                       }
                                     ],
-                                    "id": 5870,
+                                    "id": 5989,
                                     "name": "FunctionCall",
                                     "src": "772:58:23"
                                   }
                                 ],
-                                "id": 5871,
+                                "id": 5990,
                                 "name": "Assignment",
                                 "src": "765:65:23"
                               }
                             ],
-                            "id": 5872,
+                            "id": 5991,
                             "name": "ExpressionStatement",
                             "src": "765:65:23"
                           },
@@ -2274,7 +2274,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "initialize",
-                                      "referencedDeclaration": 7622,
+                                      "referencedDeclaration": 7741,
                                       "type": "function (uint160) external"
                                     },
                                     "children": [
@@ -2304,11 +2304,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 7451,
+                                              "referencedDeclaration": 7570,
                                               "type": "type(contract IUniswapV3Pool)",
                                               "value": "IUniswapV3Pool"
                                             },
-                                            "id": 5873,
+                                            "id": 5992,
                                             "name": "Identifier",
                                             "src": "844:14:23"
                                           },
@@ -2317,21 +2317,21 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5837,
+                                              "referencedDeclaration": 5956,
                                               "type": "address",
                                               "value": "pool"
                                             },
-                                            "id": 5874,
+                                            "id": 5993,
                                             "name": "Identifier",
                                             "src": "859:4:23"
                                           }
                                         ],
-                                        "id": 5875,
+                                        "id": 5994,
                                         "name": "FunctionCall",
                                         "src": "844:20:23"
                                       }
                                     ],
-                                    "id": 5876,
+                                    "id": 5995,
                                     "name": "MemberAccess",
                                     "src": "844:31:23"
                                   },
@@ -2340,26 +2340,26 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5833,
+                                      "referencedDeclaration": 5952,
                                       "type": "uint160",
                                       "value": "sqrtPriceX96"
                                     },
-                                    "id": 5877,
+                                    "id": 5996,
                                     "name": "Identifier",
                                     "src": "876:12:23"
                                   }
                                 ],
-                                "id": 5878,
+                                "id": 5997,
                                 "name": "FunctionCall",
                                 "src": "844:45:23"
                               }
                             ],
-                            "id": 5879,
+                            "id": 5998,
                             "name": "ExpressionStatement",
                             "src": "844:45:23"
                           }
                         ],
-                        "id": 5880,
+                        "id": 5999,
                         "name": "Block",
                         "src": "751:149:23"
                       },
@@ -2368,7 +2368,7 @@
                           {
                             "attributes": {
                               "assignments": [
-                                5882,
+                                6001,
                                 null,
                                 null,
                                 null,
@@ -2383,7 +2383,7 @@
                                   "constant": false,
                                   "mutability": "mutable",
                                   "name": "sqrtPriceX96Existing",
-                                  "scope": 5901,
+                                  "scope": 6020,
                                   "stateVariable": false,
                                   "storageLocation": "default",
                                   "type": "uint160",
@@ -2395,12 +2395,12 @@
                                       "name": "uint160",
                                       "type": "uint160"
                                     },
-                                    "id": 5881,
+                                    "id": 6000,
                                     "name": "ElementaryTypeName",
                                     "src": "921:7:23"
                                   }
                                 ],
-                                "id": 5882,
+                                "id": 6001,
                                 "name": "VariableDeclaration",
                                 "src": "921:28:23"
                               },
@@ -2432,7 +2432,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "slot0",
-                                      "referencedDeclaration": 7946,
+                                      "referencedDeclaration": 8065,
                                       "type": "function () view external returns (uint160,int24,uint16,uint16,uint16,uint8,bool)"
                                     },
                                     "children": [
@@ -2462,11 +2462,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 7451,
+                                              "referencedDeclaration": 7570,
                                               "type": "type(contract IUniswapV3Pool)",
                                               "value": "IUniswapV3Pool"
                                             },
-                                            "id": 5883,
+                                            "id": 6002,
                                             "name": "Identifier",
                                             "src": "965:14:23"
                                           },
@@ -2475,31 +2475,31 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5837,
+                                              "referencedDeclaration": 5956,
                                               "type": "address",
                                               "value": "pool"
                                             },
-                                            "id": 5884,
+                                            "id": 6003,
                                             "name": "Identifier",
                                             "src": "980:4:23"
                                           }
                                         ],
-                                        "id": 5885,
+                                        "id": 6004,
                                         "name": "FunctionCall",
                                         "src": "965:20:23"
                                       }
                                     ],
-                                    "id": 5886,
+                                    "id": 6005,
                                     "name": "MemberAccess",
                                     "src": "965:26:23"
                                   }
                                 ],
-                                "id": 5887,
+                                "id": 6006,
                                 "name": "FunctionCall",
                                 "src": "965:28:23"
                               }
                             ],
-                            "id": 5888,
+                            "id": 6007,
                             "name": "VariableDeclarationStatement",
                             "src": "920:73:23"
                           },
@@ -2525,11 +2525,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 5882,
+                                      "referencedDeclaration": 6001,
                                       "type": "uint160",
                                       "value": "sqrtPriceX96Existing"
                                     },
-                                    "id": 5889,
+                                    "id": 6008,
                                     "name": "Identifier",
                                     "src": "1011:20:23"
                                   },
@@ -2544,12 +2544,12 @@
                                       "type": "int_const 0",
                                       "value": "0"
                                     },
-                                    "id": 5890,
+                                    "id": 6009,
                                     "name": "Literal",
                                     "src": "1035:1:23"
                                   }
                                 ],
-                                "id": 5891,
+                                "id": 6010,
                                 "name": "BinaryOperation",
                                 "src": "1011:25:23"
                               },
@@ -2585,7 +2585,7 @@
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "initialize",
-                                              "referencedDeclaration": 7622,
+                                              "referencedDeclaration": 7741,
                                               "type": "function (uint160) external"
                                             },
                                             "children": [
@@ -2615,11 +2615,11 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 7451,
+                                                      "referencedDeclaration": 7570,
                                                       "type": "type(contract IUniswapV3Pool)",
                                                       "value": "IUniswapV3Pool"
                                                     },
-                                                    "id": 5892,
+                                                    "id": 6011,
                                                     "name": "Identifier",
                                                     "src": "1056:14:23"
                                                   },
@@ -2628,21 +2628,21 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 5837,
+                                                      "referencedDeclaration": 5956,
                                                       "type": "address",
                                                       "value": "pool"
                                                     },
-                                                    "id": 5893,
+                                                    "id": 6012,
                                                     "name": "Identifier",
                                                     "src": "1071:4:23"
                                                   }
                                                 ],
-                                                "id": 5894,
+                                                "id": 6013,
                                                 "name": "FunctionCall",
                                                 "src": "1056:20:23"
                                               }
                                             ],
-                                            "id": 5895,
+                                            "id": 6014,
                                             "name": "MemberAccess",
                                             "src": "1056:31:23"
                                           },
@@ -2651,61 +2651,61 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 5833,
+                                              "referencedDeclaration": 5952,
                                               "type": "uint160",
                                               "value": "sqrtPriceX96"
                                             },
-                                            "id": 5896,
+                                            "id": 6015,
                                             "name": "Identifier",
                                             "src": "1088:12:23"
                                           }
                                         ],
-                                        "id": 5897,
+                                        "id": 6016,
                                         "name": "FunctionCall",
                                         "src": "1056:45:23"
                                       }
                                     ],
-                                    "id": 5898,
+                                    "id": 6017,
                                     "name": "ExpressionStatement",
                                     "src": "1056:45:23"
                                   }
                                 ],
-                                "id": 5899,
+                                "id": 6018,
                                 "name": "Block",
                                 "src": "1038:78:23"
                               }
                             ],
-                            "id": 5900,
+                            "id": 6019,
                             "name": "IfStatement",
                             "src": "1007:109:23"
                           }
                         ],
-                        "id": 5901,
+                        "id": 6020,
                         "name": "Block",
                         "src": "906:220:23"
                       }
                     ],
-                    "id": 5902,
+                    "id": 6021,
                     "name": "IfStatement",
                     "src": "727:399:23"
                   }
                 ],
-                "id": 5903,
+                "id": 6022,
                 "name": "Block",
                 "src": "610:522:23"
               }
             ],
-            "id": 5904,
+            "id": 6023,
             "name": "FunctionDefinition",
             "src": "413:719:23"
           }
         ],
-        "id": 5905,
+        "id": 6024,
         "name": "ContractDefinition",
         "src": "291:843:23"
       }
     ],
-    "id": 5906,
+    "id": 6025,
     "name": "SourceUnit",
     "src": "45:1090:23"
   },
@@ -2715,7 +2715,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:23.943Z",
+  "updatedAt": "2023-07-05T17:56:22.673Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

@@ -71,7 +71,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.6;\n\nimport '../interfaces/IUniswapV3Factory.sol';\nimport '../interfaces/IUniswapV3Pool.sol';\n\nimport './PeripheryImmutableState.sol';\nimport '../interfaces/IPoolInitializer.sol';\n\n/// @title Creates and initializes V3 Pools\nabstract contract PoolInitializer is IPoolInitializer, PeripheryImmutableState {\n    /// @inheritdoc IPoolInitializer\n    function createAndInitializePoolIfNecessary(\n        address token0,\n        address token1,\n        uint24 fee,\n        uint160 sqrtPriceX96\n    ) external payable override returns (address pool) {\n        require(token0 < token1);\n        pool = IUniswapV3Factory(factory).getPool(token0, token1, fee);\n\n        if (pool == address(0)) {\n            pool = IUniswapV3Factory(factory).createPool(token0, token1, fee);\n            IUniswapV3Pool(pool).initialize(sqrtPriceX96);\n        } else {\n            (uint160 sqrtPriceX96Existing, , , , , , ) = IUniswapV3Pool(pool).slot0();\n            if (sqrtPriceX96Existing == 0) {\n                IUniswapV3Pool(pool).initialize(sqrtPriceX96);\n            }\n        }\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/base/PoolInitializer.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/base/PoolInitializer.sol",
   "ast": {
     "absolutePath": "project:/contracts/base/PoolInitializer.sol",
     "exportedSymbols": {
@@ -2715,7 +2715,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.497Z",
+  "updatedAt": "2023-07-05T17:57:59.810Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

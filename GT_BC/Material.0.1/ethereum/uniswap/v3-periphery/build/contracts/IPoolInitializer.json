@@ -45,20 +45,20 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\npragma abicoder v2;\n\n/// @title Creates and initializes V3 Pools\n/// @notice Provides a method for creating and initializing a pool, if necessary, for bundling with other methods that\n/// require the pool to exist.\ninterface IPoolInitializer {\n    /// @notice Creates a new pool if it does not exist, then initializes if not initialized\n    /// @dev This method can be bundled with others via IMulticall for the first action (e.g. mint) performed against a pool\n    /// @param token0 The contract address of token0 of the pool\n    /// @param token1 The contract address of token1 of the pool\n    /// @param fee The fee amount of the v3 pool for the specified token pair\n    /// @param sqrtPriceX96 The initial square root price of the pool as a Q64.96 value\n    /// @return pool Returns the pool address based on the pair of tokens and fee, will return the newly created pool address if necessary\n    function createAndInitializePoolIfNecessary(\n        address token0,\n        address token1,\n        uint24 fee,\n        uint160 sqrtPriceX96\n    ) external payable returns (address pool);\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/interfaces/IPoolInitializer.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/interfaces/IPoolInitializer.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IPoolInitializer.sol",
     "exportedSymbols": {
       "IPoolInitializer": [
-        6769
+        6888
       ]
     },
-    "id": 6770,
+    "id": 6889,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6752,
+        "id": 6871,
         "literals": [
           "solidity",
           ">=",
@@ -69,7 +69,7 @@
         "src": "45:24:40"
       },
       {
-        "id": 6753,
+        "id": 6872,
         "literals": [
           "abicoder",
           "v2"
@@ -83,44 +83,44 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 6754,
+          "id": 6873,
           "nodeType": "StructuredDocumentation",
           "src": "91:194:40",
           "text": "@title Creates and initializes V3 Pools\n @notice Provides a method for creating and initializing a pool, if necessary, for bundling with other methods that\n require the pool to exist."
         },
         "fullyImplemented": false,
-        "id": 6769,
+        "id": 6888,
         "linearizedBaseContracts": [
-          6769
+          6888
         ],
         "name": "IPoolInitializer",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 6755,
+              "id": 6874,
               "nodeType": "StructuredDocumentation",
               "src": "318:648:40",
               "text": "@notice Creates a new pool if it does not exist, then initializes if not initialized\n @dev This method can be bundled with others via IMulticall for the first action (e.g. mint) performed against a pool\n @param token0 The contract address of token0 of the pool\n @param token1 The contract address of token1 of the pool\n @param fee The fee amount of the v3 pool for the specified token pair\n @param sqrtPriceX96 The initial square root price of the pool as a Q64.96 value\n @return pool Returns the pool address based on the pair of tokens and fee, will return the newly created pool address if necessary"
             },
             "functionSelector": "13ead562",
-            "id": 6768,
+            "id": 6887,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createAndInitializePoolIfNecessary",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6764,
+              "id": 6883,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6757,
+                  "id": 6876,
                   "mutability": "mutable",
                   "name": "token0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6768,
+                  "scope": 6887,
                   "src": "1024:14:40",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -129,7 +129,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6756,
+                    "id": 6875,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1024:7:40",
@@ -143,11 +143,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6759,
+                  "id": 6878,
                   "mutability": "mutable",
                   "name": "token1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6768,
+                  "scope": 6887,
                   "src": "1048:14:40",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -156,7 +156,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6758,
+                    "id": 6877,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1048:7:40",
@@ -170,11 +170,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6761,
+                  "id": 6880,
                   "mutability": "mutable",
                   "name": "fee",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6768,
+                  "scope": 6887,
                   "src": "1072:10:40",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -183,7 +183,7 @@
                     "typeString": "uint24"
                   },
                   "typeName": {
-                    "id": 6760,
+                    "id": 6879,
                     "name": "uint24",
                     "nodeType": "ElementaryTypeName",
                     "src": "1072:6:40",
@@ -196,11 +196,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6763,
+                  "id": 6882,
                   "mutability": "mutable",
                   "name": "sqrtPriceX96",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6768,
+                  "scope": 6887,
                   "src": "1092:20:40",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -209,7 +209,7 @@
                     "typeString": "uint160"
                   },
                   "typeName": {
-                    "id": 6762,
+                    "id": 6881,
                     "name": "uint160",
                     "nodeType": "ElementaryTypeName",
                     "src": "1092:7:40",
@@ -224,16 +224,16 @@
               "src": "1014:104:40"
             },
             "returnParameters": {
-              "id": 6767,
+              "id": 6886,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6766,
+                  "id": 6885,
                   "mutability": "mutable",
                   "name": "pool",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6768,
+                  "scope": 6887,
                   "src": "1145:12:40",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -242,7 +242,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6765,
+                    "id": 6884,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1145:7:40",
@@ -257,14 +257,14 @@
               ],
               "src": "1144:14:40"
             },
-            "scope": 6769,
+            "scope": 6888,
             "src": "971:188:40",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6770,
+        "scope": 6889,
         "src": "285:876:40"
       }
     ],
@@ -275,7 +275,7 @@
       "absolutePath": "project:/contracts/interfaces/IPoolInitializer.sol",
       "exportedSymbols": {
         "IPoolInitializer": [
-          6769
+          6888
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -290,7 +290,7 @@
             ".5"
           ]
         },
-        "id": 6752,
+        "id": 6871,
         "name": "PragmaDirective",
         "src": "45:24:40"
       },
@@ -301,7 +301,7 @@
             "v2"
           ]
         },
-        "id": 6753,
+        "id": 6872,
         "name": "PragmaDirective",
         "src": "70:19:40"
       },
@@ -317,17 +317,17 @@
           "contractKind": "interface",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            6769
+            6888
           ],
           "name": "IPoolInitializer",
-          "scope": 6770
+          "scope": 6889
         },
         "children": [
           {
             "attributes": {
               "text": "@title Creates and initializes V3 Pools\n @notice Provides a method for creating and initializing a pool, if necessary, for bundling with other methods that\n require the pool to exist."
             },
-            "id": 6754,
+            "id": 6873,
             "name": "StructuredDocumentation",
             "src": "91:194:40"
           },
@@ -341,7 +341,7 @@
                 null
               ],
               "name": "createAndInitializePoolIfNecessary",
-              "scope": 6769,
+              "scope": 6888,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -351,7 +351,7 @@
                 "attributes": {
                   "text": "@notice Creates a new pool if it does not exist, then initializes if not initialized\n @dev This method can be bundled with others via IMulticall for the first action (e.g. mint) performed against a pool\n @param token0 The contract address of token0 of the pool\n @param token1 The contract address of token1 of the pool\n @param fee The fee amount of the v3 pool for the specified token pair\n @param sqrtPriceX96 The initial square root price of the pool as a Q64.96 value\n @return pool Returns the pool address based on the pair of tokens and fee, will return the newly created pool address if necessary"
                 },
-                "id": 6755,
+                "id": 6874,
                 "name": "StructuredDocumentation",
                 "src": "318:648:40"
               },
@@ -362,7 +362,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token0",
-                      "scope": 6768,
+                      "scope": 6887,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -375,12 +375,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6756,
+                        "id": 6875,
                         "name": "ElementaryTypeName",
                         "src": "1024:7:40"
                       }
                     ],
-                    "id": 6757,
+                    "id": 6876,
                     "name": "VariableDeclaration",
                     "src": "1024:14:40"
                   },
@@ -389,7 +389,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token1",
-                      "scope": 6768,
+                      "scope": 6887,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -402,12 +402,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6758,
+                        "id": 6877,
                         "name": "ElementaryTypeName",
                         "src": "1048:7:40"
                       }
                     ],
-                    "id": 6759,
+                    "id": 6878,
                     "name": "VariableDeclaration",
                     "src": "1048:14:40"
                   },
@@ -416,7 +416,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "fee",
-                      "scope": 6768,
+                      "scope": 6887,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint24",
@@ -428,12 +428,12 @@
                           "name": "uint24",
                           "type": "uint24"
                         },
-                        "id": 6760,
+                        "id": 6879,
                         "name": "ElementaryTypeName",
                         "src": "1072:6:40"
                       }
                     ],
-                    "id": 6761,
+                    "id": 6880,
                     "name": "VariableDeclaration",
                     "src": "1072:10:40"
                   },
@@ -442,7 +442,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "sqrtPriceX96",
-                      "scope": 6768,
+                      "scope": 6887,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint160",
@@ -454,17 +454,17 @@
                           "name": "uint160",
                           "type": "uint160"
                         },
-                        "id": 6762,
+                        "id": 6881,
                         "name": "ElementaryTypeName",
                         "src": "1092:7:40"
                       }
                     ],
-                    "id": 6763,
+                    "id": 6882,
                     "name": "VariableDeclaration",
                     "src": "1092:20:40"
                   }
                 ],
-                "id": 6764,
+                "id": 6883,
                 "name": "ParameterList",
                 "src": "1014:104:40"
               },
@@ -475,7 +475,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "pool",
-                      "scope": 6768,
+                      "scope": 6887,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -488,32 +488,32 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6765,
+                        "id": 6884,
                         "name": "ElementaryTypeName",
                         "src": "1145:7:40"
                       }
                     ],
-                    "id": 6766,
+                    "id": 6885,
                     "name": "VariableDeclaration",
                     "src": "1145:12:40"
                   }
                 ],
-                "id": 6767,
+                "id": 6886,
                 "name": "ParameterList",
                 "src": "1144:14:40"
               }
             ],
-            "id": 6768,
+            "id": 6887,
             "name": "FunctionDefinition",
             "src": "971:188:40"
           }
         ],
-        "id": 6769,
+        "id": 6888,
         "name": "ContractDefinition",
         "src": "285:876:40"
       }
     ],
-    "id": 6770,
+    "id": 6889,
     "name": "SourceUnit",
     "src": "45:1117:40"
   },
@@ -523,7 +523,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:23.952Z",
+  "updatedAt": "2023-07-05T17:56:22.718Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

@@ -120,23 +120,23 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\n\nimport './IPeripheryPayments.sol';\n\n/// @title Periphery Payments\n/// @notice Functions to ease deposits and withdrawals of ETH\ninterface IPeripheryPaymentsWithFee is IPeripheryPayments {\n    /// @notice Unwraps the contract's WETH9 balance and sends it to recipient as ETH, with a percentage between\n    /// 0 (exclusive), and 1 (inclusive) going to feeRecipient\n    /// @dev The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users.\n    function unwrapWETH9WithFee(\n        uint256 amountMinimum,\n        address recipient,\n        uint256 feeBips,\n        address feeRecipient\n    ) external payable;\n\n    /// @notice Transfers the full amount of a token held by this contract to recipient, with a percentage between\n    /// 0 (exclusive) and 1 (inclusive) going to feeRecipient\n    /// @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users\n    function sweepTokenWithFee(\n        address token,\n        uint256 amountMinimum,\n        address recipient,\n        uint256 feeBips,\n        address feeRecipient\n    ) external payable;\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/interfaces/IPeripheryPaymentsWithFee.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/interfaces/IPeripheryPaymentsWithFee.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IPeripheryPaymentsWithFee.sol",
     "exportedSymbols": {
       "IPeripheryPayments": [
-        6717
+        6836
       ],
       "IPeripheryPaymentsWithFee": [
-        6750
+        6869
       ]
     },
-    "id": 6751,
+    "id": 6870,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6719,
+        "id": 6838,
         "literals": [
           "solidity",
           ">=",
@@ -149,10 +149,10 @@
       {
         "absolutePath": "project:/contracts/interfaces/IPeripheryPayments.sol",
         "file": "./IPeripheryPayments.sol",
-        "id": 6720,
+        "id": 6839,
         "nodeType": "ImportDirective",
-        "scope": 6751,
-        "sourceUnit": 6718,
+        "scope": 6870,
+        "sourceUnit": 6837,
         "src": "71:34:39",
         "symbolAliases": [],
         "unitAlias": ""
@@ -162,65 +162,65 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 6722,
+              "id": 6841,
               "name": "IPeripheryPayments",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6717,
+              "referencedDeclaration": 6836,
               "src": "238:18:39",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPeripheryPayments_$6717",
+                "typeIdentifier": "t_contract$_IPeripheryPayments_$6836",
                 "typeString": "contract IPeripheryPayments"
               }
             },
-            "id": 6723,
+            "id": 6842,
             "nodeType": "InheritanceSpecifier",
             "src": "238:18:39"
           }
         ],
         "contractDependencies": [
-          6717
+          6836
         ],
         "contractKind": "interface",
         "documentation": {
-          "id": 6721,
+          "id": 6840,
           "nodeType": "StructuredDocumentation",
           "src": "107:92:39",
           "text": "@title Periphery Payments\n @notice Functions to ease deposits and withdrawals of ETH"
         },
         "fullyImplemented": false,
-        "id": 6750,
+        "id": 6869,
         "linearizedBaseContracts": [
-          6750,
-          6717
+          6869,
+          6836
         ],
         "name": "IPeripheryPaymentsWithFee",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 6724,
+              "id": 6843,
               "nodeType": "StructuredDocumentation",
               "src": "263:273:39",
               "text": "@notice Unwraps the contract's WETH9 balance and sends it to recipient as ETH, with a percentage between\n 0 (exclusive), and 1 (inclusive) going to feeRecipient\n @dev The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users."
             },
             "functionSelector": "9b2c0a37",
-            "id": 6735,
+            "id": 6854,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "unwrapWETH9WithFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6733,
+              "id": 6852,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6726,
+                  "id": 6845,
                   "mutability": "mutable",
                   "name": "amountMinimum",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6735,
+                  "scope": 6854,
                   "src": "578:21:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -229,7 +229,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6725,
+                    "id": 6844,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "578:7:39",
@@ -242,11 +242,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6728,
+                  "id": 6847,
                   "mutability": "mutable",
                   "name": "recipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6735,
+                  "scope": 6854,
                   "src": "609:17:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -255,7 +255,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6727,
+                    "id": 6846,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "609:7:39",
@@ -269,11 +269,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6730,
+                  "id": 6849,
                   "mutability": "mutable",
                   "name": "feeBips",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6735,
+                  "scope": 6854,
                   "src": "636:15:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -282,7 +282,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6729,
+                    "id": 6848,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "636:7:39",
@@ -295,11 +295,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6732,
+                  "id": 6851,
                   "mutability": "mutable",
                   "name": "feeRecipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6735,
+                  "scope": 6854,
                   "src": "661:20:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -308,7 +308,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6731,
+                    "id": 6850,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "661:7:39",
@@ -324,12 +324,12 @@
               "src": "568:119:39"
             },
             "returnParameters": {
-              "id": 6734,
+              "id": 6853,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "704:0:39"
             },
-            "scope": 6750,
+            "scope": 6869,
             "src": "541:164:39",
             "stateMutability": "payable",
             "virtual": false,
@@ -337,29 +337,29 @@
           },
           {
             "documentation": {
-              "id": 6736,
+              "id": 6855,
               "nodeType": "StructuredDocumentation",
               "src": "711:277:39",
               "text": "@notice Transfers the full amount of a token held by this contract to recipient, with a percentage between\n 0 (exclusive) and 1 (inclusive) going to feeRecipient\n @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users"
             },
             "functionSelector": "e0e189a0",
-            "id": 6749,
+            "id": 6868,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "sweepTokenWithFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6747,
+              "id": 6866,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6738,
+                  "id": 6857,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6749,
+                  "scope": 6868,
                   "src": "1029:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -368,7 +368,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6737,
+                    "id": 6856,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1029:7:39",
@@ -382,11 +382,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6740,
+                  "id": 6859,
                   "mutability": "mutable",
                   "name": "amountMinimum",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6749,
+                  "scope": 6868,
                   "src": "1052:21:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -395,7 +395,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6739,
+                    "id": 6858,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1052:7:39",
@@ -408,11 +408,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6742,
+                  "id": 6861,
                   "mutability": "mutable",
                   "name": "recipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6749,
+                  "scope": 6868,
                   "src": "1083:17:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -421,7 +421,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6741,
+                    "id": 6860,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1083:7:39",
@@ -435,11 +435,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6744,
+                  "id": 6863,
                   "mutability": "mutable",
                   "name": "feeBips",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6749,
+                  "scope": 6868,
                   "src": "1110:15:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -448,7 +448,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6743,
+                    "id": 6862,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1110:7:39",
@@ -461,11 +461,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6746,
+                  "id": 6865,
                   "mutability": "mutable",
                   "name": "feeRecipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6749,
+                  "scope": 6868,
                   "src": "1135:20:39",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -474,7 +474,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6745,
+                    "id": 6864,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1135:7:39",
@@ -490,19 +490,19 @@
               "src": "1019:142:39"
             },
             "returnParameters": {
-              "id": 6748,
+              "id": 6867,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1178:0:39"
             },
-            "scope": 6750,
+            "scope": 6869,
             "src": "993:186:39",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6751,
+        "scope": 6870,
         "src": "199:982:39"
       }
     ],
@@ -513,10 +513,10 @@
       "absolutePath": "project:/contracts/interfaces/IPeripheryPaymentsWithFee.sol",
       "exportedSymbols": {
         "IPeripheryPayments": [
-          6717
+          6836
         ],
         "IPeripheryPaymentsWithFee": [
-          6750
+          6869
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -531,22 +531,22 @@
             ".5"
           ]
         },
-        "id": 6719,
+        "id": 6838,
         "name": "PragmaDirective",
         "src": "45:24:39"
       },
       {
         "attributes": {
-          "SourceUnit": 6718,
+          "SourceUnit": 6837,
           "absolutePath": "project:/contracts/interfaces/IPeripheryPayments.sol",
           "file": "./IPeripheryPayments.sol",
-          "scope": 6751,
+          "scope": 6870,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 6720,
+        "id": 6839,
         "name": "ImportDirective",
         "src": "71:34:39"
       },
@@ -554,23 +554,23 @@
         "attributes": {
           "abstract": false,
           "contractDependencies": [
-            6717
+            6836
           ],
           "contractKind": "interface",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            6750,
-            6717
+            6869,
+            6836
           ],
           "name": "IPeripheryPaymentsWithFee",
-          "scope": 6751
+          "scope": 6870
         },
         "children": [
           {
             "attributes": {
               "text": "@title Periphery Payments\n @notice Functions to ease deposits and withdrawals of ETH"
             },
-            "id": 6721,
+            "id": 6840,
             "name": "StructuredDocumentation",
             "src": "107:92:39"
           },
@@ -580,15 +580,15 @@
               {
                 "attributes": {
                   "name": "IPeripheryPayments",
-                  "referencedDeclaration": 6717,
+                  "referencedDeclaration": 6836,
                   "type": "contract IPeripheryPayments"
                 },
-                "id": 6722,
+                "id": 6841,
                 "name": "UserDefinedTypeName",
                 "src": "238:18:39"
               }
             ],
-            "id": 6723,
+            "id": 6842,
             "name": "InheritanceSpecifier",
             "src": "238:18:39"
           },
@@ -602,7 +602,7 @@
                 null
               ],
               "name": "unwrapWETH9WithFee",
-              "scope": 6750,
+              "scope": 6869,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -612,7 +612,7 @@
                 "attributes": {
                   "text": "@notice Unwraps the contract's WETH9 balance and sends it to recipient as ETH, with a percentage between\n 0 (exclusive), and 1 (inclusive) going to feeRecipient\n @dev The amountMinimum parameter prevents malicious contracts from stealing WETH9 from users."
                 },
-                "id": 6724,
+                "id": 6843,
                 "name": "StructuredDocumentation",
                 "src": "263:273:39"
               },
@@ -623,7 +623,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "amountMinimum",
-                      "scope": 6735,
+                      "scope": 6854,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -635,12 +635,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6725,
+                        "id": 6844,
                         "name": "ElementaryTypeName",
                         "src": "578:7:39"
                       }
                     ],
-                    "id": 6726,
+                    "id": 6845,
                     "name": "VariableDeclaration",
                     "src": "578:21:39"
                   },
@@ -649,7 +649,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "recipient",
-                      "scope": 6735,
+                      "scope": 6854,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -662,12 +662,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6727,
+                        "id": 6846,
                         "name": "ElementaryTypeName",
                         "src": "609:7:39"
                       }
                     ],
-                    "id": 6728,
+                    "id": 6847,
                     "name": "VariableDeclaration",
                     "src": "609:17:39"
                   },
@@ -676,7 +676,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeBips",
-                      "scope": 6735,
+                      "scope": 6854,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -688,12 +688,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6729,
+                        "id": 6848,
                         "name": "ElementaryTypeName",
                         "src": "636:7:39"
                       }
                     ],
-                    "id": 6730,
+                    "id": 6849,
                     "name": "VariableDeclaration",
                     "src": "636:15:39"
                   },
@@ -702,7 +702,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeRecipient",
-                      "scope": 6735,
+                      "scope": 6854,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -715,17 +715,17 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6731,
+                        "id": 6850,
                         "name": "ElementaryTypeName",
                         "src": "661:7:39"
                       }
                     ],
-                    "id": 6732,
+                    "id": 6851,
                     "name": "VariableDeclaration",
                     "src": "661:20:39"
                   }
                 ],
-                "id": 6733,
+                "id": 6852,
                 "name": "ParameterList",
                 "src": "568:119:39"
               },
@@ -736,12 +736,12 @@
                   ]
                 },
                 "children": [],
-                "id": 6734,
+                "id": 6853,
                 "name": "ParameterList",
                 "src": "704:0:39"
               }
             ],
-            "id": 6735,
+            "id": 6854,
             "name": "FunctionDefinition",
             "src": "541:164:39"
           },
@@ -755,7 +755,7 @@
                 null
               ],
               "name": "sweepTokenWithFee",
-              "scope": 6750,
+              "scope": 6869,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -765,7 +765,7 @@
                 "attributes": {
                   "text": "@notice Transfers the full amount of a token held by this contract to recipient, with a percentage between\n 0 (exclusive) and 1 (inclusive) going to feeRecipient\n @dev The amountMinimum parameter prevents malicious contracts from stealing the token from users"
                 },
-                "id": 6736,
+                "id": 6855,
                 "name": "StructuredDocumentation",
                 "src": "711:277:39"
               },
@@ -776,7 +776,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "token",
-                      "scope": 6749,
+                      "scope": 6868,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -789,12 +789,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6737,
+                        "id": 6856,
                         "name": "ElementaryTypeName",
                         "src": "1029:7:39"
                       }
                     ],
-                    "id": 6738,
+                    "id": 6857,
                     "name": "VariableDeclaration",
                     "src": "1029:13:39"
                   },
@@ -803,7 +803,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "amountMinimum",
-                      "scope": 6749,
+                      "scope": 6868,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -815,12 +815,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6739,
+                        "id": 6858,
                         "name": "ElementaryTypeName",
                         "src": "1052:7:39"
                       }
                     ],
-                    "id": 6740,
+                    "id": 6859,
                     "name": "VariableDeclaration",
                     "src": "1052:21:39"
                   },
@@ -829,7 +829,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "recipient",
-                      "scope": 6749,
+                      "scope": 6868,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -842,12 +842,12 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6741,
+                        "id": 6860,
                         "name": "ElementaryTypeName",
                         "src": "1083:7:39"
                       }
                     ],
-                    "id": 6742,
+                    "id": 6861,
                     "name": "VariableDeclaration",
                     "src": "1083:17:39"
                   },
@@ -856,7 +856,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeBips",
-                      "scope": 6749,
+                      "scope": 6868,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -868,12 +868,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 6743,
+                        "id": 6862,
                         "name": "ElementaryTypeName",
                         "src": "1110:7:39"
                       }
                     ],
-                    "id": 6744,
+                    "id": 6863,
                     "name": "VariableDeclaration",
                     "src": "1110:15:39"
                   },
@@ -882,7 +882,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "feeRecipient",
-                      "scope": 6749,
+                      "scope": 6868,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -895,17 +895,17 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 6745,
+                        "id": 6864,
                         "name": "ElementaryTypeName",
                         "src": "1135:7:39"
                       }
                     ],
-                    "id": 6746,
+                    "id": 6865,
                     "name": "VariableDeclaration",
                     "src": "1135:20:39"
                   }
                 ],
-                "id": 6747,
+                "id": 6866,
                 "name": "ParameterList",
                 "src": "1019:142:39"
               },
@@ -916,22 +916,22 @@
                   ]
                 },
                 "children": [],
-                "id": 6748,
+                "id": 6867,
                 "name": "ParameterList",
                 "src": "1178:0:39"
               }
             ],
-            "id": 6749,
+            "id": 6868,
             "name": "FunctionDefinition",
             "src": "993:186:39"
           }
         ],
-        "id": 6750,
+        "id": 6869,
         "name": "ContractDefinition",
         "src": "199:982:39"
       }
     ],
-    "id": 6751,
+    "id": 6870,
     "name": "SourceUnit",
     "src": "45:1137:39"
   },
@@ -941,7 +941,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:23.952Z",
+  "updatedAt": "2023-07-05T17:56:22.717Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

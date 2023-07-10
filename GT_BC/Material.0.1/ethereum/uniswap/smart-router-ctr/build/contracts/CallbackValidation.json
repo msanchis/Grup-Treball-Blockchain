@@ -10,7 +10,7 @@
   "sourceMap": "211:1236:94:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "211:1236:94:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.6;\n\nimport '../interfaces/IUniswapV3Pool.sol';\nimport './PoolAddress.sol';\n\n/// @notice Provides validation for callbacks from Uniswap V3 Pools\nlibrary CallbackValidation {\n    /// @notice Returns the address of a valid Uniswap V3 Pool\n    /// @param factory The contract address of the Uniswap V3 factory\n    /// @param tokenA The contract address of either token0 or token1\n    /// @param tokenB The contract address of the other token\n    /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip\n    /// @return pool The V3 pool contract address\n    function verifyCallback(\n        address factory,\n        address tokenA,\n        address tokenB,\n        uint24 fee\n    ) internal view returns (IUniswapV3Pool pool) {\n        return verifyCallback(factory, PoolAddress.getPoolKey(tokenA, tokenB, fee));\n    }\n\n    /// @notice Returns the address of a valid Uniswap V3 Pool\n    /// @param factory The contract address of the Uniswap V3 factory\n    /// @param poolKey The identifying key of the V3 pool\n    /// @return pool The V3 pool contract address\n    function verifyCallback(address factory, PoolAddress.PoolKey memory poolKey)\n        internal\n        view\n        returns (IUniswapV3Pool pool)\n    {\n        pool = IUniswapV3Pool(PoolAddress.computeAddress(factory, poolKey));\n        require(msg.sender == address(pool));\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/libraries/CallbackValidation.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/libraries/CallbackValidation.sol",
   "ast": {
     "absolutePath": "project:/contracts/libraries/CallbackValidation.sol",
     "exportedSymbols": {
@@ -1762,7 +1762,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.551Z",
+  "updatedAt": "2023-07-05T17:58:00.111Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

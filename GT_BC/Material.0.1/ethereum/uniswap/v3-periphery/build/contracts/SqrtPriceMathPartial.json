@@ -10,29 +10,29 @@
   "sourceMap": "363:2345:92:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "363:2345:92:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\nimport './FullMath.sol';\nimport './UnsafeMath.sol';\nimport './FixedPoint96.sol';\n\n/// @title Functions based on Q64.96 sqrt price and liquidity\n/// @notice Exposes two functions from @uniswap/v3-core SqrtPriceMath\n/// that use square root of price as a Q64.96 and liquidity to compute deltas\nlibrary SqrtPriceMathPartial {\n    /// @notice Gets the amount0 delta between two prices\n    /// @dev Calculates liquidity / sqrt(lower) - liquidity / sqrt(upper),\n    /// i.e. liquidity * (sqrt(upper) - sqrt(lower)) / (sqrt(upper) * sqrt(lower))\n    /// @param sqrtRatioAX96 A sqrt price\n    /// @param sqrtRatioBX96 Another sqrt price\n    /// @param liquidity The amount of usable liquidity\n    /// @param roundUp Whether to round the amount up or down\n    /// @return amount0 Amount of token0 required to cover a position of size liquidity between the two passed prices\n    function getAmount0Delta(\n        uint160 sqrtRatioAX96,\n        uint160 sqrtRatioBX96,\n        uint128 liquidity,\n        bool roundUp\n    ) internal pure returns (uint256 amount0) {\n        if (sqrtRatioAX96 > sqrtRatioBX96) (sqrtRatioAX96, sqrtRatioBX96) = (sqrtRatioBX96, sqrtRatioAX96);\n\n        uint256 numerator1 = uint256(liquidity) << FixedPoint96.RESOLUTION;\n        uint256 numerator2 = sqrtRatioBX96 - sqrtRatioAX96;\n\n        require(sqrtRatioAX96 > 0);\n\n        return\n            roundUp\n                ? UnsafeMath.divRoundingUp(\n                    FullMath.mulDivRoundingUp(numerator1, numerator2, sqrtRatioBX96),\n                    sqrtRatioAX96\n                )\n                : FullMath.mulDiv(numerator1, numerator2, sqrtRatioBX96) / sqrtRatioAX96;\n    }\n\n    /// @notice Gets the amount1 delta between two prices\n    /// @dev Calculates liquidity * (sqrt(upper) - sqrt(lower))\n    /// @param sqrtRatioAX96 A sqrt price\n    /// @param sqrtRatioBX96 Another sqrt price\n    /// @param liquidity The amount of usable liquidity\n    /// @param roundUp Whether to round the amount up, or down\n    /// @return amount1 Amount of token1 required to cover a position of size liquidity between the two passed prices\n    function getAmount1Delta(\n        uint160 sqrtRatioAX96,\n        uint160 sqrtRatioBX96,\n        uint128 liquidity,\n        bool roundUp\n    ) internal pure returns (uint256 amount1) {\n        if (sqrtRatioAX96 > sqrtRatioBX96) (sqrtRatioAX96, sqrtRatioBX96) = (sqrtRatioBX96, sqrtRatioAX96);\n\n        return\n            roundUp\n                ? FullMath.mulDivRoundingUp(liquidity, sqrtRatioBX96 - sqrtRatioAX96, FixedPoint96.Q96)\n                : FullMath.mulDiv(liquidity, sqrtRatioBX96 - sqrtRatioAX96, FixedPoint96.Q96);\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/v3-periphery/contracts/libraries/SqrtPriceMathPartial.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/v3-periphery/contracts/libraries/SqrtPriceMathPartial.sol",
   "ast": {
     "absolutePath": "project:/contracts/libraries/SqrtPriceMathPartial.sol",
     "exportedSymbols": {
       "FixedPoint96": [
-        9997
+        10116
       ],
       "FullMath": [
-        10170
+        10289
       ],
       "SqrtPriceMathPartial": [
-        18249
+        18368
       ],
       "UnsafeMath": [
-        19953
+        20072
       ]
     },
-    "id": 18250,
+    "id": 18369,
     "license": "GPL-2.0-or-later",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 18126,
+        "id": 18245,
         "literals": [
           "solidity",
           ">=",
@@ -45,10 +45,10 @@
       {
         "absolutePath": "project:/contracts/libraries/FullMath.sol",
         "file": "./FullMath.sol",
-        "id": 18127,
+        "id": 18246,
         "nodeType": "ImportDirective",
-        "scope": 18250,
-        "sourceUnit": 10171,
+        "scope": 18369,
+        "sourceUnit": 10290,
         "src": "71:24:92",
         "symbolAliases": [],
         "unitAlias": ""
@@ -56,10 +56,10 @@
       {
         "absolutePath": "project:/contracts/libraries/UnsafeMath.sol",
         "file": "./UnsafeMath.sol",
-        "id": 18128,
+        "id": 18247,
         "nodeType": "ImportDirective",
-        "scope": 18250,
-        "sourceUnit": 19954,
+        "scope": 18369,
+        "sourceUnit": 20073,
         "src": "96:26:92",
         "symbolAliases": [],
         "unitAlias": ""
@@ -67,10 +67,10 @@
       {
         "absolutePath": "project:/contracts/libraries/FixedPoint96.sol",
         "file": "./FixedPoint96.sol",
-        "id": 18129,
+        "id": 18248,
         "nodeType": "ImportDirective",
-        "scope": 18250,
-        "sourceUnit": 9998,
+        "scope": 18369,
+        "sourceUnit": 10117,
         "src": "123:28:92",
         "symbolAliases": [],
         "unitAlias": ""
@@ -81,22 +81,22 @@
         "contractDependencies": [],
         "contractKind": "library",
         "documentation": {
-          "id": 18130,
+          "id": 18249,
           "nodeType": "StructuredDocumentation",
           "src": "153:210:92",
           "text": "@title Functions based on Q64.96 sqrt price and liquidity\n @notice Exposes two functions from @uniswap/v3-core SqrtPriceMath\n that use square root of price as a Q64.96 and liquidity to compute deltas"
         },
         "fullyImplemented": true,
-        "id": 18249,
+        "id": 18368,
         "linearizedBaseContracts": [
-          18249
+          18368
         ],
         "name": "SqrtPriceMathPartial",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 18199,
+              "id": 18318,
               "nodeType": "Block",
               "src": "1122:597:92",
               "statements": [
@@ -106,17 +106,17 @@
                       "typeIdentifier": "t_uint160",
                       "typeString": "uint160"
                     },
-                    "id": 18146,
+                    "id": 18265,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 18144,
+                      "id": 18263,
                       "name": "sqrtRatioAX96",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18133,
+                      "referencedDeclaration": 18252,
                       "src": "1136:13:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint160",
@@ -126,11 +126,11 @@
                     "nodeType": "BinaryOperation",
                     "operator": ">",
                     "rightExpression": {
-                      "id": 18145,
+                      "id": 18264,
                       "name": "sqrtRatioBX96",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18135,
+                      "referencedDeclaration": 18254,
                       "src": "1152:13:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint160",
@@ -143,12 +143,12 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 18155,
+                  "id": 18274,
                   "nodeType": "IfStatement",
                   "src": "1132:98:92",
                   "trueBody": {
                     "expression": {
-                      "id": 18153,
+                      "id": 18272,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -156,11 +156,11 @@
                       "leftHandSide": {
                         "components": [
                           {
-                            "id": 18147,
+                            "id": 18266,
                             "name": "sqrtRatioAX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18133,
+                            "referencedDeclaration": 18252,
                             "src": "1168:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -168,11 +168,11 @@
                             }
                           },
                           {
-                            "id": 18148,
+                            "id": 18267,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18135,
+                            "referencedDeclaration": 18254,
                             "src": "1183:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -180,7 +180,7 @@
                             }
                           }
                         ],
-                        "id": 18149,
+                        "id": 18268,
                         "isConstant": false,
                         "isInlineArray": false,
                         "isLValue": true,
@@ -198,11 +198,11 @@
                       "rightHandSide": {
                         "components": [
                           {
-                            "id": 18150,
+                            "id": 18269,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18135,
+                            "referencedDeclaration": 18254,
                             "src": "1201:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -210,11 +210,11 @@
                             }
                           },
                           {
-                            "id": 18151,
+                            "id": 18270,
                             "name": "sqrtRatioAX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18133,
+                            "referencedDeclaration": 18252,
                             "src": "1216:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -222,7 +222,7 @@
                             }
                           }
                         ],
-                        "id": 18152,
+                        "id": 18271,
                         "isConstant": false,
                         "isInlineArray": false,
                         "isLValue": false,
@@ -241,23 +241,23 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 18154,
+                    "id": 18273,
                     "nodeType": "ExpressionStatement",
                     "src": "1167:63:92"
                   }
                 },
                 {
                   "assignments": [
-                    18157
+                    18276
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 18157,
+                      "id": 18276,
                       "mutability": "mutable",
                       "name": "numerator1",
                       "nodeType": "VariableDeclaration",
-                      "scope": 18199,
+                      "scope": 18318,
                       "src": "1241:18:92",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -266,7 +266,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 18156,
+                        "id": 18275,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "1241:7:92",
@@ -278,13 +278,13 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 18165,
+                  "id": 18284,
                   "initialValue": {
                     "commonType": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 18164,
+                    "id": 18283,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -292,11 +292,11 @@
                     "leftExpression": {
                       "arguments": [
                         {
-                          "id": 18160,
+                          "id": 18279,
                           "name": "liquidity",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 18137,
+                          "referencedDeclaration": 18256,
                           "src": "1270:9:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint128",
@@ -311,7 +311,7 @@
                             "typeString": "uint128"
                           }
                         ],
-                        "id": 18159,
+                        "id": 18278,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -323,14 +323,14 @@
                           "typeString": "type(uint256)"
                         },
                         "typeName": {
-                          "id": 18158,
+                          "id": 18277,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "1262:7:92",
                           "typeDescriptions": {}
                         }
                       },
-                      "id": 18161,
+                      "id": 18280,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -349,25 +349,25 @@
                     "operator": "<<",
                     "rightExpression": {
                       "expression": {
-                        "id": 18162,
+                        "id": 18281,
                         "name": "FixedPoint96",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9997,
+                        "referencedDeclaration": 10116,
                         "src": "1284:12:92",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_FixedPoint96_$9997_$",
+                          "typeIdentifier": "t_type$_t_contract$_FixedPoint96_$10116_$",
                           "typeString": "type(library FixedPoint96)"
                         }
                       },
-                      "id": 18163,
+                      "id": 18282,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "RESOLUTION",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9993,
+                      "referencedDeclaration": 10112,
                       "src": "1284:23:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint8",
@@ -385,16 +385,16 @@
                 },
                 {
                   "assignments": [
-                    18167
+                    18286
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 18167,
+                      "id": 18286,
                       "mutability": "mutable",
                       "name": "numerator2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 18199,
+                      "scope": 18318,
                       "src": "1317:18:92",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -403,7 +403,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 18166,
+                        "id": 18285,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "1317:7:92",
@@ -415,23 +415,23 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 18171,
+                  "id": 18290,
                   "initialValue": {
                     "commonType": {
                       "typeIdentifier": "t_uint160",
                       "typeString": "uint160"
                     },
-                    "id": 18170,
+                    "id": 18289,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 18168,
+                      "id": 18287,
                       "name": "sqrtRatioBX96",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18135,
+                      "referencedDeclaration": 18254,
                       "src": "1338:13:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint160",
@@ -441,11 +441,11 @@
                     "nodeType": "BinaryOperation",
                     "operator": "-",
                     "rightExpression": {
-                      "id": 18169,
+                      "id": 18288,
                       "name": "sqrtRatioAX96",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18133,
+                      "referencedDeclaration": 18252,
                       "src": "1354:13:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint160",
@@ -469,17 +469,17 @@
                           "typeIdentifier": "t_uint160",
                           "typeString": "uint160"
                         },
-                        "id": 18175,
+                        "id": 18294,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
-                          "id": 18173,
+                          "id": 18292,
                           "name": "sqrtRatioAX96",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 18133,
+                          "referencedDeclaration": 18252,
                           "src": "1386:13:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint160",
@@ -490,7 +490,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 18174,
+                          "id": 18293,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -518,7 +518,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 18172,
+                      "id": 18291,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -532,7 +532,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 18176,
+                    "id": 18295,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -547,18 +547,18 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 18177,
+                  "id": 18296,
                   "nodeType": "ExpressionStatement",
                   "src": "1378:26:92"
                 },
                 {
                   "expression": {
                     "condition": {
-                      "id": 18178,
+                      "id": 18297,
                       "name": "roundUp",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18139,
+                      "referencedDeclaration": 18258,
                       "src": "1434:7:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -570,7 +570,7 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 18196,
+                      "id": 18315,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -578,11 +578,11 @@
                       "leftExpression": {
                         "arguments": [
                           {
-                            "id": 18191,
+                            "id": 18310,
                             "name": "numerator1",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18157,
+                            "referencedDeclaration": 18276,
                             "src": "1658:10:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -590,11 +590,11 @@
                             }
                           },
                           {
-                            "id": 18192,
+                            "id": 18311,
                             "name": "numerator2",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18167,
+                            "referencedDeclaration": 18286,
                             "src": "1670:10:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -602,11 +602,11 @@
                             }
                           },
                           {
-                            "id": 18193,
+                            "id": 18312,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18135,
+                            "referencedDeclaration": 18254,
                             "src": "1682:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -630,32 +630,32 @@
                             }
                           ],
                           "expression": {
-                            "id": 18189,
+                            "id": 18308,
                             "name": "FullMath",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 10170,
+                            "referencedDeclaration": 10289,
                             "src": "1642:8:92",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_FullMath_$10170_$",
+                              "typeIdentifier": "t_type$_t_contract$_FullMath_$10289_$",
                               "typeString": "type(library FullMath)"
                             }
                           },
-                          "id": 18190,
+                          "id": 18309,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "mulDiv",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 10126,
+                          "referencedDeclaration": 10245,
                           "src": "1642:15:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
                             "typeString": "function (uint256,uint256,uint256) pure returns (uint256)"
                           }
                         },
-                        "id": 18194,
+                        "id": 18313,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -673,11 +673,11 @@
                       "nodeType": "BinaryOperation",
                       "operator": "/",
                       "rightExpression": {
-                        "id": 18195,
+                        "id": 18314,
                         "name": "sqrtRatioAX96",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 18133,
+                        "referencedDeclaration": 18252,
                         "src": "1699:13:92",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint160",
@@ -690,7 +690,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 18197,
+                    "id": 18316,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -702,11 +702,11 @@
                         {
                           "arguments": [
                             {
-                              "id": 18183,
+                              "id": 18302,
                               "name": "numerator1",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 18157,
+                              "referencedDeclaration": 18276,
                               "src": "1532:10:92",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -714,11 +714,11 @@
                               }
                             },
                             {
-                              "id": 18184,
+                              "id": 18303,
                               "name": "numerator2",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 18167,
+                              "referencedDeclaration": 18286,
                               "src": "1544:10:92",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -726,11 +726,11 @@
                               }
                             },
                             {
-                              "id": 18185,
+                              "id": 18304,
                               "name": "sqrtRatioBX96",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 18135,
+                              "referencedDeclaration": 18254,
                               "src": "1556:13:92",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint160",
@@ -754,32 +754,32 @@
                               }
                             ],
                             "expression": {
-                              "id": 18181,
+                              "id": 18300,
                               "name": "FullMath",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 10170,
+                              "referencedDeclaration": 10289,
                               "src": "1506:8:92",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_FullMath_$10170_$",
+                                "typeIdentifier": "t_type$_t_contract$_FullMath_$10289_$",
                                 "typeString": "type(library FullMath)"
                               }
                             },
-                            "id": 18182,
+                            "id": 18301,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "mulDivRoundingUp",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 10169,
+                            "referencedDeclaration": 10288,
                             "src": "1506:25:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
                               "typeString": "function (uint256,uint256,uint256) pure returns (uint256)"
                             }
                           },
-                          "id": 18186,
+                          "id": 18305,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -795,11 +795,11 @@
                           }
                         },
                         {
-                          "id": 18187,
+                          "id": 18306,
                           "name": "sqrtRatioAX96",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 18133,
+                          "referencedDeclaration": 18252,
                           "src": "1592:13:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint160",
@@ -819,32 +819,32 @@
                           }
                         ],
                         "expression": {
-                          "id": 18179,
+                          "id": 18298,
                           "name": "UnsafeMath",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 19953,
+                          "referencedDeclaration": 20072,
                           "src": "1460:10:92",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_UnsafeMath_$19953_$",
+                            "typeIdentifier": "t_type$_t_contract$_UnsafeMath_$20072_$",
                             "typeString": "type(library UnsafeMath)"
                           }
                         },
-                        "id": 18180,
+                        "id": 18299,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "divRoundingUp",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 19952,
+                        "referencedDeclaration": 20071,
                         "src": "1460:24:92",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
                           "typeString": "function (uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 18188,
+                      "id": 18307,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -864,36 +864,36 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 18143,
-                  "id": 18198,
+                  "functionReturnParameters": 18262,
+                  "id": 18317,
                   "nodeType": "Return",
                   "src": "1415:297:92"
                 }
               ]
             },
             "documentation": {
-              "id": 18131,
+              "id": 18250,
               "nodeType": "StructuredDocumentation",
               "src": "398:537:92",
               "text": "@notice Gets the amount0 delta between two prices\n @dev Calculates liquidity / sqrt(lower) - liquidity / sqrt(upper),\n i.e. liquidity * (sqrt(upper) - sqrt(lower)) / (sqrt(upper) * sqrt(lower))\n @param sqrtRatioAX96 A sqrt price\n @param sqrtRatioBX96 Another sqrt price\n @param liquidity The amount of usable liquidity\n @param roundUp Whether to round the amount up or down\n @return amount0 Amount of token0 required to cover a position of size liquidity between the two passed prices"
             },
-            "id": 18200,
+            "id": 18319,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getAmount0Delta",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 18140,
+              "id": 18259,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 18133,
+                  "id": 18252,
                   "mutability": "mutable",
                   "name": "sqrtRatioAX96",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18200,
+                  "scope": 18319,
                   "src": "974:21:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -902,7 +902,7 @@
                     "typeString": "uint160"
                   },
                   "typeName": {
-                    "id": 18132,
+                    "id": 18251,
                     "name": "uint160",
                     "nodeType": "ElementaryTypeName",
                     "src": "974:7:92",
@@ -915,11 +915,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 18135,
+                  "id": 18254,
                   "mutability": "mutable",
                   "name": "sqrtRatioBX96",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18200,
+                  "scope": 18319,
                   "src": "1005:21:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -928,7 +928,7 @@
                     "typeString": "uint160"
                   },
                   "typeName": {
-                    "id": 18134,
+                    "id": 18253,
                     "name": "uint160",
                     "nodeType": "ElementaryTypeName",
                     "src": "1005:7:92",
@@ -941,11 +941,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 18137,
+                  "id": 18256,
                   "mutability": "mutable",
                   "name": "liquidity",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18200,
+                  "scope": 18319,
                   "src": "1036:17:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -954,7 +954,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 18136,
+                    "id": 18255,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "1036:7:92",
@@ -967,11 +967,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 18139,
+                  "id": 18258,
                   "mutability": "mutable",
                   "name": "roundUp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18200,
+                  "scope": 18319,
                   "src": "1063:12:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -980,7 +980,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 18138,
+                    "id": 18257,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1063:4:92",
@@ -995,16 +995,16 @@
               "src": "964:117:92"
             },
             "returnParameters": {
-              "id": 18143,
+              "id": 18262,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 18142,
+                  "id": 18261,
                   "mutability": "mutable",
                   "name": "amount0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18200,
+                  "scope": 18319,
                   "src": "1105:15:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1013,7 +1013,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 18141,
+                    "id": 18260,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1105:7:92",
@@ -1027,7 +1027,7 @@
               ],
               "src": "1104:17:92"
             },
-            "scope": 18249,
+            "scope": 18368,
             "src": "940:779:92",
             "stateMutability": "pure",
             "virtual": false,
@@ -1035,7 +1035,7 @@
           },
           {
             "body": {
-              "id": 18247,
+              "id": 18366,
               "nodeType": "Block",
               "src": "2356:350:92",
               "statements": [
@@ -1045,17 +1045,17 @@
                       "typeIdentifier": "t_uint160",
                       "typeString": "uint160"
                     },
-                    "id": 18216,
+                    "id": 18335,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 18214,
+                      "id": 18333,
                       "name": "sqrtRatioAX96",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18203,
+                      "referencedDeclaration": 18322,
                       "src": "2370:13:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint160",
@@ -1065,11 +1065,11 @@
                     "nodeType": "BinaryOperation",
                     "operator": ">",
                     "rightExpression": {
-                      "id": 18215,
+                      "id": 18334,
                       "name": "sqrtRatioBX96",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18205,
+                      "referencedDeclaration": 18324,
                       "src": "2386:13:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint160",
@@ -1082,12 +1082,12 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 18225,
+                  "id": 18344,
                   "nodeType": "IfStatement",
                   "src": "2366:98:92",
                   "trueBody": {
                     "expression": {
-                      "id": 18223,
+                      "id": 18342,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1095,11 +1095,11 @@
                       "leftHandSide": {
                         "components": [
                           {
-                            "id": 18217,
+                            "id": 18336,
                             "name": "sqrtRatioAX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18203,
+                            "referencedDeclaration": 18322,
                             "src": "2402:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1107,11 +1107,11 @@
                             }
                           },
                           {
-                            "id": 18218,
+                            "id": 18337,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18205,
+                            "referencedDeclaration": 18324,
                             "src": "2417:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1119,7 +1119,7 @@
                             }
                           }
                         ],
-                        "id": 18219,
+                        "id": 18338,
                         "isConstant": false,
                         "isInlineArray": false,
                         "isLValue": true,
@@ -1137,11 +1137,11 @@
                       "rightHandSide": {
                         "components": [
                           {
-                            "id": 18220,
+                            "id": 18339,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18205,
+                            "referencedDeclaration": 18324,
                             "src": "2435:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1149,11 +1149,11 @@
                             }
                           },
                           {
-                            "id": 18221,
+                            "id": 18340,
                             "name": "sqrtRatioAX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18203,
+                            "referencedDeclaration": 18322,
                             "src": "2450:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1161,7 +1161,7 @@
                             }
                           }
                         ],
-                        "id": 18222,
+                        "id": 18341,
                         "isConstant": false,
                         "isInlineArray": false,
                         "isLValue": false,
@@ -1180,7 +1180,7 @@
                         "typeString": "tuple()"
                       }
                     },
-                    "id": 18224,
+                    "id": 18343,
                     "nodeType": "ExpressionStatement",
                     "src": "2401:63:92"
                   }
@@ -1188,11 +1188,11 @@
                 {
                   "expression": {
                     "condition": {
-                      "id": 18226,
+                      "id": 18345,
                       "name": "roundUp",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 18209,
+                      "referencedDeclaration": 18328,
                       "src": "2494:7:92",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -1202,11 +1202,11 @@
                     "falseExpression": {
                       "arguments": [
                         {
-                          "id": 18238,
+                          "id": 18357,
                           "name": "liquidity",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 18207,
+                          "referencedDeclaration": 18326,
                           "src": "2640:9:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint128",
@@ -1218,17 +1218,17 @@
                             "typeIdentifier": "t_uint160",
                             "typeString": "uint160"
                           },
-                          "id": 18241,
+                          "id": 18360,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
-                            "id": 18239,
+                            "id": 18358,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18205,
+                            "referencedDeclaration": 18324,
                             "src": "2651:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1238,11 +1238,11 @@
                           "nodeType": "BinaryOperation",
                           "operator": "-",
                           "rightExpression": {
-                            "id": 18240,
+                            "id": 18359,
                             "name": "sqrtRatioAX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18203,
+                            "referencedDeclaration": 18322,
                             "src": "2667:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1257,25 +1257,25 @@
                         },
                         {
                           "expression": {
-                            "id": 18242,
+                            "id": 18361,
                             "name": "FixedPoint96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 9997,
+                            "referencedDeclaration": 10116,
                             "src": "2682:12:92",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_FixedPoint96_$9997_$",
+                              "typeIdentifier": "t_type$_t_contract$_FixedPoint96_$10116_$",
                               "typeString": "type(library FixedPoint96)"
                             }
                           },
-                          "id": 18243,
+                          "id": 18362,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "Q96",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9996,
+                          "referencedDeclaration": 10115,
                           "src": "2682:16:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1299,32 +1299,32 @@
                           }
                         ],
                         "expression": {
-                          "id": 18236,
+                          "id": 18355,
                           "name": "FullMath",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10170,
+                          "referencedDeclaration": 10289,
                           "src": "2624:8:92",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_FullMath_$10170_$",
+                            "typeIdentifier": "t_type$_t_contract$_FullMath_$10289_$",
                             "typeString": "type(library FullMath)"
                           }
                         },
-                        "id": 18237,
+                        "id": 18356,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "mulDiv",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10126,
+                        "referencedDeclaration": 10245,
                         "src": "2624:15:92",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
                           "typeString": "function (uint256,uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 18244,
+                      "id": 18363,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1339,7 +1339,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 18245,
+                    "id": 18364,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1349,11 +1349,11 @@
                     "trueExpression": {
                       "arguments": [
                         {
-                          "id": 18229,
+                          "id": 18348,
                           "name": "liquidity",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 18207,
+                          "referencedDeclaration": 18326,
                           "src": "2546:9:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint128",
@@ -1365,17 +1365,17 @@
                             "typeIdentifier": "t_uint160",
                             "typeString": "uint160"
                           },
-                          "id": 18232,
+                          "id": 18351,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
-                            "id": 18230,
+                            "id": 18349,
                             "name": "sqrtRatioBX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18205,
+                            "referencedDeclaration": 18324,
                             "src": "2557:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1385,11 +1385,11 @@
                           "nodeType": "BinaryOperation",
                           "operator": "-",
                           "rightExpression": {
-                            "id": 18231,
+                            "id": 18350,
                             "name": "sqrtRatioAX96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 18203,
+                            "referencedDeclaration": 18322,
                             "src": "2573:13:92",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint160",
@@ -1404,25 +1404,25 @@
                         },
                         {
                           "expression": {
-                            "id": 18233,
+                            "id": 18352,
                             "name": "FixedPoint96",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 9997,
+                            "referencedDeclaration": 10116,
                             "src": "2588:12:92",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_FixedPoint96_$9997_$",
+                              "typeIdentifier": "t_type$_t_contract$_FixedPoint96_$10116_$",
                               "typeString": "type(library FixedPoint96)"
                             }
                           },
-                          "id": 18234,
+                          "id": 18353,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "Q96",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9996,
+                          "referencedDeclaration": 10115,
                           "src": "2588:16:92",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1446,32 +1446,32 @@
                           }
                         ],
                         "expression": {
-                          "id": 18227,
+                          "id": 18346,
                           "name": "FullMath",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10170,
+                          "referencedDeclaration": 10289,
                           "src": "2520:8:92",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_FullMath_$10170_$",
+                            "typeIdentifier": "t_type$_t_contract$_FullMath_$10289_$",
                             "typeString": "type(library FullMath)"
                           }
                         },
-                        "id": 18228,
+                        "id": 18347,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "mulDivRoundingUp",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10169,
+                        "referencedDeclaration": 10288,
                         "src": "2520:25:92",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
                           "typeString": "function (uint256,uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 18235,
+                      "id": 18354,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1491,36 +1491,36 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 18213,
-                  "id": 18246,
+                  "functionReturnParameters": 18332,
+                  "id": 18365,
                   "nodeType": "Return",
                   "src": "2475:224:92"
                 }
               ]
             },
             "documentation": {
-              "id": 18201,
+              "id": 18320,
               "nodeType": "StructuredDocumentation",
               "src": "1725:444:92",
               "text": "@notice Gets the amount1 delta between two prices\n @dev Calculates liquidity * (sqrt(upper) - sqrt(lower))\n @param sqrtRatioAX96 A sqrt price\n @param sqrtRatioBX96 Another sqrt price\n @param liquidity The amount of usable liquidity\n @param roundUp Whether to round the amount up, or down\n @return amount1 Amount of token1 required to cover a position of size liquidity between the two passed prices"
             },
-            "id": 18248,
+            "id": 18367,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getAmount1Delta",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 18210,
+              "id": 18329,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 18203,
+                  "id": 18322,
                   "mutability": "mutable",
                   "name": "sqrtRatioAX96",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18248,
+                  "scope": 18367,
                   "src": "2208:21:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1529,7 +1529,7 @@
                     "typeString": "uint160"
                   },
                   "typeName": {
-                    "id": 18202,
+                    "id": 18321,
                     "name": "uint160",
                     "nodeType": "ElementaryTypeName",
                     "src": "2208:7:92",
@@ -1542,11 +1542,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 18205,
+                  "id": 18324,
                   "mutability": "mutable",
                   "name": "sqrtRatioBX96",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18248,
+                  "scope": 18367,
                   "src": "2239:21:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1555,7 +1555,7 @@
                     "typeString": "uint160"
                   },
                   "typeName": {
-                    "id": 18204,
+                    "id": 18323,
                     "name": "uint160",
                     "nodeType": "ElementaryTypeName",
                     "src": "2239:7:92",
@@ -1568,11 +1568,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 18207,
+                  "id": 18326,
                   "mutability": "mutable",
                   "name": "liquidity",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18248,
+                  "scope": 18367,
                   "src": "2270:17:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1581,7 +1581,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 18206,
+                    "id": 18325,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "2270:7:92",
@@ -1594,11 +1594,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 18209,
+                  "id": 18328,
                   "mutability": "mutable",
                   "name": "roundUp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18248,
+                  "scope": 18367,
                   "src": "2297:12:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1607,7 +1607,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 18208,
+                    "id": 18327,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2297:4:92",
@@ -1622,16 +1622,16 @@
               "src": "2198:117:92"
             },
             "returnParameters": {
-              "id": 18213,
+              "id": 18332,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 18212,
+                  "id": 18331,
                   "mutability": "mutable",
                   "name": "amount1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 18248,
+                  "scope": 18367,
                   "src": "2339:15:92",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1640,7 +1640,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 18211,
+                    "id": 18330,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2339:7:92",
@@ -1654,14 +1654,14 @@
               ],
               "src": "2338:17:92"
             },
-            "scope": 18249,
+            "scope": 18368,
             "src": "2174:532:92",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 18250,
+        "scope": 18369,
         "src": "363:2345:92"
       }
     ],
@@ -1672,16 +1672,16 @@
       "absolutePath": "project:/contracts/libraries/SqrtPriceMathPartial.sol",
       "exportedSymbols": {
         "FixedPoint96": [
-          9997
+          10116
         ],
         "FullMath": [
-          10170
+          10289
         ],
         "SqrtPriceMathPartial": [
-          18249
+          18368
         ],
         "UnsafeMath": [
-          19953
+          20072
         ]
       },
       "license": "GPL-2.0-or-later"
@@ -1696,52 +1696,52 @@
             ".0"
           ]
         },
-        "id": 18126,
+        "id": 18245,
         "name": "PragmaDirective",
         "src": "45:24:92"
       },
       {
         "attributes": {
-          "SourceUnit": 10171,
+          "SourceUnit": 10290,
           "absolutePath": "project:/contracts/libraries/FullMath.sol",
           "file": "./FullMath.sol",
-          "scope": 18250,
+          "scope": 18369,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 18127,
+        "id": 18246,
         "name": "ImportDirective",
         "src": "71:24:92"
       },
       {
         "attributes": {
-          "SourceUnit": 19954,
+          "SourceUnit": 20073,
           "absolutePath": "project:/contracts/libraries/UnsafeMath.sol",
           "file": "./UnsafeMath.sol",
-          "scope": 18250,
+          "scope": 18369,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 18128,
+        "id": 18247,
         "name": "ImportDirective",
         "src": "96:26:92"
       },
       {
         "attributes": {
-          "SourceUnit": 9998,
+          "SourceUnit": 10117,
           "absolutePath": "project:/contracts/libraries/FixedPoint96.sol",
           "file": "./FixedPoint96.sol",
-          "scope": 18250,
+          "scope": 18369,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 18129,
+        "id": 18248,
         "name": "ImportDirective",
         "src": "123:28:92"
       },
@@ -1757,17 +1757,17 @@
           "contractKind": "library",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            18249
+            18368
           ],
           "name": "SqrtPriceMathPartial",
-          "scope": 18250
+          "scope": 18369
         },
         "children": [
           {
             "attributes": {
               "text": "@title Functions based on Q64.96 sqrt price and liquidity\n @notice Exposes two functions from @uniswap/v3-core SqrtPriceMath\n that use square root of price as a Q64.96 and liquidity to compute deltas"
             },
-            "id": 18130,
+            "id": 18249,
             "name": "StructuredDocumentation",
             "src": "153:210:92"
           },
@@ -1780,7 +1780,7 @@
                 null
               ],
               "name": "getAmount0Delta",
-              "scope": 18249,
+              "scope": 18368,
               "stateMutability": "pure",
               "virtual": false,
               "visibility": "internal"
@@ -1790,7 +1790,7 @@
                 "attributes": {
                   "text": "@notice Gets the amount0 delta between two prices\n @dev Calculates liquidity / sqrt(lower) - liquidity / sqrt(upper),\n i.e. liquidity * (sqrt(upper) - sqrt(lower)) / (sqrt(upper) * sqrt(lower))\n @param sqrtRatioAX96 A sqrt price\n @param sqrtRatioBX96 Another sqrt price\n @param liquidity The amount of usable liquidity\n @param roundUp Whether to round the amount up or down\n @return amount0 Amount of token0 required to cover a position of size liquidity between the two passed prices"
                 },
-                "id": 18131,
+                "id": 18250,
                 "name": "StructuredDocumentation",
                 "src": "398:537:92"
               },
@@ -1801,7 +1801,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "sqrtRatioAX96",
-                      "scope": 18200,
+                      "scope": 18319,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint160",
@@ -1813,12 +1813,12 @@
                           "name": "uint160",
                           "type": "uint160"
                         },
-                        "id": 18132,
+                        "id": 18251,
                         "name": "ElementaryTypeName",
                         "src": "974:7:92"
                       }
                     ],
-                    "id": 18133,
+                    "id": 18252,
                     "name": "VariableDeclaration",
                     "src": "974:21:92"
                   },
@@ -1827,7 +1827,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "sqrtRatioBX96",
-                      "scope": 18200,
+                      "scope": 18319,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint160",
@@ -1839,12 +1839,12 @@
                           "name": "uint160",
                           "type": "uint160"
                         },
-                        "id": 18134,
+                        "id": 18253,
                         "name": "ElementaryTypeName",
                         "src": "1005:7:92"
                       }
                     ],
-                    "id": 18135,
+                    "id": 18254,
                     "name": "VariableDeclaration",
                     "src": "1005:21:92"
                   },
@@ -1853,7 +1853,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "liquidity",
-                      "scope": 18200,
+                      "scope": 18319,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint128",
@@ -1865,12 +1865,12 @@
                           "name": "uint128",
                           "type": "uint128"
                         },
-                        "id": 18136,
+                        "id": 18255,
                         "name": "ElementaryTypeName",
                         "src": "1036:7:92"
                       }
                     ],
-                    "id": 18137,
+                    "id": 18256,
                     "name": "VariableDeclaration",
                     "src": "1036:17:92"
                   },
@@ -1879,7 +1879,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "roundUp",
-                      "scope": 18200,
+                      "scope": 18319,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1891,17 +1891,17 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 18138,
+                        "id": 18257,
                         "name": "ElementaryTypeName",
                         "src": "1063:4:92"
                       }
                     ],
-                    "id": 18139,
+                    "id": 18258,
                     "name": "VariableDeclaration",
                     "src": "1063:12:92"
                   }
                 ],
-                "id": 18140,
+                "id": 18259,
                 "name": "ParameterList",
                 "src": "964:117:92"
               },
@@ -1912,7 +1912,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "amount0",
-                      "scope": 18200,
+                      "scope": 18319,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1924,17 +1924,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 18141,
+                        "id": 18260,
                         "name": "ElementaryTypeName",
                         "src": "1105:7:92"
                       }
                     ],
-                    "id": 18142,
+                    "id": 18261,
                     "name": "VariableDeclaration",
                     "src": "1105:15:92"
                   }
                 ],
-                "id": 18143,
+                "id": 18262,
                 "name": "ParameterList",
                 "src": "1104:17:92"
               },
@@ -1962,11 +1962,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18133,
+                              "referencedDeclaration": 18252,
                               "type": "uint160",
                               "value": "sqrtRatioAX96"
                             },
-                            "id": 18144,
+                            "id": 18263,
                             "name": "Identifier",
                             "src": "1136:13:92"
                           },
@@ -1975,16 +1975,16 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18135,
+                              "referencedDeclaration": 18254,
                               "type": "uint160",
                               "value": "sqrtRatioBX96"
                             },
-                            "id": 18145,
+                            "id": 18264,
                             "name": "Identifier",
                             "src": "1152:13:92"
                           }
                         ],
-                        "id": 18146,
+                        "id": 18265,
                         "name": "BinaryOperation",
                         "src": "1136:29:92"
                       },
@@ -2015,11 +2015,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18133,
+                                      "referencedDeclaration": 18252,
                                       "type": "uint160",
                                       "value": "sqrtRatioAX96"
                                     },
-                                    "id": 18147,
+                                    "id": 18266,
                                     "name": "Identifier",
                                     "src": "1168:13:92"
                                   },
@@ -2028,16 +2028,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18135,
+                                      "referencedDeclaration": 18254,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18148,
+                                    "id": 18267,
                                     "name": "Identifier",
                                     "src": "1183:13:92"
                                   }
                                 ],
-                                "id": 18149,
+                                "id": 18268,
                                 "name": "TupleExpression",
                                 "src": "1167:30:92"
                               },
@@ -2056,11 +2056,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18135,
+                                      "referencedDeclaration": 18254,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18150,
+                                    "id": 18269,
                                     "name": "Identifier",
                                     "src": "1201:13:92"
                                   },
@@ -2069,38 +2069,38 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18133,
+                                      "referencedDeclaration": 18252,
                                       "type": "uint160",
                                       "value": "sqrtRatioAX96"
                                     },
-                                    "id": 18151,
+                                    "id": 18270,
                                     "name": "Identifier",
                                     "src": "1216:13:92"
                                   }
                                 ],
-                                "id": 18152,
+                                "id": 18271,
                                 "name": "TupleExpression",
                                 "src": "1200:30:92"
                               }
                             ],
-                            "id": 18153,
+                            "id": 18272,
                             "name": "Assignment",
                             "src": "1167:63:92"
                           }
                         ],
-                        "id": 18154,
+                        "id": 18273,
                         "name": "ExpressionStatement",
                         "src": "1167:63:92"
                       }
                     ],
-                    "id": 18155,
+                    "id": 18274,
                     "name": "IfStatement",
                     "src": "1132:98:92"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        18157
+                        18276
                       ]
                     },
                     "children": [
@@ -2109,7 +2109,7 @@
                           "constant": false,
                           "mutability": "mutable",
                           "name": "numerator1",
-                          "scope": 18199,
+                          "scope": 18318,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -2121,12 +2121,12 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 18156,
+                            "id": 18275,
                             "name": "ElementaryTypeName",
                             "src": "1241:7:92"
                           }
                         ],
-                        "id": 18157,
+                        "id": 18276,
                         "name": "VariableDeclaration",
                         "src": "1241:18:92"
                       },
@@ -2178,12 +2178,12 @@
                                     "attributes": {
                                       "name": "uint256"
                                     },
-                                    "id": 18158,
+                                    "id": 18277,
                                     "name": "ElementaryTypeName",
                                     "src": "1262:7:92"
                                   }
                                 ],
-                                "id": 18159,
+                                "id": 18278,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "1262:7:92"
                               },
@@ -2192,16 +2192,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 18137,
+                                  "referencedDeclaration": 18256,
                                   "type": "uint128",
                                   "value": "liquidity"
                                 },
-                                "id": 18160,
+                                "id": 18279,
                                 "name": "Identifier",
                                 "src": "1270:9:92"
                               }
                             ],
-                            "id": 18161,
+                            "id": 18280,
                             "name": "FunctionCall",
                             "src": "1262:18:92"
                           },
@@ -2212,7 +2212,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "RESOLUTION",
-                              "referencedDeclaration": 9993,
+                              "referencedDeclaration": 10112,
                               "type": "uint8"
                             },
                             "children": [
@@ -2221,33 +2221,33 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9997,
+                                  "referencedDeclaration": 10116,
                                   "type": "type(library FixedPoint96)",
                                   "value": "FixedPoint96"
                                 },
-                                "id": 18162,
+                                "id": 18281,
                                 "name": "Identifier",
                                 "src": "1284:12:92"
                               }
                             ],
-                            "id": 18163,
+                            "id": 18282,
                             "name": "MemberAccess",
                             "src": "1284:23:92"
                           }
                         ],
-                        "id": 18164,
+                        "id": 18283,
                         "name": "BinaryOperation",
                         "src": "1262:45:92"
                       }
                     ],
-                    "id": 18165,
+                    "id": 18284,
                     "name": "VariableDeclarationStatement",
                     "src": "1241:66:92"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        18167
+                        18286
                       ]
                     },
                     "children": [
@@ -2256,7 +2256,7 @@
                           "constant": false,
                           "mutability": "mutable",
                           "name": "numerator2",
-                          "scope": 18199,
+                          "scope": 18318,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -2268,12 +2268,12 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 18166,
+                            "id": 18285,
                             "name": "ElementaryTypeName",
                             "src": "1317:7:92"
                           }
                         ],
-                        "id": 18167,
+                        "id": 18286,
                         "name": "VariableDeclaration",
                         "src": "1317:18:92"
                       },
@@ -2296,11 +2296,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18135,
+                              "referencedDeclaration": 18254,
                               "type": "uint160",
                               "value": "sqrtRatioBX96"
                             },
-                            "id": 18168,
+                            "id": 18287,
                             "name": "Identifier",
                             "src": "1338:13:92"
                           },
@@ -2309,21 +2309,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18133,
+                              "referencedDeclaration": 18252,
                               "type": "uint160",
                               "value": "sqrtRatioAX96"
                             },
-                            "id": 18169,
+                            "id": 18288,
                             "name": "Identifier",
                             "src": "1354:13:92"
                           }
                         ],
-                        "id": 18170,
+                        "id": 18289,
                         "name": "BinaryOperation",
                         "src": "1338:29:92"
                       }
                     ],
-                    "id": 18171,
+                    "id": 18290,
                     "name": "VariableDeclarationStatement",
                     "src": "1317:50:92"
                   },
@@ -2360,7 +2360,7 @@
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 18172,
+                            "id": 18291,
                             "name": "Identifier",
                             "src": "1378:7:92"
                           },
@@ -2383,11 +2383,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 18133,
+                                  "referencedDeclaration": 18252,
                                   "type": "uint160",
                                   "value": "sqrtRatioAX96"
                                 },
-                                "id": 18173,
+                                "id": 18292,
                                 "name": "Identifier",
                                 "src": "1386:13:92"
                               },
@@ -2402,28 +2402,28 @@
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 18174,
+                                "id": 18293,
                                 "name": "Literal",
                                 "src": "1402:1:92"
                               }
                             ],
-                            "id": 18175,
+                            "id": 18294,
                             "name": "BinaryOperation",
                             "src": "1386:17:92"
                           }
                         ],
-                        "id": 18176,
+                        "id": 18295,
                         "name": "FunctionCall",
                         "src": "1378:26:92"
                       }
                     ],
-                    "id": 18177,
+                    "id": 18296,
                     "name": "ExpressionStatement",
                     "src": "1378:26:92"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 18143
+                      "functionReturnParameters": 18262
                     },
                     "children": [
                       {
@@ -2440,11 +2440,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18139,
+                              "referencedDeclaration": 18258,
                               "type": "bool",
                               "value": "roundUp"
                             },
-                            "id": 18178,
+                            "id": 18297,
                             "name": "Identifier",
                             "src": "1434:7:92"
                           },
@@ -2480,7 +2480,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "divRoundingUp",
-                                  "referencedDeclaration": 19952,
+                                  "referencedDeclaration": 20071,
                                   "type": "function (uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -2489,16 +2489,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 19953,
+                                      "referencedDeclaration": 20072,
                                       "type": "type(library UnsafeMath)",
                                       "value": "UnsafeMath"
                                     },
-                                    "id": 18179,
+                                    "id": 18298,
                                     "name": "Identifier",
                                     "src": "1460:10:92"
                                   }
                                 ],
-                                "id": 18180,
+                                "id": 18299,
                                 "name": "MemberAccess",
                                 "src": "1460:24:92"
                               },
@@ -2538,7 +2538,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "mulDivRoundingUp",
-                                      "referencedDeclaration": 10169,
+                                      "referencedDeclaration": 10288,
                                       "type": "function (uint256,uint256,uint256) pure returns (uint256)"
                                     },
                                     "children": [
@@ -2547,16 +2547,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10170,
+                                          "referencedDeclaration": 10289,
                                           "type": "type(library FullMath)",
                                           "value": "FullMath"
                                         },
-                                        "id": 18181,
+                                        "id": 18300,
                                         "name": "Identifier",
                                         "src": "1506:8:92"
                                       }
                                     ],
-                                    "id": 18182,
+                                    "id": 18301,
                                     "name": "MemberAccess",
                                     "src": "1506:25:92"
                                   },
@@ -2565,11 +2565,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18157,
+                                      "referencedDeclaration": 18276,
                                       "type": "uint256",
                                       "value": "numerator1"
                                     },
-                                    "id": 18183,
+                                    "id": 18302,
                                     "name": "Identifier",
                                     "src": "1532:10:92"
                                   },
@@ -2578,11 +2578,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18167,
+                                      "referencedDeclaration": 18286,
                                       "type": "uint256",
                                       "value": "numerator2"
                                     },
-                                    "id": 18184,
+                                    "id": 18303,
                                     "name": "Identifier",
                                     "src": "1544:10:92"
                                   },
@@ -2591,16 +2591,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18135,
+                                      "referencedDeclaration": 18254,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18185,
+                                    "id": 18304,
                                     "name": "Identifier",
                                     "src": "1556:13:92"
                                   }
                                 ],
-                                "id": 18186,
+                                "id": 18305,
                                 "name": "FunctionCall",
                                 "src": "1506:64:92"
                               },
@@ -2609,16 +2609,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 18133,
+                                  "referencedDeclaration": 18252,
                                   "type": "uint160",
                                   "value": "sqrtRatioAX96"
                                 },
-                                "id": 18187,
+                                "id": 18306,
                                 "name": "Identifier",
                                 "src": "1592:13:92"
                               }
                             ],
-                            "id": 18188,
+                            "id": 18307,
                             "name": "FunctionCall",
                             "src": "1460:163:92"
                           },
@@ -2672,7 +2672,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "mulDiv",
-                                      "referencedDeclaration": 10126,
+                                      "referencedDeclaration": 10245,
                                       "type": "function (uint256,uint256,uint256) pure returns (uint256)"
                                     },
                                     "children": [
@@ -2681,16 +2681,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 10170,
+                                          "referencedDeclaration": 10289,
                                           "type": "type(library FullMath)",
                                           "value": "FullMath"
                                         },
-                                        "id": 18189,
+                                        "id": 18308,
                                         "name": "Identifier",
                                         "src": "1642:8:92"
                                       }
                                     ],
-                                    "id": 18190,
+                                    "id": 18309,
                                     "name": "MemberAccess",
                                     "src": "1642:15:92"
                                   },
@@ -2699,11 +2699,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18157,
+                                      "referencedDeclaration": 18276,
                                       "type": "uint256",
                                       "value": "numerator1"
                                     },
-                                    "id": 18191,
+                                    "id": 18310,
                                     "name": "Identifier",
                                     "src": "1658:10:92"
                                   },
@@ -2712,11 +2712,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18167,
+                                      "referencedDeclaration": 18286,
                                       "type": "uint256",
                                       "value": "numerator2"
                                     },
-                                    "id": 18192,
+                                    "id": 18311,
                                     "name": "Identifier",
                                     "src": "1670:10:92"
                                   },
@@ -2725,16 +2725,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18135,
+                                      "referencedDeclaration": 18254,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18193,
+                                    "id": 18312,
                                     "name": "Identifier",
                                     "src": "1682:13:92"
                                   }
                                 ],
-                                "id": 18194,
+                                "id": 18313,
                                 "name": "FunctionCall",
                                 "src": "1642:54:92"
                               },
@@ -2743,36 +2743,36 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 18133,
+                                  "referencedDeclaration": 18252,
                                   "type": "uint160",
                                   "value": "sqrtRatioAX96"
                                 },
-                                "id": 18195,
+                                "id": 18314,
                                 "name": "Identifier",
                                 "src": "1699:13:92"
                               }
                             ],
-                            "id": 18196,
+                            "id": 18315,
                             "name": "BinaryOperation",
                             "src": "1642:70:92"
                           }
                         ],
-                        "id": 18197,
+                        "id": 18316,
                         "name": "Conditional",
                         "src": "1434:278:92"
                       }
                     ],
-                    "id": 18198,
+                    "id": 18317,
                     "name": "Return",
                     "src": "1415:297:92"
                   }
                 ],
-                "id": 18199,
+                "id": 18318,
                 "name": "Block",
                 "src": "1122:597:92"
               }
             ],
-            "id": 18200,
+            "id": 18319,
             "name": "FunctionDefinition",
             "src": "940:779:92"
           },
@@ -2785,7 +2785,7 @@
                 null
               ],
               "name": "getAmount1Delta",
-              "scope": 18249,
+              "scope": 18368,
               "stateMutability": "pure",
               "virtual": false,
               "visibility": "internal"
@@ -2795,7 +2795,7 @@
                 "attributes": {
                   "text": "@notice Gets the amount1 delta between two prices\n @dev Calculates liquidity * (sqrt(upper) - sqrt(lower))\n @param sqrtRatioAX96 A sqrt price\n @param sqrtRatioBX96 Another sqrt price\n @param liquidity The amount of usable liquidity\n @param roundUp Whether to round the amount up, or down\n @return amount1 Amount of token1 required to cover a position of size liquidity between the two passed prices"
                 },
-                "id": 18201,
+                "id": 18320,
                 "name": "StructuredDocumentation",
                 "src": "1725:444:92"
               },
@@ -2806,7 +2806,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "sqrtRatioAX96",
-                      "scope": 18248,
+                      "scope": 18367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint160",
@@ -2818,12 +2818,12 @@
                           "name": "uint160",
                           "type": "uint160"
                         },
-                        "id": 18202,
+                        "id": 18321,
                         "name": "ElementaryTypeName",
                         "src": "2208:7:92"
                       }
                     ],
-                    "id": 18203,
+                    "id": 18322,
                     "name": "VariableDeclaration",
                     "src": "2208:21:92"
                   },
@@ -2832,7 +2832,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "sqrtRatioBX96",
-                      "scope": 18248,
+                      "scope": 18367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint160",
@@ -2844,12 +2844,12 @@
                           "name": "uint160",
                           "type": "uint160"
                         },
-                        "id": 18204,
+                        "id": 18323,
                         "name": "ElementaryTypeName",
                         "src": "2239:7:92"
                       }
                     ],
-                    "id": 18205,
+                    "id": 18324,
                     "name": "VariableDeclaration",
                     "src": "2239:21:92"
                   },
@@ -2858,7 +2858,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "liquidity",
-                      "scope": 18248,
+                      "scope": 18367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint128",
@@ -2870,12 +2870,12 @@
                           "name": "uint128",
                           "type": "uint128"
                         },
-                        "id": 18206,
+                        "id": 18325,
                         "name": "ElementaryTypeName",
                         "src": "2270:7:92"
                       }
                     ],
-                    "id": 18207,
+                    "id": 18326,
                     "name": "VariableDeclaration",
                     "src": "2270:17:92"
                   },
@@ -2884,7 +2884,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "roundUp",
-                      "scope": 18248,
+                      "scope": 18367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -2896,17 +2896,17 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 18208,
+                        "id": 18327,
                         "name": "ElementaryTypeName",
                         "src": "2297:4:92"
                       }
                     ],
-                    "id": 18209,
+                    "id": 18328,
                     "name": "VariableDeclaration",
                     "src": "2297:12:92"
                   }
                 ],
-                "id": 18210,
+                "id": 18329,
                 "name": "ParameterList",
                 "src": "2198:117:92"
               },
@@ -2917,7 +2917,7 @@
                       "constant": false,
                       "mutability": "mutable",
                       "name": "amount1",
-                      "scope": 18248,
+                      "scope": 18367,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2929,17 +2929,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 18211,
+                        "id": 18330,
                         "name": "ElementaryTypeName",
                         "src": "2339:7:92"
                       }
                     ],
-                    "id": 18212,
+                    "id": 18331,
                     "name": "VariableDeclaration",
                     "src": "2339:15:92"
                   }
                 ],
-                "id": 18213,
+                "id": 18332,
                 "name": "ParameterList",
                 "src": "2338:17:92"
               },
@@ -2967,11 +2967,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18203,
+                              "referencedDeclaration": 18322,
                               "type": "uint160",
                               "value": "sqrtRatioAX96"
                             },
-                            "id": 18214,
+                            "id": 18333,
                             "name": "Identifier",
                             "src": "2370:13:92"
                           },
@@ -2980,16 +2980,16 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18205,
+                              "referencedDeclaration": 18324,
                               "type": "uint160",
                               "value": "sqrtRatioBX96"
                             },
-                            "id": 18215,
+                            "id": 18334,
                             "name": "Identifier",
                             "src": "2386:13:92"
                           }
                         ],
-                        "id": 18216,
+                        "id": 18335,
                         "name": "BinaryOperation",
                         "src": "2370:29:92"
                       },
@@ -3020,11 +3020,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18203,
+                                      "referencedDeclaration": 18322,
                                       "type": "uint160",
                                       "value": "sqrtRatioAX96"
                                     },
-                                    "id": 18217,
+                                    "id": 18336,
                                     "name": "Identifier",
                                     "src": "2402:13:92"
                                   },
@@ -3033,16 +3033,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18205,
+                                      "referencedDeclaration": 18324,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18218,
+                                    "id": 18337,
                                     "name": "Identifier",
                                     "src": "2417:13:92"
                                   }
                                 ],
-                                "id": 18219,
+                                "id": 18338,
                                 "name": "TupleExpression",
                                 "src": "2401:30:92"
                               },
@@ -3061,11 +3061,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18205,
+                                      "referencedDeclaration": 18324,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18220,
+                                    "id": 18339,
                                     "name": "Identifier",
                                     "src": "2435:13:92"
                                   },
@@ -3074,37 +3074,37 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18203,
+                                      "referencedDeclaration": 18322,
                                       "type": "uint160",
                                       "value": "sqrtRatioAX96"
                                     },
-                                    "id": 18221,
+                                    "id": 18340,
                                     "name": "Identifier",
                                     "src": "2450:13:92"
                                   }
                                 ],
-                                "id": 18222,
+                                "id": 18341,
                                 "name": "TupleExpression",
                                 "src": "2434:30:92"
                               }
                             ],
-                            "id": 18223,
+                            "id": 18342,
                             "name": "Assignment",
                             "src": "2401:63:92"
                           }
                         ],
-                        "id": 18224,
+                        "id": 18343,
                         "name": "ExpressionStatement",
                         "src": "2401:63:92"
                       }
                     ],
-                    "id": 18225,
+                    "id": 18344,
                     "name": "IfStatement",
                     "src": "2366:98:92"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 18213
+                      "functionReturnParameters": 18332
                     },
                     "children": [
                       {
@@ -3121,11 +3121,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 18209,
+                              "referencedDeclaration": 18328,
                               "type": "bool",
                               "value": "roundUp"
                             },
-                            "id": 18226,
+                            "id": 18345,
                             "name": "Identifier",
                             "src": "2494:7:92"
                           },
@@ -3165,7 +3165,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "mulDivRoundingUp",
-                                  "referencedDeclaration": 10169,
+                                  "referencedDeclaration": 10288,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -3174,16 +3174,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10170,
+                                      "referencedDeclaration": 10289,
                                       "type": "type(library FullMath)",
                                       "value": "FullMath"
                                     },
-                                    "id": 18227,
+                                    "id": 18346,
                                     "name": "Identifier",
                                     "src": "2520:8:92"
                                   }
                                 ],
-                                "id": 18228,
+                                "id": 18347,
                                 "name": "MemberAccess",
                                 "src": "2520:25:92"
                               },
@@ -3192,11 +3192,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 18207,
+                                  "referencedDeclaration": 18326,
                                   "type": "uint128",
                                   "value": "liquidity"
                                 },
-                                "id": 18229,
+                                "id": 18348,
                                 "name": "Identifier",
                                 "src": "2546:9:92"
                               },
@@ -3219,11 +3219,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18205,
+                                      "referencedDeclaration": 18324,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18230,
+                                    "id": 18349,
                                     "name": "Identifier",
                                     "src": "2557:13:92"
                                   },
@@ -3232,16 +3232,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18203,
+                                      "referencedDeclaration": 18322,
                                       "type": "uint160",
                                       "value": "sqrtRatioAX96"
                                     },
-                                    "id": 18231,
+                                    "id": 18350,
                                     "name": "Identifier",
                                     "src": "2573:13:92"
                                   }
                                 ],
-                                "id": 18232,
+                                "id": 18351,
                                 "name": "BinaryOperation",
                                 "src": "2557:29:92"
                               },
@@ -3252,7 +3252,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "Q96",
-                                  "referencedDeclaration": 9996,
+                                  "referencedDeclaration": 10115,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -3261,21 +3261,21 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9997,
+                                      "referencedDeclaration": 10116,
                                       "type": "type(library FixedPoint96)",
                                       "value": "FixedPoint96"
                                     },
-                                    "id": 18233,
+                                    "id": 18352,
                                     "name": "Identifier",
                                     "src": "2588:12:92"
                                   }
                                 ],
-                                "id": 18234,
+                                "id": 18353,
                                 "name": "MemberAccess",
                                 "src": "2588:16:92"
                               }
                             ],
-                            "id": 18235,
+                            "id": 18354,
                             "name": "FunctionCall",
                             "src": "2520:85:92"
                           },
@@ -3315,7 +3315,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "mulDiv",
-                                  "referencedDeclaration": 10126,
+                                  "referencedDeclaration": 10245,
                                   "type": "function (uint256,uint256,uint256) pure returns (uint256)"
                                 },
                                 "children": [
@@ -3324,16 +3324,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 10170,
+                                      "referencedDeclaration": 10289,
                                       "type": "type(library FullMath)",
                                       "value": "FullMath"
                                     },
-                                    "id": 18236,
+                                    "id": 18355,
                                     "name": "Identifier",
                                     "src": "2624:8:92"
                                   }
                                 ],
-                                "id": 18237,
+                                "id": 18356,
                                 "name": "MemberAccess",
                                 "src": "2624:15:92"
                               },
@@ -3342,11 +3342,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 18207,
+                                  "referencedDeclaration": 18326,
                                   "type": "uint128",
                                   "value": "liquidity"
                                 },
-                                "id": 18238,
+                                "id": 18357,
                                 "name": "Identifier",
                                 "src": "2640:9:92"
                               },
@@ -3369,11 +3369,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18205,
+                                      "referencedDeclaration": 18324,
                                       "type": "uint160",
                                       "value": "sqrtRatioBX96"
                                     },
-                                    "id": 18239,
+                                    "id": 18358,
                                     "name": "Identifier",
                                     "src": "2651:13:92"
                                   },
@@ -3382,16 +3382,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 18203,
+                                      "referencedDeclaration": 18322,
                                       "type": "uint160",
                                       "value": "sqrtRatioAX96"
                                     },
-                                    "id": 18240,
+                                    "id": 18359,
                                     "name": "Identifier",
                                     "src": "2667:13:92"
                                   }
                                 ],
-                                "id": 18241,
+                                "id": 18360,
                                 "name": "BinaryOperation",
                                 "src": "2651:29:92"
                               },
@@ -3402,7 +3402,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "Q96",
-                                  "referencedDeclaration": 9996,
+                                  "referencedDeclaration": 10115,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -3411,51 +3411,51 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 9997,
+                                      "referencedDeclaration": 10116,
                                       "type": "type(library FixedPoint96)",
                                       "value": "FixedPoint96"
                                     },
-                                    "id": 18242,
+                                    "id": 18361,
                                     "name": "Identifier",
                                     "src": "2682:12:92"
                                   }
                                 ],
-                                "id": 18243,
+                                "id": 18362,
                                 "name": "MemberAccess",
                                 "src": "2682:16:92"
                               }
                             ],
-                            "id": 18244,
+                            "id": 18363,
                             "name": "FunctionCall",
                             "src": "2624:75:92"
                           }
                         ],
-                        "id": 18245,
+                        "id": 18364,
                         "name": "Conditional",
                         "src": "2494:205:92"
                       }
                     ],
-                    "id": 18246,
+                    "id": 18365,
                     "name": "Return",
                     "src": "2475:224:92"
                   }
                 ],
-                "id": 18247,
+                "id": 18366,
                 "name": "Block",
                 "src": "2356:350:92"
               }
             ],
-            "id": 18248,
+            "id": 18367,
             "name": "FunctionDefinition",
             "src": "2174:532:92"
           }
         ],
-        "id": 18249,
+        "id": 18368,
         "name": "ContractDefinition",
         "src": "363:2345:92"
       }
     ],
-    "id": 18250,
+    "id": 18369,
     "name": "SourceUnit",
     "src": "45:2664:92"
   },
@@ -3465,7 +3465,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-08T23:01:24.039Z",
+  "updatedAt": "2023-07-05T17:56:23.487Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -62,7 +62,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.7.5;\npragma abicoder v2;\n\n/// @title OracleSlippage interface\n/// @notice Enables slippage checks against oracle prices\ninterface IOracleSlippage {\n    /// @notice Ensures that the current (synthetic) tick over the path is no worse than\n    /// `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n    /// @param path The path to fetch prices over\n    /// @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n    /// @param secondsAgo The number of seconds ago to compute oracle prices against\n    function checkOracleSlippage(\n        bytes memory path,\n        uint24 maximumTickDivergence,\n        uint32 secondsAgo\n    ) external view;\n\n    /// @notice Ensures that the weighted average current (synthetic) tick over the path is no\n    /// worse than `maximumTickDivergence` ticks away from the average as of `secondsAgo`\n    /// @param paths The paths to fetch prices over\n    /// @param amounts The weights for each entry in `paths`\n    /// @param maximumTickDivergence The maximum number of ticks that the price can degrade by\n    /// @param secondsAgo The number of seconds ago to compute oracle prices against\n    function checkOracleSlippage(\n        bytes[] memory paths,\n        uint128[] memory amounts,\n        uint24 maximumTickDivergence,\n        uint32 secondsAgo\n    ) external view;\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IOracleSlippage.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/interfaces/IOracleSlippage.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IOracleSlippage.sol",
     "exportedSymbols": {
@@ -759,7 +759,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.507Z",
+  "updatedAt": "2023-07-05T17:57:59.857Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

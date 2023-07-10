@@ -163,7 +163,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity >=0.5.0;\n\nimport '../interfaces/IERC20.sol';\nimport '../interfaces/IERC20Permit.sol';\n\nimport '../interfaces/ISelfPermit.sol';\nimport '../interfaces/external/IERC20PermitAllowed.sol';\n\n/// @title Self Permit\n/// @notice Functionality to call permit on any EIP-2612-compliant token for use in the route\n/// @dev These functions are expected to be embedded in multicalls to allow EOAs to approve a contract and call a function\n/// that requires an approval in a single transaction.\nabstract contract SelfPermit is ISelfPermit {\n    /// @inheritdoc ISelfPermit\n    function selfPermit(\n        address token,\n        uint256 value,\n        uint256 deadline,\n        uint8 v,\n        bytes32 r,\n        bytes32 s\n    ) public payable override {\n        IERC20Permit(token).permit(msg.sender, address(this), value, deadline, v, r, s);\n    }\n\n    /// @inheritdoc ISelfPermit\n    function selfPermitIfNecessary(\n        address token,\n        uint256 value,\n        uint256 deadline,\n        uint8 v,\n        bytes32 r,\n        bytes32 s\n    ) external payable override {\n        if (IERC20(token).allowance(msg.sender, address(this)) < value) selfPermit(token, value, deadline, v, r, s);\n    }\n\n    /// @inheritdoc ISelfPermit\n    function selfPermitAllowed(\n        address token,\n        uint256 nonce,\n        uint256 expiry,\n        uint8 v,\n        bytes32 r,\n        bytes32 s\n    ) public payable override {\n        IERC20PermitAllowed(token).permit(msg.sender, address(this), nonce, expiry, true, v, r, s);\n    }\n\n    /// @inheritdoc ISelfPermit\n    function selfPermitAllowedIfNecessary(\n        address token,\n        uint256 nonce,\n        uint256 expiry,\n        uint8 v,\n        bytes32 r,\n        bytes32 s\n    ) external payable override {\n        if (IERC20(token).allowance(msg.sender, address(this)) < type(uint256).max)\n            selfPermitAllowed(token, nonce, expiry, v, r, s);\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/base/SelfPermit.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/base/SelfPermit.sol",
   "ast": {
     "absolutePath": "project:/contracts/base/SelfPermit.sol",
     "exportedSymbols": {
@@ -4820,7 +4820,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.498Z",
+  "updatedAt": "2023-07-05T17:57:59.816Z",
   "devdoc": {
     "details": "These functions are expected to be embedded in multicalls to allow EOAs to approve a contract and call a function that requires an approval in a single transaction.",
     "kind": "dev",

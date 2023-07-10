@@ -10,7 +10,7 @@
   "sourceMap": "58:1158:100:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "58:1158:100:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.7.6;\n\nlibrary HexStrings {\n    bytes16 internal constant ALPHABET = '0123456789abcdef';\n\n    /// @notice Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.\n    /// @dev Credit to Open Zeppelin under MIT license https://github.com/OpenZeppelin/openzeppelin-contracts/blob/243adff49ce1700e0ecb99fe522fb16cff1d1ddc/contracts/utils/Strings.sol#L55\n    /*function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {\n        bytes memory buffer = new bytes(2 * length + 2);\n        buffer[0] = '0';\n        buffer[1] = 'x';\n        for (uint256 i = 2 * length + 1; i > 1; --i) {\n            buffer[i] = ALPHABET[value & 0xf];\n            value >>= 4;\n        }\n        require(value == 0, 'Strings: hex length insufficient');\n        return string(buffer);\n    }\n*/\n    function toHexStringNoPrefix(uint256 value, uint256 length) internal pure returns (string memory) {\n        bytes memory buffer = new bytes(2 * length);\n        for (uint256 i = buffer.length; i > 0; i--) {\n            buffer[i - 1] = ALPHABET[value & 0xf];\n            value >>= 4;\n        }\n        return string(buffer);\n    }\n}\n",
-  "sourcePath": "/home/jerry/ethereum/uniswap/smart-router-ctr/contracts/libraries/HexStrings.sol",
+  "sourcePath": "/home/gtbc/blockchain/ethereum/uniswap/smart-router-ctr/contracts/libraries/HexStrings.sol",
   "ast": {
     "absolutePath": "project:/contracts/libraries/HexStrings.sol",
     "exportedSymbols": {
@@ -1578,7 +1578,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-07T21:58:02.554Z",
+  "updatedAt": "2023-07-05T17:58:00.124Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
